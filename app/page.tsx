@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -18,13 +18,86 @@ import {
   FiCode
 } from 'react-icons/fi';
 
+// Add print media detection
+const usePrintMedia = () => {
+  const [isPrinting, setIsPrinting] = useState(false);
+  
+  useEffect(() => {
+    const mediaQueryList = window.matchMedia('print');
+    
+    const handlePrintChange = (mql: MediaQueryListEvent) => {
+      setIsPrinting(mql.matches);
+    };
+    
+    mediaQueryList.addEventListener('change', handlePrintChange);
+    
+    // Check if already in print mode (for PDF export)
+    if (mediaQueryList.matches) {
+      setIsPrinting(true);
+    }
+    
+    // Also check when document is about to be printed
+    window.addEventListener('beforeprint', () => setIsPrinting(true));
+    window.addEventListener('afterprint', () => setIsPrinting(false));
+    
+    return () => {
+      mediaQueryList.removeEventListener('change', handlePrintChange);
+      window.removeEventListener('beforeprint', () => setIsPrinting(true));
+      window.removeEventListener('afterprint', () => setIsPrinting(false));
+    };
+  }, []);
+  
+  return isPrinting;
+};
+
+// Helper for optimized image loading
+const OptimizedImage = ({ 
+  src, 
+  alt, 
+  className, 
+  width, 
+  height 
+}: { 
+  src: string; 
+  alt: string; 
+  className?: string; 
+  width: number; 
+  height: number; 
+}) => {
+  const isPrinting = usePrintMedia();
+  
+  // Reduce quality for PDF export
+  let imgSrc = src;
+  if (isPrinting) {
+    // For images with URLs that support quality parameters
+    if (imgSrc.includes('?')) {
+      imgSrc = `${imgSrc}&q=60&w=${Math.round(width * 0.75)}`;  // 60% quality, 75% size
+    } else {
+      imgSrc = `${imgSrc}?q=60&w=${Math.round(width * 0.75)}`;
+    }
+  }
+  
+  return <img src={imgSrc} alt={alt} className={className} width={width} height={height} />;
+};
+
 export default function Home() {
-  // Animation setup for sections
+  const isPrinting = usePrintMedia();
+  
+  // Animation setup for sections - disable animations when printing
   function AnimatedSection({ children, id }: { children: React.ReactNode; id: string }) {
     const { ref, inView } = useInView({
       threshold: 0.1,
       triggerOnce: true,
     });
+
+    // Skip animations when printing
+    if (isPrinting) {
+      return (
+        <div id={id} className="mb-10">
+          {children}
+        </div>
+      );
+    }
 
     return (
       <motion.div
@@ -60,80 +133,129 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <ThemeToggle />
+      {!isPrinting && <ThemeToggle />}
       
       {/* Header */}
-      <motion.header 
-        className="bg-gradient-professional text-white py-10 px-6 md:py-16 md:px-10 relative overflow-hidden shadow-xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-4 text-center"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            Matthaios Markatis
-          </motion.h1>
+      {isPrinting ? (
+        /* Simplified header for PDF */
+        <header className="py-8 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl font-bold mb-4 text-center">
+              Matthaios Markatis
+            </h1>
+            
+            <div className="flex flex-wrap justify-center gap-4 mt-6">
+              <div className="contact-item">
+                <FiMail />
+                <a href="mailto:matthaiosmarkatis@gmail.com">matthaiosmarkatis@gmail.com</a>
+              </div>
+              <div className="contact-item">
+                <FiPhone />
+                <a href="tel:07480699246">07480 699246</a>
+              </div>
+              <div className="contact-item">
+                <FiLinkedin />
+                <a href="https://www.linkedin.com/in/matthaios-markatis">
+                  linkedin.com/in/matthaios-markatis
+                </a>
+              </div>
+              <div className="contact-item">
+                <FiGithub />
+                <a href="https://github.com/Seebrasse345">
+                  github.com/Seebrasse345
+                </a>
+              </div>
+              <div className="contact-item">
+                <FiMapPin />
+                <span>123 Ash Crescent, Eckington S21 4AD</span>
+              </div>
+            </div>
+          </div>
+        </header>
+      ) : (
+        /* Original animated header */
+        <motion.header 
+          className="bg-gradient-professional text-white py-10 px-6 md:py-16 md:px-10 relative overflow-hidden shadow-xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-4 text-center"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              Matthaios Markatis
+            </motion.h1>
+            
+            <motion.div 
+              className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <div className="contact-item">
+                <FiMail />
+                <a href="mailto:matthaiosmarkatis@gmail.com">matthaiosmarkatis@gmail.com</a>
+              </div>
+              <div className="contact-item">
+                <FiPhone />
+                <a href="tel:07480699246">07480 699246</a>
+              </div>
+              <div className="contact-item">
+                <FiLinkedin />
+                <a href="https://www.linkedin.com/in/matthaios-markatis" target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/matthaios-markatis
+                </a>
+              </div>
+              <div className="contact-item">
+                <FiGithub />
+                <a href="https://github.com/Seebrasse345" target="_blank" rel="noopener noreferrer">
+                  github.com/Seebrasse345
+                </a>
+              </div>
+              <div className="contact-item">
+                <FiMapPin />
+                <span>123 Ash Crescent, Eckington S21 4AD</span>
+              </div>
+            </motion.div>
+          </div>
           
-          <motion.div 
-            className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
-            <div className="contact-item">
-              <FiMail />
-              <a href="mailto:matthaiosmarkatis@gmail.com">matthaiosmarkatis@gmail.com</a>
-            </div>
-            <div className="contact-item">
-              <FiPhone />
-              <a href="tel:07480699246">07480 699246</a>
-            </div>
-            <div className="contact-item">
-              <FiLinkedin />
-              <a href="https://www.linkedin.com/in/matthaios-markatis" target="_blank" rel="noopener noreferrer">
-                linkedin.com/in/matthaios-markatis
-              </a>
-            </div>
-            <div className="contact-item">
-              <FiGithub />
-              <a href="https://github.com/Seebrasse345" target="_blank" rel="noopener noreferrer">
-                github.com/Seebrasse345
-              </a>
-            </div>
-            <div className="contact-item">
-              <FiMapPin />
-              <span>123 Ash Crescent, Eckington S21 4AD</span>
-            </div>
-          </motion.div>
-        </div>
-        
-        {/* Decorative header dots pattern */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,_transparent_20%,_rgba(255,255,255,0.05)_21%,_transparent_22%)] bg-[length:20px_20px]"></div>
-        </div>
-        
-        {/* Decorative header gradient line */}
-        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-secondary to-secondary-light"></div>
-      </motion.header>
+          {/* Decorative header dots pattern */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute inset-0 bg-[radial-gradient(circle,_transparent_20%,_rgba(255,255,255,0.05)_21%,_transparent_22%)] bg-[length:20px_20px]"></div>
+          </div>
+          
+          {/* Decorative header gradient line */}
+          <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-secondary to-secondary-light"></div>
+        </motion.header>
+      )}
 
       {/* Summary */}
-      <motion.div 
-        className="max-w-4xl mx-auto px-4 md:px-8 py-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-      >
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-secondary">
-          <p className="text-lg leading-relaxed">
-            BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="highlight">theoretical physics</span> and <span className="highlight">computational methods</span>. Recently completed the <span className="highlight">IBM Data Science</span> and <span className="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="highlight">machine learning</span>, <span className="highlight">statistical analysis</span>, and <span className="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="highlight">hardware</span> and <span className="highlight">software</span>, including a fully <span className="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span className="highlight">automation technologies</span>, intelligent <span className="highlight">AI agents</span>, and <span className="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span className="highlight">AI</span>, <span className="highlight">automation</span>, and <span className="highlight">hardware integration</span> in professional engineering environments.
-          </p>
+      {isPrinting ? (
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          <div className="p-4 rounded-lg border-l-4 border-secondary">
+            <p className="text-base leading-relaxed">
+              BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="highlight">theoretical physics</span> and <span className="highlight">computational methods</span>. Recently completed the <span className="highlight">IBM Data Science</span> and <span className="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="highlight">machine learning</span>, <span className="highlight">statistical analysis</span>, and <span className="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="highlight">hardware</span> and <span className="highlight">software</span>, including a fully <span className="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span className="highlight">automation technologies</span>, intelligent <span className="highlight">AI agents</span>, and <span className="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span className="highlight">AI</span>, <span className="highlight">automation</span>, and <span className="highlight">hardware integration</span> in professional engineering environments.
+            </p>
+          </div>
         </div>
-      </motion.div>
+      ) : (
+        <motion.div 
+          className="max-w-4xl mx-auto px-4 md:px-8 py-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-secondary">
+            <p className="text-lg leading-relaxed">
+              BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="highlight">theoretical physics</span> and <span className="highlight">computational methods</span>. Recently completed the <span className="highlight">IBM Data Science</span> and <span className="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="highlight">machine learning</span>, <span className="highlight">statistical analysis</span>, and <span className="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="highlight">hardware</span> and <span className="highlight">software</span>, including a fully <span className="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span className="highlight">automation technologies</span>, intelligent <span className="highlight">AI agents</span>, and <span className="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span className="highlight">AI</span>, <span className="highlight">automation</span>, and <span className="highlight">hardware integration</span> in professional engineering environments.
+            </p>
+          </div>
+        </motion.div>
+      )}
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 pb-20">
         {/* Technical Skills - Moved up and made more compact */}
@@ -141,9 +263,9 @@ export default function Home() {
           <div className="section-title">
             <FiCode className="inline-block mr-2" /> Technical Skills
           </div>
-          <div className="section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+          <div className={`section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm ${isPrinting ? 'print-compact' : ''}`}>
             {/* More comprehensive skills layout */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className={`grid ${isPrinting ? 'grid-cols-3' : 'grid-cols-2 md:grid-cols-3'} gap-4`}>
               <div className="skill-category">
                 <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Programming</div>
                 <div className="skill-list flex flex-wrap gap-1">

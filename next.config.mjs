@@ -4,7 +4,14 @@ const nextConfig = {
   swcMinify: true,
   output: 'export',
   images: {
-    unoptimized: true,
+    formats: ['image/webp'],
+    minimumCacheTTL: 60,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   }
 };
 

@@ -108,4 +108,118 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-light;
   }
+}
+
+/* PDF Export optimization */
+@media print {
+  /* Override all shadows */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Simplify all gradient backgrounds to solid colors */
+  [class*="bg-gradient"] {
+    background: white !important;
+    color: #333 !important;
+  }
+  
+  /* Force white background and black text */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Reduce font sizes slightly to save space */
+  p {
+    font-size: 0.95em !important;
+  }
+  
+  /* Make section titles simpler */
+  .section-title {
+    background: #f3f4f6 !important;
+    color: #1e3a8a !important;
+    border-bottom: 2px solid #3b82f6 !important;
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .section-title::after {
+    display: none !important;
+  }
+  
+  /* Simplify skill pills */
+  .skill-pill {
+    background: #f3f4f6 !important;
+    color: #1e3a8a !important;
+    border: 1px solid #d1d5db !important;
+    font-size: 0.7em !important;
+    padding: 0.1rem 0.5rem !important;
+    margin: 0.1rem !important;
+  }
+  
+  /* Simplify borders */
+  .project-item, .job-item, .education-item, .cert-item, .skill-category {
+    border: 1px solid #e5e7eb !important;
+    border-left: 3px solid #1e3a8a !important;
+    transform: none !important;
+  }
+  
+  /* Reduce margin and padding to save space */
+  .section-content, 
+  .project-item, 
+  .job-item, 
+  .education-item, 
+  .cert-item {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Ensure links are visible but not overwhelming */
+  a {
+    text-decoration: none !important;
+    color: #1e3a8a !important;
+  }
+  
+  /* Hide unnecessary elements for PDF */
+  .theme-toggle,
+  button[type="button"] {
+    display: none !important;
+  }
+  
+  /* Images optimization */
+  img {
+    max-resolution: 150dpi;
+  }
+  
+  /* Compact skills section for PDF */
+  .print-compact {
+    padding: 0.5rem !important;
+  }
+  
+  .print-compact .skill-category {
+    margin-bottom: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+  
+  .print-compact .skill-title {
+    font-size: 0.8em !important;
+    margin-bottom: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  
+  .print-compact .skill-list {
+    gap: 0.1rem !important;
+  }
+  
+  /* Reduce spacing between sections */
+  .mb-10 {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Set print-specific page margin */
+  @page {
+    margin: 0.5cm;
+    size: auto;
+  }
 } 
