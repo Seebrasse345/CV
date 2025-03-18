@@ -22,30 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Print optimization tags */}
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="format-detection" content="date=no" />
-        <meta name="format-detection" content="address=no" />
-        <meta name="format-detection" content="email=no" />
-        {/* Control PDF output size */}
-        <style>
-          {`
-            @page {
-              size: A4;
-              margin: 0.5cm;
-            }
-            @media print {
-              body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-              }
-            }
-          `}
-        </style>
-      </head>
       <body className={`${inter.variable} font-sans`}>
         <ThemeProvider
           attribute="class"

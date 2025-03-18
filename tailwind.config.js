@@ -67,10 +67,6 @@ module.exports = {
         'gradient-accent': 'linear-gradient(135deg, #0891b2 0%, #38bdf8 100%)',
         'gradient-skill': 'linear-gradient(135deg, #6d28d9 0%, #a855f7 100%)',
       },
-      // Specific print settings to optimize PDF size
-      screens: {
-        'print': {'raw': 'print'},
-      },
     },
   },
   plugins: [],
