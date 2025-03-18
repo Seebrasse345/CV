@@ -5,7 +5,6 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -28,7 +27,6 @@ module.exports = {
         },
         background: {
           light: '#ffffff',   // White
-          dark: '#111827',    // Very dark gray/blue
           gradient: 'linear-gradient(120deg, #f0f9ff, #e6f7ff)', // Light blue gradient
         },
       },

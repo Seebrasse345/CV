@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import {
   FiMail,
   FiPhone,
@@ -133,8 +132,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      {!isPrinting && <ThemeToggle />}
-      
       {/* Header */}
       {isPrinting ? (
         /* Simplified header for PDF */
@@ -249,7 +246,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-secondary">
+          <div className="bg-white p-6 rounded-lg shadow-card border-l-4 border-secondary">
             <p className="text-lg leading-relaxed">
               BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="highlight">theoretical physics</span> and <span className="highlight">computational methods</span>. Recently completed the <span className="highlight">IBM Data Science</span> and <span className="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="highlight">machine learning</span>, <span className="highlight">statistical analysis</span>, and <span className="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="highlight">hardware</span> and <span className="highlight">software</span>, including a fully <span className="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span className="highlight">automation technologies</span>, intelligent <span className="highlight">AI agents</span>, and <span className="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span className="highlight">AI</span>, <span className="highlight">automation</span>, and <span className="highlight">hardware integration</span> in professional engineering environments.
             </p>
@@ -263,7 +260,7 @@ export default function Home() {
           <div className="section-title">
             <FiCode className="inline-block mr-2" /> Technical Skills
           </div>
-          <div className={`section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm ${isPrinting ? 'print-compact' : ''}`}>
+          <div className={`section-content bg-white p-4 rounded-lg shadow-sm ${isPrinting ? 'print-compact' : ''}`}>
             {/* More comprehensive skills layout */}
             <div className={`grid ${isPrinting ? 'grid-cols-3' : 'grid-cols-2 md:grid-cols-3'} gap-4`}>
               <div className="skill-category">
@@ -360,7 +357,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Hidden keywords for ATS optimization - expanded with more relevant terms */}
+            {/* Hidden keywords for ATS optimization */}
             <div className="hidden">
               <p>
                 Python, C++, C, JavaScript, MATLAB, R, HTML, CSS, VHDL, Flutter, Dart, Tkinter,
@@ -404,7 +401,7 @@ export default function Home() {
           <div className="section-content">
             <div className="space-y-6">
               <div className="education-item">
-                <h3 className="text-xl font-semibold text-primary dark:text-white">BSc Physics</h3>
+                <h3 className="text-xl font-semibold text-primary">BSc Physics</h3>
                 <div className="flex items-center text-text-light text-sm mb-3">
                   <FiCalendar className="mr-1" /> University of Sheffield | 2020 - 2024
                 </div>
@@ -412,52 +409,52 @@ export default function Home() {
                   <FiAward className="mr-1" /> 2:1 Classification (Upper Second-Class Honours)
                 </div>
                 
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-4 rounded-md mb-4">
-                  <h4 className="text-primary dark:text-white font-semibold text-center mb-3 border-b pb-2">Programming & Technical Modules</h4>
+                <div className="border border-gray-200 p-4 rounded-md mb-4">
+                  <h4 className="text-primary font-semibold text-center mb-3 border-b pb-2">Programming & Technical Modules</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Advanced Programming in Python</span>
                       <span className="font-semibold text-primary">82%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Programming in Python</span>
                       <span className="font-semibold text-primary">78%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Physical Computing</span>
                       <span className="font-semibold text-primary">70%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Physics with LabView</span>
                       <span className="font-semibold text-primary">67%</span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-4 rounded-md">
-                  <h4 className="text-primary dark:text-white font-semibold text-center mb-3 border-b pb-2">Physics Core Modules</h4>
+                <div className="border border-gray-200 p-4 rounded-md">
+                  <h4 className="text-primary font-semibold text-center mb-3 border-b pb-2">Physics Core Modules</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Physics of Materials</span>
                       <span className="font-semibold text-primary">75%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Atomic and Laser Physics</span>
                       <span className="font-semibold text-primary">69%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Particle Physics</span>
                       <span className="font-semibold text-primary">67%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Solid State Physics</span>
                       <span className="font-semibold text-primary">66%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Nuclear Physics</span>
                       <span className="font-semibold text-primary">66%</span>
                     </div>
-                    <div className="flex justify-between bg-background-light dark:bg-gray-700 p-2 rounded">
+                    <div className="flex justify-between bg-background-light p-2 rounded">
                       <span className="font-medium">Classical and Quantum Physics</span>
                       <span className="font-semibold text-primary">64%</span>
                     </div>
@@ -466,21 +463,21 @@ export default function Home() {
               </div>
               
               <div className="education-item">
-                <h3 className="text-xl font-semibold text-primary dark:text-white">A-Levels</h3>
+                <h3 className="text-xl font-semibold text-primary">A-Levels</h3>
                 <div className="flex items-center text-text-light text-sm mb-4">
                   <FiCalendar className="mr-1" /> Eckington Sixth Form | 2018 - 2020
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md text-center">
+                  <div className="p-4 rounded-md text-center">
                     <div className="font-semibold text-primary">Physics</div>
                     <div className="font-bold text-2xl text-secondary mt-2">A</div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md text-center">
+                  <div className="p-4 rounded-md text-center">
                     <div className="font-semibold text-primary">Biology</div>
                     <div className="font-bold text-2xl text-secondary mt-2">A</div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md text-center">
+                  <div className="p-4 rounded-md text-center">
                     <div className="font-semibold text-primary">Chemistry</div>
                     <div className="font-bold text-2xl text-secondary mt-2">B</div>
                   </div>
@@ -499,7 +496,7 @@ export default function Home() {
             <div className="space-y-6">
               <div className="cert-item">
                 <div className="relative overflow-hidden">
-                  <h3 className="text-xl font-semibold text-primary dark:text-white">IBM AI Engineering Professional Certificate</h3>
+                  <h3 className="text-xl font-semibold text-primary">IBM AI Engineering Professional Certificate</h3>
                   <div className="flex items-center text-text-light text-sm mb-4">
                     <FiCalendar className="mr-1" /> Coursera | August 2024
                   </div>
@@ -520,7 +517,7 @@ export default function Home() {
               </div>
               
               <div className="cert-item">
-                <h3 className="text-xl font-semibold text-primary dark:text-white">IBM Data Science Professional Certificate</h3>
+                <h3 className="text-xl font-semibold text-primary">IBM Data Science Professional Certificate</h3>
                 <div className="flex items-center text-text-light text-sm mb-4">
                   <FiCalendar className="mr-1" /> Coursera | July 2024
                 </div>
@@ -552,7 +549,7 @@ export default function Home() {
               <div className="project-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Wildfire Detection System (IoT + Machine Learning)</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">Wildfire Detection System (IoT + Machine Learning)</h3>
                     <div className="text-text-light text-sm mb-4">University of Sheffield Research Project 2024</div>
                     <p className="mb-4">
                       Developed a comprehensive real-time fire detection system using IoT sensors to monitor environmental conditions across multiple locations. Implemented Raspberry Pi Zero W as the main controller with LoRaWAN sensors for long-range wireless data transmission. Integrated Random Forest and Decision Tree models to analyze environmental data and deployed a machine learning prediction model on a live web interface with interactive mapping, trained on NASA FIRMS and satellite data.
@@ -571,7 +568,7 @@ export default function Home() {
                       <span className="project-tag">Weather API</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Technical Features:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Custom sensor hardware integration</li>
@@ -587,7 +584,7 @@ export default function Home() {
               <div className="project-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Home-built Autonomous FPV Drone with iNav Autopilot</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">Home-built Autonomous FPV Drone with iNav Autopilot</h3>
                     <div className="text-text-light text-sm mb-4">Personal Hardware Project 2024</div>
                     <p className="mb-4">
                       Designed and built a fully autonomous FPV drone from scratch, integrating an F7 flight controller, 4-in-1 ESCs, telemetry modules, and GPS systems for precise navigation. Configured iNav firmware for autonomous waypoint navigation, implemented PID tuning for flight stabilization, and developed failsafe protocols for emergency situations. The system includes custom electronics integration and sensor fusion for reliable autonomous operation.
@@ -604,7 +601,7 @@ export default function Home() {
                       <span className="project-tag">Autonomous Systems</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Technical Achievements:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Hardware-firmware integration</li>
@@ -620,7 +617,7 @@ export default function Home() {
               <div className="project-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Imagine You - AI Personal Image Generation App</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">Imagine You - AI Personal Image Generation App</h3>
                     <div className="text-text-light text-sm mb-4">Flutter Mobile Application 2024</div>
                     <p className="mb-4">
                       Developed a full Flutter Android app enabling users to create personalized AI image models of themselves and generate custom images across various styles and scenarios. Implemented a complete pipeline for training custom FLUX.1 diffusion models using the Replicate API, with OAuth authentication, Firebase database integration, and Stripe payment processing. The app features an interactive chat interface, advanced image generation settings, and secure user data management.
@@ -639,7 +636,7 @@ export default function Home() {
                       <span className="project-tag">Google Play Store</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Advanced Features:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Custom AI model training</li>
@@ -655,7 +652,7 @@ export default function Home() {
               <div className="project-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">LinkedIn Job Application Automator</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">LinkedIn Job Application Automator</h3>
                     <div className="text-text-light text-sm mb-4">Web Automation Project 2024</div>
                     <p className="mb-4">
                       Built a sophisticated automation system using Python and Playwright that handles the entire LinkedIn job application process. The system features intelligent form detection and auto-filling capabilities, customizable job search with advanced filters, automatic cover letter generation using GPT, session persistence to avoid frequent logins, and comprehensive error handling for robust operation across various application formats.
@@ -671,7 +668,7 @@ export default function Home() {
                       <span className="project-tag">Error Recovery</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Technical Capabilities:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Intelligent form detection</li>
@@ -687,7 +684,7 @@ export default function Home() {
               <div className="project-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Custom LLM Discord Bot</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">Custom LLM Discord Bot</h3>
                     <div className="text-text-light text-sm mb-4">AI Integration Project 2024</div>
                     <p className="mb-4">
                       Developed a versatile Discord bot featuring local LLM integration for intelligent conversations, voice capabilities with text-to-speech functionality, music playback with advanced controls, and comprehensive server management tools. The system uses custom system prompts for different contexts and integrates with locally-hosted language models through an OpenAI-compatible API interface, enabling sophisticated AI-driven interactions within Discord.
@@ -703,7 +700,7 @@ export default function Home() {
                       <span className="project-tag">System Prompts</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Key Integrations:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Local model deployment</li>
@@ -729,14 +726,14 @@ export default function Home() {
               <div className="job-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">NHS Shadowing Experience</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">NHS Shadowing Experience</h3>
                     <div className="text-text-light text-sm mb-4">Sheffield Teaching Hospitals NHS Trust | June 2023 - August 2023</div>
                     
                     <div className="mb-4">
-                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Overview:</h4>
+                      <h4 className="font-semibold text-primary mb-2">Overview:</h4>
                       <p className="mb-3">Completed clinical shadowing in various hospital departments, observing medical procedures and patient care processes. Gained exposure to healthcare technology systems and electronic patient records management.</p>
                       
-                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Key Observations:</h4>
+                      <h4 className="font-semibold text-primary mb-2">Key Observations:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Observed integration of electronic health record systems across departments</li>
                         <li>Gained insight into medical device data integration and patient monitoring systems</li>
@@ -745,7 +742,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Relevant Exposure:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Healthcare information systems</li>
@@ -761,11 +758,11 @@ export default function Home() {
               <div className="job-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Team Leader / Supervisor</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">Team Leader / Supervisor</h3>
                     <div className="text-text-light text-sm mb-4">Meltdown-Wetherspoons | February 2022 - November 2023</div>
                     
                     <div className="mb-4">
-                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Primary Responsibilities:</h4>
+                      <h4 className="font-semibold text-primary mb-2">Primary Responsibilities:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Managed daily operations and led staff training in high-volume city venues</li>
                         <li>Coordinated workflow processes to maximize efficiency during peak service periods</li>
@@ -775,14 +772,14 @@ export default function Home() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Key Achievements:</h4>
+                      <h4 className="font-semibold text-primary mb-2">Key Achievements:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Improved operational efficiency by 15% through streamlined service protocols</li>
                         <li>Recognized for excellent leadership during high-pressure situations</li>
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Skills Developed:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Team leadership</li>
@@ -797,11 +794,11 @@ export default function Home() {
               <div className="job-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Bartender / Front of House</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-2">Bartender / Front of House</h3>
                     <div className="text-text-light text-sm mb-4">Various Establishments | September 2018 - October 2021</div>
                     
                     <div className="mb-4">
-                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Primary Responsibilities:</h4>
+                      <h4 className="font-semibold text-primary mb-2">Primary Responsibilities:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Delivered exceptional customer service in high-end dining environments</li>
                         <li>Maintained strong communication between kitchen and front-of-house staff</li>
@@ -810,14 +807,14 @@ export default function Home() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Key Achievements:</h4>
+                      <h4 className="font-semibold text-primary mb-2">Key Achievements:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Recognized for meticulous attention to detail and customer satisfaction</li>
                         <li>Consistently received positive customer feedback</li>
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="p-4 rounded-md shadow-card hidden lg:block">
                     <h4 className="font-semibold mb-3">Skills Developed:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Customer service excellence</li>
@@ -832,16 +829,6 @@ export default function Home() {
           </div>
         </AnimatedSection>
       </div>
-      
-      {/* Footer */}
-      <footer className="bg-gradient-professional text-white text-center py-6">
-        <div className="max-w-4xl mx-auto px-4">
-          <div>Matthaios Markatis | 123 Ash Crescent, Eckington S21 4AD | 
-            <a href="https://www.linkedin.com/in/matthaios-markatis" className="text-secondary-light hover:underline ml-1">LinkedIn</a> | 
-            <a href="mailto:matthaiosmarkatis@gmail.com" className="text-secondary-light hover:underline ml-1">matthaiosmarkatis@gmail.com</a>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 } 
