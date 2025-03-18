@@ -423,7 +423,7 @@ export default function Home() {
         {/* Key Projects */}
         <AnimatedSection id="projects">
           <div className="section-title">
-            <FiFile className="inline-block mr-2" /> Key Projects
+            <FiFile className="inline-block mr-2" />Projects
           </div>
           <div className="section-content">
             <div className="space-y-6">
