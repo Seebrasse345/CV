@@ -18,6 +18,55 @@ import {
   FiCode
 } from 'react-icons/fi';
 
+// Add print-specific styles
+const printStyles = `
+  @media print {
+    /* Disable animations for print */
+    * {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+    
+    /* Remove shadows and reduce visual effects for print */
+    .shadow-card, .shadow-button, .shadow-card-hover, .shadow-button-hover {
+      box-shadow: none !important;
+    }
+    
+    /* Remove gradient backgrounds - use solid colors instead */
+    .bg-gradient-professional {
+      background: #1e3a8a !important;
+    }
+    
+    .bg-gradient-accent, .bg-gradient-skill {
+      background: #0891b2 !important;
+    }
+    
+    /* Optimize images for print */
+    img {
+      max-resolution: 72dpi;
+    }
+    
+    /* Reduce font sizes for print */
+    .text-4xl, .text-5xl {
+      font-size: 24pt !important;
+    }
+    
+    .text-2xl, .text-xl {
+      font-size: 16pt !important;
+    }
+    
+    .text-lg, .text-base {
+      font-size: 12pt !important;
+    }
+    
+    .text-sm, .text-xs {
+      font-size: 10pt !important;
+    }
+  }
+`;
+
 export default function Home() {
   // Animation setup for sections
   function AnimatedSection({ children, id }: { children: React.ReactNode; id: string }) {
@@ -56,6 +105,15 @@ export default function Home() {
         }
       });
     });
+
+    // Inject print styles
+    const style = document.createElement('style');
+    style.innerHTML = printStyles;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   return (
@@ -64,14 +122,14 @@ export default function Home() {
       
       {/* Header */}
       <motion.header 
-        className="bg-gradient-professional text-white py-10 px-6 md:py-16 md:px-10 relative overflow-hidden shadow-xl"
+        className="bg-gradient-professional text-white py-10 px-6 md:py-16 md:px-10 relative overflow-hidden shadow-xl print:shadow-none print:py-6 print:px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-4xl mx-auto">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-4 text-center"
+            className="text-4xl md:text-5xl font-bold mb-4 text-center print:text-3xl print:mb-2"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -80,7 +138,7 @@ export default function Home() {
           </motion.h1>
           
           <motion.div 
-            className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6"
+            className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 print:gap-2 print:mt-2"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
@@ -112,38 +170,38 @@ export default function Home() {
           </motion.div>
         </div>
         
-        {/* Decorative header dots pattern */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        {/* Decorative header dots pattern - hide in print */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none print:hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle,_transparent_20%,_rgba(255,255,255,0.05)_21%,_transparent_22%)] bg-[length:20px_20px]"></div>
         </div>
         
-        {/* Decorative header gradient line */}
-        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-secondary to-secondary-light"></div>
+        {/* Decorative header gradient line - reduce in print */}
+        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-secondary to-secondary-light print:h-0.5"></div>
       </motion.header>
 
       {/* Summary */}
       <motion.div 
-        className="max-w-4xl mx-auto px-4 md:px-8 py-8"
+        className="max-w-4xl mx-auto px-4 md:px-8 py-8 print:py-2 print:px-2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-secondary">
-          <p className="text-lg leading-relaxed">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-secondary print:p-3 print:shadow-none">
+          <p className="text-lg leading-relaxed print:text-sm">
             BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="highlight">theoretical physics</span> and <span className="highlight">computational methods</span>. Recently completed the <span className="highlight">IBM Data Science</span> and <span className="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="highlight">machine learning</span>, <span className="highlight">statistical analysis</span>, and <span className="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="highlight">hardware</span> and <span className="highlight">software</span>, including a fully <span className="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span className="highlight">automation technologies</span>, intelligent <span className="highlight">AI agents</span>, and <span className="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span className="highlight">AI</span>, <span className="highlight">automation</span>, and <span className="highlight">hardware integration</span> in professional engineering environments.
           </p>
         </div>
       </motion.div>
 
-      <div className="max-w-4xl mx-auto px-4 md:px-8 pb-20">
+      <div className="max-w-4xl mx-auto px-4 md:px-8 pb-20 print:px-2 print:pb-2">
         {/* Technical Skills - Moved up and made more compact */}
         <AnimatedSection id="skills">
           <div className="section-title">
             <FiCode className="inline-block mr-2" /> Technical Skills
           </div>
-          <div className="section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+          <div className="section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm print:p-2 print:shadow-none">
             {/* More comprehensive skills layout */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 print:grid-cols-3 print:gap-1">
               <div className="skill-category">
                 <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Programming</div>
                 <div className="skill-list flex flex-wrap gap-1">
@@ -238,8 +296,8 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Hidden keywords for ATS optimization - expanded with more relevant terms */}
-            <div className="hidden">
+            {/* Hidden keywords for ATS optimization - hide completely in print */}
+            <div className="hidden print:hidden">
               <p>
                 Python, C++, C, JavaScript, MATLAB, R, HTML, CSS, VHDL, Flutter, Dart, Tkinter,
                 TensorFlow, PyTorch, scikit-learn, Keras, CNN, LSTM, Transformer, NLP, Random Forest,
@@ -279,8 +337,8 @@ export default function Home() {
           <div className="section-title">
             <FiBook className="inline-block mr-2" /> Education
           </div>
-          <div className="section-content">
-            <div className="space-y-6">
+          <div className="section-content print:p-2">
+            <div className="space-y-6 print:space-y-2">
               <div className="education-item">
                 <h3 className="text-xl font-semibold text-primary dark:text-white">BSc Physics</h3>
                 <div className="flex items-center text-text-light text-sm mb-3">
@@ -373,8 +431,8 @@ export default function Home() {
           <div className="section-title">
             <FiAward className="inline-block mr-2" /> Professional Certifications
           </div>
-          <div className="section-content">
-            <div className="space-y-6">
+          <div className="section-content print:p-2">
+            <div className="space-y-6 print:space-y-2">
               <div className="cert-item">
                 <div className="relative overflow-hidden">
                   <h3 className="text-xl font-semibold text-primary dark:text-white">IBM AI Engineering Professional Certificate</h3>
@@ -425,10 +483,10 @@ export default function Home() {
           <div className="section-title">
             <FiFile className="inline-block mr-2" />Projects
           </div>
-          <div className="section-content">
-            <div className="space-y-6">
+          <div className="section-content print:p-2">
+            <div className="space-y-6 print:space-y-2">
               <div className="project-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Wildfire Detection System (IoT + Machine Learning)</h3>
                     <div className="text-text-light text-sm mb-4">University of Sheffield Research Project 2024</div>
@@ -449,7 +507,7 @@ export default function Home() {
                       <span className="project-tag">Weather API</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Technical Features:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Custom sensor hardware integration</li>
@@ -463,7 +521,7 @@ export default function Home() {
               </div>
 
               <div className="project-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Home-built Autonomous FPV Drone with iNav Autopilot</h3>
                     <div className="text-text-light text-sm mb-4">Personal Hardware Project 2024</div>
@@ -482,7 +540,7 @@ export default function Home() {
                       <span className="project-tag">Autonomous Systems</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Technical Achievements:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Hardware-firmware integration</li>
@@ -496,7 +554,7 @@ export default function Home() {
               </div>
 
               <div className="project-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Imagine You - AI Personal Image Generation App</h3>
                     <div className="text-text-light text-sm mb-4">Flutter Mobile Application 2024</div>
@@ -517,7 +575,7 @@ export default function Home() {
                       <span className="project-tag">Google Play Store</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Advanced Features:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Custom AI model training</li>
@@ -531,7 +589,7 @@ export default function Home() {
               </div>
 
               <div className="project-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">LinkedIn Job Application Automator</h3>
                     <div className="text-text-light text-sm mb-4">Web Automation Project 2024</div>
@@ -549,7 +607,7 @@ export default function Home() {
                       <span className="project-tag">Error Recovery</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Technical Capabilities:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Intelligent form detection</li>
@@ -563,7 +621,7 @@ export default function Home() {
               </div>
 
               <div className="project-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Custom LLM Discord Bot</h3>
                     <div className="text-text-light text-sm mb-4">AI Integration Project 2024</div>
@@ -581,7 +639,7 @@ export default function Home() {
                       <span className="project-tag">System Prompts</span>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Key Integrations:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Local model deployment</li>
@@ -602,10 +660,10 @@ export default function Home() {
           <div className="section-title">
             <FiAward className="inline-block mr-2" /> Work Experience
           </div>
-          <div className="section-content">
-            <div className="space-y-6">
+          <div className="section-content print:p-2">
+            <div className="space-y-6 print:space-y-2">
               <div className="job-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">NHS Shadowing Experience</h3>
                     <div className="text-text-light text-sm mb-4">Sheffield Teaching Hospitals NHS Trust | June 2023 - August 2023</div>
@@ -623,7 +681,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Relevant Exposure:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Healthcare information systems</li>
@@ -637,7 +695,7 @@ export default function Home() {
               </div>
               
               <div className="job-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Team Leader / Supervisor</h3>
                     <div className="text-text-light text-sm mb-4">Meltdown-Wetherspoons | February 2022 - November 2023</div>
@@ -660,7 +718,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Skills Developed:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Team leadership</li>
@@ -673,7 +731,7 @@ export default function Home() {
               </div>
               
               <div className="job-item">
-                <div className="lg:grid lg:grid-cols-3 gap-6">
+                <div className="lg:grid lg:grid-cols-3 gap-6 print:gap-2">
                   <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Bartender / Front of House</h3>
                     <div className="text-text-light text-sm mb-4">Various Establishments | September 2018 - October 2021</div>
@@ -695,7 +753,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block print:p-2 print:shadow-none">
                     <h4 className="font-semibold mb-3">Skills Developed:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Customer service excellence</li>
@@ -712,11 +770,11 @@ export default function Home() {
       </div>
       
       {/* Footer */}
-      <footer className="bg-gradient-professional text-white text-center py-6">
+      <footer className="bg-gradient-professional text-white text-center py-6 print:py-2 print:text-black print:bg-none">
         <div className="max-w-4xl mx-auto px-4">
           <div>Matthaios Markatis | 123 Ash Crescent, Eckington S21 4AD | 
-            <a href="https://www.linkedin.com/in/matthaios-markatis" className="text-secondary-light hover:underline ml-1">LinkedIn</a> | 
-            <a href="mailto:matthaiosmarkatis@gmail.com" className="text-secondary-light hover:underline ml-1">matthaiosmarkatis@gmail.com</a>
+            <a href="https://www.linkedin.com/in/matthaios-markatis" className="text-secondary-light hover:underline ml-1 print:text-black">LinkedIn</a> | 
+            <a href="mailto:matthaiosmarkatis@gmail.com" className="text-secondary-light hover:underline ml-1 print:text-black">matthaiosmarkatis@gmail.com</a>
           </div>
         </div>
       </footer>

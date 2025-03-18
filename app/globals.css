@@ -108,4 +108,81 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-light;
   }
+}
+
+/* Print-specific styles for PDF optimization */
+@media print {
+  /* Use only black text for print */
+  body {
+    font-size: 10pt;
+    color: #000 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Hide theme toggle in print */
+  .theme-toggle {
+    display: none !important;
+  }
+  
+  /* Compact layout for print */
+  .section-content {
+    padding: 0.5rem !important;
+  }
+  
+  .project-item, .job-item, .education-item, .cert-item {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+    break-inside: avoid;
+  }
+  
+  /* Optimize headings */
+  h1, h2, h3, h4 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* Condense spacing */
+  .mb-4, .my-4, .mt-4 {
+    margin: 0.25rem 0 !important;
+  }
+  
+  .py-6, .py-8, .py-10 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .px-6, .px-8, .px-10 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  /* Make sure skills list is compact */
+  .skill-category {
+    margin-bottom: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+  
+  .skill-pill {
+    font-size: 8pt !important;
+    padding: 0.1rem 0.25rem !important;
+  }
+  
+  /* Ensure proper page breaks */
+  .section-title {
+    break-before: auto;
+    break-after: avoid;
+  }
+  
+  /* Remove footer margin */
+  footer {
+    margin-top: 0 !important;
+    padding: 0.5rem !important;
+  }
+  
+  /* Use crisp edges for graphics */
+  * {
+    image-rendering: crisp-edges;
+  }
 } 
