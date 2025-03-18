@@ -428,8 +428,8 @@ export default function Home() {
           <div className="section-content">
             <div className="space-y-6">
               <div className="project-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Wildfire Detection System (IoT + Machine Learning)</h3>
                     <div className="text-text-light text-sm mb-4">University of Sheffield Research Project 2024</div>
                     <p className="mb-4">
@@ -449,12 +449,22 @@ export default function Home() {
                       <span className="project-tag">Weather API</span>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Technical Features:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Custom sensor hardware integration</li>
+                      <li>Real-time anomaly detection</li>
+                      <li>Interactive mapping interface</li>
+                      <li>ML-based prediction model</li>
+                      <li>Data persistence with SQLite</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div className="project-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Home-built Autonomous FPV Drone with iNav Autopilot</h3>
                     <div className="text-text-light text-sm mb-4">Personal Hardware Project 2024</div>
                     <p className="mb-4">
@@ -472,12 +482,22 @@ export default function Home() {
                       <span className="project-tag">Autonomous Systems</span>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Technical Achievements:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Hardware-firmware integration</li>
+                      <li>Autonomous waypoint navigation</li>
+                      <li>PID loop optimization</li>
+                      <li>Fail-safe protocol implementation</li>
+                      <li>PCB-level system integration</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div className="project-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Imagine You - AI Personal Image Generation App</h3>
                     <div className="text-text-light text-sm mb-4">Flutter Mobile Application 2024</div>
                     <p className="mb-4">
@@ -497,12 +517,22 @@ export default function Home() {
                       <span className="project-tag">Google Play Store</span>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Advanced Features:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Custom AI model training</li>
+                      <li>Mobile-optimized diffusion models</li>
+                      <li>Intuitive UI for complex functionality</li>
+                      <li>Secure cloud integration</li>
+                      <li>Custom image generation parameters</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div className="project-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">LinkedIn Job Application Automator</h3>
                     <div className="text-text-light text-sm mb-4">Web Automation Project 2024</div>
                     <p className="mb-4">
@@ -519,12 +549,22 @@ export default function Home() {
                       <span className="project-tag">Error Recovery</span>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Technical Capabilities:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Intelligent form detection</li>
+                      <li>Dynamic workflow adaptation</li>
+                      <li>AI-powered document generation</li>
+                      <li>Session state management</li>
+                      <li>Robust error handling</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div className="project-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Custom LLM Discord Bot</h3>
                     <div className="text-text-light text-sm mb-4">AI Integration Project 2024</div>
                     <p className="mb-4">
@@ -541,6 +581,16 @@ export default function Home() {
                       <span className="project-tag">System Prompts</span>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Key Integrations:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Local model deployment</li>
+                      <li>Voice channel interaction</li>
+                      <li>Context-aware AI responses</li>
+                      <li>Server administration tools</li>
+                      <li>Audio processing pipeline</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -555,8 +605,8 @@ export default function Home() {
           <div className="section-content">
             <div className="space-y-6">
               <div className="job-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">NHS Shadowing Experience</h3>
                     <div className="text-text-light text-sm mb-4">Sheffield Teaching Hospitals NHS Trust | June 2023 - August 2023</div>
                     
@@ -573,12 +623,22 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Relevant Exposure:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Healthcare information systems</li>
+                      <li>Medical device integration</li>
+                      <li>Clinical workflows</li>
+                      <li>Patient data management</li>
+                      <li>Interdisciplinary coordination</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               
               <div className="job-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Team Leader / Supervisor</h3>
                     <div className="text-text-light text-sm mb-4">Meltdown-Wetherspoons | February 2022 - November 2023</div>
                     
@@ -600,12 +660,21 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Skills Developed:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Team leadership</li>
+                      <li>Crisis management</li>
+                      <li>Operational efficiency</li>
+                      <li>Staff training & development</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               
               <div className="job-item">
-                <div>
-                  <div>
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Bartender / Front of House</h3>
                     <div className="text-text-light text-sm mb-4">Various Establishments | September 2018 - October 2021</div>
                     
@@ -625,6 +694,15 @@ export default function Home() {
                         <li>Consistently received positive customer feedback</li>
                       </ul>
                     </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Skills Developed:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Customer service excellence</li>
+                      <li>Team communication</li>
+                      <li>Product knowledge</li>
+                      <li>Fast-paced work environment</li>
+                    </ul>
                   </div>
                 </div>
               </div>
