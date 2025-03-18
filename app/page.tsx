@@ -385,6 +385,7 @@ export default function Home() {
                     Comprehensive 6-course program covering advanced Machine Learning, Deep Learning, and AI Engineering topics. Gained hands-on experience with industry-standard tools and frameworks for building and deploying production-ready AI models.
                   </p>
                   <div className="mb-4"><strong>Key Skills:</strong> TensorFlow, Keras, PyTorch, scikit-learn, Model Deployment, Neural Networks, Computer Vision, Model Optimization</div>
+                  <div className="mb-4"><strong>Results:</strong> Learned to use IBM Watson and deployed a traffic light identification algorithm that achieved 98% accuracy in a real-time image processing pipeline after thorough data cleaning and optimization.</div>
                   <a 
                     href="https://www.coursera.org/account/accomplishments/professional-cert/AGN5UHFNXHV9" 
                     className="cert-link"
@@ -405,6 +406,7 @@ export default function Home() {
                   Intensive 12-course program covering the complete data science workflow from data collection to insights delivery. Developed end-to-end data science projects using industry-standard methodologies and tools.
                 </p>
                 <div className="mb-4"><strong>Key Skills:</strong> Python, SQL, Data Analysis, Statistical Analysis, Machine Learning, Data Visualization, IBM Watson Studio, ETL Pipelines</div>
+                <div className="mb-4"><strong>Results:</strong> Developed a SpaceX Falcon landing prediction classifier that achieved 80% accuracy in modeling launch success rates by leveraging data from launch locations, historical launches, and weather conditions after thorough data cleaning and feature engineering.</div>
                 <a 
                   href="https://www.coursera.org/account/accomplishments/professional-cert/3BJMEB8AEYKN" 
                   className="cert-link"
@@ -433,6 +435,7 @@ export default function Home() {
                     <p className="mb-4">
                       Developed a comprehensive real-time fire detection system using IoT sensors to monitor environmental conditions across multiple locations. Implemented Raspberry Pi Zero W as the main controller with LoRaWAN sensors for long-range wireless data transmission. Integrated Random Forest and Decision Tree models to analyze environmental data and deployed a machine learning prediction model on a live web interface with interactive mapping, trained on NASA FIRMS and satellite data.
                     </p>
+                    <div className="mb-4"><strong>Results:</strong> Achieved early warning capability of 10 minutes before fire spread, handled thousands of concurrent sensor updates reliably, and maintained detection accuracy of 86% across diverse environmental conditions.</div>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="project-tag">Raspberry Pi</span>
                       <span className="project-tag">LoRaWAN</span>
@@ -467,6 +470,7 @@ export default function Home() {
                     <p className="mb-4">
                       Designed and built a fully autonomous FPV drone from scratch, integrating an F7 flight controller, 4-in-1 ESCs, telemetry modules, and GPS systems for precise navigation. Configured iNav firmware for autonomous waypoint navigation, implemented PID tuning for flight stabilization, and developed failsafe protocols for emergency situations. The system includes custom electronics integration and sensor fusion for reliable autonomous operation.
                     </p>
+                    <div className="mb-4"><strong>Results:</strong> Successfully implemented autonomous navigation capabilities allowing the drone to follow predefined GPS waypoints within a 1-2 km range and return to base without manual intervention, demonstrating reliable inertial guidance and precise positioning capabilities.</div>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="project-tag">F7 Flight Controller</span>
                       <span className="project-tag">iNav Firmware</span>
@@ -499,6 +503,7 @@ export default function Home() {
                     <p className="mb-4">
                       Developed a sophisticated Flutter application enabling users to create personalized AI image models of themselves and generate custom images across various styles and scenarios. Implemented a complete pipeline for training custom FLUX.1 diffusion models using the Replicate API, with a robust architecture for user authentication, photo management, and model deployment. The app features an interactive chat interface and advanced image generation settings.
                     </p>
+                    <div className="mb-4"><strong>Results:</strong> Successfully developed a production-ready platform capable of fine-tuning custom diffusion models on just 20-30 user images, enabling users to generate personalized AI representations through an intuitive chat interface with high-quality and consistent results.</div>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="project-tag">Flutter</span>
                       <span className="project-tag">Firebase</span>
@@ -530,6 +535,7 @@ export default function Home() {
                     <p className="mb-4">
                       Built a sophisticated automation system using Python and Playwright that handles the entire LinkedIn job application process. The system features intelligent form detection and auto-filling capabilities, customizable job search with advanced filters, automatic cover letter generation using GPT, session persistence to avoid frequent logins, and comprehensive error handling for robust operation across various application formats.
                     </p>
+                    <div className="mb-4"><strong>Results:</strong> Achieved seamless automation capable of submitting up to 400 targeted job applications daily without interruption or human intervention, demonstrating exceptional reliability and adaptability to varying application formats.</div>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="project-tag">Python</span>
                       <span className="project-tag">Playwright</span>
@@ -561,6 +567,7 @@ export default function Home() {
                     <p className="mb-4">
                       Developed a versatile Discord bot featuring local LLM integration for intelligent conversations, voice capabilities with text-to-speech functionality, music playback with advanced controls, and comprehensive server management tools. The system uses custom system prompts for different contexts and integrates with locally-hosted language models through an OpenAI-compatible API interface, enabling sophisticated AI-driven interactions within Discord.
                     </p>
+                    <div className="mb-4"><strong>Results:</strong> Successfully implemented and deployed the bot to a personal Discord server, subsequently published it to a public bot marketplace where it gained adoption across 20+ servers. The bot continues to receive regular updates and maintenance, demonstrating sustainable development practices and user engagement.</div>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="project-tag">Python</span>
                       <span className="project-tag">Discord.py</span>
