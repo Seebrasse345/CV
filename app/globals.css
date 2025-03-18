@@ -26,6 +26,10 @@
     @apply bg-gradient-accent text-white px-3 py-1 rounded-full text-sm font-medium shadow-button hover:shadow-button-hover transition-all hover:-translate-y-0.5;
   }
   
+  .skill-pill {
+    @apply bg-gradient-accent text-white text-xs px-2 py-0.5 rounded-full font-medium inline-block hover:shadow-button-hover transition-all hover:-translate-y-0.5;
+  }
+  
   .project-tag {
     @apply bg-secondary-light text-text px-2 py-1 rounded-full text-xs font-medium shadow-button hover:shadow-button-hover transition-all hover:-translate-y-0.5;
   }

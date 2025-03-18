@@ -14,7 +14,8 @@ import {
   FiExternalLink,
   FiCalendar,
   FiAward,
-  FiBook
+  FiBook,
+  FiCode
 } from 'react-icons/fi';
 
 export default function Home() {
@@ -135,6 +136,100 @@ export default function Home() {
       </motion.div>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 pb-20">
+        {/* Technical Skills - Moved up and made more compact */}
+        <AnimatedSection id="skills">
+          <div className="section-title">
+            <FiCode className="inline-block mr-2" /> Technical Skills
+          </div>
+          <div className="section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+            {/* More compact skills layout */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="skill-category">
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Programming</div>
+                <div className="skill-list flex flex-wrap gap-1">
+                  <span className="skill-pill">Python</span>
+                  <span className="skill-pill">C++</span>
+                  <span className="skill-pill">JavaScript</span>
+                  <span className="skill-pill">MATLAB</span>
+                  <span className="skill-pill">R</span>
+                  <span className="skill-pill">HTML/CSS</span>
+                  <span className="skill-pill">Dart</span>
+                </div>
+              </div>
+              
+              <div className="skill-category">
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">ML & AI</div>
+                <div className="skill-list flex flex-wrap gap-1">
+                  <span className="skill-pill">TensorFlow</span>
+                  <span className="skill-pill">PyTorch</span>
+                  <span className="skill-pill">scikit-learn</span>
+                  <span className="skill-pill">NLP</span>
+                  <span className="skill-pill">Computer Vision</span>
+                  <span className="skill-pill">LLM Fine-tuning</span>
+                </div>
+              </div>
+              
+              <div className="skill-category">
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Web & API</div>
+                <div className="skill-list flex flex-wrap gap-1">
+                  <span className="skill-pill">Flask</span>
+                  <span className="skill-pill">React</span>
+                  <span className="skill-pill">Next.js</span>
+                  <span className="skill-pill">RESTful APIs</span>
+                  <span className="skill-pill">Firebase</span>
+                  <span className="skill-pill">SQL/SQLite</span>
+                </div>
+              </div>
+              
+              <div className="skill-category">
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">IoT & Embedded</div>
+                <div className="skill-list flex flex-wrap gap-1">
+                  <span className="skill-pill">Arduino</span>
+                  <span className="skill-pill">Raspberry Pi</span>
+                  <span className="skill-pill">ESP32</span>
+                  <span className="skill-pill">LoRaWAN</span>
+                  <span className="skill-pill">PID Control</span>
+                  <span className="skill-pill">Telemetry</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Hidden keywords for ATS optimization - expanded with more relevant terms */}
+            <div className="hidden">
+              <p>
+                Python, C++, C, JavaScript, MATLAB, R, HTML, CSS, VHDL, Flutter, Dart, Tkinter,
+                TensorFlow, PyTorch, scikit-learn, Keras, CNN, LSTM, Transformer, NLP, Random Forest,
+                Diffusion Models, GPT, Machine Learning, Deep Learning, Artificial Intelligence,
+                Model Training, Model Optimization, Model Deployment, LLM Fine-tuning, AI Agents,
+                OpenAI API, GPT API, Whisper API, Local LLM Deployment, AI System Architecture,
+                Prompt Engineering, Flask, React, Next.js, RESTful API, OAuth, Web Scraping,
+                Playwright, Web Automation, Spotify API, Weather API, Form Handling,
+                Arduino, Raspberry Pi, ESP32, LoRaWAN, MQTT, LabView, PID Control, Sensor Integration,
+                The Things Network, Environmental Monitoring, Data Science, Data Analysis,
+                SQL, SQLite, Database Management, Firebase, Cloud Services, GPS Navigation,
+                Telemetry Systems, Leaflet.js, Computer Vision, Statistical Analysis, Neural Networks,
+                ETL Pipelines, IBM Watson Studio, Coqui TTS, FFmpeg, API Compatibility, System Prompts,
+                F7 Flight Controller, iNav Firmware, ESCs, GPU-accelerated Training, Provider Pattern,
+                Dynamic Form Parsing, HTML Selector Analysis, Error Recovery, Data Engineer, 
+                Data Scientist, Machine Learning Engineer, AI Engineer, Robotics Engineer,
+                Software Engineer, Front-end Developer, Back-end Developer, Full-stack Developer,
+                IoT Developer, Embedded Systems Engineer, Computer Vision Engineer, NLP Engineer,
+                AI Research Engineer, Autonomous Systems Engineer, Deep Learning Specialist,
+                Technical Skills, Programming Languages, Python Expert, JavaScript Developer,
+                Machine Learning Algorithms, Neural Network Architecture, Deep Learning Frameworks,
+                Hardware Integration, AI Applications, Sensor Technology, Data Processing,
+                Algorithm Design, Software Development, Technical Expertise, Graduate Resume,
+                Physics Degree, BSc Physics, Engineering Skills, Technical Project Experience,
+                Scientific Programming, IoT Architecture, Smart Devices, Data Analytics,
+                PhD Research Assistant, Research and Development, Laboratory Experience,
+                Simulation Modeling, Technical Report Writing, Computational Methods,
+                Quantitative Analysis, Computer Science, AI Automation, Embedded Software,
+                Application Development, System Design, Data Pipeline, Technical Assessment
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+
         {/* Education */}
         <AnimatedSection id="education">
           <div className="section-title">
@@ -444,142 +539,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Technical Skills */}
-        <AnimatedSection id="skills">
-          <div className="section-title">
-            <FiAward className="inline-block mr-2" /> Technical Skills
-          </div>
-          <div className="section-content">
-            {/* ATS-optimized skills in a more compact format */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Left column */}
-              <div>
-                <div className="skill-category">
-                  <div className="skill-title">Programming Languages</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">Python</span>
-                    <span className="skill-tag">C++</span>
-                    <span className="skill-tag">C</span>
-                    <span className="skill-tag">JavaScript</span>
-                    <span className="skill-tag">MATLAB</span>
-                    <span className="skill-tag">R</span>
-                    <span className="skill-tag">HTML/CSS</span>
-                    <span className="skill-tag">VHDL</span>
-                    <span className="skill-tag">Dart/Flutter</span>
-                  </div>
-                </div>
-                
-                <div className="skill-category">
-                  <div className="skill-title">Machine Learning & AI</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">TensorFlow</span>
-                    <span className="skill-tag">PyTorch</span>
-                    <span className="skill-tag">scikit-learn</span>
-                    <span className="skill-tag">Keras</span>
-                    <span className="skill-tag">CNNs</span>
-                    <span className="skill-tag">NLP</span>
-                    <span className="skill-tag">Transformers</span>
-                    <span className="skill-tag">Computer Vision</span>
-                    <span className="skill-tag">Statistical Analysis</span>
-                  </div>
-                </div>
-                
-                <div className="skill-category">
-                  <div className="skill-title">ML Model Types</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">LSTM</span>
-                    <span className="skill-tag">Random Forest</span>
-                    <span className="skill-tag">Diffusion Models</span>
-                    <span className="skill-tag">GPT Models</span>
-                    <span className="skill-tag">Decision Trees</span>
-                    <span className="skill-tag">Neural Networks</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right column */}
-              <div>
-                <div className="skill-category">
-                  <div className="skill-title">AI Development</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">Model Deployment</span>
-                    <span className="skill-tag">Model Training</span>
-                    <span className="skill-tag">Model Optimization</span>
-                    <span className="skill-tag">LLM Fine-tuning</span>
-                    <span className="skill-tag">AI System Architecture</span>
-                    <span className="skill-tag">Prompt Engineering</span>
-                    <span className="skill-tag">OpenAI API</span>
-                    <span className="skill-tag">Data Visualization</span>
-                  </div>
-                </div>
-                
-                <div className="skill-category">
-                  <div className="skill-title">Web & API</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">Flask</span>
-                    <span className="skill-tag">React</span>
-                    <span className="skill-tag">Next.js</span>
-                    <span className="skill-tag">RESTful APIs</span>
-                    <span className="skill-tag">OAuth</span>
-                    <span className="skill-tag">Web Automation</span>
-                    <span className="skill-tag">Firebase</span>
-                    <span className="skill-tag">SQL/SQLite</span>
-                    <span className="skill-tag">Playwright</span>
-                  </div>
-                </div>
-                
-                <div className="skill-category">
-                  <div className="skill-title">IoT & Embedded</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">Arduino</span>
-                    <span className="skill-tag">Raspberry Pi</span>
-                    <span className="skill-tag">ESP32</span>
-                    <span className="skill-tag">LoRaWAN</span>
-                    <span className="skill-tag">PID Control</span>
-                    <span className="skill-tag">MQTT</span>
-                    <span className="skill-tag">GPS Systems</span>
-                    <span className="skill-tag">Telemetry</span>
-                    <span className="skill-tag">Sensor Integration</span>
-                  </div>
-                </div>
-
-                <div className="skill-category">
-                  <div className="skill-title">Tools & Platforms</div>
-                  <div className="skill-list">
-                    <span className="skill-tag">Git</span>
-                    <span className="skill-tag">Replicate API</span>
-                    <span className="skill-tag">Weather API</span>
-                    <span className="skill-tag">The Things Network</span>
-                    <span className="skill-tag">Leaflet.js</span>
-                    <span className="skill-tag">IBM Watson Studio</span>
-                    <span className="skill-tag">ETL Pipelines</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Hidden keywords for ATS optimization - not visible but help with parsing */}
-            <div className="hidden">
-              <p>
-                Python, C++, C, JavaScript, MATLAB, R, HTML, CSS, VHDL, Flutter, Dart, Tkinter,
-                TensorFlow, PyTorch, scikit-learn, Keras, CNN, LSTM, Transformer, NLP, Random Forest,
-                Diffusion Models, GPT, Machine Learning, Deep Learning, Artificial Intelligence,
-                Model Training, Model Optimization, Model Deployment, LLM Fine-tuning, AI Agents,
-                OpenAI API, GPT API, Whisper API, Local LLM Deployment, AI System Architecture,
-                Prompt Engineering, Flask, React, Next.js, RESTful API, OAuth, Web Scraping,
-                Playwright, Web Automation, Spotify API, Weather API, Form Handling,
-                Arduino, Raspberry Pi, ESP32, LoRaWAN, MQTT, LabView, PID Control, Sensor Integration,
-                The Things Network, Environmental Monitoring, Data Science, Data Analysis,
-                SQL, SQLite, Database Management, Firebase, Cloud Services, GPS Navigation,
-                Telemetry Systems, Leaflet.js, Computer Vision, Statistical Analysis, Neural Networks,
-                ETL Pipelines, IBM Watson Studio, Coqui TTS, FFmpeg, API Compatibility, System Prompts,
-                F7 Flight Controller, iNav Firmware, ESCs, GPU-accelerated Training, Provider Pattern,
-                Dynamic Form Parsing, HTML Selector Analysis, Error Recovery
-              </p>
             </div>
           </div>
         </AnimatedSection>
