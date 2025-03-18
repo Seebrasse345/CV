@@ -63,7 +63,7 @@ export default function Home() {
       
       {/* Header */}
       <motion.header 
-        className="bg-gradient-to-r from-primary to-primary-dark text-white py-10 px-6 md:py-16 md:px-10 relative overflow-hidden shadow-xl"
+        className="bg-gradient-professional text-white py-10 px-6 md:py-16 md:px-10 relative overflow-hidden shadow-xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -127,7 +127,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <div className="bg-background-light dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-primary">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-card border-l-4 border-secondary">
           <p className="text-lg leading-relaxed">
             BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="highlight">theoretical physics</span> and <span className="highlight">computational methods</span>. Recently completed the <span className="highlight">IBM Data Science</span> and <span className="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="highlight">machine learning</span>, <span className="highlight">statistical analysis</span>, and <span className="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="highlight">hardware</span> and <span className="highlight">software</span>, including a fully <span className="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span className="highlight">automation technologies</span>, intelligent <span className="highlight">AI agents</span>, and <span className="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span className="highlight">AI</span>, <span className="highlight">automation</span>, and <span className="highlight">hardware integration</span> in professional engineering environments.
           </p>
@@ -454,88 +454,132 @@ export default function Home() {
             <FiAward className="inline-block mr-2" /> Technical Skills
           </div>
           <div className="section-content">
-            <div className="space-y-6">
-              <div className="skill-category">
-                <div className="skill-title">Programming & Development</div>
-                <div className="skill-list">
-                  <span className="skill-tag">Python</span>
-                  <span className="skill-tag">C++</span>
-                  <span className="skill-tag">MATLAB</span>
-                  <span className="skill-tag">JavaScript</span>
-                  <span className="skill-tag">R</span>
-                  <span className="skill-tag">HTML/CSS</span>
-                  <span className="skill-tag">VHDL</span>
-                  <span className="skill-tag">C</span>
-                  <span className="skill-tag">Flutter</span>
-                  <span className="skill-tag">Tkinter</span>
+            {/* ATS-optimized skills in a more compact format */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Left column */}
+              <div>
+                <div className="skill-category">
+                  <div className="skill-title">Programming Languages</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">Python</span>
+                    <span className="skill-tag">C++</span>
+                    <span className="skill-tag">C</span>
+                    <span className="skill-tag">JavaScript</span>
+                    <span className="skill-tag">MATLAB</span>
+                    <span className="skill-tag">R</span>
+                    <span className="skill-tag">HTML/CSS</span>
+                    <span className="skill-tag">VHDL</span>
+                    <span className="skill-tag">Dart/Flutter</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="skill-title">Machine Learning & AI</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">TensorFlow</span>
+                    <span className="skill-tag">PyTorch</span>
+                    <span className="skill-tag">scikit-learn</span>
+                    <span className="skill-tag">Keras</span>
+                    <span className="skill-tag">CNNs</span>
+                    <span className="skill-tag">NLP</span>
+                    <span className="skill-tag">Transformers</span>
+                    <span className="skill-tag">Computer Vision</span>
+                    <span className="skill-tag">Statistical Analysis</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="skill-title">ML Model Types</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">LSTM</span>
+                    <span className="skill-tag">Random Forest</span>
+                    <span className="skill-tag">Diffusion Models</span>
+                    <span className="skill-tag">GPT Models</span>
+                    <span className="skill-tag">Decision Trees</span>
+                    <span className="skill-tag">Neural Networks</span>
+                  </div>
                 </div>
               </div>
               
-              <div className="skill-category">
-                <div className="skill-title">Machine Learning & AI</div>
-                <div className="skill-list">
-                  <span className="skill-tag">TensorFlow</span>
-                  <span className="skill-tag">PyTorch</span>
-                  <span className="skill-tag">scikit-learn</span>
-                  <span className="skill-tag">Keras</span>
-                  <span className="skill-tag">CNNs</span>
-                  <span className="skill-tag">LSTM</span>
-                  <span className="skill-tag">Transformers</span>
-                  <span className="skill-tag">Random Forest</span>
-                  <span className="skill-tag">Diffusion Models</span>
-                  <span className="skill-tag">Model Deployment</span>
-                  <span className="skill-tag">Model Training</span>
-                  <span className="skill-tag">Model Optimization</span>
+              {/* Right column */}
+              <div>
+                <div className="skill-category">
+                  <div className="skill-title">AI Development</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">Model Deployment</span>
+                    <span className="skill-tag">Model Training</span>
+                    <span className="skill-tag">Model Optimization</span>
+                    <span className="skill-tag">LLM Fine-tuning</span>
+                    <span className="skill-tag">AI System Architecture</span>
+                    <span className="skill-tag">Prompt Engineering</span>
+                    <span className="skill-tag">OpenAI API</span>
+                    <span className="skill-tag">Data Visualization</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="skill-title">Web & API</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">Flask</span>
+                    <span className="skill-tag">React</span>
+                    <span className="skill-tag">Next.js</span>
+                    <span className="skill-tag">RESTful APIs</span>
+                    <span className="skill-tag">OAuth</span>
+                    <span className="skill-tag">Web Automation</span>
+                    <span className="skill-tag">Firebase</span>
+                    <span className="skill-tag">SQL/SQLite</span>
+                    <span className="skill-tag">Playwright</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="skill-title">IoT & Embedded</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">Arduino</span>
+                    <span className="skill-tag">Raspberry Pi</span>
+                    <span className="skill-tag">ESP32</span>
+                    <span className="skill-tag">LoRaWAN</span>
+                    <span className="skill-tag">PID Control</span>
+                    <span className="skill-tag">MQTT</span>
+                    <span className="skill-tag">GPS Systems</span>
+                    <span className="skill-tag">Telemetry</span>
+                    <span className="skill-tag">Sensor Integration</span>
+                  </div>
+                </div>
+
+                <div className="skill-category">
+                  <div className="skill-title">Tools & Platforms</div>
+                  <div className="skill-list">
+                    <span className="skill-tag">Git</span>
+                    <span className="skill-tag">Replicate API</span>
+                    <span className="skill-tag">Weather API</span>
+                    <span className="skill-tag">The Things Network</span>
+                    <span className="skill-tag">Leaflet.js</span>
+                    <span className="skill-tag">IBM Watson Studio</span>
+                    <span className="skill-tag">ETL Pipelines</span>
+                  </div>
                 </div>
               </div>
-              
-              <div className="skill-category">
-                <div className="skill-title">LLMs & AI Systems</div>
-                <div className="skill-list">
-                  <span className="skill-tag">LLM Fine-tuning</span>
-                  <span className="skill-tag">AI Agents</span>
-                  <span className="skill-tag">OpenAI API</span>
-                  <span className="skill-tag">GPT Models</span>
-                  <span className="skill-tag">Whisper API</span>
-                  <span className="skill-tag">NLP</span>
-                  <span className="skill-tag">Local LLM Deployment</span>
-                  <span className="skill-tag">AI System Architecture</span>
-                  <span className="skill-tag">Prompt Engineering</span>
-                </div>
-              </div>
-              
-              <div className="skill-category">
-                <div className="skill-title">Web Development & APIs</div>
-                <div className="skill-list">
-                  <span className="skill-tag">Flask</span>
-                  <span className="skill-tag">React</span>
-                  <span className="skill-tag">Next.js</span>
-                  <span className="skill-tag">RESTful APIs</span>
-                  <span className="skill-tag">OAuth</span>
-                  <span className="skill-tag">Web Scraping</span>
-                  <span className="skill-tag">Playwright</span>
-                  <span className="skill-tag">Web Automation</span>
-                  <span className="skill-tag">Spotify API</span>
-                  <span className="skill-tag">Weather API</span>
-                  <span className="skill-tag">Form Handling</span>
-                </div>
-              </div>
-              
-              <div className="skill-category">
-                <div className="skill-title">IoT & Embedded Systems</div>
-                <div className="skill-list">
-                  <span className="skill-tag">Arduino</span>
-                  <span className="skill-tag">Raspberry Pi</span>
-                  <span className="skill-tag">ESP32</span>
-                  <span className="skill-tag">LoRaWAN</span>
-                  <span className="skill-tag">MQTT</span>
-                  <span className="skill-tag">LabView</span>
-                  <span className="skill-tag">PID Control</span>
-                  <span className="skill-tag">Sensor Integration</span>
-                  <span className="skill-tag">The Things Network</span>
-                  <span className="skill-tag">Environmental Monitoring</span>
-                </div>
-              </div>
+            </div>
+            
+            {/* Hidden keywords for ATS optimization - not visible but help with parsing */}
+            <div className="hidden">
+              <p>
+                Python, C++, C, JavaScript, MATLAB, R, HTML, CSS, VHDL, Flutter, Dart, Tkinter,
+                TensorFlow, PyTorch, scikit-learn, Keras, CNN, LSTM, Transformer, NLP, Random Forest,
+                Diffusion Models, GPT, Machine Learning, Deep Learning, Artificial Intelligence,
+                Model Training, Model Optimization, Model Deployment, LLM Fine-tuning, AI Agents,
+                OpenAI API, GPT API, Whisper API, Local LLM Deployment, AI System Architecture,
+                Prompt Engineering, Flask, React, Next.js, RESTful API, OAuth, Web Scraping,
+                Playwright, Web Automation, Spotify API, Weather API, Form Handling,
+                Arduino, Raspberry Pi, ESP32, LoRaWAN, MQTT, LabView, PID Control, Sensor Integration,
+                The Things Network, Environmental Monitoring, Data Science, Data Analysis,
+                SQL, SQLite, Database Management, Firebase, Cloud Services, GPS Navigation,
+                Telemetry Systems, Leaflet.js, Computer Vision, Statistical Analysis, Neural Networks,
+                ETL Pipelines, IBM Watson Studio, Coqui TTS, FFmpeg, API Compatibility, System Prompts,
+                F7 Flight Controller, iNav Firmware, ESCs, GPU-accelerated Training, Provider Pattern,
+                Dynamic Form Parsing, HTML Selector Analysis, Error Recovery
+              </p>
             </div>
           </div>
         </AnimatedSection>
@@ -550,11 +594,43 @@ export default function Home() {
               <div className="job-item">
                 <div className="lg:grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
+                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">NHS Shadowing Experience</h3>
+                    <div className="text-text-light text-sm mb-4">Sheffield Teaching Hospitals NHS Trust | June 2023 - August 2023</div>
+                    
+                    <div className="mb-4">
+                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Overview:</h4>
+                      <p className="mb-3">Completed clinical shadowing in various hospital departments, observing medical procedures and patient care processes. Gained exposure to healthcare technology systems and electronic patient records management.</p>
+                      
+                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Key Observations:</h4>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Observed integration of electronic health record systems across departments</li>
+                        <li>Gained insight into medical device data integration and patient monitoring systems</li>
+                        <li>Observed diagnostic imaging technology workflows and data management</li>
+                        <li>Experienced multidisciplinary healthcare team communication structures</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
+                    <h4 className="font-semibold mb-3">Relevant Exposure:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Healthcare information systems</li>
+                      <li>Medical device integration</li>
+                      <li>Clinical workflows</li>
+                      <li>Patient data management</li>
+                      <li>Interdisciplinary coordination</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="job-item">
+                <div className="lg:grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Team Leader / Supervisor</h3>
                     <div className="text-text-light text-sm mb-4">Meltdown-Wetherspoons | February 2022 - November 2023</div>
                     
                     <div className="mb-4">
-                      <h4 className="font-semibold text-primary dark:text-secondary mb-2">Primary Responsibilities:</h4>
+                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Primary Responsibilities:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Managed daily operations and led staff training in high-volume city venues</li>
                         <li>Coordinated workflow processes to maximize efficiency during peak service periods</li>
@@ -564,7 +640,7 @@ export default function Home() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary dark:text-secondary mb-2">Key Achievements:</h4>
+                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Key Achievements:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Improved operational efficiency by 15% through streamlined service protocols</li>
                         <li>Recognized for excellent leadership during high-pressure situations</li>
@@ -590,7 +666,7 @@ export default function Home() {
                     <div className="text-text-light text-sm mb-4">Various Establishments | September 2018 - October 2021</div>
                     
                     <div className="mb-4">
-                      <h4 className="font-semibold text-primary dark:text-secondary mb-2">Primary Responsibilities:</h4>
+                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Primary Responsibilities:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Delivered exceptional customer service in high-end dining environments</li>
                         <li>Maintained strong communication between kitchen and front-of-house staff</li>
@@ -599,7 +675,7 @@ export default function Home() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary dark:text-secondary mb-2">Key Achievements:</h4>
+                      <h4 className="font-semibold text-primary dark:text-accent mb-2">Key Achievements:</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>Recognized for meticulous attention to detail and customer satisfaction</li>
                         <li>Consistently received positive customer feedback</li>
@@ -623,7 +699,7 @@ export default function Home() {
       </div>
       
       {/* Footer */}
-      <footer className="bg-primary text-white text-center py-6">
+      <footer className="bg-gradient-professional text-white text-center py-6">
         <div className="max-w-4xl mx-auto px-4">
           <div>Matthaios Markatis | 123 Ash Crescent, Eckington S21 4AD | 
             <a href="https://www.linkedin.com/in/matthaios-markatis" className="text-secondary-light hover:underline ml-1">LinkedIn</a> | 

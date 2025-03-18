@@ -10,31 +10,36 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#2e1065',
-          light: '#4c1d95',
-          dark: '#1e0645',
+          DEFAULT: '#1e3a8a', // Deep blue
+          light: '#3b82f6',   // Lighter blue
+          dark: '#0c2461',    // Darker blue
         },
         secondary: {
-          DEFAULT: '#f59e0b',
-          light: '#fbbf24',
+          DEFAULT: '#0891b2', // Teal
+          light: '#38bdf8',   // Sky blue
+        },
+        accent: {
+          DEFAULT: '#6d28d9', // Purple
+          light: '#a855f7',   // Light purple
         },
         text: {
-          DEFAULT: '#333333',
-          light: '#666666',
+          DEFAULT: '#1f2937', // Dark gray
+          light: '#6b7280',   // Medium gray
         },
         background: {
-          light: '#f5f5f5',
-          dark: '#121212',
+          light: '#ffffff',   // White
+          dark: '#111827',    // Very dark gray/blue
+          gradient: 'linear-gradient(120deg, #f0f9ff, #e6f7ff)', // Light blue gradient
         },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Segoe UI', 'sans-serif'],
       },
       boxShadow: {
-        'card': '0 5px 15px rgba(0, 0, 0, 0.08)',
-        'card-hover': '0 10px 25px rgba(0, 0, 0, 0.12)',
-        'button': '0 2px 5px rgba(0, 0, 0, 0.1)',
-        'button-hover': '0 4px 8px rgba(0, 0, 0, 0.15)',
+        'card': '0 2px 10px rgba(0, 0, 0, 0.05)',
+        'card-hover': '0 5px 15px rgba(0, 0, 0, 0.08)',
+        'button': '0 1px 3px rgba(0, 0, 0, 0.08)',
+        'button-hover': '0 2px 5px rgba(0, 0, 0, 0.12)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -54,6 +59,13 @@ module.exports = {
           '0%': { transform: 'translateX(20px)', opacity: 0 },
           '100%': { transform: 'translateX(0)', opacity: 1 },
         },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-professional': 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #0891b2 0%, #38bdf8 100%)',
+        'gradient-skill': 'linear-gradient(135deg, #6d28d9 0%, #a855f7 100%)',
       },
     },
   },
