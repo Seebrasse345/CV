@@ -501,17 +501,20 @@ export default function Home() {
                     <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">Imagine You - AI Personal Image Generation App</h3>
                     <div className="text-text-light text-sm mb-4">Flutter Mobile Application 2024</div>
                     <p className="mb-4">
-                      Developed a sophisticated Flutter application enabling users to create personalized AI image models of themselves and generate custom images across various styles and scenarios. Implemented a complete pipeline for training custom FLUX.1 diffusion models using the Replicate API, with a robust architecture for user authentication, photo management, and model deployment. The app features an interactive chat interface and advanced image generation settings.
+                      Developed a full Flutter Android app enabling users to create personalized AI image models of themselves and generate custom images across various styles and scenarios. Implemented a complete pipeline for training custom FLUX.1 diffusion models using the Replicate API, with OAuth authentication, Firebase database integration, and Stripe payment processing. The app features an interactive chat interface, advanced image generation settings, and secure user data management.
                     </p>
-                    <div className="mb-4"><strong>Results:</strong> Successfully developed a production-ready platform capable of fine-tuning custom diffusion models on just 20-30 user images, enabling users to generate personalized AI representations through an intuitive chat interface with high-quality and consistent results.</div>
+                    <div className="mb-4"><strong>Results:</strong> Successfully developed and released a production-ready app on the Google Play Store capable of fine-tuning custom diffusion models on just 20-30 user images. The app enables users to generate personalized AI representations through an intuitive chat interface with high-quality and consistent results, while maintaining secure payment processing and user authentication systems.</div>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="project-tag">Flutter</span>
                       <span className="project-tag">Firebase</span>
+                      <span className="project-tag">OAuth</span>
+                      <span className="project-tag">Stripe</span>
                       <span className="project-tag">Diffusion Models</span>
                       <span className="project-tag">Replicate API</span>
                       <span className="project-tag">Custom Model Training</span>
                       <span className="project-tag">Provider Pattern</span>
                       <span className="project-tag">GPU-accelerated Training</span>
+                      <span className="project-tag">Google Play Store</span>
                     </div>
                   </div>
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-md shadow-card hidden lg:block">
