@@ -142,30 +142,53 @@ export default function Home() {
             <FiCode className="inline-block mr-2" /> Technical Skills
           </div>
           <div className="section-content bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-            {/* More compact skills layout */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* More comprehensive skills layout */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="skill-category">
                 <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Programming</div>
                 <div className="skill-list flex flex-wrap gap-1">
                   <span className="skill-pill">Python</span>
                   <span className="skill-pill">C++</span>
+                  <span className="skill-pill">C</span>
                   <span className="skill-pill">JavaScript</span>
                   <span className="skill-pill">MATLAB</span>
                   <span className="skill-pill">R</span>
                   <span className="skill-pill">HTML/CSS</span>
-                  <span className="skill-pill">Dart</span>
+                  <span className="skill-pill">VHDL</span>
+                  <span className="skill-pill">Dart/Flutter</span>
                 </div>
               </div>
               
               <div className="skill-category">
-                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">ML & AI</div>
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Machine Learning & AI</div>
                 <div className="skill-list flex flex-wrap gap-1">
                   <span className="skill-pill">TensorFlow</span>
                   <span className="skill-pill">PyTorch</span>
+                  <span className="skill-pill">Keras</span>
                   <span className="skill-pill">scikit-learn</span>
+                  <span className="skill-pill">CNNs</span>
                   <span className="skill-pill">NLP</span>
+                  <span className="skill-pill">Transformers</span>
                   <span className="skill-pill">Computer Vision</span>
                   <span className="skill-pill">LLM Fine-tuning</span>
+                  <span className="skill-pill">Random Forest</span>
+                  <span className="skill-pill">Decision Trees</span>
+                  <span className="skill-pill">Neural Networks</span>
+                </div>
+              </div>
+              
+              <div className="skill-category">
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">AI Development</div>
+                <div className="skill-list flex flex-wrap gap-1">
+                  <span className="skill-pill">Model Deployment</span>
+                  <span className="skill-pill">Model Training</span>
+                  <span className="skill-pill">Model Optimization</span>
+                  <span className="skill-pill">AI System Architecture</span>
+                  <span className="skill-pill">Prompt Engineering</span>
+                  <span className="skill-pill">OpenAI API</span>
+                  <span className="skill-pill">Diffusion Models</span>
+                  <span className="skill-pill">GPT Models</span>
+                  <span className="skill-pill">Statistical Analysis</span>
                 </div>
               </div>
               
@@ -176,8 +199,12 @@ export default function Home() {
                   <span className="skill-pill">React</span>
                   <span className="skill-pill">Next.js</span>
                   <span className="skill-pill">RESTful APIs</span>
+                  <span className="skill-pill">OAuth</span>
+                  <span className="skill-pill">Web Automation</span>
                   <span className="skill-pill">Firebase</span>
                   <span className="skill-pill">SQL/SQLite</span>
+                  <span className="skill-pill">Playwright</span>
+                  <span className="skill-pill">Data Visualization</span>
                 </div>
               </div>
               
@@ -189,7 +216,24 @@ export default function Home() {
                   <span className="skill-pill">ESP32</span>
                   <span className="skill-pill">LoRaWAN</span>
                   <span className="skill-pill">PID Control</span>
+                  <span className="skill-pill">MQTT</span>
+                  <span className="skill-pill">GPS Systems</span>
                   <span className="skill-pill">Telemetry</span>
+                  <span className="skill-pill">Sensor Integration</span>
+                </div>
+              </div>
+              
+              <div className="skill-category">
+                <div className="skill-title text-sm font-semibold text-primary border-b pb-1 mb-2">Tools & Platforms</div>
+                <div className="skill-list flex flex-wrap gap-1">
+                  <span className="skill-pill">Git</span>
+                  <span className="skill-pill">Replicate API</span>
+                  <span className="skill-pill">Weather API</span>
+                  <span className="skill-pill">The Things Network</span>
+                  <span className="skill-pill">Leaflet.js</span>
+                  <span className="skill-pill">IBM Watson Studio</span>
+                  <span className="skill-pill">ETL Pipelines</span>
+                  <span className="skill-pill">LabView</span>
                 </div>
               </div>
             </div>
