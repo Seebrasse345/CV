@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthaios Markatis - CV</title>
+    <style>
+        :root {
+            --primary: #2e1065;
+            --primary-light: #4c1d95;
+            --primary-dark: #1e0645;
+            --secondary: #f59e0b;
+            --secondary-light: #fbbf24;
+            --text: #333;
+            --light-text: #666;
+            --white: #fff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --border: #ddd;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 5px 25px var(--shadow);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(255,255,255,0.05) 21%, transparent 22%);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+            position: relative;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+        
+        .contact-item svg {
+            margin-right: 8px;
+            fill: var(--secondary);
+        }
+        
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px var(--shadow);
+            overflow: hidden;
+        }
+        
+        .section-title {
+            color: var(--white);
+            background: var(--primary);
+            font-size: 1.5rem;
+            padding: 12px 20px;
+            position: relative;
+        }
+        
+        .section-content {
+            padding: 20px;
+        }
+        
+        .job-title-row, .project-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px dotted var(--border);
+            padding-bottom: 8px;
+        }
+        
+        .job-title, .project-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+        
+        .job-place-date, .project-place-date {
+            font-style: italic;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+        
+        .job-period svg, .project-category svg, .cert-platform svg {
+            margin-right: 5px;
+            fill: var(--primary);
+        }
+        
+        .job-description, .project-description, .cert-description {
+            margin-bottom: 15px;
+        }
+
+        .summary {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .summary p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .summary-expanded {
+            max-width: 95%;
+            margin: 0 auto;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .skill-category {
+            margin-bottom: 15px;
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .skill-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1.05rem;
+            border-bottom: 1px solid var(--primary-light);
+            padding-bottom: 5px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .education-item, .cert-item, .job-item, .project-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding: 20px;
+            border-radius: 8px;
+            background: var(--light-gray);
+            box-shadow: 0 2px 5px var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .education-item:hover, .cert-item:hover, .job-item:hover, .project-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        .education-item:last-child, .cert-item:last-child, .job-item:last-child, .project-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .education-item h3, .cert-item h3 {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .education-period, .education-grade {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .education-period svg, .education-grade svg {
+            margin-right: 5px;
+            fill: var(--primary);
+        }
+        
+        .module-container {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+        
+        .module-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+        
+        .module-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .module-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            padding: 8px;
+            border-radius: 4px;
+            background: var(--light-gray);
+        }
+        
+        .module-item .module-name {
+            font-weight: 500;
+        }
+        
+        .module-item .module-grade {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            background: var(--secondary);
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .cert-link:hover {
+            background: var(--secondary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .cert-link svg {
+            margin-right: 5px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .project-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 5px;
+        }
+        
+        .project-info {
+            grid-column: 1;
+        }
+        
+        .project-meta {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 6px;
+            height: 100%;
+        }
+        
+        .project-tag {
+            font-size: 0.8rem;
+            background: var(--secondary-light);
+            color: var(--text);
+            padding: 4px 10px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .project-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        }
+        
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: var(--secondary-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .job-details p {
+            margin-bottom: 8px;
+        }
+        
+        .job-details strong {
+            color: var(--primary);
+        }
+        
+        .job-details ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .job-details li {
+            margin-bottom: 5px;
+        }
+        
+        .alevel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .alevel-item {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+        
+        .alevel-subject {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .alevel-grade {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        
+        /* Visual enhancements */
+        .accent-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary) 0%, transparent 100%);
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-light) 100%);
+        }
+        
+        .shine-animation {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine-animation::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .contact-item {
+                font-size: 0.9rem;
+            }
+            
+            .module-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .alevel-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-item, .job-item {
+                flex-direction: column;
+            }
+            
+            .job-title-row, .project-title-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .job-place-date, .project-place-date {
+                margin-top: 5px;
+            }
+            
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .section, .job-item, .project-item, .education-item, .cert-item {
+                break-inside: avoid;
+                box-shadow: none;
+            }
+            
+            .skill-tag, .project-tag {
+                box-shadow: none;
+            }
+            
+            .shine-animation::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header shine-animation">
+            <h1>Matthaios Markatis</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                    </svg>
+                    <a href="mailto:matthaiosmarkatis@gmail.com">matthaiosmarkatis@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                    </svg>
+                    <a href="tel:07480699246">07480 699246</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                    </svg>
+                    <a href="https://www.linkedin.com/in/matthaios-markatis">linkedin.com/in/matthaios-markatis</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <a href="https://github.com/Seebrasse345">github.com/Seebrasse345</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                    </svg>
+                    <span>123 Ash Crescent, Eckington S21 4AD</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="summary summary-expanded">
+            <p>BSc Physics graduate from the University of Sheffield with robust academic foundation in <span class="highlight">theoretical physics</span> and <span class="highlight">computational methods</span>. Recently completed the <span class="highlight">IBM Data Science</span> and <span class="highlight">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span class="highlight">machine learning</span>, <span class="highlight">statistical analysis</span>, and <span class="highlight">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span class="highlight">hardware</span> and <span class="highlight">software</span>, including a fully <span class="highlight">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span class="highlight">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in <span class="highlight">automation technologies</span>, intelligent <span class="highlight">AI agents</span>, and <span class="highlight">embedded systems</span>. Seeking opportunities to advance technological innovation through applied <span class="highlight">AI</span>, <span class="highlight">automation</span>, and <span class="highlight">hardware integration</span> in professional engineering environments.</p>
+        </div>
+
+        <div class="content">
+            <div class="main-content">
+                <!-- EDUCATION SECTION -->
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="section-content">
+                        <div class="education-item">
+                            <h3>BSc Physics</h3>
+                            <div class="education-period">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                                    <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+                                </svg>
+                                University of Sheffield | 2020 - 2024
+                            </div>
+                            <div class="education-grade">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M2 2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2zm7.5 1.5v-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5v1.5a.5.5 0 0 1-1 0z"/>
+                                </svg>
+                                2:1 Classification (Upper Second-Class Honours)
+                            </div>
+                            
+                            <div class="module-container">
+                                <div class="module-title">Programming & Technical Modules</div>
+                                <div class="module-list">
+                                    <div class="module-item">
+                                        <span class="module-name">Advanced Programming in Python</span>
+                                        <span class="module-grade">82%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Programming in Python</span>
+                                        <span class="module-grade">78%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Physical Computing</span>
+                                        <span class="module-grade">70%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Physics with LabView</span>
+                                        <span class="module-grade">67%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="module-container">
+                                <div class="module-title">Physics Core Modules</div>
+                                <div class="module-list">
+                                    <div class="module-item">
+                                        <span class="module-name">Physics of Materials</span>
+                                        <span class="module-grade">75%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Atomic and Laser Physics</span>
+                                        <span class="module-grade">69%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Particle Physics</span>
+                                        <span class="module-grade">67%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Solid State Physics</span>
+                                        <span class="module-grade">66%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Nuclear Physics</span>
+                                        <span class="module-grade">66%</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <span class="module-name">Classical and Quantum Physics</span>
+                                        <span class="module-grade">64%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="education-item">
+                            <h3>A-Levels</h3>
+                            <div class="education-period">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                                    <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+                                </svg>
+                                Eckington Sixth Form | 2018 - 2020
+                            </div>
+                            
+                            <div class="alevel-grid">
+                                <div class="alevel-item">
+                                    <div class="alevel-subject">Physics</div>
+                                    <div class="alevel-grade">A</div>
+                                </div>
+                                <div class="alevel-item">
+                                    <div class="alevel-subject">Biology</div>
+                                    <div class="alevel-grade">A</div>
+                                </div>
+                                <div class="alevel-item">
+                                    <div class="alevel-subject">Chemistry</div>
+                                    <div class="alevel-grade">B</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROFESSIONAL CERTIFICATIONS SECTION -->
+                <div class="section">
+                    <h2 class="section-title">Professional Certifications</h2>
+                    <div class="section-content">
+                        <div class="cert-item shine-animation">
+                            <h3 class="cert-title">IBM AI Engineering Professional Certificate</h3>
+                            <div class="cert-platform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 16a.5.5 0 0 1-.5-.5V8.753l-1.606 1.4a.5.5 0 0 1-.648-.06l-.601-.602a.5.5 0 0 1 0-.707l2.62-2.648a.5.5 0 0 1 .495-.165l.004.001.006.003.013.004.017.008.045.024a2.96 2.96 0 0 1 .087.051l.068.044.057.043.15.111c.375.32.634.641.77.952.077.176.123.352.133.524V15.5a.5.5 0 0 1-.5.5z"/>
+                                    <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z"/>
+                                </svg>
+                                Coursera | August 2024
+                            </div>
+                            <div class="cert-description">
+                                Comprehensive 6-course program covering advanced Machine Learning, Deep Learning, and AI Engineering topics. Gained hands-on experience with industry-standard tools and frameworks for building and deploying production-ready AI models.
+                            </div>
+                            <div><strong>Key Skills:</strong> TensorFlow, Keras, PyTorch, scikit-learn, Model Deployment, Neural Networks, Computer Vision, Model Optimization</div>
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/AGN5UHFNXHV9" class="cert-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                </svg>
+                                Verify Certificate
+                            </a>
+                        </div>
+                        
+                        <div class="cert-item shine-animation">
+                            <h3 class="cert-title">IBM Data Science Professional Certificate</h3>
+                            <div class="cert-platform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 16a.5.5 0 0 1-.5-.5V8.753l-1.606 1.4a.5.5 0 0 1-.648-.06l-.601-.602a.5.5 0 0 1 0-.707l2.62-2.648a.5.5 0 0 1 .495-.165l.004.001.006.003.013.004.017.008.045.024a2.96 2.96 0 0 1 .087.051l.068.044.057.043.15.111c.375.32.634.641.77.952.077.176.123.352.133.524V15.5a.5.5 0 0 1-.5.5z"/>
+                                    <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z"/>
+                                </svg>
+                                Coursera | July 2024
+                            </div>
+                            <div class="cert-description">
+                                Intensive 12-course program covering the complete data science workflow from data collection to insights delivery. Developed end-to-end data science projects using industry-standard methodologies and tools.
+                            </div>
+                            <div><strong>Key Skills:</strong> Python, SQL, Data Analysis, Statistical Analysis, Machine Learning, Data Visualization, IBM Watson Studio, ETL Pipelines</div>
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/3BJMEB8AEYKN" class="cert-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                </svg>
+                                Verify Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TECHNICAL SKILLS SECTION -->
+                <div class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="section-content">
+                        <div class="skills-container">
+                            <div class="skill-category">
+                                <div class="skill-title">Programming & Development</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">C++</span>
+                                    <span class="skill-tag">MATLAB</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">R</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">VHDL</span>
+                                    <span class="skill-tag">C</span>
+                                    <span class="skill-tag">Flutter</span>
+                                    <span class="skill-tag">Tkinter</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">Machine Learning & AI</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">TensorFlow</span>
+                                    <span class="skill-tag">PyTorch</span>
+                                    <span class="skill-tag">scikit-learn</span>
+                                    <span class="skill-tag">Keras</span>
+                                    <span class="skill-tag">CNNs</span>
+                                    <span class="skill-tag">LSTM</span>
+                                    <span class="skill-tag">Transformers</span>
+                                    <span class="skill-tag">Random Forest</span>
+                                    <span class="skill-tag">Diffusion Models</span>
+                                    <span class="skill-tag">Model Deployment</span>
+                                    <span class="skill-tag">Model Training</span>
+                                    <span class="skill-tag">Model Optimization</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">LLMs & AI Systems</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">LLM Fine-tuning</span>
+                                    <span class="skill-tag">AI Agents</span>
+                                    <span class="skill-tag">OpenAI API</span>
+                                    <span class="skill-tag">GPT Models</span>
+                                    <span class="skill-tag">Whisper API</span>
+                                    <span class="skill-tag">NLP</span>
+                                    <span class="skill-tag">Local LLM Deployment</span>
+                                    <span class="skill-tag">AI System Architecture</span>
+                                    <span class="skill-tag">Prompt Engineering</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">Web Development & APIs</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">Flask</span>
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Next.js</span>
+                                    <span class="skill-tag">RESTful APIs</span>
+                                    <span class="skill-tag">OAuth</span>
+                                    <span class="skill-tag">Web Scraping</span>
+                                    <span class="skill-tag">Playwright</span>
+                                    <span class="skill-tag">Web Automation</span>
+                                    <span class="skill-tag">Spotify API</span>
+                                    <span class="skill-tag">Weather API</span>
+                                    <span class="skill-tag">Form Handling</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">Data Science & Engineering</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">NumPy</span>
+                                    <span class="skill-tag">Pandas</span>
+                                    <span class="skill-tag">Matplotlib</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">SQLite</span>
+                                    <span class="skill-tag">MongoDB</span>
+                                    <span class="skill-tag">Apache Spark</span>
+                                    <span class="skill-tag">Dash</span>
+                                    <span class="skill-tag">Plotly</span>
+                                    <span class="skill-tag">ETL Pipelines</span>
+                                    <span class="skill-tag">Data Cleaning</span>
+                                    <span class="skill-tag">Statistical Analysis</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">IoT & Embedded Systems</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">Arduino</span>
+                                    <span class="skill-tag">Raspberry Pi</span>
+                                    <span class="skill-tag">ESP32</span>
+                                    <span class="skill-tag">LoRaWAN</span>
+                                    <span class="skill-tag">MQTT</span>
+                                    <span class="skill-tag">LabView</span>
+                                    <span class="skill-tag">PID Control</span>
+                                    <span class="skill-tag">Sensor Integration</span>
+                                    <span class="skill-tag">The Things Network</span>
+                                    <span class="skill-tag">Environmental Monitoring</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">Mobile & UI Development</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">Flutter</span>
+                                    <span class="skill-tag">Firebase</span>
+                                    <span class="skill-tag">PyQt5</span>
+                                    <span class="skill-tag">Tkinter</span>
+                                    <span class="skill-tag">Responsive Design</span>
+                                    <span class="skill-tag">UI/UX</span>
+                                    <span class="skill-tag">Provider Pattern</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">Audio & Visual Processing</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">FFmpeg</span>
+                                    <span class="skill-tag">Text-to-Speech</span>
+                                    <span class="skill-tag">Audio Processing</span>
+                                    <span class="skill-tag">Image Processing</span>
+                                    <span class="skill-tag">OpenCV</span>
+                                    <span class="skill-tag">Computer Vision</span>
+                                    <span class="skill-tag">YOLO</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-title">Cloud & DevOps</div>
+                                <div class="skill-list">
+                                    <span class="skill-tag">Firebase</span>
+                                    <span class="skill-tag">IBM Cloud</span>
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">GitHub</span>
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">SSH</span>
+                                    <span class="skill-tag">Environment Configuration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROJECTS SECTION -->
+                <div class="section">
+                    <h2 class="section-title">Key Projects</h2>
+                    <div class="section-content">
+                        <div class="project-item">
+                            <div class="project-info">
+                                <div class="project-title-row">
+                                    <div class="project-title">Wildfire Detection System (IoT + Machine Learning)</div>
+                                    <div class="project-place-date">
+                                        University of Sheffield Research Project 2024
+                                    </div>
+                                </div>
+                                <div class="project-description">
+                                    Developed a comprehensive real-time fire detection system using IoT sensors to monitor environmental conditions across multiple locations. Implemented Raspberry Pi Zero W as the main controller with LoRaWAN sensors for long-range wireless data transmission. Integrated Random Forest and Decision Tree models to analyze environmental data and deployed a machine learning prediction model on a live web interface with interactive mapping, trained on NASA FIRMS and satellite data.
+                                </div>
+                                <div class="project-highlights">
+                                    <span class="project-tag">Raspberry Pi</span>
+                                    <span class="project-tag">LoRaWAN</span>
+                                    <span class="project-tag">MQTT</span>
+                                    <span class="project-tag">The Things Network</span>
+                                    <span class="project-tag">Random Forest</span>
+                                    <span class="project-tag">Decision Trees</span>
+                                    <span class="project-tag">Flask</span>
+                                    <span class="project-tag">SQLite</span>
+                                    <span class="project-tag">Leaflet.js</span>
+                                    <span class="project-tag">Weather API</span>
+                                </div>
+                            </div>
+                            <div class="project-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Technical Features:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Custom sensor hardware integration</li>
+                                    <li>Real-time anomaly detection</li>
+                                    <li>Interactive mapping interface</li>
+                                    <li>ML-based prediction model</li>
+                                    <li>Data persistence with SQLite</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <div class="project-title-row">
+                                    <div class="project-title">Home-built Autonomous FPV Drone with iNav Autopilot</div>
+                                    <div class="project-place-date">
+                                        Personal Hardware Project 2024
+                                    </div>
+                                </div>
+                                <div class="project-description">
+                                    Designed and built a fully autonomous FPV drone from scratch, integrating an F7 flight controller, 4-in-1 ESCs, telemetry modules, and GPS systems for precise navigation. Configured iNav firmware for autonomous waypoint navigation, implemented PID tuning for flight stabilization, and developed failsafe protocols for emergency situations. The system includes custom electronics integration and sensor fusion for reliable autonomous operation.
+                                </div>
+                                <div class="project-highlights">
+                                    <span class="project-tag">F7 Flight Controller</span>
+                                    <span class="project-tag">iNav Firmware</span>
+                                    <span class="project-tag">4-in-1 ESCs</span>
+                                    <span class="project-tag">GPS Navigation</span>
+                                    <span class="project-tag">Telemetry</span>
+                                    <span class="project-tag">PID Control</span>
+                                    <span class="project-tag">Custom Electronics</span>
+                                    <span class="project-tag">Autonomous Systems</span>
+                                </div>
+                            </div>
+                            <div class="project-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Technical Achievements:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Hardware-firmware integration</li>
+                                    <li>Autonomous waypoint navigation</li>
+                                    <li>PID loop optimization</li>
+                                    <li>Fail-safe protocol implementation</li>
+                                    <li>PCB-level system integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <div class="project-title-row">
+                                    <div class="project-title">Imagine You - AI Personal Image Generation App</div>
+                                    <div class="project-place-date">
+                                        Flutter Mobile Application 2024
+                                    </div>
+                                </div>
+                                <div class="project-description">
+                                    Developed a sophisticated Flutter application enabling users to create personalized AI image models of themselves and generate custom images across various styles and scenarios. Implemented a complete pipeline for training custom FLUX.1 diffusion models using the Replicate API, with a robust architecture for user authentication, photo management, and model deployment. The app features an interactive chat interface and advanced image generation settings.
+                                </div>
+                                <div class="project-highlights">
+                                    <span class="project-tag">Flutter</span>
+                                    <span class="project-tag">Firebase</span>
+                                    <span class="project-tag">Diffusion Models</span>
+                                    <span class="project-tag">Replicate API</span>
+                                    <span class="project-tag">Custom Model Training</span>
+                                    <span class="project-tag">Provider Pattern</span>
+                                    <span class="project-tag">GPU-accelerated Training</span>
+                                </div>
+                            </div>
+                            <div class="project-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Advanced Features:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Custom AI model training</li>
+                                    <li>Mobile-optimized diffusion models</li>
+                                    <li>Intuitive UI for complex functionality</li>
+                                    <li>Secure cloud integration</li>
+                                    <li>Custom image generation parameters</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <div class="project-title-row">
+                                    <div class="project-title">LinkedIn Job Application Automator</div>
+                                    <div class="project-place-date">
+                                        Web Automation Project 2024
+                                    </div>
+                                </div>
+                                <div class="project-description">
+                                    Built a sophisticated automation system using Python and Playwright that handles the entire LinkedIn job application process. The system features intelligent form detection and auto-filling capabilities, customizable job search with advanced filters, automatic cover letter generation using GPT, session persistence to avoid frequent logins, and comprehensive error handling for robust operation across various application formats.
+                                </div>
+                                <div class="project-highlights">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">Playwright</span>
+                                    <span class="project-tag">Web Automation</span>
+                                    <span class="project-tag">OpenAI API</span>
+                                    <span class="project-tag">Dynamic Form Parsing</span>
+                                    <span class="project-tag">HTML Selector Analysis</span>
+                                    <span class="project-tag">Error Recovery</span>
+                                </div>
+                            </div>
+                            <div class="project-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Technical Capabilities:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Intelligent form detection</li>
+                                    <li>Dynamic workflow adaptation</li>
+                                    <li>AI-powered document generation</li>
+                                    <li>Session state management</li>
+                                    <li>Robust error handling</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-info">
+                                <div class="project-title-row">
+                                    <div class="project-title">Custom LLM Discord Bot</div>
+                                    <div class="project-place-date">
+                                        AI Integration Project 2024
+                                    </div>
+                                </div>
+                                <div class="project-description">
+                                    Developed a versatile Discord bot featuring local LLM integration for intelligent conversations, voice capabilities with text-to-speech functionality, music playback with advanced controls, and comprehensive server management tools. The system uses custom system prompts for different contexts and integrates with locally-hosted language models through an OpenAI-compatible API interface, enabling sophisticated AI-driven interactions within Discord.
+                                </div>
+                                <div class="project-highlights">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">Discord.py</span>
+                                    <span class="project-tag">Local LLM Integration</span>
+                                    <span class="project-tag">Coqui TTS</span>
+                                    <span class="project-tag">FFmpeg</span>
+                                    <span class="project-tag">API Compatibility</span>
+                                    <span class="project-tag">System Prompts</span>
+                                </div>
+                            </div>
+                            <div class="project-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Key Integrations:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Local model deployment</li>
+                                    <li>Voice channel interaction</li>
+                                    <li>Context-aware AI responses</li>
+                                    <li>Server administration tools</li>
+                                    <li>Audio processing pipeline</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- WORK EXPERIENCE SECTION -->
+                <div class="section">
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="section-content">
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title-row">
+                                    <div class="job-title">Team Leader / Supervisor</div>
+                                    <div class="job-place-date">
+                                        Meltdown-Wetherspoons | February 2022 - November 2023
+                                    </div>
+                                </div>
+                                <div class="job-description">
+                                    <div class="job-highlights">
+                                        <div class="responsibility-section">
+                                            <h4 class="highlight-title" style="color: var(--primary); margin-bottom: 10px; font-weight: 600;">Primary Responsibilities:</h4>
+                                            <ul class="highlight-list">
+                                                <li>Managed daily operations and led staff training in high-volume city venues</li>
+                                                <li>Coordinated workflow processes to maximize efficiency during peak service periods</li>
+                                                <li>Developed and implemented crisis management strategies for busy service environments</li>
+                                                <li>Supervised team members, providing performance feedback and development opportunities</li>
+                                            </ul>
+                                        </div>
+                                        <div class="achievement-section">
+                                            <h4 class="highlight-title" style="color: var(--primary); margin-bottom: 10px; font-weight: 600;">Key Achievements:</h4>
+                                            <ul class="highlight-list">
+                                                <li>Improved operational efficiency by 15% through streamlined service protocols</li>
+                                                <li>Recognized for excellent leadership during high-pressure situations</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="job-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Skills Developed:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Team leadership</li>
+                                    <li>Crisis management</li>
+                                    <li>Operational efficiency</li>
+                                    <li>Staff training & development</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title-row">
+                                    <div class="job-title">Bartender / Front of House</div>
+                                    <div class="job-place-date">
+                                        Various Establishments | September 2018 - October 2021
+                                    </div>
+                                </div>
+                                <div class="job-description">
+                                    <div class="job-highlights">
+                                        <div class="responsibility-section">
+                                            <h4 class="highlight-title" style="color: var(--primary); margin-bottom: 10px; font-weight: 600;">Primary Responsibilities:</h4>
+                                            <ul class="highlight-list">
+                                                <li>Delivered exceptional customer service in high-end dining environments</li>
+                                                <li>Maintained strong communication between kitchen and front-of-house staff</li>
+                                                <li>Managed complex drink orders and maintained product knowledge</li>
+                                            </ul>
+                                        </div>
+                                        <div class="achievement-section">
+                                            <h4 class="highlight-title" style="color: var(--primary); margin-bottom: 10px; font-weight: 600;">Key Achievements:</h4>
+                                            <ul class="highlight-list">
+                                                <li>Recognized for meticulous attention to detail and customer satisfaction</li>
+                                                <li>Consistently received positive customer feedback</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="job-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Skills Developed:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Customer service excellence</li>
+                                    <li>Team communication</li>
+                                    <li>Product knowledge</li>
+                                    <li>Fast-paced work environment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title-row">
+                                    <div class="job-title">Assistant Work Experience</div>
+                                    <div class="job-place-date">
+                                        Royal Hallamshire NHS | February 2019
+                                    </div>
+                                </div>
+                                <div class="job-description">
+                                    <div class="job-highlights">
+                                        <div class="responsibility-section">
+                                            <h4 class="highlight-title" style="color: var(--primary); margin-bottom: 10px; font-weight: 600;">Primary Responsibilities:</h4>
+                                            <ul class="highlight-list">
+                                                <li>Supported patient care coordination in a healthcare setting</li>
+                                                <li>Managed and organized confidential patient information</li>
+                                                <li>Assisted medical staff with administrative tasks</li>
+                                            </ul>
+                                        </div>
+                                        <div class="achievement-section">
+                                            <h4 class="highlight-title" style="color: var(--primary); margin-bottom: 10px; font-weight: 600;">Key Achievements:</h4>
+                                            <ul class="highlight-list">
+                                                <li>Streamlined organizational systems for medical staff</li>
+                                                <li>Successfully adapted to sensitive healthcare environments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="job-meta">
+                                <p style="margin-top: 0; font-weight: 600;">Skills Developed:</p>
+                                <ul style="margin-top: 5px; list-style-type: disc; padding-left: 20px;">
+                                    <li>Healthcare administration</li>
+                                    <li>Confidentiality protocols</li>
+                                    <li>Organizational systems</li>
+                                    <li>Medical environment adaptation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div>Matthaios Markatis | 123 Ash Crescent, Eckington S21 4AD | 
+                <a href="https://www.linkedin.com/in/matthaios-markatis">LinkedIn</a> | 
+                <a href="mailto:matthaiosmarkatis@gmail.com">matthaiosmarkatis@gmail.com</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
