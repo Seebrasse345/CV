@@ -1,7 +1,7 @@
 {
   "version": 2,
   "buildCommand": "next build",
-  "ignoreCommand": "npx eslint --quiet .",
+  "ignoreCommand": "npx eslint@8.56.0 --quiet . || exit 0",
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",

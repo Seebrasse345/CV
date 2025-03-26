@@ -86,10 +86,11 @@ The website is set up for deployment to Vercel. The following configurations hav
 
 ### ESLint Configuration
 
-A custom ESLint configuration has been implemented to handle React Three Fiber properties, which are not recognized by default ESLint rules:
+A comprehensive ESLint configuration has been implemented in `.eslintrc.js` to handle React Three Fiber properties, which are not recognized by default ESLint rules:
 
 - Custom property handling for Three.js properties such as `position`, `args`, `transparent`, etc.
 - Semicolon requirements enforced to meet coding standards
+- TypeScript-specific linting rules for improved code quality
 
 ### TypeScript Declarations
 
