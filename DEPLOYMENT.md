@@ -140,4 +140,62 @@ To deploy to Vercel:
 4. Use the default build settings (which will use our vercel.json configuration)
 5. Deploy
 
-The deployment should now succeed without the previous errors. 
+The deployment should now succeed without the previous errors.
+
+## Troubleshooting Vercel Deployments
+
+If Vercel is not picking up your latest commits or not building correctly, try these steps:
+
+### Manual Deployment from Vercel Dashboard
+
+1. Go to your project in the Vercel dashboard
+2. Click on the "Deployments" tab
+3. Click the "Redeploy" button on your latest deployment, or
+4. Use the "Deploy" button and select "Deploy latest commit from [branch]"
+
+### Force a New Deployment
+
+Use the provided force-deploy script to trigger a new deployment:
+
+```bash
+node scripts/force-deploy.js
+```
+
+This script creates a dummy change that forces Vercel to recognize a new commit.
+
+### Check Branch Configuration
+
+Make sure the branch you're pushing to is configured for deployment in your vercel.json file:
+
+```json
+"git": {
+  "deploymentEnabled": {
+    "main": true,
+    "master": true
+  }
+}
+```
+
+### Clear Deployment Cache
+
+Try clearing the Vercel build cache:
+
+1. Go to your project in the Vercel dashboard
+2. Navigate to Settings > General > Build & Development Settings
+3. Click "Clear Build Cache"
+4. Redeploy your project
+
+### Check GitHub Integration
+
+1. Go to your project in the Vercel dashboard
+2. Navigate to Settings > Git
+3. Make sure the GitHub integration is properly connected and has necessary permissions
+4. If needed, disconnect and reconnect the repository
+
+### Still Having Issues?
+
+If you're still experiencing deployment issues, try:
+
+1. Making a small change and committing it to trigger a new build
+2. Creating a new Vercel project and connecting it to the same repository
+3. Contacting Vercel support if the issue persists 

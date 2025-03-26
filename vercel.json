@@ -8,11 +8,13 @@
   "outputDirectory": ".next",
   "git": {
     "deploymentEnabled": {
-      "main": true
+      "main": true,
+      "master": true
     }
   },
   "github": {
     "silent": false,
-    "autoJobCancelation": true
+    "autoJobCancelation": true,
+    "enabled": true
   }
 } 
