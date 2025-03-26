@@ -5,7 +5,7 @@ const nextConfig = {
   output: 'export',
   images: {
     formats: ['image/webp'],
-    minimumCacheTTL: 60,
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -20,6 +20,8 @@ const nextConfig = {
     // Number of pages to keep in memory
     pagesBufferLength: 5,
   },
+  // Ensure all paths are treated as trailing slash
+  trailingSlash: true,
 };
 
 export default nextConfig; 

@@ -37,7 +37,7 @@ export default function ImagineYouPage() {
     <div className="relative w-full h-screen overflow-hidden">
       {/* Black hole background iframe */}
       <iframe 
-        src="/black_hole_diffusion.html"
+        src="black_hole_diffusion.html"
         className="absolute inset-0 w-full h-full border-0 pointer-events-none z-0"
         title="Black Hole Background"
         aria-hidden="true"

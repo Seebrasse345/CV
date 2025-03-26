@@ -5,7 +5,7 @@
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "outputDirectory": ".next",
+  "outputDirectory": "out",
   "git": {
     "deploymentEnabled": {
       "main": true,
@@ -16,5 +16,16 @@
     "silent": false,
     "autoJobCancelation": true,
     "enabled": true
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=1, stale-while-revalidate"
+        }
+      ]
+    }
+  ]
 } 
