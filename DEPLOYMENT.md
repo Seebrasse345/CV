@@ -25,7 +25,22 @@ This document outlines the fixes that were made to ensure successful deployment 
    };
    ```
 
-2. Added semicolons to all files using the ESLint fix command:
+2. Added a compatible `eslint.config.js` file for ESLint v9 that redirects to the existing `.eslintrc.js` configuration:
+   ```javascript
+   const { FlatCompat } = require('@eslint/eslintrc');
+   const path = require('node:path');
+   
+   const compat = new FlatCompat({
+     baseDirectory: __dirname,
+     recommendedConfig: {},
+   });
+   
+   module.exports = [
+     ...compat.config({ extends: [path.resolve(__dirname, '.eslintrc.js')] })
+   ];
+   ```
+
+3. Added semicolons to all files using the ESLint fix command:
    ```bash
    npx eslint --fix "**/*.{ts,tsx}"
    ```
@@ -65,7 +80,7 @@ Created a `vercel.json` file with appropriate configuration:
 ```json
 {
   "buildCommand": "next build",
-  "ignoreCommand": "npx eslint@8.56.0 --quiet . || exit 0",
+  "ignoreCommand": "npx eslint@8.56.0 --quiet .; exit 0",
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
@@ -84,7 +99,7 @@ Created a `vercel.json` file with appropriate configuration:
 
 > **Note:** We specifically use ESLint version 8.56.0 because ESLint v9+ requires a new configuration format using `eslint.config.js` instead of `.eslintrc.*` files. This ensures compatibility with our existing ESLint configuration.
 >
-> The `|| exit 0` at the end of the ignoreCommand ensures that even if ESLint finds issues, the build process will continue, treating the linting step as a warning rather than an error.
+> The `;` followed by `exit 0` at the end of the ignoreCommand ensures that even if ESLint finds issues, the build process will continue, treating the linting step as a warning rather than an error. This syntax works in both bash and PowerShell environments.
 
 ## Remaining Warnings
 
@@ -100,15 +115,20 @@ These could be addressed in future updates if desired, but they don't affect the
 
 ### ESLint v9 Compatibility
 
-If you wish to update to ESLint v9 in the future, you'll need to:
+The repository includes dual ESLint configurations to ensure compatibility with both ESLint v8 and v9:
 
-1. Create a new `eslint.config.js` file in the root directory
-2. Migrate your configuration from `.eslintrc.js` to the new format
+1. `.eslintrc.js` - Traditional configuration for ESLint v8
+2. `eslint.config.js` - New flat config format for ESLint v9, which currently redirects to the `.eslintrc.js` file using the `@eslint/eslintrc` compatibility layer
+
+This approach ensures the project can work with either ESLint version. When fully migrating to ESLint v9 in the future:
+
+1. Update the `eslint.config.js` file with a native ESLint v9 configuration
+2. Remove the `.eslintrc.js` file once the migration is complete
 3. Update the `vercel.json` file to use ESLint v9 without the version restriction
 
-For convenience, a stub configuration file (`eslint.config.future.js`) has been included in the repository. When ready to migrate, rename this file to `eslint.config.js` and remove the `.eslintrc.js` file.
+For reference, a sample native ESLint v9 configuration (`eslint.config.future.js`) has been included in the repository.
 
-Follow the official migration guide at: https://eslint.org/docs/latest/use/configure/migration-guide
+Follow the official migration guide for more details: https://eslint.org/docs/latest/use/configure/migration-guide
 
 ## Deployment Instructions
 
