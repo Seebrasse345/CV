@@ -1,0 +1,747 @@
+Perfect. I’ll prepare fully detailed, markdown-formatted Terms & Conditions and Privacy Policy for your app, Imagine You, registered under your name Matthaios Markatis (or future entity Markatis Development), with publication planned at www.markatis.com. These will cover GDPR, cross-border transfers (to Replicate in California), Firebase integration, Stripe payments, age limits, deepfake restrictions, and non-commercial use licensing.
+
+I’ll deliver the complete documents shortly in clean Markdown code blocks for copy-paste.
+
+```markdown
+# Imagine You – Terms and Conditions
+
+_Last updated: [25/03/2025]_
+
+**Welcome to Imagine You!** These Terms and Conditions (“**Terms**”) govern your access to and use of the **Imagine You** mobile application (the “**App**”), which is developed and operated by **Matthaios Markatis**, a sole trader doing business as **Markatis Development** (“**we**”, “**us**” or “**our**”). Our Terms are intended to be fully compliant with applicable laws, including the laws of England and Wales, and relevant platform policies. By downloading or using the App, you agree to these Terms. If you do not agree, do not use the App.
+
+Please also review our **Privacy Policy** (available at **www.markatis.com**) to understand how we collect and use your information. Your acceptance of these Terms includes acceptance of our Privacy Policy.  
+
+## 1. About the App
+
+**Imagine You** is a creative application that uses artificial intelligence to generate personalized images based on user-provided photos and descriptions. You can upload images (for example, a selfie or portrait) and apply various AI-powered transformations, styles, or scenarios to “imagine” yourself in different ways. The App utilizes third-party machine learning services to produce these AI-generated images (“**Generated Content**”). The exact functionality may evolve over time, but generally the App allows you to generate, view, and save these images for your personal use.
+
+While we strive to make the App fun and engaging, please be aware that **Imagine You** should be used responsibly. The AI-generated outputs are for personal entertainment and creativity. They are **not** guaranteed to be accurate, realistic, or suitable for any particular purpose. The results may sometimes be surprising or imperfect. By using the App, you understand and accept that outcome.
+
+## 2. Eligibility
+
+**Minimum Age:** You must be at least **16 years old** to use **Imagine You**. The App is not intended for children under 16. By creating an account or using the App, you represent and warrant that you are 16 or older. If you are under the age of majority in your jurisdiction (for example, under 18 in many countries), you affirm that you have the consent of your parent or legal guardian to use the App, and that they have reviewed and agree to these Terms on your behalf. We do not knowingly allow anyone under 16 to use the App or collect their personal data (see Privacy Policy for more information on children’s data).
+
+**Legal Capacity:** You also represent that you are fully able and competent to enter into and comply with these Terms. You are not barred from using the App under any laws that apply to you.
+
+**Export and Sanctions Compliance:** By using the App, you represent that you are **not** located in a country that is subject to a U.K., U.S., or E.U. government embargo or sanctions (for example, you are not in a country such as Cuba, North Korea, Iran, Syria, or any other territory embargoed by the UK/EU/US), and that you are not listed on any UK, EU, or U.S. government list of prohibited or restricted parties. You agree to comply with all applicable export control and trade sanctions laws in using the App.
+
+## 3. Account Registration and Security
+
+**Account Creation:** To access the full functionality of **Imagine You**, you may need to create an account or log in via a third-party authentication service. For example, the App may use **Google Firebase Authentication** to allow you to sign up with an email and password, or via third-party login (such as Google or Apple sign-in). You must provide accurate and current information during registration (such as a valid email address and, if required, your name). You are responsible for maintaining the accuracy of your account information.
+
+**Account Security:** You are responsible for keeping your login credentials (username, password, or any OAuth tokens) confidential. **Do not share** your account with others. You agree to notify us immediately at **support@markatis.com** if you suspect any unauthorized access to or use of your account. We are not liable for any loss or damage arising from your failure to secure your account credentials.
+
+**Account Use:** All activities that occur under your account are your responsibility. You agree not to create multiple accounts for disruptive or abusive purposes, and not to create an account for anyone other than yourself (except as expressly allowed by us). If you are logging in via a third-party service (like a Google account), you must comply with that service’s terms as well.
+
+**Profile and Usernames:** If the App allows you to set a display name or profile, you must not impersonate anyone or use a name that is vulgar or violates someone’s rights. We reserve the right to reclaim or require you to change a username that violates these Terms or is otherwise inappropriate.
+
+## 4. Subscription and Payment Terms
+
+**Premium Features:** **Imagine You** may offer certain premium features or content through a subscription plan (“**Subscription**”). For example, a Subscription might grant you a number of image generations per month, unlimited usage of certain AI models, removal of watermarks, or other enhanced functionalities. The specifics of what is included in a Subscription will be explained in the App and/or on our website.
+
+**Payment Processor:** Subscription payments are handled via **Stripe**, a third-party payment processor, or through the Apple App Store or Google Play (for in-app purchases on iOS or Android devices, respectively). By subscribing, you authorize us and our payment processor (or the app store provider) to charge the applicable subscription fees to your provided payment method. We do **not** store your full credit/debit card details on our servers; your payment information is transmitted directly to **Stripe** (or Apple/Google) and processed securely in accordance with their security standards. Stripe’s services are governed by Stripe’s terms and privacy policy, and by subscribing you also agree to those terms.
+
+**Billing Cycle and Auto-Renewal:** Subscription fees, pricing, and billing periods (e.g., monthly or annually) will be specified at the time of purchase. **Subscriptions automatically renew** at the end of each billing cycle (e.g., on a monthly or yearly basis) **unless** you cancel before the next renewal date. By purchasing a Subscription, you agree that your Subscription will automatically renew and you authorize automatic charge of the then-applicable subscription fee to your payment method at the start of each renewal term.
+
+**Free Trials and Promotions:** We may offer free trials or introductory promotional pricing for Subscriptions. If we do, we will explain the terms of the offer. If you do not wish to continue with a paid Subscription after a free trial, you must cancel before the trial period ends to avoid being charged. If not canceled, the Subscription will automatically convert to a paid plan and your payment method will be charged on the first day after the trial ends.
+
+**Cancellation:** You can cancel your Subscription at any time. 
+- If you subscribed via the **Apple App Store**, you must cancel through your Apple ID account settings (on your iOS device or through iTunes/App Store account management). 
+- If you subscribed via **Google Play**, you must cancel through your Google Play Account settings. 
+
+Cancellation will take effect at the **end of the current billing period**. You will retain access to premium features until the end of the period you already paid for, but **no further charges** will be made (assuming you canceled correctly). We do not typically provide prorated refunds for mid-period cancellations. For example, if you cancel in the middle of a month, you will not receive a refund for the remaining days of that month; you will simply retain premium access until that month is over. **Note:** If you have any issues with cancellation or believe you were charged in error, please contact us at **support@markatis.com** for assistance. If your purchase was through Apple or Google, refunds are subject to their respective store policies (we may not be able to issue refunds directly for in-app purchases).
+
+**Subscription Changes:** We reserve the right to adjust pricing for our Subscription plans or to introduce new fees or charges, to the extent permitted by law. If the price of your Subscription changes, we will give you reasonable advance notice (for example, within the App, by email, or via the app store platform) and the opportunity to cancel before the new price takes effect. If you do not cancel, the new fee will be charged to your payment method on your next billing cycle. Any changes in fees will not retroactively affect your previously purchased subscription period except as explicitly agreed.
+
+**Failure to Pay:** If any fee cannot be charged to your payment method (for example, due to expiration or insufficient funds), we may attempt to contact you and retry the charge. If payment remains unsuccessful, we may suspend or downgrade your Subscription features until payment is resolved. You remain responsible for any uncollected amounts. We reserve the right to cancel your Subscription if repeated payment failures occur.
+
+**Taxes:** Subscription fees are stated inclusive of any applicable value-added or sales taxes **unless** otherwise specified. If any taxes (such as VAT) are not included and are required to be collected, you agree to pay them as part of the subscription fee or separately if we itemize them.
+
+**No Refund Policy:** Except where required by law or stated otherwise, **all charges are non-refundable**. This means that once you have been billed for a Subscription period, you will not be refunded for that period if you decide to stop using the App or cancel in the middle of the term. However, you will continue to have access to the paid features for the remainder of the paid term after cancellation. We will of course honor any rights you have under applicable consumer protection laws, which may provide for refunds in certain cases (for example, if digital services are not supplied with reasonable care and skill, or if a refund is mandated by law). Any such requests will be handled in accordance with the governing law (see Section 13).
+
+**Promotional Codes or Offers:** If we provide promo codes, discounts, or referral bonuses, these are subject to the specific terms of that offer. They may be valid only for limited times and cannot be redeemed for cash. We reserve the right to modify or cancel promotional offers at any time.
+
+## 5. Acceptable Use and Prohibited Conduct
+
+We want **Imagine You** to be a safe and positive environment. By using the App, you agree to use it responsibly and **only for lawful, appropriate purposes**. **You MUST NOT:**
+
+- **Impersonation and Deepfakes:** Upload or use images of other individuals without their explicit consent, especially for the purpose of creating AI-generated images of them. Creating “deepfake” images or any content that impersonates another person in a misleading, deceptive, or harmful manner is strictly prohibited. This includes attempting to generate images of celebrities or private individuals without permission, or otherwise violating someone’s right to privacy or publicity. **Only use photos of yourself or those for which you have permission.**
+
+- **Illegal or Harmful Content:** Use the App to create, upload, share, or distribute any content that is illegal, objectionable, or harmful. This includes but is not limited to content that is defamatory; obscene or pornographic (for example, sexually explicit images or nudity, especially any content involving minors is strictly forbidden); hateful or discriminatory (e.g. content that promotes racism, bigotry, hatred, or physical harm against any group or individual); harassing or threatening; or content that promotes or facilitates violence, terrorism, or other criminal activity.
+
+- **Violence and Exploitation:** Generate content that depicts graphic violence, gore, or the exploitation of any person. Do not attempt to use the App to create sexually explicit or violent images involving real people (especially minors, which will be reported to authorities).
+
+- **Intellectual Property Infringement:** Upload any material or generate any content that infringes the copyright, trademark, or other intellectual property rights of any person or entity. For example, do not upload photographs that you did not take or do not have rights to, and do not use the App to create images that copy a protected artwork or logo in a way that violates someone’s rights. **You are responsible for ensuring you have the necessary rights** to any content you use in the App.
+
+- **Malicious Activity:** Introduce viruses, malware, or any other harmful code into the App, or use the App in a way that could damage, disable, or overburden our servers or networks. Do not attempt to gain unauthorized access to the App or other users’ accounts or data (no hacking, password “mining,” or any other illegitimate access).
+
+- **Circumventing Security or Limits:** Do not attempt to bypass or circumvent any security measures or usage limits (such as any limits on the number of images you can generate). This includes refraining from using automated scripts, bots, or scraping technology to mass-utilize the App or collect information.
+
+- **Misuse of Generated Content:** Do not use any Generated Content from the App in a manner that violates these Terms or applicable law. For example, do not use AI-generated images from the App to mislead people (such as creating fake news or fraudulent profiles), to harass or bully, or in any commercial manner that is not permitted (see Section 7 on licensing of content). If you share or publish any content generated by the App, you are responsible for ensuring that such sharing is done in a context that is legal and not harmful.
+
+- **Reverse Engineering and Abuse:** You must not decompile, reverse engineer, disassemble, or otherwise attempt to derive the source code or underlying algorithms of the App or the AI models used (except as permitted by applicable law). Also, you agree not to exploit the App or its services in an unauthorized way (for example, using modified versions of the App or using the service through an unofficial client).
+
+- **Spam and Commercial Use:** Do not use the App for unauthorized commercial purposes. You should not attempt to advertise or sell any products or services to other users through the App (if the App had social features), and you should not use the App to send unsolicited bulk communications or spam.
+
+If you engage in any of the prohibited conduct above or otherwise violate these Terms, it may result in **immediate termination or suspension** of your rights to use the App (see Section 10 on Termination), and if appropriate, we may report you to law enforcement or other authorities. We reserve the right (but do not assume any obligation) to monitor the use of the App and any content generated or transmitted through it, and to investigate and take action against any behavior or content that we believe violates the letter or spirit of these rules.
+
+## 6. User Content and License to Us
+
+**User Content:** In the context of these Terms, “**User Content**” refers to any content that you provide, submit, or upload to the App. This includes, for example: 
+- the **photos or images** you upload of yourself or others, 
+- any **text prompts, descriptions, or captions** you provide to guide the AI generation, and 
+- any other materials (such as profile pictures or comments, if applicable) that you input into the App.
+
+We do **not claim ownership** of your original User Content. **You retain any ownership rights** that you hold in the photographs or other content you provide. For example, if you upload a photo you took, you continue to own the copyright in that photo (assuming it was yours to begin with).
+
+**Your License to Us:** In order for us to operate the App and provide the AI image generation service, you **grant us a license** to use your User Content. Specifically, you grant **Matthaios Markatis (Markatis Development)** and our affiliated service providers **a worldwide, non-exclusive, royalty-free, sub-licensable license** to host, store, transfer, display, reproduce, and process your User Content **solely for the purposes of**: (a) operating, maintaining, and improving the App; (b) generating your requested AI images or other outputs; and (c) as otherwise necessary to provide the service you request and enforce our rights under these Terms. 
+
+This license to your content is **limited in scope** – we are not obtaining any ownership of your content, and we will not use your photos or other uploads for purposes outside of providing the service **without your permission**. For example, we will **not** sell your photos, publish them to other users, or use them to create advertisements without your consent. (See Privacy Policy for details on how we handle your data and content.)
+
+**User Content Warranties:** You represent and warrant that you have all necessary rights and permissions to upload or submit the User Content you provide and to grant us the above license. This means:
+- The content is either your own creation (for example, you took the photo yourself or the photo is of you), or you have obtained the necessary consent from the owner/individual. **Do not upload photos of anyone else (including celebrities or friends) without proper permission.**
+- The content does not infringe or violate any third-party rights, including intellectual property rights (copyright, trademarks) or privacy/publicity rights.
+- The content complies with these Terms and all applicable laws (for instance, it does not contain illegal or prohibited material as described in Section 5).
+
+You agree that you are solely responsible for all User Content you provide and for any consequences that may arise from distributing or publishing that content (for example, if you choose to share a generated image based on an uploaded photo, you are responsible for ensuring that sharing it is lawful and does not harm others).
+
+**Moderation and Removal:** We do not pre-screen all User Content, but we reserve the right (at our sole discretion) to **remove or delete** any User Content that violates these Terms or that we deem objectionable. This can include your original uploaded images or prompts if they violate our rules, as well as any Generated Content (defined below) that was produced from them. We may also suspend or terminate your account for serious violations (see Section 10). We are not responsible for any failure or delay in removing such content.
+
+**License Duration:** The license you grant us to your User Content is for as long as your User Content is retained by us (which generally means until you delete the content or delete your account, or otherwise withdraw consent for us to use it). Note that technical copies of content (e.g., in backups or cache) might persist for a short period even after deletion, but will be purged in the normal course of operations.
+
+**Feedback:** If you provide us with any suggestions, ideas, or feedback about the App (“**Feedback**”), you agree that we may use and implement that Feedback without any obligation to you. Any Feedback you provide is entirely voluntary, and we will be free to use it as we see fit and without any compensation to you.
+
+## 7. Generated Content and User License
+
+**Definition:** “**Generated Content**” refers to the images or other outputs that are produced by the App’s AI systems when processing your inputs (such as your photos and prompts). These are the AI-generated images of “Imagine You” in various forms that the App creates for you.
+
+**Ownership of Outputs:** We do not claim ownership of the individual Generated Content outputs that are produced for you. These outputs are a result of an automated process based on your inputs. Because of the nature of generative AI, the concept of ownership can be complex – the output might be considered a derivative of your input (which you own), or it might be a completely new creation. For the purpose of these Terms, we treat the Generated Content as part of your **User Content** once it is produced and delivered to you, subject to the license and use restrictions below. You have a degree of freedom to use the Generated Content, as explained here, but **with certain limitations**.
+
+**License to You (Personal Use License):** We grant **you**, the user, a **personal, worldwide, non-exclusive, royalty-free license** to use, save, copy, modify, and share the Generated Content that the App creates for you, **for your own personal, non-commercial purposes**. In plain language, this means the images you generate are **yours to use personally**:
+- You can save them to your device, share them on your social media or with friends, set them as your profile picture, print them out for yourself, etc.
+- **Non-commercial use only:** You **may not** sell, license, or otherwise use the Generated Content for any commercial purpose without our prior written permission. For example, you should not incorporate a generated image into a product you sell, use it in advertising or marketing for a business, or otherwise monetize it. If you are interested in using any content commercially, please contact us to discuss obtaining a separate license.
+
+**Use Restrictions on Generated Content:** Even in your personal use of the Generated Content, you must adhere to the original Acceptable Use rules (Section 5). For instance:
+- You must not use Generated Content in a manner that violates someone’s rights or privacy, or that is harmful, defamatory, or illegal. If an image inadvertently resembles a real person (living or deceased) or a protected artwork, you should not use it in a way that would violate that person’s rights or applicable law.
+- If you share the Generated Content publicly (e.g., on social media), we recommend you attribute or mention that it was created with an AI app (to promote transparency and responsible use of AI-generated media, though this is not a strict requirement).
+- Do not misrepresent the Generated Content as an unaltered real photo or as an original artwork by a human if it’s likely to mislead people; for example, don’t use a realistically generated image of yourself in a context meant to deceive others that it’s an actual photograph from real life.
+
+**Our Rights to Generated Content:** As explained, we generally consider the Generated Content to be your content. However, by using the App, you also grant us a license to **retain and use Generated Content** (along with your original User Content) as needed to operate and improve the service. This may include temporary caching of images, backups, or using them to improve our algorithms **only in anonymized or aggregated ways** (and in compliance with our Privacy Policy). We will not publicly share or display your Generated Content without your consent. We also do **not** use your Generated Content to further train our AI models **unless** you have given consent for that (for example, an opt-in program to help improve the AI – if we ever introduce such a program, it will be clearly explained and optional).
+
+**No Guaranteed Outcomes or Exclusivity:** Because the images are generated by an AI:
+- We cannot guarantee that any particular Generated Content will be unique. While it’s very unlikely that the same image would be generated twice, similar inputs can produce somewhat similar outputs. The outputs you get are intended for you, but it’s theoretically possible someone else using a very similar photo and prompt could get a similar result.
+- We cannot guarantee that Generated Content will never unintentionally resemble existing copyrighted images or real individuals. The AI works by pattern generation and does not intentionally copy any single source image, but results can sometimes be reminiscent of known styles or faces. If you believe any Generated Content may infringe someone’s rights, please notify us immediately.
+
+**Third-Party Content in Outputs:** Note that the AI models (run by our partner **Replicate** and others) have been trained on broad internet data. Sometimes, the outputs might include elements like art styles or even approximate logos/text that resemble existing content. You should be cautious about using such images and avoid any infringing uses. We are not liable for the content of the outputs you obtain (see Warranties and Liabilities sections below), and you use them at your own risk.
+
+In summary, **feel free to enjoy and share your AI-generated images for fun and personal use, but do not exploit them commercially or in any harmful or unlawful way**. If you have questions about what you can or cannot do with the content, contact us.
+
+## 8. Intellectual Property Rights (App Content and License to Use)
+
+**Our Intellectual Property:** Except for the User Content and Generated Content described above, all other content and materials in the App are our intellectual property or that of our licensors. This includes, for example: the App’s software code, design, and architecture; the look and feel of the user interface; the compilation of content in the App; the trademark “Imagine You” and any logos or branding used for the App; and any text, images, or other materials that we have provided within the App (such as tutorial text, graphics, etc. not generated by users). These are protected by copyright, trademark, and other intellectual property laws. **Matthaios Markatis (Markatis Development)** retains all rights, title, and interest in and to the App and all associated intellectual property not expressly granted to you.
+
+**Your License to Use the App:** Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to **download, install, and use** the **Imagine You** App on your personal device(s) for your own personal, non-commercial use **only**. This license is for **use of the App’s services and content** as intended by these Terms and does not give you any ownership of any intellectual property rights in our App or content. You may not use the App for any commercial purpose unless expressly authorized by us in writing.
+
+**License Restrictions:** You agree that you will not, and will not permit anyone else to:
+- Copy, distribute, or modify the App (except as necessary to use it on your device for its intended purpose). This means you should not try to extract the source code, create derivative works of our software, or distribute copies of the app binary to others (outside of official app store distribution).
+- Rent, lease, lend, sell, or sublicense the App or otherwise transfer any portion of the App or these rights to any third party.
+- Use any of our trademarks or logos without our prior written permission. This includes the name “Imagine You” – you can certainly use the name to refer to the App in a descriptive sense (e.g., “This image was made with Imagine You app”), but you can’t brand your own products or services with our name or logos.
+- Remove or obscure any proprietary notices in the App (for instance, copyright notices or watermarks, if any).
+- Use any automated system (like bots or scrapers) to access the App for any purpose without our permission.
+
+**Open Source and Third-Party Components:** If the App includes any open-source software components, those components may be governed by their own licenses, which will be provided in the App or documentation. To the extent any such licenses require that you have rights to the source code of those components, we will provide them as required.
+
+**Third-Party Services or Content:** The App may integrate or use services and content provided by third parties (such as the AI image generation engine by **Replicate**, or authentication by **Firebase**, etc.). Those services may have their own terms and licenses. You agree to comply with any third-party terms that apply when that third-party technology or content is accessed or used through our App. We are not responsible for third-party content or services except as stated in these Terms or required by law.
+
+## 9. Maintenance, Support, and Changes to the Service
+
+We strive to keep **Imagine You** up and running smoothly. However, all software has bugs and all services may experience downtime.
+
+**Maintenance and Updates:** We may from time to time issue updates, patches, or new versions of the App to add features or fix bugs and security issues. It is your responsibility to keep the App updated by installing new versions when available (especially for security-related updates). We may automatically update the App on your device (subject to your device settings and app store rules). These Terms will apply to any updates or upgrades unless such update comes with a separate license (in which case that license will apply).
+
+**Support:** While we aim to provide a great experience, our resources for customer support might be limited (as a small development operation). We currently offer support via email at **support@markatis.com**. We will do our best to address technical issues or account problems you encounter. However, support is provided on an “as available” basis – we do not guarantee any specific response time or resolution time. **Apple and Google (for example) have no obligation to provide any support or maintenance for the App** (see Section 15 for platform terms). Any complaints or support needs should be directed to us, not the app store providers.
+
+**Service Changes and Availability:** We reserve the right to change, suspend, or discontinue any aspect of the App at any time. We may add or remove features (for example, discontinuing support for a particular AI model or adding a new mode of image generation) or modify the way the service works. We will try to inform users in advance (e.g., via an in-app notice or email) about any major changes that significantly affect the use of the App. We also reserve the right to impose limits on certain features or restrict access to parts or all of the service without notice if necessary for the viability of the service or due to legal reasons.
+
+**No Guarantee of Continuous Access:** We try to maintain high availability, but we do not guarantee that the App will always be available or that it will be free from errors or downtime. There may be occasional maintenance outages or technical issues (due to server problems, issues with third-party providers like Replicate or Firebase, etc.) that make the service inaccessible. Where possible, we will schedule maintenance to minimize disruption and notify users of significant planned downtime.
+
+**Beta Features:** If we label some features as “beta” or “experimental,” those features are in testing and provided “as is” without any promises of performance. We value feedback on these but they might change or be removed in future versions.
+
+## 10. Termination and Suspension
+
+**Your Right to Terminate:** You are free to stop using **Imagine You** at any time. You may also delete your account (if account functionality exists) by following the instructions in the App or contacting us at **support@markatis.com**. Deleting your account will generally remove your profile and stored content from our active systems, though some data may persist as described in our Privacy Policy (e.g., backups, or data we keep for legal obligations).
+
+**Our Right to Suspend or Terminate:** We reserve the right to suspend or terminate your access to the App (or certain features within the App) at any time **with or without notice** and **with or without cause**. However, we will typically only take such actions for the following reasons:
+- **Violations:** If you violate these Terms (or repeatedly act in a manner that strongly suggests you will), especially if the violation is serious (e.g., abuse, illegal content, harassment, infringement, etc.), we may suspend or ban your account.
+- **Legal Requirement:** If we are required to disable your account or the App by law (for example, due to a court order or if our service becomes illegal in a certain jurisdiction).
+- **Security or Fraud:** If we detect unauthorized access to your account or suspect that your account is compromised or being used fraudulently, we may temporarily suspend it to prevent harm.
+- **Inactivity:** If you have not used your account for a very long period (e.g., more than 1 year), we may disable or delete it after sending a notice to your registered email (if available) giving you a chance to log in and keep it active.
+- **Service Discontinuation:** In the unfortunate event that we decide to discontinue the App entirely, we may terminate all accounts with prior notice as described below.
+
+**Effect of Termination:** Upon termination of your account or access, whether initiated by you or us:
+- Your right to use the App ceases immediately. You must delete or uninstall the App from your device(s).
+- You will no longer have access to any content (including Generated Content) you have stored in the App’s cloud (if any) and we may delete it from our systems (except to the extent we are required or permitted to retain certain data under law or as outlined in the Privacy Policy). We strongly encourage you to save any images or content you want to keep **before** deleting your account or if we notify you of termination.
+- If you have an active Subscription at the time of termination, **please note:** if the termination was due to your violation of these Terms, you **will not be entitled to any refund** for remaining unused days on your Subscription. If termination was without cause (for instance, a service discontinuation not due to your fault), we may provide a pro-rata refund for any full months remaining on your subscription, as required by law or at our discretion.
+
+**Liability for Past Breaches:** Termination of your account does not relieve you of liability for any violations of the Terms prior to termination. Any provision of these Terms which by its nature should survive termination (such as limitations of liability, dispute resolution, licenses granted to us, etc.) will survive.
+
+**Notice of Termination:** Where reasonably possible and lawful, we will attempt to give you advance notice (e.g., to your registered email or upon your next attempt to access the App) of our intent to terminate or suspend your account, so that you may remedy any violation or backup your data. However, in cases of severe violation or urgent issues, we may suspend first and notify afterward.
+
+## 11. Disclaimer of Warranties
+
+**“As-Is” Service:** **Imagine You** is provided on an **“AS IS” and “AS AVAILABLE”** basis. Your use of the App and any content generated through it is at your **own risk**. To the fullest extent permitted by law, we disclaim all warranties and representations, whether express, implied, or statutory, including (but not limited to) any implied warranties of **merchantability**, **fitness for a particular purpose**, **non-infringement**, and any warranties arising out of course of dealing or usage of trade.
+
+In clear terms, **we do not guarantee**:
+- That the App will meet your specific needs or expectations.
+- That the App will be uninterrupted, error-free, or secure at all times.
+- That any Generated Content will be satisfactory to you, or that it will not be objectionable, flawed, or need correction.
+- The accuracy, reliability, or quality of any information or content obtained through the App.
+- That any defects or errors in the App will be corrected (although we aim to fix bugs, we make no guarantee of immediate fixes).
+
+**AI Output Warnings:** You acknowledge that the App’s core function is generating images using AI, which can be unpredictable. **We make no warranty** that the images or other outputs you obtain will be **accurate** (for example, the AI might produce distorted or incorrect representations) or that they will be **suitable for a particular purpose** (for instance, the images might not be of professional quality for printing or might not achieve the effect you desired). The AI might sometimes produce results that are unintentional or that could be perceived as biased or inappropriate. We do not endorse or take responsibility for any opinions or concepts that might be inferred from AI outputs—the outputs do not reflect our views.
+
+**No Responsibility for User Conduct or Content:** We are not responsible for the actions of other users or third parties with respect to your content. While we have rules in place, we cannot guarantee that others will always comply with our Terms or that no inappropriate content will ever be present in the App. You understand that by using the App, you may be exposed to content that you might find offensive or unsatisfactory (for example, if someone were to misuse the App). We are not responsible for such content, but if you see anything that violates our Terms, please report it to us.
+
+**Not a Professional or Emergency Service:** The App is for personal creative use only. We are not offering any professional advice or certified information via the App. **Imagine You** should not be relied upon for any critical or emergency purposes.
+
+**Consumer Rights:** If you are a consumer in a jurisdiction that provides certain rights or warranties that cannot be excluded or limited by contract, such as certain **statutory warranties under the UK Consumer Rights Act 2015** or analogous laws in the EU, then nothing in this Section 11 is intended to override or diminish those rights. In particular, you may have legal remedies if the digital service we provide is not as described, not fit for purpose, or not provided with reasonable care and skill. The disclaimers above apply **only to the extent permitted by applicable law**.
+
+**Apple-Specific Warranty Disclaimer:** You acknowledge that **Apple** (if you are using the iOS version) is **not responsible** for warranty obligations for the App. In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple _will have no other warranty obligation_ with respect to the App beyond, if applicable, refunding the purchase price of the App (if any). (Since the App is free to download, there may be no purchase price.) To the maximum extent permitted by applicable law, **Apple** will have no other warranty obligation whatsoever with respect to the App, and any other claims, losses, liabilities, damages, costs or expenses attributable to any failure to conform to any warranty will be our responsibility, not Apple’s. (This paragraph is required by Apple’s App Store terms and does **not** expand any warranty from us; we still disclaim warranties as stated above.)
+
+## 12. Limitation of Liability
+
+**Limitation of Types of Damages:** To the fullest extent permitted by law, in no event will **Matthaios Markatis (Markatis Development)** or any of our affiliates, partners, suppliers, or agents be liable to you for any **indirect, incidental, consequential, special, punitive, or exemplary damages** whatsoever arising out of or in connection with your use of or inability to use the **Imagine You** App or any content obtained through it. This includes, without limitation, damages for loss of profits, loss of data, loss of goodwill, device damage, or other intangible losses, even if we have been advised of the possibility of such damages.
+
+**Cap on Liability:** To the fullest extent permitted by law, our **total cumulative liability** to you for any and all claims arising from or related to the use of the App or these Terms (including any cause of action sounding in contract, tort, strict liability, etc.) **will not exceed the total amount of fees you have paid to us for the use of the App in the 12 months prior to the claim** (or, if you have not paid any fees, our liability will be zero). For example, if you have a Subscription and over the last year you paid £50 in subscription fees, that amount would be the absolute cap of our liability to you for all claims.
+
+**Application of Consumer Law:** We do not exclude or limit our liability to you where it would be illegal to do so. In particular, **nothing in these Terms limits or excludes our liability for**: death or personal injury caused by our negligence, or the negligence of our employees or agents; fraud or fraudulent misrepresentation; or any other liability that cannot be limited or excluded by law. If you are a consumer, you may have additional legal rights in your jurisdiction that these Terms cannot supersede (for example, certain damages under consumer protection laws might be recoverable despite the above limitations). 
+
+**Allocation of Risk:** You acknowledge and agree that the above disclaimers and limitations of liability are a reasonable allocation of risk and form a fundamental part of the agreement between you and us. Without these limitations, we would not be able to provide the App to you, especially given its experimental, AI-driven nature.
+
+**No Liability for Third Parties:** We are not responsible for any third-party services or resources that the App uses or links to (such as the cloud AI processing by Replicate, authentication by Google, or payments by Stripe, etc.), except as required by law. Those third parties are responsible for their services. Similarly, Apple and Google (as distributors of the App) have no liability to you for the App or its content (beyond what may be provided by their own rules).
+
+**Your Responsibility:** You assume full responsibility for any loss or damage that results from your use of the App, to the maximum extent allowed by law. It is your responsibility to ensure that your device is adequately secured and that you use the App in compliance with these Terms.
+
+## 13. Indemnification
+
+To the extent permitted by law, you agree to **indemnify, defend, and hold harmless** **Matthaios Markatis (Markatis Development)**, including our affiliates, officers, agents, and employees, from and against any and all **claims, liabilities, damages, losses, and expenses** (including reasonable legal fees) that arise out of or relate to **your use of the App** or **your violation of these Terms** or **your violation of any rights of another**.
+
+In plain terms, this means that if a third party (for example, another user, a person appearing in a photo, or an intellectual property owner) makes a claim against us because of something you did – e.g., you uploaded content you didn’t have rights to, or you misused the App and caused harm – then **you will be responsible for the costs and damages** we incur as a result of your actions.
+
+We will notify you promptly of any such claim and will provide you (at your expense) with reasonable cooperation in the defense of the claim. You must not settle any such claim in a manner that imposes any liability or obligation on us (financial or otherwise) without our prior written consent. We reserve the right to assume the exclusive defense and control of any matter otherwise subject to indemnification by you (at our own expense), and you agree to cooperate with our defense of that claim.
+
+(Note: If you are a consumer in certain jurisdictions, indemnification clauses might not apply to you to the extent that they require you to indemnify us for our own actions or violations of law. This indemnity is intended to apply to the extent permissible, primarily covering your breach of these Terms or misuse of the App.)
+
+## 14. Privacy and Data Protection
+
+Your privacy is very important to us. We handle your personal data in accordance with applicable data protection laws, including the **UK General Data Protection Regulation (UK GDPR)** and the **Data Protection Act 2018**, as well as the **EU GDPR** for users in the European Economic Area (EEA). Our practices are described in detail in our **Privacy Policy** (see **www.markatis.com/privacy**), which is incorporated into these Terms by reference. By using the App, you acknowledge that you have read our Privacy Policy and understood how we collect, use, and share your information. 
+
+**Personal Data and Images:** In particular, using **Imagine You** involves the collection and processing of images of you or others, which could be considered **biometric data** under certain privacy laws. We will only process such data with appropriate legal bases (such as your explicit consent, which we obtain when you upload an image and accept our terms). We also transfer and process data with third-party providers (like Google Firebase for authentication, **Replicate** in the USA for image generation, and **Stripe** for payments). We take measures to safeguard these transfers (e.g., Standard Contractual Clauses and compliance with the EU-U.S. Data Privacy Framework for international data transfers, as explained in our Privacy Policy).
+
+By agreeing to these Terms, you also **consent to the processing of your personal data** (including images/biometric data and cross-border transfers of data) as described in our Privacy Policy. If you do not consent or later withdraw consent, we may not be able to provide certain features of the App to you.
+
+If you have questions about privacy or want to exercise your data protection rights (such as accessing or deleting your data), please refer to the Privacy Policy or contact us at **privacy@markatis.com**.
+
+## 15. Additional Terms for Apple App Store and Google Play Store
+
+The following provisions apply to you if you obtained the **Imagine You** App through the **Apple App Store** or the **Google Play Store**. These terms are required by the platform providers (Apple Inc. and Google LLC) to be included in our agreement with you, and they are important to clarify the relationship between us, you, and the app store.
+
+**15.1 Acknowledgement (Relationship with Apple/Google):** You acknowledge that these Terms are **solely between you and us (Matthaios Markatis/Markatis Development)**, and **not with Apple or Google**. We, not the app store, are solely responsible for the **Imagine You** app and its content. The app store providers (Apple and Google) have no obligation to furnish any maintenance or support services for the App.
+
+**15.2 Scope of License:** The license granted to you to use the App (Section 8) is limited to a license to use the App on any Apple or Android devices that you own or control, and as permitted by the usage rules set forth in the App Store or Google Play terms of service. In the case of Apple, that means the App can be used on an iPhone, iPad or iPod touch that you own or control, and as allowed by Apple’s App Store **Terms of Service**. You may not use the App on any device that you do not have rights to use, or outside of the scope of what the respective app store terms allow.
+
+**15.3 Maintenance and Support:** As noted, Apple and Google have no obligation to provide support for the App. Any maintenance or support issues should be directed to us (using the contact information in these Terms). We are responsible for providing any support or addressing any claims you or any third-party have relating to the App or your possession and use of the App.
+
+**15.4 Warranty by Developer:** In case of any failure of the App to conform to any applicable warranty, you may notify the applicable app store, and:
+- For Apple: Apple will refund the purchase price (if any) of the App to you; and, to the maximum extent permitted by law, Apple will have no other warranty obligation with respect to the App. 
+- For Google: Google doesn’t specify a refund mechanism in its terms for third-party app issues, but generally, any refund for apps purchased through Google Play would be handled per Google’s policies.
+Aside from the above, any other claims, losses, liabilities, or expenses attributable to a failure of the App to conform to any warranty is our responsibility, not Apple’s or Google’s. (However, please note Section 11 of these Terms where we disclaim most warranties to the extent allowed by law.)
+
+**15.5 Product Claims:** You acknowledge that **Apple and Google are not responsible for addressing any claims by you or any third party relating to the App** or your possession and/or use of the App. This includes, but is not limited to: 
+- (i) product liability claims, 
+- (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement, 
+- (iii) claims arising under consumer protection or similar legislation, 
+- (iv) claims related to the App’s content or its use. 
+Any such claims are governed by these Terms and will be the responsibility of Markatis Development (us) to address, not the app store.
+
+**15.6 Intellectual Property Rights (Third-Party Claims):** If a third party claims that the App (or your possession and use of the App) infringes that third party’s intellectual property rights, **we**, not Apple or Google, will be solely responsible for the investigation, defense, settlement, and discharge of any such intellectual property infringement claim. We take intellectual property rights seriously and will address any valid claims; the app store is not responsible for handling these issues.
+
+**15.7 Legal Compliance:** You represent and warrant that (i) you are **not located in a country that is subject to a U.S. Government or EU/UK Government embargo, or that has been designated by the U.S. Government as a “terrorist-supporting” country**, and (ii) you are **not listed on any U.S. Government, UK Government or EU list of prohibited or restricted parties**. (This representation was also made in Section 2 above, but it is reiterated here as required by Apple’s terms.) You agree to comply with all U.S., UK, and EU export and re-export restrictions as applicable to the software and data.
+
+**15.8 Developer Name and Address:** Should you have any questions, complaints, or claims with respect to the App, you may contact us at:
+- **Developer:** Matthaios Markatis (Markatis Development)  
+- **Email:** support@markatis.com  
+- **Address:** 123 Ash Crescent, Eckington, Derbyshire S21 4AD, United Kingdom.  
+
+(Please note that this contact information is provided to satisfy Apple/Google requirements. You can use it to reach us for any reason related to these Terms or the App.)
+
+**15.9 Third-Party Beneficiary (Apple):** You acknowledge and agree that **Apple, and Apple’s subsidiaries**, are **third-party beneficiaries** of these Terms (as it relates to the iOS version of the App). This means that upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary. In other words, if you violate these Terms in a way that also violates Apple’s App Store rules, Apple could potentially step in to enforce the provisions of these Terms. 
+
+**15.10 Third-Party Beneficiary (Google):** While Google’s terms do not explicitly designate Google as a third-party beneficiary of app terms in the same way Apple does, for completeness: you acknowledge that Google and its affiliates are not parties to these Terms and are not responsible for the provision or support of the App. However, Google and its affiliates shall have the benefit of any disclaimers, limitations of liability, or other protections afforded to us under these Terms with respect to the App. (This simply clarifies that you cannot hold Google liable for any issues with the App, consistent with the liability limitations above.)
+
+These additional terms in Section 15 do not expand your rights or our obligations beyond what is elsewhere in these Terms; they are chiefly to ensure compliance with the policies of the platforms through which the App is distributed.
+
+## 16. Changes to these Terms
+
+We may modify or update these Terms from time to time. Laws change, and so may our App or practices. When we update the Terms, we will change the “Last updated” date at the top of this document. If the changes are significant, we will provide a more prominent notice of the update **either within the App, on our website (markatis.com), by email to the address associated with your account, or any other reasonable method**.
+
+**Your Responsibility to Review:** It is your responsibility to review these Terms periodically. We encourage you to check back on our website for the latest version. By continuing to use the App after the updated Terms have been posted (and become effective), you agree to be bound by the revised Terms.
+
+If you **do not agree** with any changes to the Terms, you should stop using the App and cancel any subscriptions. In cases where we need to obtain your agreement to the new terms (if required by law), we will do so. For example, the App might prompt you to accept the new Terms before you continue to use it.
+
+**Effective Date of Changes:** Unless otherwise stated, modifications will be effective on the date they are posted. For existing subscribers, if a change to the Terms materially affects your rights or obligations, we may, at our discretion, apply the new Terms at the start of your next subscription renewal or require your explicit acceptance.
+
+## 17. Governing Law and Dispute Resolution
+
+**Governing Law:** These Terms, and any dispute or claim arising out of or in connection with them or the use of the App, shall be governed by and construed in accordance with the laws of **England and Wales**. This choice of law applies regardless of your country of residence, provided that if you are a consumer outside of England and Wales, you will not be deprived of any mandatory consumer protections under the law of your country of residence.
+
+**Jurisdiction:** You and we both agree that the courts of **England and Wales** shall have exclusive jurisdiction to settle any dispute or claim (including non-contractual disputes or claims) arising out of or in connection with these Terms or the App. However, if you are acting as a consumer and you live in another country within the United Kingdom or the European Economic Area, you may also bring legal proceedings in your local courts and under your local laws if applicable law requires. Likewise, we will respect any applicable laws that grant you the right to bring disputes in the courts of your home country.
+
+**Dispute Resolution and Arbitration (if applicable):** (If we had an arbitration clause, it would be stated here. We are not including a mandatory arbitration clause or class action waiver at this time. If we choose to include one in the future, it will be clearly communicated and likely require opt-in consent for consumers, especially in certain jurisdictions.)
+
+**Injunctive Relief:** Notwithstanding the above, both parties acknowledge that unauthorized use of intellectual property or certain breaches of these Terms may cause irreparable harm that cannot be fully remedied by monetary damages. In such cases, we may seek injunctive or equitable relief in any competent court to prevent or stop any unauthorized use or breach of these Terms with respect to our intellectual property or confidential information.
+
+## 18. Miscellaneous
+
+**Entire Agreement:** These Terms (along with the Privacy Policy and any additional guidelines or terms presented within the App for specific features) constitute the **entire agreement** between you and us regarding the App, and supersede any prior agreements or understandings (whether written or oral) relating to the same subject matter.
+
+**Severability:** If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court or other tribunal of competent jurisdiction, that provision shall be enforced to the maximum extent permissible, and the remaining provisions of the Terms will remain in full force and effect. We agree to attempt to replace any invalid or unenforceable provision with a valid and enforceable provision that achieves, as far as possible, the original purpose and intent.
+
+**No Waiver:** Our failure to enforce any right or provision of these Terms shall not constitute a waiver of future enforcement of that right or provision. Similarly, the waiver of any breach or default will not constitute a waiver of any subsequent breach or default.
+
+**Assignment:** You may not assign or transfer these Terms or any rights or obligations under them, by operation of law or otherwise, without our prior written consent. We may assign or transfer our rights and obligations under these Terms freely to any entity that assumes ownership or operation of the App (for example, if we incorporate as a company or if the App is sold or merged with another business), or to any affiliate or as part of a financing, reorganization, or merger.
+
+**Third-Party Rights:** Except as explicitly provided in Section 15 above (regarding Apple and Google’s rights as third-party beneficiaries in certain cases), these Terms do not give rise to any rights for any third parties to enforce any term of this agreement.
+
+**Force Majeure:** We shall not be liable for any failure or delay in performance of our obligations (except payment obligations, if any) if such failure or delay is caused by events beyond our reasonable control, including but not limited to acts of God, war, terrorism, civil unrest, pandemic, fire, governmental restrictions, strikes, or failures of telecommunications or internet service providers.
+
+**Relationship:** No joint venture, partnership, employment, or agency relationship exists between you and us as a result of these Terms or your use of the App. You are an independent user of the App.
+
+## 19. Contact Information
+
+If you have any questions, concerns, or comments about these Terms or the App, you can contact us at:
+
+- **Developer/Operator:** Matthaios Markatis (trading as Markatis Development)  
+- **Contact Email:** **support@markatis.com**  
+- **Address:** 123 Ash Crescent, Eckington, Derbyshire S21 4AD, United Kingdom  
+- **Website:** [www.markatis.com](https://www.markatis.com) (for additional information and updates)
+
+We will do our best to respond promptly to your inquiry.
+
+Thank you for reading these Terms. We hope you enjoy using **Imagine You** and unleash your creativity responsibly. Happy imagining!
+```
+
+```markdown
+# Imagine You – Privacy Policy
+
+_Last updated: [Date]_
+
+**Introduction:**  
+This Privacy Policy describes how **Imagine You** (“**the App**”) collects, uses, stores, and shares your personal data. **Imagine You** is developed and operated by **Matthaios Markatis**, a sole trader doing business as **Markatis Development** (“**we**”, “**us**”, “**our**”). We are committed to protecting your privacy and handling your personal information in compliance with all applicable data protection laws, including the **UK General Data Protection Regulation (UK GDPR)** and the **Data Protection Act 2018**, as well as the **EU General Data Protection Regulation (EU GDPR)** for users in the European Economic Area (EEA). 
+
+By using **Imagine You**, you acknowledge that you have read and understood this Privacy Policy. **If you do not agree with our practices, please do not use the App.** We may update this Privacy Policy from time to time (see Section 11 on changes), and we will notify you of any significant changes.
+
+**Important Note on Children:** The App is **not intended for children under 16 years of age**. We do not knowingly collect personal data from anyone under 16. If you are under 16, do not use the App or provide any information to us. If we learn we have collected personal data from a child under 16, we will delete that information. (See Section 9 for more on Children’s Privacy.)
+
+**Quick Summary:** When you use **Imagine You**, we collect certain information about you, such as your login credentials (for example, email address), the photos and text prompts you provide, the images generated for you, and usage data (like device information and logs). We use this information to provide the service (e.g., to create your AI-generated images), to manage your account and any subscriptions, to improve the App, and to comply with legal obligations. We share your data only with trusted third-party service providers that help us run the App – notably **Google Firebase** (for authentication and data storage), **Stripe** (for payment processing), and **Replicate** (which processes images to generate the outputs) – or if required by law. If we transfer your data outside the UK or EEA (for example, to the USA where some of our providers are located), we ensure appropriate safeguards are in place (like Standard Contractual Clauses or Data Privacy Framework certification). You have rights regarding your data, which we outline in Section 8, and you can contact us at **privacy@markatis.com** with any questions or requests.
+
+Now, let’s go into detail.
+
+## 1. Who We Are
+
+**Data Controller:** The entity responsible for your personal data under this Privacy Policy (the “data controller”) is:
+- **Matthaios Markatis (Markatis Development)**, a sole trader based in the United Kingdom.  
+- **Address:** 123 Ash Crescent, Eckington, Derbyshire S21 4AD, United Kingdom.  
+- **Contact Email:** **privacy@markatis.com** (for privacy inquiries).
+
+Matthaios Markatis is the developer and operator of the **Imagine You** App. For the purposes of UK and EU data protection law, he (Markatis Development) is the controller of the personal data processed through the App. This means we determine the purposes and means of processing that data.
+
+If you are an EEA user, and in the future if we are required to appoint an EU representative or other local agent for data protection, we will update this policy with that information. For now, you can direct any questions or concerns to us at the UK contact above.
+
+## 2. What Data We Collect
+
+When you use **Imagine You**, we collect several categories of personal data. “Personal data” means any information that relates to you or identifies you (either on its own or when combined with other information). The data we collect can be grouped as follows:
+
+- **Account Information:** When you register or log in to **Imagine You**, we collect information needed to create and secure your account. This may include:
+  - **Identifiers:** such as your name and email address. For example, if you sign up with an email/password via Firebase Authentication, we collect your email and (in encrypted form) your password. If you use a third-party login (like “Sign in with Google” or “Sign in with Apple”), we receive from that provider certain information like your name, email, and a unique user ID/token.
+  - **Authentication Data:** such as a Firebase user ID, tokens, or OAuth credentials that allow us to verify your identity each time you use the App.  
+  - **Profile Information:** If the App allows you to set up a user profile or username, we will collect whatever information you provide for that profile (e.g. profile picture, display name). In the current version, profile info is minimal (mostly your login email and an internally assigned ID).
+
+- **User Content (Photos and Prompts):** The core function of **Imagine You** involves you providing content to generate images. We collect:
+  - **Photographs/Images you upload:** This is likely a photo of you (or another image you choose to use). This image data is personal (especially if it’s of you or contains your likeness). **Important:** Images of your face or physical features could be considered **biometric data** under certain laws, because they can reveal unique identifying features. We address how we handle this sensitive data below and in Section 3 (Legal Bases) and Section 7 (International Transfers).
+  - **Text Prompts or Descriptions:** If you enter any text to guide the AI (e.g., “make me look like a cartoon character” or any other description), we collect that text as well, since it’s used to generate the content.
+  - **Any other inputs:** If in future the App allows other inputs (like selecting styles or providing audio, etc.), we would collect those as necessary to perform the service (but currently it’s mainly photos and text prompts).
+
+- **Generated Content:** The output images (AI-generated images) that the App creates for you could also be stored by us, especially if the App provides a gallery or history of your created images. Specifically:
+  - **Generated Images:** When the AI generates an image (or multiple images) based on your input, those images may be temporarily stored on our servers to deliver them to you. We may also store them in your account history (if such a feature exists) so that you can access them later without immediately downloading. These images might contain your likeness (if that was in the input), so they are personal data as well.
+  - **Related Data:** We may keep metadata about the generation, such as an ID for the generation, timestamps, or parameters used (e.g., which AI model or style was applied, success/failure info, etc.).
+
+- **Payment and Subscription Data:** If you subscribe to premium features or make purchases in the App:
+  - **Subscription Details:** We will maintain records of your subscription status, the plan you selected (e.g., monthly, yearly), and transaction history (e.g., purchase date, expiration/renewal date).
+  - **Billing Information:** We **do not** collect or store full payment card details ourselves. Payments are processed by **Stripe** (for direct payments) or by the App Store/Google Play (for in-app purchases). We may receive limited information from these payment processors:
+    - From Stripe: a customer ID, subscription ID, payment status, type (e.g., last 4 digits of your card, card expiration, billing name and address if provided for receipts) and whether the payment was successful. We might also receive info on failed payments or cancellations.
+    - From Apple/Google: confirmation that you purchased a subscription, the duration, and an anonymized transaction identifier or receipt. We might store the receipt or token Apple/Google provides to verify your purchase. We do not receive your credit card info from Apple/Google.
+  - **Invoices/Receipts:** We may generate and store receipts or invoice records for your purchases (including any applicable taxes).
+
+- **Usage Data and Device Information:** Like most apps, we automatically collect some data about how you access and use **Imagine You**:
+  - **Device Information:** such as the type of device you have (e.g., iPhone 12, Samsung Galaxy, etc.), the operating system and version (e.g., iOS 15 or Android 12), device model identifiers, device language, and possibly device identifiers (like an advertising ID or device ID, though we don’t use these for ads, only for analytics or identifying your device for push notifications if any).
+  - **Log Data:** When you use the App, our servers (or third-party services used by the App) may log certain information automatically. This can include:
+    - **IP Address:** The Internet Protocol address of your device at the time of connection. This is used for connecting you to our service and for security/analytics. IP addresses can sometimes be used to infer rough location (city or country), but we do not use IP to pinpoint your exact location.
+    - **Timestamps:** When you logged in, when you requested an image generation, when images were returned, etc.
+    - **App Usage Events:** We may log events such as when you click certain buttons, how many images you generate, errors or crashes that occur, and other interaction information. This helps us understand usage patterns and troubleshoot issues.
+    - **Crash and Diagnostic Data:** If the app crashes or encounters an error, we might collect a crash report via services like Firebase Crashlytics (which would include technical information about the state of the app leading to the crash, device OS version, etc., but generally not personal user content beyond what might have been in memory at time of crash).
+  - **Cookies and Similar Technologies:** While the App itself may not use “cookies” as a website does, if there is any web-based component (like if you visit a web link for support or account management) we might use cookies there. Within the mobile app, we might use local storage or secure storage to keep certain preferences or tokens on your device.
+
+- **Communications:** If you contact us or interact with us outside the app:
+  - **Support Requests:** If you send us an email at support@markatis.com or similar, we will collect your email address and any information you provide in that communication (like your name and the content of your message). 
+  - **In-App Feedback:** If the App has a feedback form or bug report feature, the information you provide (along with contact info if provided) will be collected.
+  - **Newsletter/Marketing:** We are not currently sending newsletters or promotional emails. If that changes and you sign up or consent to receive updates, we would collect your name and email for that purpose. (We will ask permission as required by law for any marketing communications.)
+
+We try to limit the data we collect to only what is necessary for the purposes set out in this policy. In particular, **we do not intentionally collect any sensitive personal data** about you except the possible biometric nature of photos (addressed with consent), and we don’t collect things like your racial or ethnic origin, political opinions, health information, etc., unless you somehow indirectly provide that in a photo or prompt (and we certainly don’t use it for any profiling).
+
+## 3. How We Use Your Data (Purposes and Legal Bases)
+
+We use your personal data to operate, provide, and improve the **Imagine You** App and our related services. Under data protection laws (UK GDPR/EU GDPR), we must have a valid “legal basis” for each use of your data. We primarily rely on **two** main legal bases: **(a)** performance of a **contract** (or steps taken at your request prior to entering into a contract), and **(b)** your **consent** (especially for sensitive data like biometric information and for certain processing like image analysis by AI). In some cases, we may also rely on **(c)** our **legitimate interests** or **(d)** compliance with a **legal obligation**.
+
+Here are the purposes for which we process your data and the corresponding legal bases:
+
+- **To Provide the Core App Service (AI Image Generation) – *Legal Basis: Contract and Consent*:**  
+  We process the photos, prompts, and related data you provide in order to generate the AI images you request. This is the essential function of **Imagine You**. When you upload an image and ask for a transformation, we must handle that image (including sending it to our AI processor, **Replicate**) and produce an output for you. The legal basis for this processing is **performance of a contract** (GDPR Article 6(1)(b)) – the “contract” here is that when you use the App, you are requesting a service (image generation) and we are fulfilling it.  
+  **Special Category Data:** If your photo is considered **biometric data** (a special category under GDPR) because it can reveal your unique facial features, we rely on your **explicit consent** (GDPR Article 9(2)(a)) to process that. By uploading your photo and explicitly using the feature, you are giving us consent to process that image for the purpose of generating new images. We will **only** use biometric or sensitive data (like your face in a photo) for the service you requested (and for closely related purposes like improving results as described, with your consent). We do *not* use it for identifying you or for any unrelated purposes. (Also, note that we do **not** engage in facial recognition to verify your identity; the processing is generative, not for ID/authentication.)
+
+- **Account Creation and Authentication – *Legal Basis: Contract*:**  
+  We use your Account Information (email, password, OAuth info) to create your account, log you in, and maintain your session. This is done to **perform our contract** with you (to allow you to use the App’s features that require login). It also involves using Firebase Authentication, which acts as our processor to authenticate users. This processing is necessary to provide you a personalized and secure experience (ensuring that only you can access your generated content, for instance).
+
+- **Subscription Management and Payments – *Legal Basis: Contract and Legal Obligation*:**  
+  If you choose to subscribe, we use your data to process the payment and manage your subscription. For example, we’ll use your selected plan info to tell Stripe how much to charge, and we’ll use your user ID to apply premium features to your account. This is **performance of a contract** (providing the paid service you requested). We also retain transaction records to comply with **legal obligations** (accounting and tax laws may require us to keep records of payments, GDPR Article 6(1)(c)). If necessary, we may use your contact info to send you payment receipts or subscription-related notifications (also part of contract performance/ legal obligations for financial record-keeping).  
+
+  Additionally, if a payment fails or a subscription is ending, we might notify you (contractual necessity to manage the service). If we handle VAT or other taxes for subscriptions, we process location info (country) to apply the correct tax – doing so under legal obligation to collect taxes.
+
+- **Generating and Delivering Content – *Legal Basis: Contract*:**  
+  We use your data to actually deliver the content to you: for example, storing your generated images until you retrieve them in the app, showing you your history, etc. This is part of our service to you (contractual necessity). We may also use your device information to tailor how content is delivered (for example, using appropriate resolution or format for your device).
+
+- **App Functionality and User Experience – *Legal Basis: Contract and Legitimate Interests*:**  
+  We process certain data to ensure the App works correctly on your device and to provide features you expect:
+  - For example, we might use your device’s OS version to ensure compatibility and to troubleshoot bugs specific to that OS.
+  - If the app has language options, we might use your device language setting to localize content (contractual necessity to provide the service in an appropriate language).
+  - If you enable certain features like push notifications (e.g., to alert when an image generation is done), we would process a device token and your preferences (with your consent to receive such notifications, which you give by enabling them).
+  - Our **legitimate interest** (GDPR Article 6(1)(f)) also lies in providing an app that functions well – for example, it’s in our interest (and yours) to ensure content loads quickly and the UI runs smoothly, so we might process usage data to optimize our infrastructure.
+
+- **Communication with You – *Legal Basis: Contract, Legitimate Interests, Consent*:**  
+  We may use your contact information (email) to send you important **service-related communications**:
+  - Examples include: a welcome email, password reset emails, verification codes, subscription confirmations, changes to terms or privacy policy, or important security and product updates. The legal basis here is often **contractual** (we need to be able to communicate these to effectively provide the service) or **legitimate interests** in keeping you informed about things that affect your use of the service.
+  - If you reach out to us, we will use your info to respond (legitimate interest in providing good customer service).
+  - We are **not** sending marketing emails or newsletters without consent. If in the future we want to send promotional communications, we will seek your **consent** (opt-in) where required by law (e.g., PECR or GDPR for electronic direct marketing). You would have the right to opt-out at any time.
+
+- **Analytics and Improvements – *Legal Basis: Legitimate Interests*:**  
+  We want to understand how users interact with **Imagine You** so we can improve the app, fix issues, and make informed decisions about new features. For this, we analyze **Usage Data** (Section 2). This may involve:
+  - Counting how many images on average users generate, which features are most used, funnel analysis of user onboarding, etc.
+  - Monitoring crash logs and error reports to identify and fix bugs or performance issues.
+  - Possibly running A/B tests or collecting feedback to decide on enhancements.
+  
+  We rely on **legitimate interests** for this kind of processing (GDPR Art 6(1)(f)), as it is in our business interest to improve our product and it generally has low impact on your privacy (we often use aggregated or pseudonymized data for analytics). We may use tools like Firebase Analytics or similar in-app analytics which collect device and usage info. However, where possible, we will do so in a way that doesn’t directly identify you (e.g., by user IDs or aggregated data). You have the right to object to this processing (see Section 8, your rights) if you have reasons related to your particular situation.
+
+  If any analytics tool we use goes beyond what is strictly necessary (e.g., for advertising profiling, which we currently do **not** do), we would seek consent. But as of the latest update, we do not use your data for personalized ads or third-party analytics that track you across different apps.
+
+- **Enforcing Terms and Preventing Misuse – *Legal Basis: Legitimate Interests and Legal Obligation*:**  
+  We monitor and may process data to keep the platform safe and enforce our **Terms and Conditions** (like the Acceptable Use Policy in the Terms). For example:
+  - We might use automated tools or manual review to detect prohibited content (such as misuse of the service to create deepfakes of others or pornographic content). This could involve checking images or prompts that are flagged or limiting certain prompts. (We might implement content filters in the AI generation process.)
+  - If we suspect an account is being used in violation of the Terms or law, we might review the relevant user content or logs to investigate.
+  - If necessary, we will use data to ban or suspend accounts, and to cooperate with law enforcement requests.
+  
+  The legal basis is our **legitimate interest** in protecting our service, our users, and the public from harm (GDPR Art 6(1)(f)). If we have to process special data (like biometric) for this purpose (e.g., to identify that someone is uploading someone else’s face repeatedly to harass them), we would do so only if strictly necessary and likely rely on reasons of substantial public interest (like preventing illegal acts) or explicit consent if appropriate. Also, if we become aware of content that is clearly illegal (e.g., child sexual abuse material), we have a **legal obligation** to report it and will comply (this is also in legitimate interest and public interest to fight crime).
+
+- **Legal Compliance – *Legal Basis: Legal Obligation*:**  
+  We process and retain certain data to comply with our legal obligations. This includes:
+  - **Financial/Tax Regulations:** Storing transaction records, invoices, and related customer info as required by tax law (usually for a certain number of years).
+  - **Data Protection Laws:** Responding to data subject requests (we would need to verify your identity, which may involve checking information we have like your email or ID).
+  - **Regulatory Compliance:** If applicable laws require us to collect certain info (for instance, if age verification laws applied, we might have to collect date of birth, which currently we do not beyond self-attestation by agreeing to Terms).
+  - **Law Enforcement and Court Orders:** If we are presented with a lawful subpoena or court order, we may need to provide certain data. We will only do so after verifying the legality of the request and within the bounds of the law.
+
+  The legal basis here is **compliance with a legal obligation** (GDPR Art 6(1)(c)). If the legal obligation pertains to special categories of data, we ensure it falls under an allowed condition (e.g., necessary for legal claims or required by substantial public interest law).
+
+- **Other Purposes (with Notice/Consent):** If we ever need to use your data for a purpose **significantly different from the ones listed above**, we will update this Privacy Policy and, if required, notify you and/or obtain your consent. For example, if we in the future wanted to use some of your uploaded photos to train a new AI model to improve our service, we would only do so with explicit consent (opt-in). By default, we do **not** use your content for any purpose outside of providing the service to you and improving your experience.
+
+We make an effort to **minimize** data usage. For instance, if we can achieve a purpose with anonymized or aggregated data, we will prefer that. When we rely on consent, you have the right to withdraw that consent at any time (see Section 8). When we rely on legitimate interests, you have the right to object. Keep in mind that if you withdraw consent or object to certain processing, we might not be able to provide some functionalities of the App.
+
+## 4. How We Share Your Data
+
+We do **not** sell your personal data to third parties. However, we do share some of your information with third parties in certain circumstances, primarily to run the App’s core functions (service providers) or where required by law. The categories of recipients of personal data are:
+
+- **Service Providers (Data Processors):** We use trusted third-party companies to help us operate and improve **Imagine You**. These providers only process your data on our behalf and under our instructions (they are bound by Data Processing Agreements in compliance with GDPR). Key service providers for **Imagine You** include:
+  - **Google Firebase (Google Cloud Platform):** We use Firebase for several purposes:
+    - *Authentication:* Firebase Authentication manages user sign-ups and logins (using your email/password or third-party logins). Firebase stores your authentication credentials and provides us secure user IDs.
+    - *Database/Storage:* We may use Firebase Firestore or Realtime Database to store user data (like account info, settings, links to your generated images) and Firebase Cloud Storage to store files (like the photos you upload and the generated images). These services might store data on servers located in the United States or EU (we can configure regions; we will aim to use EU servers for EU users where feasible, but some services like Firebase Auth might default to US).
+    - *Analytics and Crash Reporting:* We might use Firebase Analytics and Crashlytics to collect usage stats and crash logs.
+    Firebase (owned by Google) acts as a data processor for us. Google’s relevant subsidiaries (Google LLC in the US or Google Ireland Limited for EU) will handle the data under the Firebase terms. We have ensured Firebase is used in compliance with GDPR (including, as needed, Standard Contractual Clauses for data transfer – see Section 7).
+  
+  - **Replicate (AI Processing Service):** **Replicate, Inc.** is a service based in California, USA, which runs machine learning models on the cloud. When you request an image generation in **Imagine You**, our servers send your input (your photo and prompt) to Replicate’s API. Replicate processes the data and returns the generated image. In this process:
+    - Your input images are temporarily stored on Replicate’s servers to perform the computation. The output images are then sent back to us.
+    - Replicate may retain the images for a short period for debugging or to improve their service, as per their privacy practices, but they claim not to use customer data to train models without permission.
+    - We have a data processing agreement with Replicate to ensure they handle the data lawfully and securely. This includes Standard Contractual Clauses since the data goes to the US (see Section 7).
+    - Replicate is **only allowed to use your data to provide the service to us** (i.e., generate your image) and not for other purposes.
+    - **Important:** By using the App, you understand and consent that your photos and prompts will be sent to Replicate’s servers in order to generate the requested outputs.
+  
+  - **Stripe (Payment Processor):** If you subscribe, your payment is processed by **Stripe**. Stripe may process your payment details (card number, etc.) directly via the app or via a web checkout. We share with Stripe:
+    - Your account identifier or email (to tie the payment to your account),
+    - The amount to charge and currency,
+    - Possibly your name and country for billing.
+    Stripe in return provides us with confirmation of payment and possibly some details (like card type, expiration, last 4 digits, billing email) which we may store. Stripe is a processor in that it processes transactions for us, but it also has certain independent responsibilities for fraud prevention, etc.
+    Stripe’s services for European users are often handled by Stripe Payments Europe (in Ireland), and for others by Stripe, Inc. (USA). We have a Data Processing Addendum with Stripe including EU Standard Contractual Clauses to cover data transfers.
+    Stripe will not use your personal information for any purpose other than to process payments, except as permitted in their own privacy policy (e.g., they might use data to improve their services, but not to market to you unless you have a direct relationship with them).
+  
+  - **Apple App Store / Google Play:** If you use Apple’s In-App Purchase or Google Play Billing for the subscription, those companies process the payment and we don’t receive your card info. We do receive from Apple/Google information such as an anonymized user ID or receipt, and info on whether you have an active subscription. Apple and Google act as service providers in facilitating the transaction, but also as independent controllers of the data needed for their app store operations. They each have their own privacy policies:
+    - Apple may provide us with details like your country region (for pricing), and whether you canceled or renewed. Apple does not give us your name or full payment info for in-app purchases.
+    - Google Play similarly provides a transaction ID and subscription status.
+    This sharing is inherent in making purchases via those platforms.
+  
+  - **Cloud Hosting and Backend**: Our backend servers (that coordinate data between Firebase, Replicate, etc.) may be hosted on a cloud platform (such as Heroku, AWS, or Google Cloud). These servers will process and route information between your device and our providers. Any such host will be under a processing agreement and will only use data as needed to perform the hosting service. For example, if we use Heroku (Salesforce), your data might pass through their servers but they won’t have rights to use it beyond providing infrastructure.
+  
+  - **Email/Communication Tools:** If we send emails, we might use an email service provider (like Gmail SMTP or SendGrid). If you contact us by email, your email will be processed by our email service (which for Gmail means Google’s servers). These providers will handle your communications as processors (or sometimes as separate controllers for delivering email) but won’t use content of communications except as needed for service delivery.
+  
+  - **Analytics Tools:** If we use third-party analytics (like Google Analytics for Firebase or similar) within the app, those tools will collect data from your device. We configure them not to collect more data than necessary. Google Analytics for Firebase, for instance, might collect app instance IDs and events. We treat these tools as processors assisting us, and per Google’s policies, data from Firebase Analytics is not used for Google’s own ad purposes unless we separately enable integration (which we have not).
+  
+  In all cases with service providers, we strive to only share the minimum data necessary for them to perform their function. We also contractually require that they **protect your data** and **not disclose it** or use it for unrelated purposes.
+
+- **Within Our Organization:** Since currently “Markatis Development” is a sole trader operation, there is no large organization. If in the future there are employees, contractors, or affiliated entities helping operate **Imagine You**, they may access personal data on a need-to-know basis, subject to confidentiality. For example, a support contractor may access your account info to help with a request, or a developer might handle data as part of debugging an issue. All such persons will be bound by appropriate confidentiality and data protection obligations.
+
+- **Legal Requirements and Safety:** We may disclose personal data if required to do so by law or in the good-faith belief that such action is necessary to:
+  - Comply with a legal obligation, legal process, or lawful request (for example, to comply with a court order, subpoena, or a request from a regulatory authority or law enforcement).
+  - Protect and defend our rights, property, or safety, or that of our users or others. For instance, we might provide information to law enforcement agencies if we believe it’s necessary to investigate illegal activities (such as misuse of the App for criminal purposes).
+  - Prevent or investigate possible wrongdoing in connection with the App. If someone is attempting to hack or misuse our services, we may share data with security consultants or law enforcement.
+  - Enforce our Terms and address violations.
+  
+  We will carefully review any request to ensure it has a proper legal basis and only the necessary data will be disclosed. If we receive a request for user data from a government authority, our policy is to notify the user (for example via the email on file) before disclosing information, unless legally prohibited or unless there is an emergency risk to life.
+
+- **Business Transfers:** If we ever plan to **sell, merge, or transfer** our business or assets (for example, if Markatis Development transitions to a registered company, or if Imagine You is acquired by or merged with another company), your personal data might be part of that transaction. We would ensure that any prospective buyer or new controlling entity is bound to respect your personal data in a manner consistent with this Privacy Policy.
+  - In such an event, we will notify you (e.g., via email or a notice in the App) of the change in control and the choices you may have. If you do not wish your data to be transferred to a new owner, you may request deletion of your data (to the extent we can honor that consistent with the new controller’s legal obligations).
+
+- **Aggregated or De-Identified Data:** We may share data that has been aggregated or anonymized in such a way that it no longer can be used to identify you. For example, we might publish usage statistics (like “X images generated in the last month” or “average number of sessions per user”) or share anonymized insights with research partners or in marketing. This kind of data does not contain personal information and is not subject to privacy laws in the same way because it’s not identifiable.
+
+- **Third-Party Features:** The App might occasionally include links or integrations to third-party services that collect information independently (for example, a link to our Twitter or a built-in web browser to view our support page). If you click through to external websites or services, those are governed by their own privacy policies and we are not responsible for their data handling. We encourage you to review the privacy policies of any third-party services you access.
+
+To reiterate, **we do not share or disclose your personal data to third parties for their own marketing or advertising purposes** without your explicit consent.
+
+## 5. International Data Transfers
+
+**Location of Processing:** We (and many of our service providers) are based in the **United Kingdom** or other countries outside the European Economic Area (EEA). In particular, some of your data will be transferred to and processed in the **United States** because:
+- Our AI service partner **Replicate** is in the USA (California).
+- We use **Stripe** which might process data in the US (even if you’re in UK/EU, Stripe may transfer to US for processing).
+- We use **Firebase (Google)**, and while Google has EU data centers, certain Firebase services (like Authentication) may involve US servers and Google’s global infrastructure. Google has stated they will comply with EU data law requirements via SCCs and the Data Privacy Framework, etc.
+- If you use Apple, Apple Inc. (USA) may handle some data (e.g., your App Store account info) when you make purchases, though Apple also has EU presence.
+
+**Risks of Overseas Transfer:** When personal data is in a jurisdiction outside of your own, it may be accessible to foreign courts, law enforcement, and national security authorities according to the laws in that jurisdiction. The data protection laws of those countries might be different or less protective than those in your home country.
+
+However, we take steps to ensure that **appropriate safeguards** are in place to protect your data when it is transferred internationally, as required by GDPR and UK GDPR.
+
+**Safeguards:** For transfers from the UK/EEA to countries not deemed “adequate” by the European Commission or UK authorities (like the US, which currently is not fully deemed adequate by the EU except for participants in the EU-US Data Privacy Framework), we rely on one or more of the following legal mechanisms:
+
+- **Standard Contractual Clauses (SCCs):** These are standardized contractual terms approved by the European Commission (and adopted by the UK ICO with a UK addendum) that impose data protection obligations on the recipient of the data outside the EEA/UK. We have SCCs in place with our key service providers that process EU/UK personal data in the US. For example, our agreements with **Google (Firebase)**, **Stripe**, and **Replicate** include SCCs to cover the transfer of personal data from the EEA/UK to the US. This means these providers are contractually bound to protect your data to GDPR standards even when it’s processed in the US.
+- **UK Addendum / IDTA:** For UK personal data, we implement the UK International Data Transfer Addendum to the SCCs (or the UK International Data Transfer Agreement, if used) as required, ensuring transfers out of the UK are safeguarded similarly to EU transfers.
+- **EU-U.S. Data Privacy Framework (DPF):** Some of our U.S.-based providers may be certified under the new Data Privacy Framework program as of 2023, which is an approved mechanism for data transfer from the EU to the US. For instance, **Google** and **Stripe** have historically been part of Privacy Shield and likely have joined the DPF. If they are certified under the DPF (or if they join the UK extension of it once available), this provides an additional recognized safeguard. We will still maintain SCCs as needed, but note that companies like Google and Stripe committing to DPF principles adds a layer of assurance.
+- **Binding Corporate Rules (BCRs):** Not applicable to us directly (since we’re not a multinational company with our own BCRs), but note Google and some others have BCRs approved for internal transfers.
+- **Explicit Consent for Transfer:** In the context of certain data, we also rely on your explicit consent for transferring that data to the US to be processed by our partners (GDPR Art 49(1)(a)). By agreeing to this Privacy Policy and using the feature (e.g., uploading your photo to generate an image), you consent to your data (including any biometric data in your photo) being transferred to and processed in the United States by Replicate and other relevant processors. We use this basis mainly for sensitive data (biometric) where needed, but still ensure SCCs are in place.
+- **Necessary for Contract:** In some cases, a transfer might be justified as necessary for the performance of the contract between us and you (GDPR Art 49(1)(b)). For instance, if you’re located in the EU and want to use our App which inherently must send your data to our servers in the US to function, one could argue that the transfer is necessary to deliver the service you explicitly requested. However, we generally still rely on SCCs and consent rather than just this clause.
+
+**Data Privacy Framework Acknowledgment:** We acknowledge the adoption of the EU-U.S. Data Privacy Framework (DPF) in 2023. Where our processors are DPF-certified, we consider them as providing adequate protection under EU law. For UK, an extension (UK-U.S. DPF) is expected; until then, we use SCCs with the UK addendum.
+
+**Copies of Safeguards:** If you would like more information about our international data transfer safeguards, such as a copy of the relevant SCCs, you can contact us (see Contact section). We may redact certain commercial or irrelevant terms, but can confirm the commitments.
+
+**Storage Locations:** 
+- Firebase: We may choose regional settings. For EU users, where feasible, we might store data in EU data centers (e.g., Firestore EU region, etc.). However, some services like Auth will still involve US. 
+- Replicate: Data goes to their servers which are likely in the US (they use cloud infra, possibly AWS us-west etc.).
+- Stripe: EU transactions may be handled by Stripe’s EU infrastructure but still accessible by US entity.
+- Our servers: If hosted in e.g. EU or US depending on architecture; we’ll lean to EU hosting for user data if possible, but can’t guarantee all data stays in EU due to the above providers.
+
+**Your Choices:** By using the App, you **consent to the transfer of your information to the United States and other jurisdictions as described.** We understand that not everyone may be comfortable with their data in other countries; if you do not want your personal data transferred or stored outside of your country, you should not use the App (since such transfers are integral to the service). We do our best to protect all data, no matter where it is processed.
+
+## 6. Data Retention
+
+We retain personal data only for as long as necessary to fulfill the purposes for which it was collected, or to meet legal and business requirements. After that, we will securely erase, anonymize, or isolate the data, as appropriate. Here’s how we handle retention for different types of data:
+
+- **Account Data:** We keep your account information (like your email, profile info, and associated data) for as long as your account exists. If you decide to delete your account or if your account remains inactive for an extended period, we will initiate deletion of your account data. Specifically:
+  - If **you delete your account** (through the App or by sending us a request), we will remove or anonymize personal data associated with your account within a reasonable time frame (generally within 30 days, unless otherwise required for legal reasons). Some residual data may persist in backups for a short period but will be overwritten eventually.
+  - If your account is **inactive**, we may contact you after, say, 12-24 months of inactivity to ask if you want to maintain the account. If we receive no response, we might delete your account data after providing notice.
+  
+- **User Uploaded Photos:** The photos or images you upload are stored to provide the service. Our retention practices for images are:
+  - If the App does not explicitly provide a gallery or storage, we will delete uploaded images from our servers soon after processing is complete and the result is delivered (for example, within 24-48 hours). They may remain in transient cache or logs briefly for technical reasons (and possibly stored longer in Replicate’s systems if they keep it, but we’ll ensure they delete in their retention schedule).
+  - If the App does provide a feature to view your past uploads or use them again, we will store the images until you delete them or delete your account. You would have the ability to remove an uploaded photo from within the app.
+  - In any case, we do not intend to keep your personal photos indefinitely without purpose. If storage is needed for functionality, it stays; otherwise, we purge it.
+  
+- **Generated Images:** For any AI-generated images we store on your behalf:
+  - If there’s a user gallery/ history, we keep those images until you delete them or your account is deleted (similar to uploaded photos). You should be able to delete specific images, and then we will remove them from our active databases (with possible short-term backup retention).
+  - If no gallery is provided, generated images might be cached temporarily for delivery and then not stored server-side long-term beyond your session.
+  - We might keep generated images in an anonymized manner for improving our service (for example, analyzing outputs to improve algorithms), **only if lawful (with consent or legitimate interest)**. If this happens, such images would be stripped of user identifiers or aggregated.
+  
+- **Logs and Usage Data:** 
+  - Basic logs (IP addresses, device info, event logs) are typically retained for a short period for debugging and monitoring (e.g., a few weeks or months). We may keep security-related logs (like sign-in history, IP addresses used) for longer (several months up to a year) in case we need to investigate fraud or malicious activity.
+  - Crash reports are kept as long as needed to fix the issue and for trend analysis (maybe 1-2 years of data to see patterns).
+  - Analytics data may be stored in aggregate form indefinitely (non-personal), but user-level analytics is either anonymized or deleted after some months. If we have user-specific analytic profiles (unlikely), we’d likely reset or delete identifiers after 14 months (a common default for Google Analytics).
+  
+- **Subscription and Payment Records:** 
+  - Financial transaction records will be retained for the period required by law for financial and tax records. In the UK, for example, we might need to keep records for **6 years** after the end of the financial year they relate to (for tax/audit). Similarly for EU VAT, etc.
+  - Even if you delete your account, we may retain invoices, receipts, and transaction logs as required by law, but these will be kept separately and with limited access.
+  - Stripe might keep its own records per legal requirements as well.
+  
+- **Communications:** If you contact support or we have email correspondence:
+  - We may retain those communications for a period necessary to address your issue and to have a history of what was communicated in case of follow-up. Typically, support emails might be kept for a year or two after resolution, then deleted, unless needed for legal purposes (e.g., evidence of a transaction or harassment report, etc.).
+  - If you opt into any newsletter (in future), we keep your email on the list until you unsubscribe. If you unsubscribe, we may keep a record of your request to not be emailed (to make sure we don’t accidentally re-add you) per applicable laws.
+  
+- **Legal Holds:** If any data is subject to a legal hold or needed for a legal dispute, we will retain it until the hold is lifted or the matter resolved, even if it would normally be deleted.
+
+After the relevant retention period, we will either delete your personal data or anonymize it (so it can no longer be associated with you). Anonymized data may be retained longer for statistics or improvements without further notice.
+
+**Backup Policy:** Our systems may have routine backups. Personal data deleted from our primary systems might remain in encrypted backups for a certain retention cycle (e.g., backups retained for 30-90 days). We have policies to not restore personal data from backups except in disaster recovery scenarios. Backup data is protected and eventually falls out of retention and is overwritten.
+
+**User Controls:** You have the ability to delete certain data yourself:
+- You can delete images or content within the app if such feature exists.
+- You can request account deletion (which will cover most of your data).
+- You can unsubscribe from emails directly.
+
+If you believe we are retaining some data longer than we should, please contact us. We will review and delete it if appropriate and not legally required to keep.
+
+## 7. Your Rights and Choices
+
+Under UK and EU data protection laws, you have several rights regarding your personal data. We are committed to honoring these rights. Please note that these rights are not absolute – certain exceptions or conditions may apply – but we will respond to any valid request within the timeframes set by law (generally within one month, extendable by two further months in complex cases, in which case we will inform you of the delay).
+
+Here are your key rights:
+
+- **Right to Access:** You have the right to request confirmation of whether we process personal data about you, and if so, to request a copy of that personal data along with certain information about how we use it. This is commonly known as a “Data Subject Access Request.”  
+  **How to exercise:** Contact us at **privacy@markatis.com** with a request for access. We will verify your identity (to ensure we don’t give your data to someone else) and then provide you with the information. Typically, this will include the data we have on file (account info, content, etc.) and relevant details about processing. We will usually provide this electronically (e.g., via email).
+
+- **Right to Rectification:** If any of your personal data that we have is inaccurate or incomplete, you have the right to have it corrected.  
+  **How to exercise:** You can often correct basic profile info through the App (if editable). For other data, or if you need assistance, contact us. For example, if you find that we have misspelled your name or you changed your email, we can update our records.
+
+- **Right to Erasure (Right to be Forgotten):** You have the right to request that we delete your personal data. We will do so if there is no lawful reason for us to continue processing it. This right is not absolute – for example, if we have an ongoing contractual relationship (you have an active subscription) or a legal obligation to keep some data (tax records), we may not delete those specific pieces until that obligation is fulfilled. But we will remove what we can and isolate the rest.  
+  **How to exercise:** The easiest way is often to delete your account through the App’s settings (if available). This triggers deletion of data associated with your account. If the App doesn’t have a one-click delete, please email us a deletion request. We might ask to confirm (since deletion is irreversible). Once confirmed, we’ll delete your user data from active systems and confirm when completed. Keep in mind, as noted, some data (like purchase records) we might retain as required by law, but we’ll inform you of that if applicable.
+
+- **Right to Restrict Processing:** You can ask us to restrict (pause) the processing of your data under certain circumstances. For example, if you contest the accuracy of data and we are verifying it, or if you objected to processing and we are considering that, or if processing is unlawful but you don’t want full erasure, or if we no longer need the data but you need it for a legal claim. While processing is restricted, we will store your data but not use it.  
+  **How to exercise:** Explain in an email what processing you want restricted and why. For instance, “please don’t use my data for analytics” or “don’t delete my data that I asked to be erased yet because I need it for a legal claim.” We will evaluate and inform you if we implement the restriction. We will then only process it with your consent or for legal reasons during the restriction period.
+
+- **Right to Data Portability:** For data you provided to us, you have the right to get that data in a structured, commonly used, machine-readable format, and you have the right to transmit that to another controller, or have us transfer it for you if technically feasible. This right applies only to data processed by automated means, and only where the legal basis was your consent or performance of a contract. In practical terms, this could include your account data or content you uploaded. (It may not cover derived data or internal analytics.)  
+  **How to exercise:** Contact us specifying that you want a copy of your data in a machine-readable format (for example, JSON or CSV file). We will provide the applicable data (likely similar to what would be provided under access request, but in a more raw format). If you want us to send it directly to another service and it’s technically possible (e.g., another app has an import feature), we can consider it, but usually we’ll give it to you to handle.
+
+- **Right to Object:** You have the right to object to our processing of your personal data in certain situations:
+  - If we are processing your data based on **legitimate interests** (Art 6(1)(f)), you can object to that processing **on grounds relating to your particular situation**. Then we must stop the processing unless we have compelling legitimate grounds that override your interests, or the processing is for legal claims.
+  - If we are processing your data for **direct marketing** purposes (which we currently do not), you can object at any time and we must stop.
+  
+  This could apply to our **analytics/improvement** processing or **content filtering** etc., which we base on legitimate interests. If you object, we will consider your objection. For example, you can object to data being used for improvement analysis if you feel it impacts your privacy – we would likely then exclude your data from such analysis without question if possible (or as a courtesy even though our grounds might be strong).  
+  **How to exercise:** Contact us stating specifically what processing you object to. e.g., “I object to you processing my usage data for analytics purposes” or “I object to any processing of my photos beyond generating my images.” We will respond with our decision and any actions taken. Note: If you object to processing that is essential (like using your photos to generate images – which is the service itself), then we may inform you that we cannot provide the service unless you withdraw the objection or we might have to terminate the service for you (since we can’t fulfill the contract otherwise). If it’s non-essential processing, we’ll likely honor it.
+
+- **Right to Withdraw Consent:** In cases where we rely on your **consent** to process data (for example, processing your biometric data or sending certain communications), you have the right to withdraw that consent at any time. Withdrawal of consent won’t affect the lawfulness of any processing we did based on your consent before withdrawal. If you withdraw consent, we will stop the processing that was based on consent.
+  - For example, you gave consent for processing your photo (biometric) — if you withdraw it, we will stop processing any future photos of you. But note: withdrawing consent for processing images essentially means you can’t use the image-generation feature (since we can’t do it without processing your photo). You have the choice not to use it further. We might also delete any stored images if you withdraw consent for their continued storage.
+  - If you had consented to receive a newsletter, you can withdraw by unsubscribing.
+  **How to exercise:** For biometric/photo processing, essentially it’s tied to using the feature – if you no longer want us to process such data, you’d stop using that feature and can request we delete your photos. You can also explicitly email “I withdraw consent for processing of my biometric data (photos)” – we will then delete your uploaded photos and not use them.  
+  For marketing, use the unsubscribe link or email us.  
+  For anything else, just inform us which consent you withdraw.
+
+- **Right not to be subject to Automated Decision-Making:** You have rights related to **automated decision making and profiling**. Under GDPR, if a decision is made about you that is based solely on automated processing (with no human involvement) and it produces legal effects concerning you or similarly significantly affects you, then you have the right to have a human intervene, express your point of view, and contest the decision. 
+  - In the context of **Imagine You**, we do not make any such decisions **about you** with legal or significant effect (like we’re not algorithmically approving/denying loans or something). The AI generates images based on your input, but that’s a service you requested, not a decision about you.
+  - Any moderation (like blocking certain content) might involve automated components (like filtering certain keywords) but ultimately account bans or such have human review. And those decisions typically wouldn’t be solely automated in a way that triggers this right.
+  - If you feel any automated process in the App is affecting you significantly, let us know and we will explain and accommodate your rights.
+
+- **Right to Complain to a Supervisory Authority:** If you have concerns about our data handling practices, you have the right to lodge a complaint with a data protection supervisory authority. 
+  - In the UK, that is the **Information Commissioner’s Office (ICO)**. (Website: ico.org.uk)
+  - In the EU, you can contact the supervisory authority in the Member State where you live, work, or where the alleged infringement occurred. For example, in Ireland (where some of our processing via Stripe/Google might be overseen) it’s the Data Protection Commission; in France, CNIL; in Germany, each state has one (e.g., Bavarian DPA), etc.
+  - We would appreciate the chance to address your concerns directly before you do this, so please feel free to contact us first. But you are fully within your rights to go to the authorities at any time.
+
+**How to Contact Us for Rights:** The central contact for exercising your rights is **privacy@markatis.com**. You can also write to our postal address provided in Section 1 (attention: Data Protection). Please clearly state what you are asking for. We may need to ask for additional information to confirm your identity (especially for sensitive requests like access or deletion). This is to protect your privacy – we wouldn’t want to accidentally give your data to someone else claiming to be you.
+
+We will respond to your request as soon as possible, generally within one month. If we cannot fulfill your request (due to an exemption or conflict with other obligations), we will explain our reasoning and any options you have.
+
+**Examples:** 
+- If you ask for a copy of your data, we might email you a JSON file with your profile, and links to images etc.
+- If you ask to delete your data, we will confirm and then wipe your account and send a confirmation when done.
+- If you object to analytics, we might turn off data collection for your user ID in our analytics systems going forward.
+
+We have designed the App to give you control and transparency. We will not discriminate against you for exercising any of these rights (the service might not function without certain data, but we won’t deny you the use of other features just because you made a data request).
+
+## 8. Data Security
+
+We take the security of your personal data seriously and implement a variety of technical and organizational measures to protect it from unauthorized access, disclosure, alteration, or destruction. However, please be aware that no method of transmission over the internet or electronic storage is completely secure, so while we strive to protect your information, we cannot guarantee absolute security.
+
+**Security Measures We Implement:**
+- **Encryption:** We use encryption to protect data in transit and at rest. For example, communication between the App and our servers (and with third-party services like Firebase or Replicate) is secured via HTTPS/TLS encryption. Sensitive data (like passwords) are stored in hashed form by Firebase Auth. Any stored photos or images are typically kept in secure cloud storage buckets with access controls.
+- **Access Controls:** We limit access to personal data to those who have a “need to know.” This means only the developer (and any authorized personnel) who need to handle the data for the purpose of running the service can access it. For example, the database is protected by authentication and network rules to ensure only our application and admin can query personal data. We also ensure our service providers have strong security practices (Google, Stripe, etc., are industry leaders in security).
+- **Authentication and Account Security:** If the App supports multi-factor authentication or other security features, we encourage you to use them. We store passwords only in hashed form (you set it via Firebase, which never stores plaintext). We also protect your sessions via secure tokens.
+- **Testing and Updates:** We regularly update our software and dependencies to address security vulnerabilities. We may conduct periodic security reviews or audits of our systems. If we become aware of a security issue, we will act promptly to fix it.
+- **Anonymization:** Where possible, we anonymize or pseudonymize data, especially for analytics (e.g., using user IDs not real names, or aggregating info so it’s not tied to individuals).
+- **Backups:** We maintain backups in a secure manner. Backups are encrypted and stored offsite to prevent data loss, and access to backups is restricted.
+- **Employee/Contractor Training:** If we involve others in operations, they will be trained on data protection and must abide by confidentiality agreements.
+
+**Your Responsibilities:** You also play a role in keeping your data secure:
+- **Account Credentials:** Keep your username and password confidential. Do not share them. Use a strong password unique to **Imagine You**. If you suspect your account has been compromised, please change your password immediately and contact us.
+- **Device Security:** Protect your devices with a passcode or biometric lock so that others cannot easily use your logged-in apps. Keep your operating system updated.
+- **Phishing Awareness:** We will never ask you for your password via email or unsolicited communications. Beware of phishing attempts by others pretending to be us. Always ensure that communications from us are legitimate (e.g., coming from @markatis.com email).
+- **Logout:** If you use the App on a shared device, make sure to log out when done to prevent others from accessing your account.
+
+**Data Breach Procedures:** Despite best efforts, if a **security breach** occurs that poses a high risk to your rights and freedoms (for example, a data leak of personal info), we will follow applicable laws in responding. This includes:
+- Containing and investigating the breach immediately.
+- Notifying the relevant supervisory authority (ICO in UK, or applicable EU authority) within 72 hours if required by law.
+- Informing affected users without undue delay if the breach is likely to result in a high risk to you (so you can take protective steps), unless technical measures (like encryption) meant the data is unintelligible to unauthorized parties.
+- We will also take steps to mitigate any harm and prevent future incidents.
+
+## 9. Children’s Privacy
+
+As stated earlier, **Imagine You is not intended for children under the age of 16**. We do not knowingly collect or solicit personal data from anyone under 16. If you are under 16, please do not attempt to use the App or send any information about yourself to us. We cannot always verify user age, but we do rely on age declarations and other checks where possible.
+
+**Parental Consent for Minors 16-17:** If you are between 16 and the age of legal majority in your country (typically 18), you should review these terms and the Privacy Policy with a parent or guardian to ensure you understand them. Some jurisdictions require parental consent for processing personal data of minors even if above a certain age. Our policy is to set 16 as the minimum and assume users 16 or older are able to consent to data processing (in line with GDPR which allows Member States to set a lower age limit no below 13; the UK has 13 for ISS consent, but we choose 16 as a stricter limit for usage).
+
+**If We Learn of Data from a Child:** If we discover that we have inadvertently collected personal data from a child under 16:
+- We will promptly delete that data from our records. For example, if a user signs up lying about age and we later find out (via support request or otherwise) they are 15, we will close the account and remove data.
+- If deletion is not immediately feasible (because the data is in backup or needed for an ongoing issue), we will ensure it is isolated and not further processed until deletion.
+- We will also block the child from further access to the App, unless and until appropriate consent is provided or they come of age.
+
+**Parental Rights:** If you are a parent or guardian and you believe we have collected personal information from your child under 16, please contact us at **privacy@markatis.com**. We will promptly investigate and address the issue. You have the right to request that we delete such information (and we will comply as described).
+
+**Teens 16-17:** Even though we allow usage at 16+, we recognize that users aged 16 or 17 are still minors under many laws. We treat all users’ data with high importance, but we especially encourage young users to be mindful of what they share. **Imagine You** processes images, so if a 16-year-old uploads their photos, we protect that data as described. We do not use it for anything other than generating their outputs and associated necessary processing.
+
+We do not direct any content specifically at children. The App’s content is largely user-driven (your own images). We do have safeguards to prevent generation of inappropriate content (especially anything involving minors; for example, any attempt to generate disallowed content will be blocked as per Terms).
+
+## 10. Consent and Agreement to Data Processing
+
+For certain processing activities, we rely on your **consent**. By accepting this Privacy Policy and using the **Imagine You** App, **you explicitly consent to the following:**
+
+- **Processing of Biometric Data:** You understand that when you upload photos of yourself or others, these images may contain biometric identifiers (such as facial features). You **explicitly consent** to the processing of these images (including any biometric data therein) for the purpose of providing the App’s services – specifically, to generate AI-modified images as requested. You acknowledge that this processing may involve analysis by AI algorithms to transform your image, but that we do not use your biometric data to identify you or verify your identity. The biometric data (your facial features in the photo) is used solely to create the outputs you requested and is handled in accordance with this Privacy Policy. You have the right to withdraw this consent at any time (see Section 7), but doing so will mean we cannot continue to provide the AI image generation service for you.
+
+- **International Transfer of Data:** You **consent** to your personal data being transferred and stored in countries outside of your own, including the United States, as described in Section 7 (International Data Transfers). In particular, you consent to your images and any associated data being sent to our third-party processor **Replicate** in the U.S. for the purposes of generating your images, and to other processors like Google and Stripe that may handle your data in the U.S. We have taken steps to safeguard your data during these transfers (SCCs, etc.), and by consenting, you acknowledge you are aware of the potential risks of such transfers (that different jurisdictions have different data laws) and still agree to the transfer for the sake of using the service. You can withdraw consent for international transfers, but note that since our infrastructure relies on them, we may not be able to provide the service if you do.
+
+- **Use of Personal Data as Described:** You agree and consent that we may collect and use your personal data as outlined in this Privacy Policy. This includes using your data to create an account, process payments, generate content, send communications, and all other actions described. Where we rely on consent (like for sending optional communications or for processing sensitive data), we will only do so within the scope of this policy. We will not deviate from these uses without updating you and obtaining new consent if required.
+
+- **User Agreements in App:** We may present you with an in-app consent dialog or checkbox (for example, when first uploading a photo) to reaffirm your consent to these specific data processing activities. By clicking “I Agree”, “Accept”, or similar, you are confirming your consent as per this section. Even if we do not show a separate prompt, your continued use of the App after reading this policy implies your consent.
+
+If you have any questions about the scope of your consent or wish to clarify any specific usage, please contact us. We want to ensure you are fully informed and comfortable with how we handle your data.
+
+Remember: **You can withdraw your consent at any time.** If you withdraw consent for processing your photos or other data, we will stop the processing in question and delete the relevant data (unless another legal basis allows us to keep it). Withdrawing consent will not affect the legality of processing that happened before withdrawal.
+
+By using **Imagine You**, you also agree to our **Terms and Conditions**, which include provisions related to data (like a requirement that you have consent of individuals in photos you upload, etc.). The Terms and this Privacy Policy together form a comprehensive agreement regarding your use of the App and how your data will be handled.
+
+## 11. Changes to this Privacy Policy
+
+We may update or revise this Privacy Policy from time to time to reflect changes in our practices, technologies, legal requirements, or other factors. When we make changes, we will:
+- Change the “Last updated” date at the top of this Privacy Policy.
+- Notify you of significant changes. We may do this through the App (via a pop-up or notification), by email (to the address associated with your account), or by posting a notice on our website **www.markatis.com**.
+
+Significant changes might include, for example, any changes in the types of data we collect, the purposes of processing, or your rights regarding that data. Minor changes (like clarifications or typographical corrections) may not be broadly notified, so we encourage you to review this Privacy Policy periodically.
+
+**Your Continued Use Constitutes Acceptance:** If you continue to use **Imagine You** after the Privacy Policy update takes effect, it means you accept the revised policy. If you do not agree with the changes, you should stop using the App and you may request deletion of your data.
+
+For any material changes that involve new processing of your personal data that requires your consent, we will obtain your consent as needed. For instance, if we were to start processing your data for a new purpose not covered by your original consent, we would ask for your consent to that new use.
+
+We will maintain an archive or summary of previous privacy policy versions upon request, so you can see how our practices have evolved.
+
+## 12. Contact Us
+
+If you have any questions, concerns, or requests regarding this Privacy Policy or the data we hold about you, please do not hesitate to contact us:
+
+- **Email:** **privacy@markatis.com**  
+- **Mail:** Matthaios Markatis (Markatis Development) – Privacy Inquiry  
+  123 Ash Crescent  
+  Eckington, Derbyshire S21 4AD  
+  United Kingdom
+
+We will do our best to respond promptly and address your inquiry. Your privacy is important to us, and we welcome feedback or questions that help us clarify our commitments and improve our practices.
+
+**Thank you for trusting Imagine You.** We are dedicated to safeguarding your personal data while you enjoy creating imaginative AI-generated images. Happy imagining, securely and privately!
+
+```

@@ -4,6 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+// Add interface for navigation links
+interface NavLinkData {
+  title: string;
+  path: string;
+}
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,6 +43,13 @@ export default function Navigation() {
     { title: 'Contact', path: '/contact' },
   ];
 
+  // Nested navigation links for Imagine You
+  const isImagineYouPath = pathname?.startsWith('/imagine_you');
+  const imagineYouSublinks: NavLinkData[] = [
+    { title: 'Terms & Conditions', path: '/imagine_you/terms' },
+    { title: 'Privacy Policy', path: '/imagine_you/privacy_policy' },
+  ];
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-dark-lighter bg-opacity-80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
@@ -62,7 +75,7 @@ export default function Navigation() {
                 key={link.path} 
                 href={link.path} 
                 label={link.title} 
-                isActive={pathname === link.path}
+                isActive={pathname === link.path || (link.path === '/imagine_you' && isImagineYouPath)}
               />
             ))}
           </div>
@@ -116,10 +129,25 @@ export default function Navigation() {
               key={link.path} 
               href={link.path} 
               label={link.title} 
-              isActive={pathname === link.path}
+              isActive={pathname === link.path || (link.path === '/imagine_you' && isImagineYouPath)}
               onClick={() => setIsMenuOpen(false)}
             />
           ))}
+          
+          {/* Display Imagine You sublinks if the pathname starts with /imagine_you */}
+          {isImagineYouPath && (
+            <div className="pl-4 border-l-2 border-redAccent-lighter mt-2 space-y-3">
+              {imagineYouSublinks.map(sublink => (
+                <MobileNavLink
+                  key={sublink.path}
+                  href={sublink.path}
+                  label={sublink.title}
+                  isActive={pathname === sublink.path}
+                  onClick={() => setIsMenuOpen(false)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </nav>
@@ -132,22 +160,53 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
   // Special handling for home link - needed to ensure it only shows as active on exact '/' path
   const isActiveLink = href === '/' ? isActive && href === pathname : isActive;
   
+  // Check if this is the Imagine You link
+  const isImagineYouLink = href === '/imagine_you';
+  const isImagineYouPath = pathname?.startsWith('/imagine_you');
+  
+  // Define Imagine You sublinks here within the component scope
+  const imagineYouSublinks: NavLinkData[] = [
+    { title: 'Terms & Conditions', path: '/imagine_you/terms' },
+    { title: 'Privacy Policy', path: '/imagine_you/privacy_policy' },
+  ];
+  
   return (
-    <Link
-      href={href}
-      className={`group relative py-2 text-sm font-medium tracking-wider ${
-        isActiveLink
-          ? 'text-redAccent'
-          : 'text-gray-300 hover:text-white'
-      }`}
-    >
-      {label}
-      <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-transform duration-300 origin-left ${
-        isActiveLink
-          ? 'bg-redAccent scale-x-100'
-          : 'bg-white scale-x-0 group-hover:scale-x-100'
-      }`}></div>
-    </Link>
+    <div className="relative group">
+      <Link
+        href={href}
+        className={`group relative py-2 text-sm font-medium tracking-wider ${
+          isActiveLink
+            ? 'text-redAccent'
+            : 'text-gray-300 hover:text-white'
+        }`}
+      >
+        {label}
+        <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-transform duration-300 origin-left ${
+          isActiveLink
+            ? 'bg-redAccent scale-x-100'
+            : 'bg-white scale-x-0 group-hover:scale-x-100'
+        }`}></div>
+      </Link>
+      
+      {/* Dropdown for Imagine You section */}
+      {isImagineYouLink && (
+        <div className="absolute left-0 mt-2 w-48 bg-dark-card bg-opacity-90 backdrop-blur-md rounded-md shadow-lg overflow-hidden transform scale-0 group-hover:scale-100 transition-transform origin-top duration-200 z-50">
+          {imagineYouSublinks.map(sublink => (
+            <Link
+              key={sublink.path}
+              href={sublink.path}
+              className={`block px-4 py-2 text-sm ${
+                pathname === sublink.path 
+                  ? 'text-redAccent bg-dark-lighter' 
+                  : 'text-gray-300 hover:text-white hover:bg-dark-lighter'
+              }`}
+            >
+              {sublink.title}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 

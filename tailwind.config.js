@@ -115,7 +115,63 @@ module.exports = {
         'bounce-soft': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
         'smooth-out': 'cubic-bezier(0.23, 1, 0.32, 1)',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.300'),
+            a: {
+              color: theme('colors.purple.accent'),
+              '&:hover': {
+                color: theme('colors.purple.light'),
+              },
+            },
+            h1: {
+              color: theme('colors.white'),
+              fontWeight: '700',
+            },
+            h2: {
+              color: theme('colors.purple.accent'),
+              fontWeight: '600',
+            },
+            h3: {
+              color: theme('colors.purple.light'),
+              fontWeight: '600',
+            },
+            h4: {
+              color: theme('colors.white'),
+              fontWeight: '600',
+            },
+            strong: {
+              color: theme('colors.white'),
+            },
+            blockquote: {
+              color: theme('colors.gray.300'),
+              borderLeftColor: theme('colors.purple.DEFAULT'),
+            },
+            'ul > li::before': {
+              backgroundColor: theme('colors.purple.accent'),
+            },
+            'ol > li::before': {
+              color: theme('colors.purple.accent'),
+            },
+            hr: {
+              borderColor: theme('colors.gray.700'),
+            },
+            pre: {
+              backgroundColor: theme('colors.dark.lighter'),
+            },
+            code: {
+              color: theme('colors.purple.accent'),
+            },
+            'pre code': {
+              color: theme('colors.gray.300'),
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }; 
