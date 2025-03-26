@@ -97,4 +97,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - The Three.js library and community
 - Next.js framework
-- Tailwind CSS 
+- Tailwind CSS
+
+## Deployment
+
+For detailed information about deployment and troubleshooting, see the [DEPLOYMENT.md](./DEPLOYMENT.md) file. 
