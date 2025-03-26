@@ -8,16 +8,16 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
-console.log('🔄 Copying essential static files...');
+// Use console.log with explicit newlines for better visibility in deployment logs
+console.log('\n🔄 Copying essential static files...');
 
 // Define the output directory (should match output in vercel.json)
 const outDir = path.join(process.cwd(), 'out');
 
 // Ensure output directory exists
 if (!fs.existsSync(outDir)) {
-  console.log('⚠️ Output directory not found, creating...');
+  console.log('\n⚠️ Output directory not found, creating...');
   fs.mkdirSync(outDir, { recursive: true });
 }
 
@@ -34,15 +34,15 @@ const criticalFiles = [
 criticalFiles.forEach(file => {
   try {
     if (fs.existsSync(file.source)) {
-      console.log(`📂 Copying ${path.basename(file.source)} to output directory...`);
+      console.log(`\n📂 Copying ${path.basename(file.source)} to output directory...`);
       fs.copyFileSync(file.source, file.dest);
       console.log(`✅ Successfully copied ${path.basename(file.source)}`);
     } else {
-      console.error(`❌ Source file not found: ${file.source}`);
+      console.error(`\n❌ Source file not found: ${file.source}`);
     }
   } catch (error) {
-    console.error(`❌ Error copying ${path.basename(file.source)}: ${error.message}`);
+    console.error(`\n❌ Error copying ${path.basename(file.source)}: ${error.message}`);
   }
 });
 
-console.log('🎉 Static file copy process completed!'); 
+console.log('\n🎉 Static file copy process completed!'); 
