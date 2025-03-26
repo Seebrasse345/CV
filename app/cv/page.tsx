@@ -198,28 +198,13 @@ export default function CVPage() {
                       linkedin.com/in/matthaios-markatis
                     </a>
                   </div>
-                  <div className="flex items-center group hover:scale-105 transition-transform">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <span>123 Ash Crescent, Eckington S21 4AD</span>
-                  </div>
                 </div>
               </div>
-              
-              {/* Animated pulse effect for the red line */}
-              <div 
-                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-red"
-                style={{
-                  animation: 'pulse-glow 3s infinite ease-in-out'
-                }}
-              ></div>
             </div>
             
             {/* CV Summary */}
             <div 
-              className="px-6 md:px-10 py-8 bg-dark-lighter bg-opacity-60 animate-on-scroll"
+              className="p-8 bg-dark-card border-b border-redAccent-darker animate-on-scroll"
               id="cv-summary"
               style={{
                 transform: 'translateY(0)',
@@ -228,7 +213,7 @@ export default function CVPage() {
               }}
             >
               <p className="text-white leading-relaxed">
-                BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="text-redAccent font-semibold">theoretical physics</span> and <span className="text-redAccent font-semibold">computational methods</span>. Recently completed the <span className="text-redAccent font-semibold">IBM Data Science</span> and <span className="text-redAccent font-semibold">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="text-redAccent font-semibold">machine learning</span>, <span className="text-redAccent font-semibold">statistical analysis</span>, and <span className="text-redAccent font-semibold">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="text-redAccent font-semibold">hardware</span> and <span className="text-redAccent font-semibold">software</span>, including a fully <span className="text-redAccent font-semibold">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="text-redAccent font-semibold">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities.
+                BSc Physics graduate from the ##### ##### with robust academic foundation in theoretical physics and computational methods. Recently completed the IBM Data Science and IBM AI Engineering Professional Certificates, establishing advanced competencies in machine learning, statistical analysis, and AI engineering. Proficient in developing sophisticated engineering solutions integrating hardware and software, including a fully autonomous drone system with custom-configured flight controller and embedded software, and an IoT-based wildfire detection system utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in automation technologies, intelligent AI agents, and embedded systems. Seeking opportunities to advance technological innovation through applied AI, automation, and hardware integration in professional engineering environments.
               </p>
             </div>
             
@@ -238,117 +223,95 @@ export default function CVPage() {
               <section 
                 ref={sectionRefs.education}
                 id="education" 
-                className="mb-10 animate-on-scroll"
+                className="p-8 border-b border-redAccent-darker animate-on-scroll"
                 style={{
                   transform: 'translateY(0)',
                   opacity: 1,
-                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                  transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
                 }}
               >
-                <h2 className="section-title group">
-                  <span className="relative z-10 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-                    Education
-                  </span>
-                </h2>
+                <h2 className="section-title">Education</h2>
                 <div className="section-content">
-                  
-                  <div className="job-item mb-6 animate-on-scroll" id="education-bsc">
+                  <div className="education-item mb-8">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">BSc Physics</h3>
-                      <div className="text-gray-400 italic flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-redAccent mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                        University of Sheffield | 2020 - 2024
-                      </div>
+                      <div className="text-redAccent">2020 - 2024</div>
                     </div>
-                    <div className="text-gray-300 mb-4">2:1 Classification (Upper Second-Class Honours)</div>
+                    <div className="text-white mb-1 italic">##### ##### | 2:1 Classification (Upper Second-Class Honours)</div>
                     
-                    <div className="bg-dark-lighter bg-opacity-60 rounded-lg p-4 mb-4 hover:shadow-neon-red transition-shadow duration-300">
-                      <h4 className="text-redAccent font-semibold mb-3 pb-2 border-b border-redAccent-darker">Programming & Technical Modules</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                    <div className="mt-4">
+                      <h4 className="text-lg font-semibold text-redAccent mb-2">Programming & Technical Modules</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-4">
+                        <div className="flex justify-between">
                           <span>Advanced Programming in Python</span>
-                          <span className="text-redAccent font-semibold">82%</span>
+                          <span className="text-redAccent">82%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Programming in Python</span>
-                          <span className="text-redAccent font-semibold">78%</span>
+                          <span className="text-redAccent">78%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Physical Computing</span>
-                          <span className="text-redAccent font-semibold">70%</span>
+                          <span className="text-redAccent">70%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Physics with LabView</span>
-                          <span className="text-redAccent font-semibold">67%</span>
+                          <span className="text-redAccent">67%</span>
                         </div>
                       </div>
-                    </div>
-                    
-                    <div className="bg-dark-lighter bg-opacity-60 rounded-lg p-4 hover:shadow-neon-red transition-shadow duration-300">
-                      <h4 className="text-redAccent font-semibold mb-3 pb-2 border-b border-redAccent-darker">Physics Core Modules</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                      
+                      <h4 className="text-lg font-semibold text-redAccent mb-2">Physics Core Modules</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                        <div className="flex justify-between">
                           <span>Physics of Materials</span>
-                          <span className="text-redAccent font-semibold">75%</span>
+                          <span className="text-redAccent">75%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Atomic and Laser Physics</span>
-                          <span className="text-redAccent font-semibold">69%</span>
+                          <span className="text-redAccent">69%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Particle Physics</span>
-                          <span className="text-redAccent font-semibold">67%</span>
+                          <span className="text-redAccent">67%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Solid State Physics</span>
-                          <span className="text-redAccent font-semibold">66%</span>
+                          <span className="text-redAccent">66%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Nuclear Physics</span>
-                          <span className="text-redAccent font-semibold">66%</span>
+                          <span className="text-redAccent">66%</span>
                         </div>
-                        <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
+                        <div className="flex justify-between">
                           <span>Classical and Quantum Physics</span>
-                          <span className="text-redAccent font-semibold">64%</span>
+                          <span className="text-redAccent">64%</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="job-item animate-on-scroll" id="education-alevels">
+                  <div className="education-item">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">A-Levels</h3>
-                      <div className="text-gray-400 italic flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-redAccent mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                        Eckington Sixth Form | 2018 - 2020
-                      </div>
+                      <div className="text-redAccent">2018 - 2020</div>
                     </div>
+                    <div className="text-white mb-3 italic">##### #####</div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                      <div className="bg-dark-card p-4 text-center rounded-lg border-l-2 border-redAccent">
-                        <div className="text-lg font-medium">Physics</div>
-                        <div className="text-2xl font-bold text-redAccent mt-2">A</div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="flex justify-between">
+                        <span>Physics</span>
+                        <span className="text-redAccent">A</span>
                       </div>
-                      <div className="bg-dark-card p-4 text-center rounded-lg border-l-2 border-redAccent">
-                        <div className="text-lg font-medium">Biology</div>
-                        <div className="text-2xl font-bold text-redAccent mt-2">A</div>
+                      <div className="flex justify-between">
+                        <span>Biology</span>
+                        <span className="text-redAccent">A</span>
                       </div>
-                      <div className="bg-dark-card p-4 text-center rounded-lg border-l-2 border-redAccent">
-                        <div className="text-lg font-medium">Chemistry</div>
-                        <div className="text-2xl font-bold text-redAccent mt-2">B</div>
+                      <div className="flex justify-between">
+                        <span>Chemistry</span>
+                        <span className="text-redAccent">B</span>
                       </div>
                     </div>
                   </div>
-                  
                 </div>
               </section>
               
@@ -356,81 +319,58 @@ export default function CVPage() {
               <section 
                 ref={sectionRefs.certifications}
                 id="certifications" 
-                className="mb-10 animate-on-scroll"
+                className="p-8 border-b border-redAccent-darker animate-on-scroll"
                 style={{
                   transform: 'translateY(0)',
                   opacity: 1,
-                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                  transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
                 }}
               >
-                <h2 className="section-title group">
-                  <span className="relative z-10 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                    Professional Certifications
-                  </span>
-                </h2>
+                <h2 className="section-title">Professional Certifications</h2>
                 <div className="section-content">
-                  
-                  <div className="cert-item mb-6 animate-on-scroll" id="certifications-ibm-ai">
+                  <div className="cert-item mb-8">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">IBM AI Engineering Professional Certificate</h3>
-                      <div className="text-gray-400 italic flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-redAccent mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                        Coursera | August 2024
-                      </div>
+                      <div className="text-redAccent">August 2024</div>
                     </div>
-                    <p className="text-gray-300 mb-4">
+                    <div className="text-white mb-3 italic">Coursera</div>
+                    
+                    <p className="mb-4">
                       Comprehensive 6-course program covering advanced Machine Learning, Deep Learning, and AI Engineering topics. Gained hands-on experience with industry-standard tools and frameworks for building and deploying production-ready AI models.
                     </p>
+                    
                     <div className="mb-4">
-                      <span className="font-semibold text-white">Key Skills:</span> TensorFlow, Keras, PyTorch, scikit-learn, Model Deployment, Neural Networks, Computer Vision, Model Optimization
+                      <div className="text-lg font-semibold text-redAccent mb-2">Key Skills:</div>
+                      <p>TensorFlow, Keras, PyTorch, scikit-learn, Model Deployment, Neural Networks, Computer Vision, Model Optimization</p>
                     </div>
-                    <a 
-                      href="https://www.coursera.org/account/accomplishments/professional-cert/AGN5UHFNXHV9" 
-                      className="cert-link inline-flex items-center" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Verify Certificate
-                    </a>
+                    
+                    <div>
+                      <div className="text-lg font-semibold text-redAccent mb-2">Results:</div>
+                      <p>Learned to use IBM Watson and deployed a traffic light identification algorithm that achieved 98% accuracy in a real-time image processing pipeline after thorough data cleaning and optimization.</p>
+                    </div>
                   </div>
                   
-                  <div className="cert-item animate-on-scroll" id="certifications-ibm-data">
+                  <div className="cert-item">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">IBM Data Science Professional Certificate</h3>
-                      <div className="text-gray-400 italic flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-redAccent mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                        Coursera | July 2024
-                      </div>
+                      <div className="text-redAccent">July 2024</div>
                     </div>
-                    <p className="text-gray-300 mb-4">
+                    <div className="text-white mb-3 italic">Coursera</div>
+                    
+                    <p className="mb-4">
                       Intensive 12-course program covering the complete data science workflow from data collection to insights delivery. Developed end-to-end data science projects using industry-standard methodologies and tools.
                     </p>
+                    
                     <div className="mb-4">
-                      <span className="font-semibold text-white">Key Skills:</span> Python, SQL, Data Analysis, Statistical Analysis, Machine Learning, Data Visualization, IBM Watson Studio, ETL Pipelines
+                      <div className="text-lg font-semibold text-redAccent mb-2">Key Skills:</div>
+                      <p>Python, SQL, Data Analysis, Statistical Analysis, Machine Learning, Data Visualization, IBM Watson Studio, ETL Pipelines</p>
                     </div>
-                    <a 
-                      href="https://www.coursera.org/account/accomplishments/professional-cert/3BJMEB8AEYKN" 
-                      className="cert-link inline-flex items-center" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Verify Certificate
-                    </a>
+                    
+                    <div>
+                      <div className="text-lg font-semibold text-redAccent mb-2">Results:</div>
+                      <p>Developed a SpaceX Falcon landing prediction classifier that achieved 80% accuracy in modeling launch success rates by leveraging data from launch locations, historical launches, and weather conditions after thorough data cleaning and feature engineering.</p>
+                    </div>
                   </div>
-                  
                 </div>
               </section>
               
@@ -520,84 +460,130 @@ export default function CVPage() {
               <section 
                 ref={sectionRefs.skills}
                 id="skills" 
-                className="mb-10 animate-on-scroll"
+                className="p-8 border-b border-redAccent-darker animate-on-scroll"
                 style={{
                   transform: 'translateY(0)',
                   opacity: 1,
-                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                  transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
                 }}
               >
-                <h2 className="section-title group">
-                  <span className="relative z-10 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    Technical Skills
-                  </span>
-                </h2>
+                <h2 className="section-title">Technical Skills</h2>
                 <div className="section-content">
-                  
-                  <div className="skill-category mb-6 animate-on-scroll" id="skills-programming">
-                    <div className="skill-title">Programming & Development</div>
-                    <div className="skill-list">
-                      <span className="skill-tag">Python</span>
-                      <span className="skill-tag">C++</span>
-                      <span className="skill-tag">MATLAB</span>
-                      <span className="skill-tag">JavaScript</span>
-                      <span className="skill-tag">R</span>
-                      <span className="skill-tag">HTML/CSS</span>
-                      <span className="skill-tag">VHDL</span>
-                      <span className="skill-tag">C</span>
-                      <span className="skill-tag">Flutter</span>
-                      <span className="skill-tag">Tkinter</span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    {/* Programming Skills */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">Programming</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Python</span>
+                        <span className="skill-pill">C++</span>
+                        <span className="skill-pill">C</span>
+                        <span className="skill-pill">JavaScript</span>
+                        <span className="skill-pill">MATLAB</span>
+                        <span className="skill-pill">R</span>
+                        <span className="skill-pill">HTML/CSS</span>
+                        <span className="skill-pill">VHDL</span>
+                        <span className="skill-pill">Dart/Flutter</span>
+                      </div>
+                    </div>
+                    
+                    {/* Machine Learning & AI */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">Machine Learning & AI</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">TensorFlow</span>
+                        <span className="skill-pill">PyTorch</span>
+                        <span className="skill-pill">Keras</span>
+                        <span className="skill-pill">scikit-learn</span>
+                        <span className="skill-pill">CNNs</span>
+                        <span className="skill-pill">NLP</span>
+                        <span className="skill-pill">Transformers</span>
+                        <span className="skill-pill">Computer Vision</span>
+                        <span className="skill-pill">LLM Fine-tuning</span>
+                        <span className="skill-pill">Random Forest</span>
+                        <span className="skill-pill">Decision Trees</span>
+                        <span className="skill-pill">Neural Networks</span>
+                      </div>
+                    </div>
+                    
+                    {/* AI Development */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">AI Development</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Model Deployment</span>
+                        <span className="skill-pill">Model Training</span>
+                        <span className="skill-pill">Model Optimization</span>
+                        <span className="skill-pill">AI System Architecture</span>
+                        <span className="skill-pill">Prompt Engineering</span>
+                        <span className="skill-pill">OpenAI API</span>
+                        <span className="skill-pill">Diffusion Models</span>
+                        <span className="skill-pill">GPT Models</span>
+                      </div>
+                    </div>
+                    
+                    {/* Statistical Analysis */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">Statistical Analysis</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Statistical Analysis</span>
+                      </div>
+                    </div>
+                    
+                    {/* Web & API */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">Web & API</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Flask</span>
+                        <span className="skill-pill">React</span>
+                        <span className="skill-pill">Next.js</span>
+                        <span className="skill-pill">RESTful APIs</span>
+                        <span className="skill-pill">OAuth</span>
+                        <span className="skill-pill">Web Automation</span>
+                        <span className="skill-pill">Firebase</span>
+                        <span className="skill-pill">SQL/SQLite</span>
+                        <span className="skill-pill">Playwright</span>
+                      </div>
+                    </div>
+                    
+                    {/* Data Visualization */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">Data Visualization</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Data Visualization</span>
+                      </div>
+                    </div>
+                    
+                    {/* IoT & Embedded */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">IoT & Embedded</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Arduino</span>
+                        <span className="skill-pill">Raspberry Pi</span>
+                        <span className="skill-pill">ESP32</span>
+                        <span className="skill-pill">LoRaWAN</span>
+                        <span className="skill-pill">PID Control</span>
+                        <span className="skill-pill">MQTT</span>
+                        <span className="skill-pill">GPS Systems</span>
+                        <span className="skill-pill">Telemetry</span>
+                        <span className="skill-pill">Sensor Integration</span>
+                      </div>
+                    </div>
+                    
+                    {/* Tools & Platforms */}
+                    <div className="skill-category">
+                      <h3 className="skill-title">Tools & Platforms</h3>
+                      <div className="skill-list">
+                        <span className="skill-pill">Git</span>
+                        <span className="skill-pill">Replicate API</span>
+                        <span className="skill-pill">Weather API</span>
+                        <span className="skill-pill">The Things Network</span>
+                        <span className="skill-pill">Leaflet.js</span>
+                        <span className="skill-pill">IBM Watson Studio</span>
+                        <span className="skill-pill">ETL Pipelines</span>
+                        <span className="skill-pill">LabView</span>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="skill-category mb-6 animate-on-scroll" id="skills-machine-learning">
-                    <div className="skill-title">Machine Learning & AI</div>
-                    <div className="skill-list">
-                      <span className="skill-tag">TensorFlow</span>
-                      <span className="skill-tag">PyTorch</span>
-                      <span className="skill-tag">scikit-learn</span>
-                      <span className="skill-tag">Keras</span>
-                      <span className="skill-tag">CNNs</span>
-                      <span className="skill-tag">LSTM</span>
-                      <span className="skill-tag">Transformers</span>
-                      <span className="skill-tag">Random Forest</span>
-                      <span className="skill-tag">Diffusion Models</span>
-                      <span className="skill-tag">Model Optimization</span>
-                    </div>
-                  </div>
-                  
-                  <div className="skill-category mb-6 animate-on-scroll" id="skills-iot">
-                    <div className="skill-title">IoT & Embedded Systems</div>
-                    <div className="skill-list">
-                      <span className="skill-tag">Arduino</span>
-                      <span className="skill-tag">Raspberry Pi</span>
-                      <span className="skill-tag">ESP32</span>
-                      <span className="skill-tag">LoRaWAN</span>
-                      <span className="skill-tag">MQTT</span>
-                      <span className="skill-tag">LabView</span>
-                      <span className="skill-tag">PID Control</span>
-                      <span className="skill-tag">Sensor Integration</span>
-                    </div>
-                  </div>
-                  
-                  <div className="skill-category animate-on-scroll" id="skills-data-science">
-                    <div className="skill-title">Data Science & Engineering</div>
-                    <div className="skill-list">
-                      <span className="skill-tag">NumPy</span>
-                      <span className="skill-tag">Pandas</span>
-                      <span className="skill-tag">Matplotlib</span>
-                      <span className="skill-tag">SQL</span>
-                      <span className="skill-tag">SQLite</span>
-                      <span className="skill-tag">MongoDB</span>
-                      <span className="skill-tag">ETL Pipelines</span>
-                      <span className="skill-tag">Statistical Analysis</span>
-                    </div>
-                  </div>
-                  
                 </div>
               </section>
               

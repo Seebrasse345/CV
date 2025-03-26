@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
 import { useScroll } from 'framer-motion';
 
 // Dynamic import for Three.js component to avoid SSR issues
@@ -93,7 +92,6 @@ export default function Home() {
             title="MARKATIS DEVELOPMENT" 
             subtitle="Crafting innovative software solutions with cutting-edge technology" 
           />
-          <Footer />
         </div>
       </div>
     </main>
