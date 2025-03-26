@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/eslint-check.js && next build",
+  "buildCommand": "node scripts/eslint-check.js && next build && node scripts/copy-static-files.js && node scripts/vercel-deploy-handler.js",
   "ignoreCommand": "exit 1",
   "devCommand": "next dev",
   "installCommand": "npm install",
@@ -26,6 +26,26 @@
           "value": "s-maxage=1, stale-while-revalidate"
         }
       ]
+    }
+  ],
+  "buildOutputConfig": {
+    "enableEsModules": true,
+    "noModernJS": false
+  },
+  "cleanBuilds": true,
+  "routes": [
+    {
+      "src": "/black_hole_diffusion.html",
+      "headers": {
+        "cache-control": "public, max-age=86400"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 } 
