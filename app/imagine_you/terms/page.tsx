@@ -133,38 +133,100 @@ export default function TermsPage() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    // Create particle class for more impressive animation
+    class Particle {
+      x: number;
+      y: number;
+      radius: number;
+      color: string;
+      velocity: { x: number; y: number };
+      life: number;
+
+      constructor() {
+        this.x = Math.random() * canvas!.width;
+        this.y = Math.random() * canvas!.height;
+        this.radius = Math.random() * 2 + 0.5;
+        this.color = `rgba(${123 + Math.random() * 76}, ${44 + Math.random() * 81}, ${191 + Math.random() * 64}, ${Math.random() * 0.5 + 0.3})`;
+        this.velocity = {
+          x: (Math.random() - 0.5) * 0.5,
+          y: (Math.random() - 0.5) * 0.5
+        };
+        this.life = Math.random() * 5 + 2;
+      }
+
+      update() {
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.life -= 0.01;
+
+        // Reset particle if it's off-screen or depleted
+        if (this.x < 0 || this.x > canvas!.width || this.y < 0 || this.y > canvas!.height || this.life <= 0) {
+          this.x = Math.random() * canvas!.width;
+          this.y = Math.random() * canvas!.height;
+          this.life = Math.random() * 5 + 2;
+        }
+      }
+
+      draw() {
+        ctx!.beginPath();
+        ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx!.fillStyle = this.color;
+        ctx!.fill();
+
+        // Add glow effect
+        ctx!.shadowBlur = 10;
+        ctx!.shadowColor = this.color;
+      }
+    }
+
+    // Create particles array
+    const particles: Particle[] = [];
+    const particleCount = 100; // Increased particle count
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
     // Simplified starry background animation
     const drawBackground = () => {
       // Slightly transparent background to create trails
-      ctx.fillStyle = 'rgba(13, 13, 13, 0.15)'; // Make more transparent
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx!.fillStyle = 'rgba(13, 13, 13, 0.1)'; // More transparent for better visibility
+      ctx!.fillRect(0, 0, canvas.width, canvas.height);
       
       // Draw purple gradient glow in the center
-      const gradient = ctx.createRadialGradient(
+      const gradient = ctx!.createRadialGradient(
         canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.4 // Increase size
+        canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.6 // Increase size
       );
       
-      gradient.addColorStop(0, 'rgba(123, 44, 191, 0.3)'); // More visible purple
-      gradient.addColorStop(0.5, 'rgba(123, 44, 191, 0.15)'); // More visible purple
+      gradient.addColorStop(0, 'rgba(123, 44, 191, 0.4)'); // More visible purple
+      gradient.addColorStop(0.5, 'rgba(123, 44, 191, 0.2)'); // More visible purple
       gradient.addColorStop(1, 'rgba(13, 13, 13, 0)');
       
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.4, 0, Math.PI * 2);
-      ctx.fillStyle = gradient;
-      ctx.fill();
+      ctx!.beginPath();
+      ctx!.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.6, 0, Math.PI * 2);
+      ctx!.fillStyle = gradient;
+      ctx!.fill();
       
-      // Add some random particles
-      for (let i = 0; i < 3; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const radius = Math.random() * 2 + 0.5;
-        
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(199, 125, 255, ${Math.random() * 0.5 + 0.2})`;
-        ctx.fill();
-      }
+      // Update and draw all particles
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      
+      // Add pulsating inner glow
+      const time = Date.now() * 0.001;
+      const pulseSize = 50 + Math.sin(time) * 20;
+      const pulseOpacity = 0.5 + Math.sin(time * 1.3) * 0.2;
+      
+      ctx!.beginPath();
+      ctx!.arc(canvas.width / 2, canvas.height / 2, pulseSize, 0, Math.PI * 2);
+      ctx!.fillStyle = `rgba(199, 125, 255, ${pulseOpacity})`;
+      ctx!.shadowBlur = 30;
+      ctx!.shadowColor = 'rgba(199, 125, 255, 0.8)';
+      ctx!.fill();
+      
+      ctx!.shadowBlur = 0; // Reset shadow for performance
       
       animationRef.current = requestAnimationFrame(drawBackground);
     };
@@ -198,7 +260,7 @@ export default function TermsPage() {
           style={{ 
             background: '#0D0D0D',
             display: 'block',
-            zIndex: -5 // Ensure it's behind content but visible
+            zIndex: -1 // Changed from -5 to -1 for better visibility
           }}
         />
       </div>
@@ -229,7 +291,7 @@ export default function TermsPage() {
 
           {/* Markdown Content */}
           <motion.div 
-            className="max-w-4xl mx-auto bg-dark-card bg-opacity-85 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-purple-700 border-opacity-30 p-8 mb-12"
+            className="max-w-4xl mx-auto bg-dark-card bg-opacity-80 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-purple-700 border-opacity-30 p-8 mb-12"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
