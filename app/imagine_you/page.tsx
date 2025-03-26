@@ -37,8 +37,15 @@ export default function ImagineYouPage() {
     
     // Set canvas dimensions
     const resizeCanvas = () => {
+      // Set canvas to fill the entire viewport and match the display size
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      
+      // Clear and redraw when resizing
+      if (ctx) {
+        ctx.fillStyle = '#0D0D0D';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
     };
     
     window.addEventListener('resize', resizeCanvas);
@@ -66,14 +73,27 @@ export default function ImagineYouPage() {
       reset() {
         if (!canvas) return;
         
-        this.x = canvas.width / 2;
-        this.y = canvas.height / 2;
-        this.angle = Math.random() * Math.PI * 2;
-        this.radius = Math.random() * 2 + 0.5;
-        this.speed = Math.random() * 3 + 1;
-        this.distance = Math.random() * 200 + 50;
+        // Distribute particles more evenly across the canvas
+        if (Math.random() > 0.5) {
+          // Place some particles at random positions on the screen
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.angle = Math.atan2(
+            canvas.height / 2 - this.y,
+            canvas.width / 2 - this.x
+          );
+        } else {
+          // Keep the central black hole effect
+          this.x = canvas.width / 2;
+          this.y = canvas.height / 2;
+          this.angle = Math.random() * Math.PI * 2;
+        }
+        
+        this.radius = Math.random() * 3 + 0.8; // Larger particles
+        this.speed = Math.random() * 4 + 1; // Faster particles
+        this.distance = Math.random() * 300 + 50; // Wider distribution
         this.life = 1.0;
-        this.decay = Math.random() * 0.02 + 0.005;
+        this.decay = Math.random() * 0.015 + 0.003; // Adjusted for better visibility
         this.color = this.getRandomColor();
       }
       
@@ -82,7 +102,8 @@ export default function ImagineYouPage() {
           [123, 44, 191], // Primary purple #7B2CBF
           [199, 125, 255], // Accent purple #C77DFF
           [160, 80, 240], // Mid purple
-          [90, 20, 120]  // Deep purple
+          [90, 20, 120],  // Deep purple
+          [220, 150, 255] // Light purple for better visibility
         ];
         return colors[Math.floor(Math.random() * colors.length)];
       }
@@ -95,24 +116,34 @@ export default function ImagineYouPage() {
         if (!canvas) return;
         
         // Add slight orbital motion
-        const orbitFactor = Math.sin(Date.now() * 0.001 + this.angle) * 0.2;
+        const orbitFactor = Math.sin(Date.now() * 0.001 + this.angle) * 0.3;
         
         this.x = canvas.width / 2 + Math.cos(this.angle + orbitFactor) * this.distance;
         this.y = canvas.height / 2 + Math.sin(this.angle + orbitFactor) * this.distance;
         
         // Make particle sizes pulse slightly
-        this.radius = (Math.random() * 2 + 0.5) * (1 + Math.sin(Date.now() * 0.002) * 0.2);
+        this.radius = (Math.random() * 3 + 0.8) * (1 + Math.sin(Date.now() * 0.002) * 0.3);
         
-        if (this.life <= 0 || this.distance <= 0) {
+        // Respawn particles that go off-screen or fade out
+        if (this.life <= 0 || this.distance <= 0 || 
+            this.x < 0 || this.x > canvas.width || 
+            this.y < 0 || this.y > canvas.height) {
           this.reset();
         }
       }
       
       draw(ctx: CanvasRenderingContext2D) {
+        // Add glow effect to particles
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, 0.5)`;
+        
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.life})`;
         ctx.fill();
+        
+        // Reset shadow for performance
+        ctx.shadowBlur = 0;
       }
     }
     
@@ -124,36 +155,63 @@ export default function ImagineYouPage() {
     const drawBlackHole = (ctx: CanvasRenderingContext2D) => {
       if (!canvas) return;
       
-      // Create larger black hole
+      // Calculate size based on viewport dimensions
+      const size = Math.min(canvas.width, canvas.height) * 0.4;
+      
+      // Create larger black hole with improved gradient
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, 150 // Increased from 100
+        canvas.width / 2, canvas.height / 2, size
       );
       
       gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');
-      gradient.addColorStop(0.6, 'rgba(26, 0, 51, 0.8)');
+      gradient.addColorStop(0.4, 'rgba(26, 0, 51, 0.9)');
+      gradient.addColorStop(0.7, 'rgba(26, 0, 51, 0.5)');
       gradient.addColorStop(1, 'rgba(26, 0, 51, 0)');
       
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 150, 0, Math.PI * 2);
+      ctx.arc(canvas.width / 2, canvas.height / 2, size, 0, Math.PI * 2);
       ctx.fillStyle = gradient;
       ctx.fill();
       
+      // Add pulsating glow effect
+      const pulseSize = 40 + Math.sin(Date.now() * 0.002) * 10;
+      const pulseOpacity = 0.7 + Math.sin(Date.now() * 0.003) * 0.2;
+      
       // Enhanced glow effect
-      ctx.shadowBlur = 30; // Increased from 20
-      ctx.shadowColor = '#9D4EDD'; // Using light purple for stronger glow
+      ctx.shadowBlur = 30 + Math.sin(Date.now() * 0.001) * 10;
+      ctx.shadowColor = '#9D4EDD';
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2); // Increased from 30
-      ctx.fillStyle = 'rgba(123, 44, 191, 0.7)'; // Increased opacity from 0.5
+      ctx.arc(canvas.width / 2, canvas.height / 2, pulseSize, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(123, 44, 191, ${pulseOpacity})`;
       ctx.fill();
+      
+      // Second glow layer for more intensity
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = '#C77DFF';
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, pulseSize * 0.7, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(199, 125, 255, 0.6)';
+      ctx.fill();
+      
+      // Reset shadow for performance
       ctx.shadowBlur = 0;
     };
     
     // Animation loop
     const animate = () => {
-      ctx.fillStyle = 'rgba(13, 13, 13, 0.1)';
+      // Use a more transparent background fill to allow more particles to be visible
+      ctx.fillStyle = 'rgba(13, 13, 13, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
+      // Create additional particles dynamically if needed
+      if (particles.current.length < NUM_PARTICLES) {
+        while (particles.current.length < NUM_PARTICLES) {
+          particles.current.push(new Particle());
+        }
+      }
+      
+      // Update and draw all particles
       particles.current.forEach(particle => {
         particle.update();
         particle.draw(ctx);
@@ -164,13 +222,28 @@ export default function ImagineYouPage() {
       animationRef.current = requestAnimationFrame(animate);
     };
     
+    // Start animation
     animate();
     
+    // Cleanup function for unmounting
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationRef.current);
     };
   }, []);
+
+  // Ensure animation is restarted if visibility changes
+  useEffect(() => {
+    // Reset background after loading finishes
+    if (!isLoading && canvasRef.current) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#0D0D0D';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -204,13 +277,16 @@ export default function ImagineYouPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dark relative">
+    <main className="min-h-screen bg-dark relative overflow-hidden">
       {/* Black Hole Animation - Updated positioning to fill entire background */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-10 w-full h-full">
         <canvas
           ref={canvasRef}
-          className="w-full h-full"
-          style={{ background: '#0D0D0D' }}
+          className="absolute top-0 left-0 w-full h-full"
+          style={{ 
+            background: '#0D0D0D',
+            display: 'block' // Ensures no extra space
+          }}
         />
       </div>
       
