@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import Footer from '@/components/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -9,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Matthaios Markatis - CV',
-  description: 'Professional CV of Matthaios Markatis - Physics graduate specializing in AI, machine learning, and embedded systems.',
-  keywords: 'Matthaios Markatis, CV, Resume, Physics, Machine Learning, AI, Embedded Systems, Python, Data Science',
+  title: 'Markatis Development',
+  description: 'Professional software development and AI solutions by Matthaios Markatis - Physics graduate specializing in AI, machine learning, and embedded systems.',
+  keywords: 'Markatis Development, Matthaios Markatis, Software Development, AI, Machine Learning, Embedded Systems, Python, Data Science',
 };
 
 export default function RootLayout({
@@ -21,8 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${inter.variable} font-sans bg-dark text-white flex flex-col min-h-screen`}>
         {children}
+        <Footer />
       </body>
     </html>
   );

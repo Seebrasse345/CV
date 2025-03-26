@@ -1,0 +1,13 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "tailwindCSS.experimental.classRegex": [
+    "\\bclassName\\s*=\\s*[\"']([^\"']*)[\"']",
+    "\\bcn\\s*\\([\"']([^\"']*)[\"']\\)"
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+} 

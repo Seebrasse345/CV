@@ -1,25 +1,36 @@
-# Matthaios Markatis - CV Website
+# Markatis Development Website
 
-A modern, interactive CV website built with Next.js, Tailwind CSS, and Framer Motion.
+A sleek, modern website for Markatis Development featuring an impressive Three.js particle animation, dark theme, and responsive design.
 
 ## Features
 
-- ✨ Clean, modern design with smooth animations
-- 🌓 Dark mode support
-- 📱 Fully responsive for all devices
-- ⚡ Fast performance and SEO optimized
-- 🚀 Ready for Vercel deployment
+- **Stunning Three.js Particle Animation**: Interactive particle system with mouse-following effects
+- **Dark Minimalist Design**: Sleek dark-themed UI with red accents for a professional look
+- **Responsive Layout**: Fully responsive design that works on all device sizes
+- **Optimized Performance**: Efficient Three.js implementation with dynamic loading
+- **Navigation System**: Clean and intuitive navigation between pages
+
+## Tech Stack
+
+- **Next.js**: React framework for server-rendered applications
+- **Three.js / React Three Fiber**: 3D graphics and animations
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **TypeScript**: Type-safe JavaScript for better development experience
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18 or later
-- npm or yarn package manager
+- Node.js 18+
+- npm or yarn
 
 ### Installation
 
-1. Clone the repository or download the source code
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/markatis-development.git
+cd markatis-development
+```
 
 2. Install dependencies:
 ```bash
@@ -35,27 +46,55 @@ npm run dev
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-## Deployment
+## Project Structure
 
-This project is optimized for deployment on Vercel. Simply push your code to a GitHub repository and import it into Vercel.
+```
+/
+├── app/                 # Next.js app directory
+│   ├── cv/              # CV page
+│   ├── projects/        # Projects page
+│   ├── contact/         # Contact page
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Homepage
+│
+├── components/          # React components
+│   ├── Hero.tsx         # Hero section component
+│   ├── Navigation.tsx   # Navigation bar component
+│   └── three/           # Three.js related components
+│       └── ParticleEffect.tsx  # Particle animation
+│
+├── public/              # Static assets
+│
+└── tailwind.config.js   # Tailwind configuration
+```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/username/matthaios-markatis-cv)
+## Documentation
 
-## Technologies Used
+For detailed documentation on components, see the [components README](/components/README.md).
 
-- [Next.js](https://nextjs.org/) - React framework
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
-- [next-themes](https://github.com/pacocoursey/next-themes) - Dark mode support
-- [react-intersection-observer](https://github.com/thebuilder/react-intersection-observer) - Intersection observer hooks
+## Customization
+
+### Modifying Colors
+
+The color scheme is defined in `tailwind.config.js`. The main colors used are:
+
+- Dark background: `#050505`
+- Red accent: `#ff0000`
+- Text colors: Various shades of white and gray
+
+### Changing Animations
+
+The particle animation can be customized in the `components/three/ParticleEffect.tsx` file. Parameters like particle count, colors, and motion patterns can be adjusted.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Contact
+## Acknowledgments
 
-Matthaios Markatis - [matthaiosmarkatis@gmail.com](mailto:matthaiosmarkatis@gmail.com) 
+- The Three.js library and community
+- Next.js framework
+- Tailwind CSS 
