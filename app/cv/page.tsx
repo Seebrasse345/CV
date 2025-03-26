@@ -198,6 +198,14 @@ export default function CVPage() {
                       linkedin.com/in/matthaios-markatis
                     </a>
                   </div>
+                  <div className="flex items-center group hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    <a href="https://github.com/Seebrasse345" className="hover:text-redAccent transition-colors">
+                      github.com/Seebrasse345
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -213,9 +221,124 @@ export default function CVPage() {
               }}
             >
               <p className="text-white leading-relaxed">
-                BSc Physics graduate from the ##### ##### with robust academic foundation in theoretical physics and computational methods. Recently completed the IBM Data Science and IBM AI Engineering Professional Certificates, establishing advanced competencies in machine learning, statistical analysis, and AI engineering. Proficient in developing sophisticated engineering solutions integrating hardware and software, including a fully autonomous drone system with custom-configured flight controller and embedded software, and an IoT-based wildfire detection system utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in automation technologies, intelligent AI agents, and embedded systems. Seeking opportunities to advance technological innovation through applied AI, automation, and hardware integration in professional engineering environments.
+                BSc Physics graduate from the University of Sheffield with robust academic foundation in theoretical physics and computational methods. Recently completed the IBM Data Science and IBM AI Engineering Professional Certificates, establishing advanced competencies in machine learning, statistical analysis, and AI engineering. Proficient in developing sophisticated engineering solutions integrating hardware and software, including a fully autonomous drone system with custom-configured flight controller and embedded software, and an IoT-based wildfire detection system utilizing LoRaWAN sensors with machine learning predictive capabilities. Extensive experience in automation technologies, intelligent AI agents, and embedded systems. Seeking opportunities to advance technological innovation through applied AI, automation, and hardware integration in professional engineering environments.
               </p>
             </div>
+            
+            {/* Skills Section - Moved below profile description */}
+            <section 
+              ref={sectionRefs.skills}
+              id="skills" 
+              className="p-8 border-b border-redAccent-darker animate-on-scroll"
+              style={{
+                transform: 'translateY(0)',
+                opacity: 1,
+                transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+              }}
+            >
+              <h2 className="section-title">Technical Skills</h2>
+              <div className="section-content">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  
+                  {/* Programming Skills */}
+                  <div className="skill-category">
+                    <h3 className="skill-title">Programming</h3>
+                    <div className="skill-list">
+                      <span className="skill-pill">Python</span>
+                      <span className="skill-pill">C++</span>
+                      <span className="skill-pill">C</span>
+                      <span className="skill-pill">JavaScript</span>
+                      <span className="skill-pill">MATLAB</span>
+                      <span className="skill-pill">R</span>
+                      <span className="skill-pill">HTML/CSS</span>
+                      <span className="skill-pill">VHDL</span>
+                      <span className="skill-pill">Dart/Flutter</span>
+                    </div>
+                  </div>
+                  
+                  {/* Machine Learning & AI */}
+                  <div className="skill-category">
+                    <h3 className="skill-title">Machine Learning & AI</h3>
+                    <div className="skill-list">
+                      <span className="skill-pill">TensorFlow</span>
+                      <span className="skill-pill">PyTorch</span>
+                      <span className="skill-pill">Keras</span>
+                      <span className="skill-pill">scikit-learn</span>
+                      <span className="skill-pill">CNNs</span>
+                      <span className="skill-pill">NLP</span>
+                      <span className="skill-pill">Transformers</span>
+                      <span className="skill-pill">Computer Vision</span>
+                      <span className="skill-pill">LLM Fine-tuning</span>
+                      <span className="skill-pill">Random Forest</span>
+                      <span className="skill-pill">Decision Trees</span>
+                      <span className="skill-pill">Neural Networks</span>
+                    </div>
+                  </div>
+                  
+                  {/* AI Development */}
+                  <div className="skill-category">
+                    <h3 className="skill-title">AI Development</h3>
+                    <div className="skill-list">
+                      <span className="skill-pill">Model Deployment</span>
+                      <span className="skill-pill">Model Training</span>
+                      <span className="skill-pill">Model Optimization</span>
+                      <span className="skill-pill">AI System Architecture</span>
+                      <span className="skill-pill">Prompt Engineering</span>
+                      <span className="skill-pill">OpenAI API</span>
+                      <span className="skill-pill">Diffusion Models</span>
+                      <span className="skill-pill">GPT Models</span>
+                    </div>
+                  </div>
+                  
+                  {/* Web & API */}
+                  <div className="skill-category">
+                    <h3 className="skill-title">Web & API</h3>
+                    <div className="skill-list">
+                      <span className="skill-pill">Flask</span>
+                      <span className="skill-pill">React</span>
+                      <span className="skill-pill">Next.js</span>
+                      <span className="skill-pill">RESTful APIs</span>
+                      <span className="skill-pill">OAuth</span>
+                      <span className="skill-pill">Web Automation</span>
+                      <span className="skill-pill">Firebase</span>
+                      <span className="skill-pill">SQL/SQLite</span>
+                      <span className="skill-pill">Playwright</span>
+                    </div>
+                  </div>
+                  
+                  {/* IoT & Embedded */}
+                  <div className="skill-category">
+                    <h3 className="skill-title">IoT & Embedded</h3>
+                    <div className="skill-list">
+                      <span className="skill-pill">Arduino</span>
+                      <span className="skill-pill">Raspberry Pi</span>
+                      <span className="skill-pill">ESP32</span>
+                      <span className="skill-pill">LoRaWAN</span>
+                      <span className="skill-pill">PID Control</span>
+                      <span className="skill-pill">MQTT</span>
+                      <span className="skill-pill">GPS Systems</span>
+                      <span className="skill-pill">Telemetry</span>
+                      <span className="skill-pill">Sensor Integration</span>
+                    </div>
+                  </div>
+                  
+                  {/* Tools & Platforms */}
+                  <div className="skill-category">
+                    <h3 className="skill-title">Tools & Platforms</h3>
+                    <div className="skill-list">
+                      <span className="skill-pill">Git</span>
+                      <span className="skill-pill">Replicate API</span>
+                      <span className="skill-pill">Weather API</span>
+                      <span className="skill-pill">The Things Network</span>
+                      <span className="skill-pill">Leaflet.js</span>
+                      <span className="skill-pill">IBM Watson Studio</span>
+                      <span className="skill-pill">ETL Pipelines</span>
+                      <span className="skill-pill">LabView</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
             
             {/* CV Content - enhanced with animations */}
             <div className="px-6 md:px-10 py-8">
@@ -237,7 +360,7 @@ export default function CVPage() {
                       <h3 className="text-xl font-bold text-white">BSc Physics</h3>
                       <div className="text-redAccent">2020 - 2024</div>
                     </div>
-                    <div className="text-white mb-1 italic">##### ##### | 2:1 Classification (Upper Second-Class Honours)</div>
+                    <div className="text-white mb-1 italic">University of Sheffield | 2:1 Classification (Upper Second-Class Honours)</div>
                     
                     <div className="mt-4">
                       <h4 className="text-lg font-semibold text-redAccent mb-2">Programming & Technical Modules</h4>
@@ -295,7 +418,7 @@ export default function CVPage() {
                       <h3 className="text-xl font-bold text-white">A-Levels</h3>
                       <div className="text-redAccent">2018 - 2020</div>
                     </div>
-                    <div className="text-white mb-3 italic">##### #####</div>
+                    <div className="text-white mb-3 italic">Eckington Sixth Form</div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="flex justify-between">
@@ -456,137 +579,6 @@ export default function CVPage() {
                 </div>
               </section>
               
-              {/* Skills Section */}
-              <section 
-                ref={sectionRefs.skills}
-                id="skills" 
-                className="p-8 border-b border-redAccent-darker animate-on-scroll"
-                style={{
-                  transform: 'translateY(0)',
-                  opacity: 1,
-                  transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
-                }}
-              >
-                <h2 className="section-title">Technical Skills</h2>
-                <div className="section-content">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    {/* Programming Skills */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">Programming</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Python</span>
-                        <span className="skill-pill">C++</span>
-                        <span className="skill-pill">C</span>
-                        <span className="skill-pill">JavaScript</span>
-                        <span className="skill-pill">MATLAB</span>
-                        <span className="skill-pill">R</span>
-                        <span className="skill-pill">HTML/CSS</span>
-                        <span className="skill-pill">VHDL</span>
-                        <span className="skill-pill">Dart/Flutter</span>
-                      </div>
-                    </div>
-                    
-                    {/* Machine Learning & AI */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">Machine Learning & AI</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">TensorFlow</span>
-                        <span className="skill-pill">PyTorch</span>
-                        <span className="skill-pill">Keras</span>
-                        <span className="skill-pill">scikit-learn</span>
-                        <span className="skill-pill">CNNs</span>
-                        <span className="skill-pill">NLP</span>
-                        <span className="skill-pill">Transformers</span>
-                        <span className="skill-pill">Computer Vision</span>
-                        <span className="skill-pill">LLM Fine-tuning</span>
-                        <span className="skill-pill">Random Forest</span>
-                        <span className="skill-pill">Decision Trees</span>
-                        <span className="skill-pill">Neural Networks</span>
-                      </div>
-                    </div>
-                    
-                    {/* AI Development */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">AI Development</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Model Deployment</span>
-                        <span className="skill-pill">Model Training</span>
-                        <span className="skill-pill">Model Optimization</span>
-                        <span className="skill-pill">AI System Architecture</span>
-                        <span className="skill-pill">Prompt Engineering</span>
-                        <span className="skill-pill">OpenAI API</span>
-                        <span className="skill-pill">Diffusion Models</span>
-                        <span className="skill-pill">GPT Models</span>
-                      </div>
-                    </div>
-                    
-                    {/* Statistical Analysis */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">Statistical Analysis</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Statistical Analysis</span>
-                      </div>
-                    </div>
-                    
-                    {/* Web & API */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">Web & API</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Flask</span>
-                        <span className="skill-pill">React</span>
-                        <span className="skill-pill">Next.js</span>
-                        <span className="skill-pill">RESTful APIs</span>
-                        <span className="skill-pill">OAuth</span>
-                        <span className="skill-pill">Web Automation</span>
-                        <span className="skill-pill">Firebase</span>
-                        <span className="skill-pill">SQL/SQLite</span>
-                        <span className="skill-pill">Playwright</span>
-                      </div>
-                    </div>
-                    
-                    {/* Data Visualization */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">Data Visualization</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Data Visualization</span>
-                      </div>
-                    </div>
-                    
-                    {/* IoT & Embedded */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">IoT & Embedded</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Arduino</span>
-                        <span className="skill-pill">Raspberry Pi</span>
-                        <span className="skill-pill">ESP32</span>
-                        <span className="skill-pill">LoRaWAN</span>
-                        <span className="skill-pill">PID Control</span>
-                        <span className="skill-pill">MQTT</span>
-                        <span className="skill-pill">GPS Systems</span>
-                        <span className="skill-pill">Telemetry</span>
-                        <span className="skill-pill">Sensor Integration</span>
-                      </div>
-                    </div>
-                    
-                    {/* Tools & Platforms */}
-                    <div className="skill-category">
-                      <h3 className="skill-title">Tools & Platforms</h3>
-                      <div className="skill-list">
-                        <span className="skill-pill">Git</span>
-                        <span className="skill-pill">Replicate API</span>
-                        <span className="skill-pill">Weather API</span>
-                        <span className="skill-pill">The Things Network</span>
-                        <span className="skill-pill">Leaflet.js</span>
-                        <span className="skill-pill">IBM Watson Studio</span>
-                        <span className="skill-pill">ETL Pipelines</span>
-                        <span className="skill-pill">LabView</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              
               {/* Work Experience Section */}
               <section 
                 ref={sectionRefs.experience}
@@ -660,6 +652,9 @@ export default function CVPage() {
                 <a href="tel:07480699246" className="hover:text-redAccent transition-colors hover:scale-105 inline-block">07480 699246</a>
                 <a href="https://www.linkedin.com/in/matthaios-markatis" className="hover:text-redAccent transition-colors hover:scale-105 inline-block">
                   linkedin.com/in/matthaios-markatis
+                </a>
+                <a href="https://github.com/Seebrasse345" className="hover:text-redAccent transition-colors hover:scale-105 inline-block">
+                  github.com/Seebrasse345
                 </a>
               </div>
               <div className="mt-2">© {new Date().getFullYear()} Matthaios Markatis. All rights reserved.</div>
