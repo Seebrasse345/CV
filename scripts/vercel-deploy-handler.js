@@ -62,10 +62,11 @@ const routesManifestPath = path.join(outDir, 'routes-manifest.json');
 if (!fs.existsSync(routesManifestPath)) {
   console.log('\n📝 Creating dummy routes-manifest.json to satisfy Vercel...');
   
-  // Create a basic routes manifest file
+  // Create a more complete routes manifest file
   const dummyManifest = {
     version: 3,
     basePath: "",
+    pages404: true,
     redirects: [],
     headers: [],
     dynamicRoutes: [],
@@ -81,6 +82,18 @@ if (!fs.existsSync(routesManifestPath)) {
         regex: "^/imagine_you(?:/)?$",
         routeKeys: {},
         namedRegex: "^/imagine_you(?:/)?$"
+      },
+      {
+        page: "/imagine_you/terms",
+        regex: "^/imagine_you/terms(?:/)?$",
+        routeKeys: {},
+        namedRegex: "^/imagine_you/terms(?:/)?$"
+      },
+      {
+        page: "/imagine_you/privacy_policy",
+        regex: "^/imagine_you/privacy_policy(?:/)?$",
+        routeKeys: {},
+        namedRegex: "^/imagine_you/privacy_policy(?:/)?$"
       }
     ],
     dataRoutes: []
@@ -93,6 +106,46 @@ if (!fs.existsSync(routesManifestPath)) {
     console.error('\n❌ Failed to create routes-manifest.json:', error.message);
   }
 }
+
+// Step 4: Check for Vercel-specific files
+const requiredVercelFiles = [
+  { 
+    name: '.vercel/output/config.json', 
+    content: JSON.stringify({
+      "version": 3,
+      "routes": [
+        { "handle": "filesystem" },
+        { "src": "/(.*)", "dest": "/" }
+      ]
+    }, null, 2)
+  }
+];
+
+// Create .vercel/output directory if it doesn't exist
+const vercelOutputDir = path.join(rootDir, '.vercel', 'output');
+if (!fs.existsSync(vercelOutputDir)) {
+  fs.mkdirSync(vercelOutputDir, { recursive: true });
+}
+
+// Create required Vercel files
+requiredVercelFiles.forEach(file => {
+  const filePath = path.join(rootDir, file.name);
+  const fileDir = path.dirname(filePath);
+  
+  if (!fs.existsSync(fileDir)) {
+    fs.mkdirSync(fileDir, { recursive: true });
+  }
+  
+  if (!fs.existsSync(filePath)) {
+    console.log(`\n📝 Creating ${file.name}...`);
+    try {
+      fs.writeFileSync(filePath, file.content);
+      console.log(`✅ Successfully created ${file.name}`);
+    } catch (error) {
+      console.error(`\n❌ Failed to create ${file.name}:`, error.message);
+    }
+  }
+});
 
 console.log('\n🎉 Vercel deployment handler completed!');
 console.log('\n👉 Your static export should now be ready for Vercel deployment!'); 

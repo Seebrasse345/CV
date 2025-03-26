@@ -28,11 +28,7 @@
       ]
     }
   ],
-  "buildOutputConfig": {
-    "enableEsModules": true,
-    "noModernJS": false
-  },
-  "cleanBuilds": true,
+  "cleanUrls": true,
   "routes": [
     {
       "src": "/black_hole_diffusion.html",

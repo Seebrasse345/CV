@@ -27,6 +27,14 @@ const criticalFiles = [
     source: path.join(process.cwd(), 'public', 'black_hole_diffusion.html'),
     dest: path.join(outDir, 'black_hole_diffusion.html')
   },
+  {
+    source: path.join(process.cwd(), 'public', 'tncs.txt'),
+    dest: path.join(outDir, 'tncs.txt')
+  },
+  {
+    source: path.join(process.cwd(), 'public', 'privacy.txt'),
+    dest: path.join(outDir, 'privacy.txt')
+  }
   // Add other critical files here as needed
 ];
 
@@ -44,5 +52,30 @@ criticalFiles.forEach(file => {
     console.error(`\n❌ Error copying ${path.basename(file.source)}: ${error.message}`);
   }
 });
+
+// Also copy all files from public directory to the output root
+console.log('\n📁 Copying additional files from public directory...');
+try {
+  const publicDir = path.join(process.cwd(), 'public');
+  const publicFiles = fs.readdirSync(publicDir);
+  
+  let copiedCount = 0;
+  for (const file of publicFiles) {
+    const sourcePath = path.join(publicDir, file);
+    const destPath = path.join(outDir, file);
+    
+    // Skip directories
+    if (fs.statSync(sourcePath).isDirectory()) {
+      continue;
+    }
+    
+    fs.copyFileSync(sourcePath, destPath);
+    copiedCount++;
+  }
+  
+  console.log(`✅ Successfully copied ${copiedCount} additional files from public directory`);
+} catch (error) {
+  console.error(`\n❌ Error copying files from public directory: ${error.message}`);
+}
 
 console.log('\n🎉 Static file copy process completed!'); 
