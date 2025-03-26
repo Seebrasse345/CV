@@ -40,6 +40,13 @@ module.exports = {
           bright: '#ff3333',  // Brighter red
           muted: '#cc0000',   // Muted red
         },
+        purple: {
+          DEFAULT: '#7B2CBF', // Primary purple
+          accent: '#C77DFF',  // Accent purple
+          light: '#9D4EDD',   // Light purple
+          dark: '#3C096C',    // Dark purple
+          surface: '#1A0033', // Surface/background color
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Segoe UI', 'sans-serif'],

@@ -1,0 +1,1134 @@
+// Set initial scales based on viewport
+    accretionDisk.scale.set(scaleFactor, scaleFactor, scaleFactor);
+    blackHole.scale.set(scaleFactor, scaleFactor, scaleFactor);
+    lensing.scale.set(scaleFactor, scaleFactor, scaleFactor);
+    glow.scale.set(scaleFactor, scaleFactor, scaleFactor);
+    
+    // Scale pulse waves
+    pulseWaves.children.forEach(wave => {
+      wave.scale.set(scaleFactor, scaleFactor, scaleFactor);
+    });    // Apply window resize immediately on init to set correct initial viewport scale
+    window.dispatchEvent(new Event('resize'));      // Add more divergent random movement to outer particles - STRONGER AND MORE FREQUENT
+      if (distance > 12 && Math.random() < 0.015) { // Reduced distance threshold, increased probability
+        const randomFactor = 0.015 * (distance / 18); // Increased strength
+        velocities[i * 3] += (Math.random() - 0.5) * randomFactor;
+        velocities[i * 3 + 1] += (Math.random() - 0.5) * randomFactor;
+        velocities[i * 3 + 2] += (Math.random() - 0.5) * randomFactor;
+      }        // Apply disruption forces if active - INCREASED STRENGTH
+        if (disruptionStrength > 0) {
+          // Create asymmetric force based on angle with more complex variation
+          const angleEffect = Math.sin(Math.atan2(y, x) - disruptionAngle + Math.sin(distance * 0.1 + elapsed * 0.2) * 0.7);
+          const disruptForce = disruptionStrength * 0.028 * angleEffect; // Increased from 0.022 to 0.028
+          
+          // Apply rotational disruption with more force
+          velocities[i * 3] += y * disruptForce * (1 + Math.sin(x * 0.1) * 0.3);
+          velocities[i * 3 + 1] -= x * disruptForce * (1 + Math.cos(y * 0.1) * 0.3);
+          
+          // Add more random jitter with increased strength
+          const jitterFactor = 0.008 + 0.006 * Math.sin(x * 0.1 + y * 0.1 + elapsed * 0.5);
+          velocities[i * 3] += (Math.random() - 0.5) * jitterFactor * disruptionStrength;
+          velocities[i * 3 + 1] += (Math.random() - 0.5) * jitterFactor * disruptionStrength;
+          velocities[i * 3 + 2] += (Math.random() - 0.5) * jitterFactor * disruptionStrength;
+          
+          // Add position-dependent chaotic element
+          const chaosX = Math.sin(x * 0.2 + elapsed) * 0.005 * disruptionStrength;
+          const chaosY = Math.cos(y * 0.2 + elapsed) * 0.005 * disruptionStrength;
+          const chaosZ = Math.sin(z * 0.2 + elapsed) * 0.005 * disruptionStrength;
+          
+          velocities[i * 3] += chaosX;
+          velocities[i * 3 + 1] += chaosY;
+          velocities[i * 3 + 2] += chaosZ;
+        }
+        
+        // Apply secondary vortex effects for more complex motion - ENHANCED EFFECT
+        for (let v = 0; v < vortexPositions.length; v++) {
+          const vortex = vortexPositions[v];
+          const dx = x - vortex.x;
+          const dy = y - vortex.y;
+          const dz = z - vortex.z;
+          
+          const distSq = dx*dx + dy*dy + dz*dz;
+          const dist = Math.sqrt(distSq);
+          
+          // Wider influence area with enhanced forces
+          if (dist < 32) { // Increased from 28
+            // More dynamic force calculation with temporal variation - STRONGER
+            const variation = 0.9 + 0.5 * Math.sin(elapsed * 0.3 + v * 1.5); // Increased variation
+            const force = vortexStrengths[v] * variation / (dist * dist + 2.0); // Reduced dampening further
+            
+            // More complex swirling with z-axis rotation components
+            const swirl = 1.2 + 0.4 * Math.sin(dist * 0.2 + elapsed * 0.4); // Increased base and variation
+            velocities[i * 3] += dy * force * swirl;
+            velocities[i * 3 + 1] -= dx * force * swirl;
+            
+            // Add spiral-in-spiral effect with stronger influence
+            const spiralFactor = 0.4 * Math.sin(Math.atan2(dy, dx) * 3 + elapsed * 0.5); // Increased from 0.3
+            velocities[i * 3] += dx * force * spiralFactor;
+            velocities[i * 3 + 1] += dy * force * spiralFactor;
+            
+            // Enhanced z-axis influence for more 3D movement
+            velocities[i * 3 + 2] += (dx - dy) * force * 1.1 * Math.sin(elapsed * 0.2 + dist * 0.1); // Increased from 0.9
+          }
+        }
+        
+        // Add turbulence field based on position - STRONGER
+        const turbPeriod = 5.0;
+        const turbX = Math.sin(x * 0.07 + elapsed * 0.14) * Math.cos(y * 0.06);
+        const turbY = Math.sin(y * 0.07 + elapsed * 0.18) * Math.cos(z * 0.06);
+        const turbZ = Math.sin(z * 0.07 + elapsed * 0.15) * Math.cos(x * 0.06);
+        const turbulence = 0.006; // Increased from 0.004
+        
+        velocities[i * 3] += turbX * turbulence;
+        velocities[i * 3 + 1] += turbY * turbulence;
+        velocities[i * 3 + 2] += turbZ * turbulence;
+        
+        // Occasionally add random velocity changes to prevent stabilization - MORE FREQUENT
+        if (Math.random() < 0.007) { // Increased from 0.003 to 0.007
+          velocities[i * 3] += (Math.random() - 0.5) * 0.05; // Increased from 0.04
+          velocities[i * 3 + 1] += (Math.random() - 0.5) * 0.05;
+          velocities[i * 3 + 2] += (Math.random() - 0.5) * 0.05;
+        }      // Handle minor disruptions to prevent stable circular patterns - STRONGER EFFECT
+      if (elapsed - lastDisruptionTime > disruptionInterval && !isDisrupting && !isPulsing) {
+        isDisrupting = true;
+        currentDisruptionTime = 0;
+        lastDisruptionTime = elapsed;
+        disruptionAngle = Math.random() * Math.PI * 2; // Random angle for asymmetric force
+        
+        // Randomly vary vortex strengths with higher values and more variance
+        vortexStrengths = vortexStrengths.map(() => 0.15 + Math.random() * 0.35); // Increased variation
+        
+        // Randomly move vortex positions for unpredictable influences
+        vortexPositions.forEach(vortex => {
+          vortex.x += (Math.random() - 0.5) * 2;
+          vortex.y += (Math.random() - 0.5) * 2;
+          vortex.z += (Math.random() - 0.5) * 2;
+        });
+      }
+      
+      // Update disruption effects with increased strength
+      if (isDisrupting) {
+        currentDisruptionTime += 0.016;
+        
+        // Disruption strength curve (rise quickly, fall slowly)
+        disruptionStrength = currentDisruptionTime < disruptionDuration * 0.3 
+          ? currentDisruptionTime / (disruptionDuration * 0.3) * 1.8 // Increased from 1.5 to 1.8
+          : 1.8 * (1 - (currentDisruptionTime - disruptionDuration * 0.3) / (disruptionDuration * 0.7));
+        
+        disruptionStrength = Math.max(0, Math.min(2.2, disruptionStrength)); // Increased max from 1.8 to 2.2
+        
+        // End disruption when complete
+        if (currentDisruptionTime >= disruptionDuration) {
+          isDisrupting = false;
+          disruptionStrength = 0;
+        }
+      } else {
+        disruptionStrength = 0;
+      }<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Hole Diffusion Animation - Ultra HD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #070707; /* Darker background for better contrast */
+      font-family: 'Poppins', sans-serif;
+      width: 100%;
+      height: 100vh;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script>
+    // Scene setup with improved configuration
+    const scene = new THREE.Scene();
+    
+    // Responsive viewport handling
+    const viewportSize = Math.min(window.innerWidth, window.innerHeight);
+    const scaleBaseSize = 800; // Base size to scale from
+    const viewScaleFactor = viewportSize / scaleBaseSize;
+    
+    // Calculate minimum scale factor to prevent elements from becoming too small
+    const minScaleFactor = 0.5; // Minimum scale to ensure visibility
+    let scaleFactor = Math.max(viewScaleFactor, minScaleFactor);
+    let particleScaleFactor = Math.max(viewScaleFactor * 1.25, minScaleFactor * 1.25); // Boost particle size
+    
+    // Improved camera with better perspective and adaptive settings
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 30 * viewScaleFactor;
+    // Reset camera position to center
+    camera.position.x = 0;
+    camera.position.y = 0;
+    
+    // HD renderer with improved quality and centered position
+    const renderer = new THREE.WebGLRenderer({ 
+      antialias: true, 
+      alpha: true,
+      powerPreference: 'high-performance',
+      precision: 'highp'
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x070707, 1); // Darker background for better contrast
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    
+    // Ensure renderer is properly centered
+    const canvas = renderer.domElement;
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    document.body.appendChild(canvas);
+
+    // Enhanced lighting for better visual quality
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(ambientLight);
+
+    // More dramatic point lights with improved colors - INCREASED INTENSITY
+    const pointLight1 = new THREE.PointLight(0xE0AAFF, 2.4, 100); // Increased intensity from 1.8 to 2.4
+    pointLight1.position.set(0, 10, 10);
+    scene.add(pointLight1);
+    
+    const pointLight2 = new THREE.PointLight(0xC77DFF, 1.8, 100); // Increased from 1.2 to 1.8
+    pointLight2.position.set(-10, -5, -10);
+    scene.add(pointLight2);
+    
+    // Add a subtle rim light for depth - BRIGHTER
+    const pointLight3 = new THREE.PointLight(0x9D4EDD, 1.2, 100); // Increased from 0.8 to 1.2
+    pointLight3.position.set(10, -8, -5);
+    scene.add(pointLight3);
+
+    // Create particle system - increased back for better visual density
+    const particleCount = 11000; // Increased from 10000
+    const particles = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    const sizes = new Float32Array(particleCount);
+    const velocities = new Float32Array(particleCount * 3);
+    
+    // Enhanced color palette with better contrast and vibrance - INCREASED BRIGHTNESS
+    const colorPalette = [
+      new THREE.Color(0x9D4EDD), // brightened primary purple
+      new THREE.Color(0xE0AAFF), // brightened accent
+      new THREE.Color(0xC77DFF), // mid purple
+      new THREE.Color(0xB261FF), // deep purple with more saturation
+      new THREE.Color(0xF3C4FF), // very light purple - much brighter
+      new THREE.Color(0x8121D0)  // darker purple but still vibrant
+    ];
+
+    // Create more complex particle structure with multiple shells
+    for (let i = 0; i < particleCount; i++) {
+      // Create more defined shells with better distribution
+      const shellIndex = Math.floor(Math.random() * 4);
+      
+      // Base radius - create more distinct layers
+      const baseRadius = 7 + shellIndex * 9 + Math.random() * 2;
+      
+      // Add controlled variation within each shell
+      const radiusVariation = Math.random() * 5;
+      const radius = baseRadius + radiusVariation;
+      
+      // Better distribution on sphere surface
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1); // Improved distribution
+      
+      positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = radius * Math.cos(phi);
+      
+      // Enhanced initial velocity vectors for more natural movement
+      const dx = -positions[i * 3];
+      const dy = -positions[i * 3 + 1];
+      const dz = -positions[i * 3 + 2];
+      
+      const len = Math.sqrt(dx*dx + dy*dy + dz*dz);
+      
+      // Create more dynamic tangential component for swirl
+      velocities[i * 3] = dy/len * 0.01 + dx/len * 0.003 + (Math.random() - 0.5) * 0.002;
+      velocities[i * 3 + 1] = -dx/len * 0.01 + dy/len * 0.003 + (Math.random() - 0.5) * 0.002;
+      velocities[i * 3 + 2] = dz/len * 0.003 + (Math.random() - 0.5) * 0.001;
+      
+      // Better color distribution from palette
+      const colorIndex = Math.floor(Math.random() * colorPalette.length);
+      const color = colorPalette[colorIndex];
+      
+      // Add slight color variations for depth
+      const brightnessFactor = 0.9 + Math.random() * 0.2;
+      
+      colors[i * 3] = color.r * brightnessFactor;
+      colors[i * 3 + 1] = color.g * brightnessFactor;
+      colors[i * 3 + 2] = color.b * brightnessFactor;
+      
+      // Improved particle size distribution - INCREASED SIZE
+      sizes[i] = Math.random() * 0.6 + 0.3; // Increased from 0.4+0.1 to 0.6+0.3
+    }
+
+    particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    particles.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    // Improved shader material for more realistic particle rendering with viewport scaling
+    const particleMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        attribute float size;
+        varying vec3 vColor;
+        varying float vDistance;
+        uniform float viewportScale;
+        
+        void main() {
+          vColor = color;
+          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+          // Increased base size and minimum size for better visibility at small scales
+          float pointSize = size * (450.0 / -mvPosition.z) * viewportScale;
+          gl_PointSize = max(pointSize, 2.0); // Ensure minimum size of 2.0 for visibility
+          gl_Position = projectionMatrix * mvPosition;
+          vDistance = length(position) / 40.0;
+        }
+      `,
+      fragmentShader: `
+        varying vec3 vColor;
+        varying float vDistance;
+        
+        void main() {
+          vec2 center = gl_PointCoord - vec2(0.5);
+          float dist = length(center);
+          
+          if (dist > 0.5) discard;
+          
+          // Enhanced glow effect with higher brightness and contrast
+          float edge = smoothstep(0.45, 0.5, dist); // Sharper edge
+          float glow = 1.6 - vDistance * 0.5; // Increased from 1.3 to 1.6, reduced distance darkening
+          float alpha = (1.0 - edge) * glow;
+          
+          // Increased inner brightness for more visibility
+          float inner = smoothstep(0.3, 0.0, dist) * 1.2; // Larger inner area, more brightness
+          vec3 finalColor = vColor * (1.0 + inner);
+          
+          // Boost overall brightness by 20%
+          finalColor *= 1.2;
+          
+          gl_FragColor = vec4(finalColor, alpha);
+        }
+      `,
+      transparent: true,
+      depthWrite: false,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      uniforms: {
+        viewportScale: { value: viewScaleFactor }
+      }
+    });
+
+    const particleSystem = new THREE.Points(particles, particleMaterial);
+    scene.add(particleSystem);
+
+    // Improved accretion disk with more detail and HIGHER CONTRAST
+    const accretionDiskGeometry = new THREE.RingGeometry(2.4, 6.5, 128); // Slightly larger
+    const accretionDiskMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        color1: { value: new THREE.Color(0xE0AAFF) },  // Brighter outer purple
+        color2: { value: new THREE.Color(0x8121D0) },  // Richer inner purple
+        color3: { value: new THREE.Color(0xF3C4FF) }   // Brighter highlight purple
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        varying vec3 vPosition;
+        
+        void main() {
+          vUv = uv;
+          vPosition = position;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float time;
+        uniform vec3 color1;
+        uniform vec3 color2;
+        uniform vec3 color3;
+        
+        varying vec2 vUv;
+        varying vec3 vPosition;
+        
+        // Improved noise functions for more realistic turbulence
+        float random(vec2 st) {
+          return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+        }
+        
+        float noise(vec2 st) {
+          vec2 i = floor(st);
+          vec2 f = fract(st);
+          
+          // Improved interpolation for smoother noise
+          vec2 u = f * f * (3.0 - 2.0 * f);
+          
+          float a = random(i);
+          float b = random(i + vec2(1.0, 0.0));
+          float c = random(i + vec2(0.0, 1.0));
+          float d = random(i + vec2(1.0, 1.0));
+          
+          return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+        }
+        
+        float fbm(vec2 st) {
+          float value = 0.0;
+          float amplitude = 0.5;
+          float frequency = 0.0;
+          
+          // More octaves for better detail
+          for (int i = 0; i < 6; i++) {
+            value += amplitude * noise(st);
+            st *= 2.1; // Slightly different scaling factor for more natural look
+            amplitude *= 0.5;
+          }
+          
+          return value;
+        }
+        
+        void main() {
+          // Calculate radius from center (0.5, 0.5)
+          vec2 center = vec2(0.5, 0.5);
+          float radius = length(vUv - center) * 2.0;
+          
+          // Normalized radius from inner to outer edge
+          float normalizedRadius = (radius - 0.4) / 0.6;
+          normalizedRadius = clamp(normalizedRadius, 0.0, 1.0);
+          
+          // Calculate angle for improved swirl effect
+          float angle = atan(vUv.y - 0.5, vUv.x - 0.5);
+          
+          // Create more detailed swirling turbulence
+          float turbulence = fbm(vec2(angle * 3.5 + time * 0.2, normalizedRadius * 6.0 - time * 0.3));
+          
+          // Enhanced swirl that's more intense closer to the black hole
+          float swirlFactor = 6.0 * (1.0 - normalizedRadius) + 1.0; // Increased intensity
+          float swirl = angle + time * 0.3 * swirlFactor + turbulence * 3.0; // More pronounced turbulence
+          
+          // More detailed color bands
+          float colorBands = sin(swirl * 12.0) * 0.5 + 0.5; // More bands
+          colorBands = pow(colorBands, 0.5) * (1.0 - normalizedRadius * 0.6);
+          
+          // Enhanced hot inner edge effect with higher brightness
+          float innerGlow = smoothstep(0.9, 0.1, normalizedRadius); // Wider glow
+          
+          // Improved base color blending
+          vec3 diskColor = mix(color1, color2, pow(normalizedRadius, 0.5));
+          
+          // Add brighter, more defined bands
+          diskColor = mix(diskColor, color3, colorBands * 0.9); // More band intensity
+          
+          // More intense inner heat glow
+          diskColor = mix(diskColor, color3, innerGlow * 0.9);
+          
+          // Improved edge falloff
+          float alpha = smoothstep(1.0, 0.85, normalizedRadius);
+          
+          // Enhanced brightness near inner edge
+          float brightness = 1.2 + (1.0 - normalizedRadius) * 2.0; // Increased brightness
+          diskColor *= brightness;
+          
+          // Add subtle pulsation
+          float pulse = 1.0 + 0.15 * sin(time * 1.5); // Increased pulsation
+          diskColor *= pulse;
+          
+          // Overall brightness boost
+          diskColor *= 1.3; // Increase overall brightness
+          
+          gl_FragColor = vec4(diskColor, alpha);
+        }
+      `,
+      transparent: true,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    const accretionDisk = new THREE.Mesh(accretionDiskGeometry, accretionDiskMaterial);
+    accretionDisk.rotation.x = Math.PI / 2;
+    scene.add(accretionDisk);
+    
+    // Improved event horizon with more realistic black hole effect
+    const blackHoleGeometry = new THREE.CircleGeometry(2.2, 64); // More segments for smoother appearance
+    const blackHoleMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 }
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float time;
+        varying vec2 vUv;
+        
+        void main() {
+          // Calculate distance from center for subtle edge effect
+          vec2 center = vUv - vec2(0.5);
+          float dist = length(center) * 2.0;
+          
+          // Create a perfect black with subtle edge warping
+          float warp = smoothstep(0.9, 1.0, dist);
+          gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        }
+      `,
+      transparent: false,
+      side: THREE.DoubleSide
+    });
+    
+    const blackHole = new THREE.Mesh(blackHoleGeometry, blackHoleMaterial);
+    blackHole.rotation.x = Math.PI / 2;
+    scene.add(blackHole);
+    
+    // Enhanced gravitational lensing effect with HIGHER VISIBILITY
+    const lensingGeometry = new THREE.RingGeometry(2.2, 3.2, 128); // Wider lensing effect (2.8 to 3.2)
+    const lensingMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 }
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float time;
+        varying vec2 vUv;
+        
+        void main() {
+          // Calculate distance from inner edge for better lensing effect
+          float distFromInner = length(vUv - vec2(0.5)) * 2.0 - 0.4;
+          
+          // Enhanced blue-shifted light effect with more accurate physics simulation
+          vec3 blueShift = vec3(0.7, 0.9, 1.0); // Brighter blue shift
+          
+          // More complex pulsating effect
+          float pulse = 0.7 + 0.5 * sin(time * 3.0 + vUv.x * 8.0); // Increased intensity
+          
+          // Improved intensity falloff - BRIGHTER
+          float intensity = smoothstep(0.7, 0.0, distFromInner) * 1.2; // Higher intensity, wider area
+          intensity *= pulse;
+          
+          // Add subtle angular variation
+          float angle = atan(vUv.y - 0.5, vUv.x - 0.5);
+          float angleVariation = (0.8 + 0.3 * sin(angle * 8.0 + time * 2.0)); // More variation
+          intensity *= angleVariation;
+          
+          // Apply enhanced blue-shifted color
+          vec3 finalColor = blueShift * intensity * 1.3; // Overall brightness boost
+          
+          gl_FragColor = vec4(finalColor, intensity);
+        }
+      `,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    const lensing = new THREE.Mesh(lensingGeometry, lensingMaterial);
+    lensing.rotation.x = Math.PI / 2;
+    scene.add(lensing);
+    
+    // Improved pulse wave effect
+    const pulseWaves = new THREE.Object3D();
+    scene.add(pulseWaves);
+    
+    // Create pulse wave rings with better visual quality
+    const pulseCount = 6; // Additional wave for more dramatic effect
+    const pulseWaveObjects = [];
+    
+    for (let i = 0; i < pulseCount; i++) {
+      const waveGeometry = new THREE.RingGeometry(0.1, 0.5, 128); // More segments for smoother appearance
+      const waveMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+          time: { value: 0 },
+          waveIndex: { value: i },
+          color: { value: new THREE.Color(0xC77DFF) },
+          waveProgress: { value: 0.0 },
+          waveOpacity: { value: 0.0 }
+        },
+        vertexShader: `
+          varying vec2 vUv;
+          
+          void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform float time;
+          uniform float waveProgress;
+          uniform float waveOpacity;
+          uniform vec3 color;
+          uniform int waveIndex;
+          
+          varying vec2 vUv;
+          
+          void main() {
+            // Enhanced wave effect with better edge definition
+            float dist = abs(length(vUv - vec2(0.5)) * 2.0 - 1.0);
+            
+            // More natural wave shape
+            float wave = smoothstep(0.6, 0.0, dist) * waveOpacity;
+            
+            // Add variation based on wave index for better visual diversity
+            float brightness = 1.0 - float(waveIndex) * 0.12;
+            
+            // Add subtle wave pattern
+            float pattern = 0.1 * sin(dist * 20.0 + time * 3.0);
+            
+            // Final color with enhanced visual quality
+            vec3 finalColor = color * (wave + pattern) * brightness;
+            float alpha = wave * 0.85;
+            
+            gl_FragColor = vec4(finalColor, alpha);
+          }
+        `,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        side: THREE.DoubleSide,
+        depthWrite: false
+      });
+      
+      const wave = new THREE.Mesh(waveGeometry, waveMaterial);
+      wave.rotation.x = Math.PI / 2;
+      wave.visible = false; // Hide initially
+      pulseWaves.add(wave);
+      pulseWaveObjects.push(wave);
+    }
+    
+    // Enhanced event horizon glow with MORE BRIGHTNESS
+    const glowGeometry = new THREE.RingGeometry(2.2, 12, 128); // Much wider glow (9 to 12)
+    const glowMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        color: { value: new THREE.Color(0xB261FF) } // Brighter purple glow
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float time;
+        uniform vec3 color;
+        
+        varying vec2 vUv;
+        
+        void main() {
+          // Enhanced glow with better distance calculation
+          float dist = length(vUv - vec2(0.5)) * 2.0 - 0.4;
+          
+          // Improved falloff for more natural glow - WIDER GLOW
+          float alpha = smoothstep(1.0, 0.0, dist * 1.0); // Less steep falloff (1.2 to 1.0)
+          
+          // More complex pulsating effect
+          float pulse = 0.8 + 0.4 * sin(time * 2.0); // Increased base and variation
+          alpha *= pulse;
+          
+          // Add subtle angular variation for more dynamic appearance
+          float angle = atan(vUv.y - 0.5, vUv.x - 0.5);
+          float angleVariation = 1.0 + 0.15 * sin(angle * 6.0 + time); // More variation
+          alpha *= angleVariation;
+          
+          // Enhanced color with slight variation
+          vec3 finalColor = color * alpha * 1.5; // Significant brightness boost
+          
+          // Add subtle color shift
+          float colorShift = 0.07 * sin(time * 0.5); // Increased color shift
+          finalColor.r += colorShift;
+          finalColor.b -= colorShift;
+          
+          gl_FragColor = vec4(finalColor, alpha * 0.8); // Increased alpha
+        }
+      `,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      side: THREE.DoubleSide,
+      depthWrite: false
+    });
+    
+    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+    glow.rotation.x = Math.PI / 2;
+    scene.add(glow);
+    
+    // Add subtle background stars
+    const starCount = 200;
+    const starGeometry = new THREE.BufferGeometry();
+    const starPositions = new Float32Array(starCount * 3);
+    const starSizes = new Float32Array(starCount);
+    const starColors = new Float32Array(starCount * 3);
+    
+    // Create distant stars
+    for (let i = 0; i < starCount; i++) {
+      // Place stars on a distant sphere
+      const phi = Math.acos(2 * Math.random() - 1);
+      const theta = Math.random() * Math.PI * 2;
+      const radius = 80 + Math.random() * 20;
+      
+      starPositions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+      starPositions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      starPositions[i * 3 + 2] = radius * Math.cos(phi);
+      
+      // Scale initial sizes based on viewport
+    for (let i = 0; i < starCount; i++) {
+      starSizes[i] = (Math.random() * 0.5 + 0.1) * particleScaleFactor;
+    }
+      
+    // Star colors - mostly white/blue with occasional other hues - BRIGHTER
+      if (Math.random() > 0.75) { // More colored stars (was 0.8)
+        // Occasional colored star with higher brightness
+        const hue = Math.random();
+        const star = new THREE.Color().setHSL(hue, 0.6, 0.9); // More saturated and brighter
+        starColors[i * 3] = star.r;
+        starColors[i * 3 + 1] = star.g;
+        starColors[i * 3 + 2] = star.b;
+      } else {
+        // White/blue stars with higher brightness
+        const brightness = 0.9 + Math.random() * 0.2; // Increased from 0.8 to 0.9
+        starColors[i * 3] = brightness;
+        starColors[i * 3 + 1] = brightness;
+        starColors[i * 3 + 2] = brightness + Math.random() * 0.3; // More blue shift
+      }
+    }
+    
+    starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+    starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
+    starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+    
+    const starMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        attribute float size;
+        varying vec3 vColor;
+        
+        void main() {
+          vColor = color;
+          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+          gl_PointSize = size * (400.0 / -mvPosition.z);
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      `,
+      fragmentShader: `
+        varying vec3 vColor;
+        
+        void main() {
+          vec2 center = gl_PointCoord - vec2(0.5);
+          float dist = length(center);
+          
+          if (dist > 0.5) discard;
+          
+          // Soft glow
+          float alpha = smoothstep(0.5, 0.0, dist);
+          
+          gl_FragColor = vec4(vColor, alpha);
+        }
+      `,
+      transparent: true,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    const starField = new THREE.Points(starGeometry, starMaterial);
+    scene.add(starField);
+
+    // Animation parameters with better physics - REDUCED ATTRACTION, INCREASED SWIRL
+    let progress = 0;
+    let intensityFactor = 0;
+    let particleAttraction = 0.0001; // Further reduced from 0.00012 to 0.0001
+    let swirlingIntensity = 0.002; // Increased from 0.0018 to 0.002
+    
+    // Enhanced pulse effect
+    let lastPulseTime = 0;
+    const pulseInterval = 10; // Doubled from 3.2 seconds to 6.4 seconds
+    const pulseDuration = 1.2; // Longer duration for more impact
+    let isPulsing = false;
+    let currentPulseTime = 0;
+    let pulseDisturbance = 0;
+    
+    // Add disruption parameters to prevent stable circular patterns - INCREASED FREQUENCY
+    let lastDisruptionTime = 0;
+    const disruptionInterval = 1; // Much more frequent disruptions (from 1.2 to 0.8 seconds)
+    const disruptionDuration = 1.5; // Longer disruptions (from 1.0 to 1.2 seconds)
+    let isDisrupting = false;
+    let currentDisruptionTime = 0;
+    let disruptionStrength = 0;
+    let disruptionAngle = 0;
+    
+    // Vortex positions for asymmetric gravity effects - STRONGER INFLUENCE
+    const vortexPositions = [
+      new THREE.Vector3(4, 2, 2),
+      new THREE.Vector3(-3, -2, 3),
+      new THREE.Vector3(2, -4, -2),
+      new THREE.Vector3(-1, 3, -2),
+      new THREE.Vector3(3, -1, -2) // Added a fifth vortex for more chaos
+    ];
+    let vortexStrengths = [0.18, 0.15, 0.22, 0.17, 0.2]; // Increased from previous values
+    
+    // Add subtle camera movement
+    let cameraAngle = 0;
+    
+    // Optimization: create reusable vectors for calculations
+    const tempVector = new THREE.Vector3();
+    
+    // Initialize animation clock
+    const clock = new THREE.Clock();
+    clock.start();
+    
+    // Optimized animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      const elapsed = clock.getElapsedTime();
+      
+      // Smooth progress over time
+      progress = Math.min(elapsed / 15, 1.0);
+      intensityFactor = 0.2 + progress * 0.8;
+      
+      // Gradual force increases - MORE SWIRL, LESS ATTRACTION
+      particleAttraction = 0.0001 + 0.0003 * progress; // Reduced from 0.00012 + 0.0004
+      swirlingIntensity = 0.002 + 0.006 * progress; // Increased from 0.0018 + 0.0050
+      
+      // Subtle camera movement for more dynamic viewing angle (proportional to viewport)
+      cameraAngle = elapsed * 0.02;
+      camera.position.x = Math.sin(cameraAngle) * 2 * viewScaleFactor;
+      camera.position.y = Math.sin(cameraAngle * 0.5) * 1 * viewScaleFactor;
+      camera.lookAt(0, 0, 0);
+      
+      // Pulse timing
+      if (elapsed - lastPulseTime > pulseInterval && !isPulsing) {
+        isPulsing = true;
+        currentPulseTime = 0;
+        lastPulseTime = elapsed;
+        
+        // Activate pulse waves with staggered timing
+        pulseWaveObjects.forEach(wave => {
+          wave.visible = true;
+          wave.scale.set(0.1, 0.1, 0.1);
+          wave.material.uniforms.waveProgress.value = 0.0;
+          wave.material.uniforms.waveOpacity.value = 1.0;
+        });
+      }
+      
+      // Update pulse effects
+      if (isPulsing) {
+        currentPulseTime += 0.016;
+        
+        // Normalized pulse progress
+        const pulseProgress = Math.min(currentPulseTime / pulseDuration, 1.0);
+        
+        // Improved pulse disturbance curve
+        pulseDisturbance = pulseProgress < 0.25 
+          ? pulseProgress * 4.0
+          : Math.max(0, 1 - ((pulseProgress - 0.25) / 0.75));
+        
+        // Better wave animation
+        pulseWaveObjects.forEach((wave, index) => {
+          const delay = index * 0.12;
+          const waveProgress = Math.max(0, pulseProgress - delay);
+          
+          if (waveProgress > 0) {
+            // Improved expansion curve
+            const size = Math.pow(waveProgress, 0.8) * 35.0 + 1.0;
+            wave.scale.set(size, size, size);
+            
+            // Better fade out
+            const opacity = Math.pow(Math.max(0, 1 - waveProgress), 1.2);
+            wave.material.uniforms.waveOpacity.value = opacity;
+            wave.material.uniforms.waveProgress.value = waveProgress;
+          }
+        });
+        
+        // End pulse when complete
+        if (pulseProgress >= 1.0) {
+          isPulsing = false;
+          pulseWaveObjects.forEach(wave => {
+            wave.visible = false;
+          });
+        }
+      } else {
+        pulseDisturbance = 0;
+      }
+      
+      // Optimized particle update
+      const positions = particles.attributes.position.array;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const ix = i * 3;
+        const iy = i * 3 + 1;
+        const iz = i * 3 + 2;
+        
+        // Current position
+        const x = positions[ix];
+        const y = positions[iy];
+        const z = positions[iz];
+        
+        // Distance calculation (optimized)
+        const distanceSq = x*x + y*y + z*z;
+        const distance = Math.sqrt(distanceSq);
+        
+        // Direction to center
+        tempVector.set(-x, -y, -z).normalize();
+        
+        // Apply basic movement
+        positions[ix] += velocities[i * 3];
+        positions[iy] += velocities[i * 3 + 1];
+        positions[iz] += velocities[i * 3 + 2];
+        
+        // Apply pulse disturbance with improved physics
+        if (pulseDisturbance > 0) {
+          // Direction from center (outward)
+          tempVector.set(positions[ix], positions[iy], positions[iz]).normalize();
+          
+          // Better pulse effect with distance falloff and adjusted strength
+          const distanceFactor = Math.max(0, 1 - distance / 30); // Increased range from 25 to 30
+          const pulseStrength = pulseDisturbance * distanceFactor * 0.3; // Increased from 0.25 to 0.3
+          
+          // Add outward push to velocities, with greater control
+          velocities[i * 3] += tempVector.x * pulseStrength;
+          velocities[i * 3 + 1] += tempVector.y * pulseStrength;
+          velocities[i * 3 + 2] += tempVector.z * pulseStrength;
+        }
+        
+        // Improved gravity simulation - FURTHER REDUCED for more chaotic motion
+        const gravityFactor = distance < 5 
+          ? 3.8 / (distance * distance + 0.2) // Reduced from 4.5/0.15 to 3.8/0.2
+          : 1.0 * Math.pow(30 / (distance + 10), 1.1); // Reduced from 1.2/1.2 to 1.0/1.1
+        
+        // Calculate attraction based on distance - LESS ATTRACTION
+        const attractionStrength = particleAttraction * Math.pow(distance, 0.75); // Reduced power from 0.8 to 0.75
+        
+        // Apply inward force
+        velocities[i * 3] += tempVector.x * attractionStrength * gravityFactor;
+        velocities[i * 3 + 1] += tempVector.y * attractionStrength * gravityFactor;
+        velocities[i * 3 + 2] += tempVector.z * attractionStrength * gravityFactor;
+        
+        // Enhanced swirling effect
+        const swirl = swirlingIntensity * (1.0 + 0.5 * Math.sin(distance * 0.1 + elapsed * 0.5));
+        velocities[i * 3] += tempVector.y * swirl;
+        velocities[i * 3 + 1] -= tempVector.x * swirl;
+        
+        // Apply asymmetric damping for more chaotic motion - MORE VARIATION
+        const asymmetricDamping = 0.96 - 0.03 * Math.sin(x * 0.05 + y * 0.05 + elapsed * 0.4); // More variation
+        const dampFactor = Math.min(Math.max(asymmetricDamping, 0.93), 0.97); // Tighter bounds
+        
+        // Different damping for each dimension for more chaotic orbits
+        velocities[i * 3] *= dampFactor * (1 + Math.sin(elapsed * 0.7) * 0.01);
+        velocities[i * 3 + 1] *= dampFactor * (1 + Math.cos(elapsed * 0.8) * 0.01);
+        velocities[i * 3 + 2] *= dampFactor * (0.95 + 0.08 * Math.sin(elapsed * 0.9)); // More z-axis variation
+        
+        // Add velocity limit to prevent extreme speeds
+        const speedSquared = 
+          velocities[i * 3] * velocities[i * 3] + 
+          velocities[i * 3 + 1] * velocities[i * 3 + 1] + 
+          velocities[i * 3 + 2] * velocities[i * 3 + 2];
+        
+        if (speedSquared > 0.05) { // Increased from 0.04
+          const speedFactor = 0.224 / Math.sqrt(speedSquared); // Increased from 0.2
+          velocities[i * 3] *= speedFactor;
+          velocities[i * 3 + 1] *= speedFactor;
+          velocities[i * 3 + 2] *= speedFactor;
+        }
+        
+        // Better particle respawning near event horizon or when too far
+        if (distance < 2.2 || distance > 60) {
+          if (Math.random() < 0.65) {
+            // Respawn at outer shell with better distribution
+            const shellIndex = Math.floor(Math.random() * 4); // Randomize shell
+            const baseRadius = 7 + shellIndex * 10;
+            const radius = baseRadius + Math.random() * 5;
+            
+            // Better sphere point distribution
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            
+            positions[ix] = radius * Math.sin(phi) * Math.cos(theta);
+            positions[iy] = radius * Math.sin(phi) * Math.sin(theta);
+            positions[iz] = radius * Math.cos(phi);
+            
+            // Reset velocity with slight initial momentum
+            velocities[i * 3] = (Math.random() - 0.5) * 0.01;
+            velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.01;
+            velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.01;
+          } else {
+            // Particle consumed by black hole
+            positions[ix] = 0;
+            positions[iy] = 0;
+            positions[iz] = -1000;
+            
+            velocities[i * 3] = 0;
+            velocities[i * 3 + 1] = 0;
+            velocities[i * 3 + 2] = 0;
+          }
+        }
+      }
+      
+      particles.attributes.position.needsUpdate = true;
+      
+    // Enhanced particle twinkling with viewport-aware sizing and increased minimum size
+    const particleSizes = particles.attributes.size.array;
+    for (let i = 0; i < particleCount; i++) {
+      // More natural twinkling with increased minimum size for visibility
+      const baseSize = (Math.random() * 0.15 + 0.35); // Increased base size
+      const twinkle = (1 + Math.sin(elapsed * 2 + i) * 0.15) * (1 + Math.cos(elapsed * 1.5 + i * 0.7) * 0.1);
+      
+      // Apply scale with minimum size guarantee
+      particleSizes[i] = Math.max(baseSize * twinkle * particleScaleFactor, 0.4 * particleScaleFactor);
+    }
+    particles.attributes.size.needsUpdate = true;
+      
+      // Update shader uniforms for viewport scale
+      particleMaterial.uniforms.viewportScale.value = viewScaleFactor;
+      
+      // Update all shader uniforms
+      accretionDiskMaterial.uniforms.time.value = elapsed;
+      blackHoleMaterial.uniforms.time.value = elapsed;
+      lensingMaterial.uniforms.time.value = elapsed;
+      glowMaterial.uniforms.time.value = elapsed;
+      
+      // Enhanced animation of accretion disk
+      accretionDisk.rotation.y = Math.sin(elapsed * 0.05) * 0.12;
+      accretionDisk.rotation.z = Math.cos(elapsed * 0.03) * 0.08;
+      
+      // Scale all visual elements proportionally with viewport
+      const breathe = 1.0 + 0.03 * Math.sin(elapsed * 0.8);
+      const scaledBreathe = scaleFactor * breathe;
+      
+      if (isPulsing) {
+        const pulseGlow = 1.0 + pulseDisturbance * 1.8;
+        glow.scale.set(scaledBreathe * pulseGlow, scaledBreathe * pulseGlow, scaledBreathe * pulseGlow);
+        
+        // Enhance lensing during pulse
+        lensing.scale.set(
+          scaleFactor * (1.0 + pulseDisturbance * 0.3), 
+          scaleFactor * (1.0 + pulseDisturbance * 0.3), 
+          scaleFactor
+        );
+      } else {
+        // Subtle breathing effect when not pulsing
+        glow.scale.set(scaledBreathe, scaledBreathe, scaledBreathe);
+        lensing.scale.set(scaleFactor, scaleFactor, scaleFactor);
+      }
+      
+      // Animate pulse waves
+      pulseWaves.children.forEach(wave => {
+        if (wave.visible) {
+          wave.material.uniforms.time.value = elapsed;
+        }
+      });
+      
+      // Update vortex positions for dynamic flow - FASTER AND MORE CHAOTIC MOVEMENT
+      const t = elapsed * 0.2; // Faster movement (increased from 0.15)
+      
+      // First vortex - figure-8 pattern with varying radius and added noise
+      const v1radius = 3.5 + Math.sin(t * 0.8) * 1.8 + Math.cos(t * 1.7) * 0.7;
+      vortexPositions[0].x = v1radius * Math.sin(t * 1.2) + Math.sin(t * 2.3) * 0.8;
+      vortexPositions[0].y = v1radius * Math.sin(t * 2.4) + Math.cos(t * 1.9) * 0.6;
+      vortexPositions[0].z = 2 * Math.sin(t * 0.9 + Math.PI/4) + Math.cos(t * 3.1) * 0.5;
+      
+      // Second vortex - spiral pattern with more complexity
+      const v2radius = 3 + Math.cos(t * 0.6) * 1.3 + Math.sin(t * 1.4) * 0.7;
+      const v2angle = t * 0.9 + Math.sin(t * 0.4) * 0.4;
+      vortexPositions[1].x = -v2radius * Math.cos(v2angle) + Math.sin(t * 2.2) * 0.6;
+      vortexPositions[1].y = -v2radius * Math.sin(v2angle) + Math.cos(t * 1.8) * 0.5;
+      vortexPositions[1].z = 3 * Math.sin(t * 0.9 + Math.sin(t * 0.35) * 1.2) + Math.sin(t * 2.6) * 0.7;
+      
+      // Third vortex - more erratic movement with added turbulence
+      vortexPositions[2].x = 2 * Math.sin(t * 1.5) * Math.cos(t * 0.8) + Math.cos(t * 3.2) * 0.9;
+      vortexPositions[2].y = -4 * Math.cos(t * 0.7) * Math.sin(t * 0.6) + Math.sin(t * 2.8) * 0.8;
+      vortexPositions[2].z = -2 * Math.sin(t * 1.2 + Math.cos(t * 0.5) * 2.5) + Math.cos(t * 2.4) * 0.7;
+      
+      // Fourth vortex - opposite direction orbit with oscillation and turbulence
+      const v4radius = 2.5 + Math.sin(t * 1.3) * 1.2 + Math.cos(t * 2.1) * 0.6;
+      vortexPositions[3].x = -v4radius * Math.cos(t * 1.05) + Math.sin(t * 3.1) * 0.7;
+      vortexPositions[3].y = v4radius * Math.sin(t * 1.05) * Math.cos(t * 0.4) + Math.cos(t * 2.7) * 0.8;
+      vortexPositions[3].z = -2 * Math.cos(t * 1.1) * Math.sin(t * 0.5) + Math.sin(t * 2.3) * 0.7;
+      
+      // Fifth vortex - chaotic movement with multiple frequency components
+      vortexPositions[4].x = 3 * Math.sin(t * 1.7) * Math.cos(t * 0.4) * Math.sin(t * 0.2);
+      vortexPositions[4].y = -1 * Math.cos(t * 0.9) * Math.sin(t * 1.5) * Math.cos(t * 0.3);
+      vortexPositions[4].z = -2 * Math.sin(t * 1.3) * Math.cos(t * 0.7) * Math.sin(t * 0.5);
+      
+      // Subtle star twinkling with viewport scaling
+      const starSizesAttr = starField.geometry.attributes.size;
+      for (let i = 0; i < starCount; i++) {
+        starSizesAttr.array[i] = ((Math.random() * 0.2 + 0.2) * 
+                              (1 + Math.sin(elapsed * 1.5 + i * 5.7) * 0.3)) * 
+                              particleScaleFactor;
+      }
+      starSizesAttr.needsUpdate = true;
+      
+      renderer.render(scene, camera);
+    }
+
+    // Better window resize handling with proper scaling
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // Update viewport scaling factors with minimum scale
+        const newViewportSize = Math.min(window.innerWidth, window.innerHeight);
+        const rawScaleFactor = newViewportSize / scaleBaseSize;
+        scaleFactor = Math.max(rawScaleFactor, minScaleFactor);
+        particleScaleFactor = Math.max(rawScaleFactor * 1.25, minScaleFactor * 1.25);
+        
+        // Update camera aspect ratio
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        
+        // Update camera distance based on viewport
+        camera.position.z = 30 * scaleFactor;
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.lookAt(0, 0, 0);
+        
+        // Update renderer size
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        
+        // Adjust particle sizes for new viewport
+        const particleSizes = particles.attributes.size.array;
+        for (let i = 0; i < particleCount; i++) {
+          particleSizes[i] *= scaleFactor;
+        }
+        particles.attributes.size.needsUpdate = true;
+        
+        // Scale all visual elements
+        accretionDisk.scale.set(scaleFactor, scaleFactor, scaleFactor);
+        blackHole.scale.set(scaleFactor, scaleFactor, scaleFactor);
+        lensing.scale.set(scaleFactor, scaleFactor, scaleFactor);
+        glow.scale.set(scaleFactor, scaleFactor, scaleFactor);
+        
+        // Scale pulse waves
+        pulseWaves.children.forEach(wave => {
+          wave.scale.set(scaleFactor, scaleFactor, scaleFactor);
+        });
+        
+      }, 200);
+    });
+
+    animate();
+  </script>
+</body>
+</html>

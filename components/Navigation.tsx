@@ -32,6 +32,7 @@ export default function Navigation() {
   const navLinks = [
     { title: 'Home', path: '/' },
     { title: 'CV', path: '/cv' },
+    { title: 'Imagine You', path: '/imagine_you' },
     { title: 'Projects', path: '/projects' },
     { title: 'Contact', path: '/contact' },
   ];
