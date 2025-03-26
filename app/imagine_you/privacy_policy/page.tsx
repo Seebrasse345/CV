@@ -5,64 +5,82 @@ import Navigation from '@/components/Navigation';
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 
-// Custom styles for markdown content
-const customStyles = `
-  .markdown-content h1, 
-  .markdown-content h2, 
-  .markdown-content h3, 
-  .markdown-content h4 {
-    color: #C77DFF;
-    margin-top: 1.5em;
-    margin-bottom: 0.75em;
-    font-weight: 600;
-  }
-  
-  .markdown-content h1 {
-    font-size: 2rem;
-    border-bottom: 1px solid rgba(123, 44, 191, 0.3);
-    padding-bottom: 0.3em;
-  }
-  
-  .markdown-content h2 {
-    font-size: 1.5rem;
-  }
-  
-  .markdown-content h3 {
-    font-size: 1.25rem;
-  }
-  
-  .markdown-content p {
-    margin-bottom: 1.25em;
-    line-height: 1.7;
-  }
-  
-  .markdown-content ul, 
-  .markdown-content ol {
-    margin-bottom: 1.25em;
-    padding-left: 1.5em;
-  }
-  
-  .markdown-content li {
-    margin-bottom: 0.5em;
-  }
-  
-  .markdown-content strong {
-    color: white;
-    font-weight: 600;
-  }
-  
-  .markdown-content a {
-    color: #C77DFF;
-    text-decoration: underline;
-  }
-  
-  .markdown-content blockquote {
-    border-left: 4px solid #7B2CBF;
-    padding-left: 1em;
-    margin-left: 0;
-    color: #aaa;
-  }
-`;
+// Custom styles for markdown content - replace style jsx global with a proper CSS in JS approach
+const markdownStyles = {
+  h1: {
+    color: '#C77DFF',
+    marginTop: '1.5em',
+    marginBottom: '0.75em',
+    fontWeight: 600,
+    fontSize: '2rem',
+    borderBottom: '1px solid rgba(123, 44, 191, 0.3)',
+    paddingBottom: '0.3em',
+  },
+  h2: {
+    color: '#C77DFF',
+    marginTop: '1.5em',
+    marginBottom: '0.75em',
+    fontWeight: 600,
+    fontSize: '1.5rem',
+  },
+  h3: {
+    color: '#C77DFF',
+    marginTop: '1.5em',
+    marginBottom: '0.75em',
+    fontWeight: 600,
+    fontSize: '1.25rem',
+  },
+  h4: {
+    color: '#C77DFF',
+    marginTop: '1.5em',
+    marginBottom: '0.75em',
+    fontWeight: 600,
+  },
+  p: {
+    marginBottom: '1.25em',
+    lineHeight: 1.7,
+  },
+  ul: {
+    marginBottom: '1.25em',
+    paddingLeft: '1.5em',
+  },
+  ol: {
+    marginBottom: '1.25em',
+    paddingLeft: '1.5em',
+  },
+  li: {
+    marginBottom: '0.5em',
+  },
+  strong: {
+    color: 'white',
+    fontWeight: 600,
+  },
+  a: {
+    color: '#C77DFF',
+    textDecoration: 'underline',
+  },
+  blockquote: {
+    borderLeft: '4px solid #7B2CBF',
+    paddingLeft: '1em',
+    marginLeft: 0,
+    color: '#aaa',
+  },
+};
+
+// Custom components for ReactMarkdown
+const MarkdownComponents = {
+  h1: ({ node, ...props }: any) => <h1 style={markdownStyles.h1} {...props} />,
+  h2: ({ node, ...props }: any) => <h2 style={markdownStyles.h2} {...props} />,
+  h3: ({ node, ...props }: any) => <h3 style={markdownStyles.h3} {...props} />,
+  h4: ({ node, ...props }: any) => <h4 style={markdownStyles.h4} {...props} />,
+  p: ({ node, ...props }: any) => <p style={markdownStyles.p} {...props} />,
+  ul: ({ node, ...props }: any) => <ul style={markdownStyles.ul} {...props} />,
+  ol: ({ node, ...props }: any) => <ol style={markdownStyles.ol} {...props} />,
+  li: ({ node, ...props }: any) => <li style={markdownStyles.li} {...props} />,
+  strong: ({ node, ...props }: any) => <strong style={markdownStyles.strong} {...props} />,
+  a: ({ node, ...props }: any) => <a style={markdownStyles.a} {...props} />,
+  blockquote: ({ node, ...props }: any) => <blockquote style={markdownStyles.blockquote} {...props} />,
+};
 
 export default function PrivacyPolicyPage() {
   const [markdownContent, setMarkdownContent] = useState<string>('');
@@ -153,9 +171,6 @@ export default function PrivacyPolicyPage() {
 
   return (
     <main className="min-h-screen bg-dark relative overflow-hidden">
-      {/* Add custom styles */}
-      <style jsx global>{customStyles}</style>
-      
       {/* Background Animation */}
       <div className="fixed inset-0 -z-10 w-full h-full">
         <canvas
@@ -199,8 +214,8 @@ export default function PrivacyPolicyPage() {
             initial="hidden"
             animate="visible"
           >
-            <div className="markdown-content text-gray-300">
-              <ReactMarkdown>{markdownContent}</ReactMarkdown>
+            <div className="text-gray-300">
+              <ReactMarkdown components={MarkdownComponents}>{markdownContent}</ReactMarkdown>
             </div>
           </motion.div>
         </div>
