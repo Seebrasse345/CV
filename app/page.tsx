@@ -54,6 +54,7 @@ const LoadingSpinner: React.FC<{
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { scrollYProgress } = useScroll();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrollProgress, setScrollProgress] = useState(0);

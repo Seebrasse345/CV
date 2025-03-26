@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Navigation from '@/components/Navigation';
 import dynamic from 'next/dynamic';
 
@@ -20,14 +20,16 @@ export default function CVPage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
   
-  // Store refs to each main section
-  const sectionRefs = {
-    education: useRef<HTMLElement>(null),
-    certifications: useRef<HTMLElement>(null),
-    projects: useRef<HTMLElement>(null),
-    skills: useRef<HTMLElement>(null),
-    experience: useRef<HTMLElement>(null)
-  };
+  // Refs for different CV sections
+  const sectionRefs = useMemo(() => ({
+    header: useRef<HTMLDivElement>(null),
+    summary: useRef<HTMLDivElement>(null),
+    skills: useRef<HTMLDivElement>(null),
+    education: useRef<HTMLDivElement>(null),
+    certifications: useRef<HTMLDivElement>(null),
+    projects: useRef<HTMLDivElement>(null),
+    experience: useRef<HTMLDivElement>(null)
+  }), []);
 
   useEffect(() => {
     // Simulate loading time for better UX

@@ -128,8 +128,9 @@ export default function Navigation() {
 
 // Desktop Navigation Link
 function NavLink({ href, label, isActive }: { href: string; label: string; isActive: boolean }) {
+  const pathname = usePathname();
   // Special handling for home link - needed to ensure it only shows as active on exact '/' path
-  const isActiveLink = href === '/' ? isActive && href === usePathname() : isActive;
+  const isActiveLink = href === '/' ? isActive && href === pathname : isActive;
   
   return (
     <Link
@@ -152,8 +153,9 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
 
 // Mobile Navigation Link
 function MobileNavLink({ href, label, isActive, onClick }: { href: string; label: string; isActive: boolean; onClick: () => void }) {
+  const pathname = usePathname();
   // Special handling for home link - matches desktop behavior
-  const isActiveLink = href === '/' ? isActive && href === usePathname() : isActive;
+  const isActiveLink = href === '/' ? isActive && href === pathname : isActive;
   
   return (
     <Link

@@ -2,14 +2,30 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+
+// Define Particle interface
+interface Particle {
+  x: number;
+  y: number;
+  angle: number;
+  radius: number;
+  speed: number;
+  distance: number;
+  life: number;
+  decay: number;
+  color: number[];
+  reset: () => void;
+  update: () => void;
+  draw: (ctx: CanvasRenderingContext2D) => void;
+  getRandomColor: () => number[];
+}
 
 export default function ImagineYouPage() {
   const [isLoading, setIsLoading] = useState(true);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
-  const particles = useRef<any[]>([]);
+  const particles = useRef<Particle[]>([]);
   
   // Animation setup
   useEffect(() => {
@@ -415,7 +431,7 @@ export default function ImagineYouPage() {
                     
                     <div>
                       <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>What kind of prompts work best?</h3>
-                      <p className="text-gray-300">Detailed prompts with clear scenarios work best. For example, "me as an astronaut on Mars with a red spacesuit" will give better results than simply "astronaut".</p>
+                      <p className="text-gray-300">Detailed prompts with clear scenarios work best. For example, &quot;me as an astronaut on Mars with a red spacesuit&quot; will give better results than simply &quot;astronaut&quot;.</p>
                     </div>
                     
                     <div>
