@@ -87,6 +87,8 @@ export default function TermsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
+  const [canvasHtmlId] = useState(`canvas-${Math.random().toString(36).substring(2, 9)}`);
+  const [scriptExecuted, setScriptExecuted] = useState(false);
 
   // Fetch the markdown content
   useEffect(() => {
@@ -110,104 +112,133 @@ export default function TermsPage() {
       });
   }, []);
 
-  // Set up background animation - completely revamped for guaranteed visibility
+  // Raw HTML and JavaScript for pure canvas control - direct DOM manipulation
+  // This bypasses React's virtual DOM to ensure canvas is properly rendered
+  const rawHtml = `
+    <div 
+      id="animation-container" 
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        overflow: hidden;
+        pointer-events: none;
+      "
+    >
+      <canvas 
+        id="${canvasHtmlId}" 
+        style="
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 1;
+          display: block;
+          background-color: #FF00FF;
+          border: 5px solid yellow;
+        "
+      ></canvas>
+    </div>
+  `;
+
+  // Direct JavaScript animation - execute once after component mounts
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    console.log("Canvas initialized", canvas.width, canvas.height); // Debug logging
-    
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      console.log("Canvas resized", canvas.width, canvas.height); // Debug logging
-      
-      // Force full redraw immediately when resized
-      if (ctx) {
-        ctx.fillStyle = '#0D0D0D';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw a bright highlight across the whole canvas for debugging
-        ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
-    };
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    if (scriptExecuted) return;
 
-    // DIRECT PARTICLE SYSTEM (no class, simpler for debugging)
-    const particleCount = 50;
-    const particles = Array.from({ length: particleCount }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 5 + 3, // LARGER SIZE for debugging
-      color: `rgb(255, ${Math.floor(Math.random() * 200)}, ${Math.floor(Math.random() * 255)})`, // BRIGHTER COLORS
-      vx: (Math.random() - 0.5) * 2,
-      vy: (Math.random() - 0.5) * 2
-    }));
-
-    // Super simple animation loop for debugging
-    function animate() {
-      if (!canvas || !ctx) return;
+    try {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.innerHTML = `
+        (function() {
+          console.log("DIRECT SCRIPT: Starting animation script");
+          
+          // Get canvas directly from DOM
+          const canvas = document.getElementById('${canvasHtmlId}');
+          console.log("DIRECT SCRIPT: Canvas element found:", !!canvas);
+          
+          if (!canvas) {
+            console.error("DIRECT SCRIPT: Canvas element not found!");
+            return;
+          }
+          
+          // Force dimensions
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          
+          // Get context
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            console.error("DIRECT SCRIPT: Cannot get canvas context!");
+            return;
+          }
+          
+          console.log("DIRECT SCRIPT: Context created");
+          
+          // Fill with something EXTREMELY visible
+          ctx.fillStyle = 'red';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          
+          ctx.fillStyle = 'lime';  
+          ctx.fillRect(20, 20, canvas.width - 40, canvas.height - 40);
+          
+          ctx.fillStyle = 'white';
+          ctx.font = '30px Arial';
+          ctx.fillText('DIRECT ANIMATION IS WORKING', 50, 100);
+          ctx.fillText('TIME: ' + new Date().toISOString(), 50, 150);
+          
+          let frameCount = 0;
+          
+          // Simple animation loop
+          function animate() {
+            frameCount++;
+            
+            // Semi-transparent overlay to create trails
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Moving ball
+            const x = canvas.width/2 + Math.sin(frameCount * 0.05) * 100;
+            const y = canvas.height/2 + Math.cos(frameCount * 0.05) * 100;
+            
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(x, y, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Display frame count
+            ctx.fillStyle = 'white';
+            ctx.font = '20px Arial';
+            ctx.fillText('Frame: ' + frameCount, 50, 50);
+            ctx.fillText('Time: ' + new Date().toISOString(), 50, 80);
+            
+            // Request next frame
+            requestAnimationFrame(animate);
+          }
+          
+          // Start animation
+          animate();
+          
+          // Handle resize
+          window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+          });
+        })();
+      `;
       
-      // NEARLY TRANSPARENT BACKGROUND to see trails
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      // DRAW A FIXED REFERENCE POINT at center for debugging
-      ctx.fillStyle = 'white';
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 20, 0, Math.PI * 2);
-      ctx.fill();
-      
-      // Draw and update particles
-      particles.forEach(p => {
-        // Draw with high-contrast glow
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 15;
-        ctx.fillStyle = p.color;
-        
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Reset shadow
-        ctx.shadowBlur = 0;
-        
-        // Update position
-        p.x += p.vx;
-        p.y += p.vy;
-        
-        // Wrap around edges
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-      });
-      
-      // Draw timestamp in corner for debugging
-      ctx.fillStyle = 'white';
-      ctx.font = '16px monospace';
-      ctx.fillText(`Timestamp: ${Date.now()}`, 20, 20);
-      
-      animationRef.current = requestAnimationFrame(animate);
+      // Append script to body
+      document.body.appendChild(script);
+      setScriptExecuted(true);
+      console.log("Main component: Script injected");
+    } catch (error) {
+      console.error("Script injection error:", error);
     }
-    
-    console.log("Starting animation"); // Debug logging
-    animate();
-    
-    return () => {
-      console.log("Cleaning up animation"); // Debug logging
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationRef.current);
-    };
-  }, []);
+  }, [canvasHtmlId, scriptExecuted]);
 
   // Animation variants for content
   const containerVariants = {
@@ -222,26 +253,24 @@ export default function TermsPage() {
 
   return (
     <main className="min-h-screen bg-dark relative overflow-hidden">
-      {/* Background Animation - Moved this to the FRONT of the DOM for testing */}
-      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-        <canvas
-          ref={canvasRef}
-          className="absolute top-0 left-0 w-full h-full"
-          style={{ 
-            display: 'block',
-            opacity: 0.9 // HIGHER OPACITY for debugging
-          }}
-        />
-      </div>
+      {/* Inject raw HTML/JS for animation - completely bypassing React's handling */}
+      <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
       
-      {/* Temporarily adjust opacity for debugging */}
-      <div className="fixed inset-0 z-0 bg-dark opacity-80"></div>
+      {/* Diagnostic overlay */}
+      <div className="fixed top-0 right-0 z-50 bg-black bg-opacity-70 text-white p-2 text-xs pointer-events-none">
+        <div>EXTREME DEBUG MODE ACTIVE</div>
+        <div>Canvas ID: {canvasHtmlId}</div>
+        <div>Script executed: {scriptExecuted ? "YES" : "NO"}</div>
+        <div>Loading: {isLoading ? "YES" : "NO"}</div>
+      </div>
       
       <Navigation />
       
-      <div className="pt-24 pb-20 min-h-screen transition-all duration-1000 relative z-10"
+      {/* Content with reduced opacity to ensure animation is visible */}
+      <div 
+        className="pt-24 pb-20 min-h-screen transition-all duration-1000 relative z-20"
         style={{ 
-          opacity: isLoading ? 0 : 0.9, // REDUCED OPACITY for debugging
+          opacity: isLoading ? 0 : 0.85,
           transform: isLoading ? 'translateY(20px)' : 'translateY(0)'
         }}
       >
