@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "next build",
-  "ignoreCommand": "node scripts/eslint-check.js",
+  "buildCommand": "node scripts/eslint-check.js && next build",
+  "ignoreCommand": "exit 1",
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",

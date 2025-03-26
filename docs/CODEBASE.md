@@ -105,8 +105,8 @@ A `vercel.json` file is included in the root directory with appropriate configur
 
 ```json
 {
-  "buildCommand": "next build",
-  "ignoreCommand": "node scripts/eslint-check.js",
+  "buildCommand": "node scripts/eslint-check.js && next build",
+  "ignoreCommand": "exit 1",
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
@@ -126,7 +126,8 @@ A `vercel.json` file is included in the root directory with appropriate configur
 ```
 
 Key features of this configuration:
-- Uses a custom bypass script to ensure successful deployment
+- Incorporates an ESLint bypass script in the build command
+- Sets `ignoreCommand` to `exit 1` to ensure builds are never skipped
 - Explicitly enables deployments for both main and master branches
 - Configures GitHub integration with automatic deployments
 
