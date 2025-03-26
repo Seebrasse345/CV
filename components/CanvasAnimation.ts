@@ -72,15 +72,11 @@ export default class CanvasAnimation {
   public init(): void {
     // Check if we're in a browser environment
     if (typeof window === 'undefined') {
-      console.log("Not in browser environment, skipping animation initialization");
       return;
     }
-
-    console.log(`Initializing animation with canvas ID: ${this.canvasId}`);
     
     // Prevent double initialization
     if (this.isInitialized) {
-      console.log("Animation already initialized, skipping");
       return;
     }
     
@@ -101,7 +97,6 @@ export default class CanvasAnimation {
     // First, create or get the container
     let container = document.getElementById(this.containerId);
     if (!container) {
-      console.log(`Creating animation container: ${this.containerId}`);
       container = document.createElement('div');
       container.id = this.containerId;
       
@@ -124,7 +119,6 @@ export default class CanvasAnimation {
     // Then create or get the canvas
     this.canvas = document.getElementById(this.canvasId) as HTMLCanvasElement;
     if (!this.canvas) {
-      console.log(`Creating canvas element: ${this.canvasId}`);
       this.canvas = document.createElement('canvas');
       this.canvas.id = this.canvasId;
       
@@ -155,7 +149,6 @@ export default class CanvasAnimation {
         (function() {
           const canvas = document.getElementById('${this.canvasId}');
           if (canvas) {
-            console.log('Canvas script activated: ${this.canvasId}');
             // Force a redraw
             canvas.style.display = 'none';
             setTimeout(() => { canvas.style.display = 'block'; }, 0);
@@ -180,13 +173,9 @@ export default class CanvasAnimation {
       return;
     }
     
-    // Add an initial bright fill to make the canvas visible immediately
+    // Add an initial fill to make the canvas visible immediately
     this.ctx.fillStyle = this.baseBackgroundColor;
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    
-    // Add a bright rectangle to ensure the canvas is working
-    this.ctx.fillStyle = 'rgba(255, 0, 255, 0.3)';
-    this.ctx.fillRect(this.canvas.width / 2 - 100, this.canvas.height / 2 - 100, 200, 200);
     
     // Initialize particles if configured
     if (this.particles) {
@@ -214,7 +203,6 @@ export default class CanvasAnimation {
     }
     
     this.isInitialized = false;
-    console.log(`Animation cleaned up: ${this.canvasId}`);
   }
   
   private handleResize = (): void => {
@@ -223,10 +211,6 @@ export default class CanvasAnimation {
     // Update canvas dimensions when window resizes
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
-    
-    // Redraw static elements
-    this.ctx.fillStyle = this.baseBackgroundColor;
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     
     // Reinitialize particles
     if (this.particles) {
@@ -264,49 +248,33 @@ export default class CanvasAnimation {
     if (!this.canvas || !this.ctx) return;
     
     const animate = (): void => {
-      try {
-        // Get the actual DOM element to ensure it's still in the document
-        const canvasElement = document.getElementById(this.canvasId);
-        if (!canvasElement || !this.ctx || !this.canvas) {
-          console.log(`Canvas element not found in DOM, reinitializing: ${this.canvasId}`);
-          this.cleanup();
-          this.init();
-          return;
-        }
-        
-        this.frameCount++;
-        
-        // Semi-transparent overlay for trails
-        this.ctx.fillStyle = 'rgba(13, 13, 13, 0.1)';
+      this.animationFrameId = requestAnimationFrame(animate);
+      this.frameCount++;
+      
+      // Limit frame rate to reduce CPU usage if needed
+      if (this.frameCount % 1 !== 0) return;
+      
+      // Clear the canvas with semi-transparent black for nice trails
+      if (this.ctx && this.canvas) {
+        this.ctx.fillStyle = `${this.baseBackgroundColor.slice(0, -1)}, 0.1)`;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Draw particles
-        if (this.particles) {
+        // Draw animation elements
+        if (this.particles && this.particlesData.length > 0) {
           this.drawParticles();
         }
         
-        // Draw black hole
         if (this.blackHole) {
           this.drawBlackHole();
         }
         
-        // Draw debug info
+        // Draw debug info if enabled
         if (this.debugInfo) {
           this.drawDebugInfo();
         }
-        
-        this.animationFrameId = requestAnimationFrame(animate);
-      } catch (error) {
-        console.error(`Animation error in ${this.canvasId}:`, error);
-        // Try to recover
-        setTimeout(() => {
-          this.cleanup();
-          this.init();
-        }, 1000);
       }
     };
     
-    // Start the animation loop
     animate();
   }
   

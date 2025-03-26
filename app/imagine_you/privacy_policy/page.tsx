@@ -113,16 +113,14 @@ export default function PrivacyPolicyPage() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
-    console.log("Setting up Privacy Policy animation");
-    
     // Create and initialize the animation with very bright and visible elements
     const animation = new CanvasAnimation({
       canvasId: CANVAS_ID,
       containerId: ANIMATION_CONTAINER_ID,
       zIndex: -5,
-      debugInfo: true,
+      debugInfo: false,
       baseBackgroundColor: '#0D0D0D',
-      borderColor: '#00FFFF', // Bright cyan border
+      borderColor: 'transparent',
       particles: {
         count: 180, // Even more particles
         minSize: 2.5, // Good minimum size
@@ -146,7 +144,6 @@ export default function PrivacyPolicyPage() {
     
     // Cleanup on unmount
     return () => {
-      console.log("Cleaning up Privacy Policy animation");
       animation.cleanup();
     };
   }, []);
@@ -167,14 +164,6 @@ export default function PrivacyPolicyPage() {
       <Head>
         <title>Privacy Policy - Imagine You</title>
       </Head>
-      
-      {/* Diagnostic overlay */}
-      <div className="fixed top-0 right-0 z-50 bg-black bg-opacity-70 text-white p-2 text-xs pointer-events-none">
-        <div className="font-bold">PRIVACY POLICY ANIMATION</div>
-        <div>Canvas ID: {CANVAS_ID}</div>
-        <div>Animation Loaded: {animationLoaded ? "YES" : "NO"}</div>
-        <div>Content Loading: {isLoading ? "YES" : "NO"}</div>
-      </div>
       
       <Navigation />
       
