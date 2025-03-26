@@ -46,6 +46,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link 
             href="/"
+            prefetch={true}
             className="text-white font-bold text-xl flex items-center hover:text-redAccent transition-colors"
           >
             <span className="relative z-10 flex items-center">
@@ -127,18 +128,21 @@ export default function Navigation() {
 
 // Desktop Navigation Link
 function NavLink({ href, label, isActive }: { href: string; label: string; isActive: boolean }) {
+  // Special handling for home link - needed to ensure it only shows as active on exact '/' path
+  const isActiveLink = href === '/' ? isActive && href === usePathname() : isActive;
+  
   return (
     <Link
       href={href}
       className={`group relative py-2 text-sm font-medium tracking-wider ${
-        isActive
+        isActiveLink
           ? 'text-redAccent'
           : 'text-gray-300 hover:text-white'
       }`}
     >
       {label}
       <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-transform duration-300 origin-left ${
-        isActive
+        isActiveLink
           ? 'bg-redAccent scale-x-100'
           : 'bg-white scale-x-0 group-hover:scale-x-100'
       }`}></div>
@@ -148,12 +152,15 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
 
 // Mobile Navigation Link
 function MobileNavLink({ href, label, isActive, onClick }: { href: string; label: string; isActive: boolean; onClick: () => void }) {
+  // Special handling for home link - matches desktop behavior
+  const isActiveLink = href === '/' ? isActive && href === usePathname() : isActive;
+  
   return (
     <Link
       href={href}
       onClick={onClick}
       className={`block py-2 px-4 text-base rounded-md transition-all duration-200 ${
-        isActive
+        isActiveLink
           ? 'bg-redAccent text-white'
           : 'text-gray-300 hover:bg-dark-lighter hover:text-white'
       }`}

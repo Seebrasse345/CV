@@ -7,7 +7,147 @@ import { motion } from 'framer-motion';
 
 export default function ImagineYouPage() {
   const [isLoading, setIsLoading] = useState(true);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>(0);
+  const particles = useRef<any[]>([]);
+  
+  // Animation setup
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.7;
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    // Create particles
+    const NUM_PARTICLES = 300;
+    particles.current = [];
+    
+    class Particle {
+      x: number = 0;
+      y: number = 0;
+      angle: number = 0;
+      radius: number = 0;
+      speed: number = 0;
+      distance: number = 0;
+      life: number = 1.0;
+      decay: number = 0.01;
+      color: number[] = [0, 0, 0];
+      
+      constructor() {
+        this.reset();
+      }
+      
+      reset() {
+        if (!canvas) return;
+        
+        this.x = canvas.width / 2;
+        this.y = canvas.height / 2;
+        this.angle = Math.random() * Math.PI * 2;
+        this.radius = Math.random() * 2 + 0.5;
+        this.speed = Math.random() * 3 + 1;
+        this.distance = Math.random() * 200 + 50;
+        this.life = 1.0;
+        this.decay = Math.random() * 0.02 + 0.005;
+        this.color = this.getRandomColor();
+      }
+      
+      getRandomColor() {
+        const colors = [
+          [123, 44, 191], // Primary purple #7B2CBF
+          [199, 125, 255], // Accent purple #C77DFF
+          [160, 80, 240], // Mid purple
+          [90, 20, 120]  // Deep purple
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+      
+      update() {
+        this.angle += 0.01;
+        this.distance -= this.speed * 0.05;
+        this.life -= this.decay;
+        
+        if (!canvas) return;
+        
+        this.x = canvas.width / 2 + Math.cos(this.angle) * this.distance;
+        this.y = canvas.height / 2 + Math.sin(this.angle) * this.distance;
+        
+        if (this.life <= 0 || this.distance <= 0) {
+          this.reset();
+        }
+      }
+      
+      draw(ctx: CanvasRenderingContext2D) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.life})`;
+        ctx.fill();
+      }
+    }
+    
+    for (let i = 0; i < NUM_PARTICLES; i++) {
+      particles.current.push(new Particle());
+    }
+    
+    // Draw black hole
+    const drawBlackHole = (ctx: CanvasRenderingContext2D) => {
+      if (!canvas) return;
+      
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, 0,
+        canvas.width / 2, canvas.height / 2, 100
+      );
+      
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');
+      gradient.addColorStop(0.8, 'rgba(26, 0, 51, 0.8)');
+      gradient.addColorStop(1, 'rgba(26, 0, 51, 0)');
+      
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, 100, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+      
+      // Glow effect
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = '#7B2CBF';
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, 30, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(123, 44, 191, 0.5)';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    };
+    
+    // Animation loop
+    const animate = () => {
+      ctx.fillStyle = 'rgba(13, 13, 13, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      particles.current.forEach(particle => {
+        particle.update();
+        particle.draw(ctx);
+      });
+      
+      drawBlackHole(ctx);
+      
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      cancelAnimationFrame(animationRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,11 +184,10 @@ export default function ImagineYouPage() {
     <main className="min-h-screen bg-dark relative">
       {/* Black Hole Animation */}
       <div className="fixed inset-0 -z-10 overflow-hidden" style={{ height: '70vh' }}>
-        <iframe 
-          ref={iframeRef}
-          src="/black_hole_diffusion.html" 
-          className="w-full h-full border-0"
-          title="Black Hole Diffusion Animation"
+        <canvas
+          ref={canvasRef}
+          className="w-full h-full"
+          style={{ background: '#0D0D0D' }}
         />
       </div>
       
@@ -72,7 +211,7 @@ export default function ImagineYouPage() {
               Imagine You
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Your personalized AI image generation app that lets you become anything you can imagine
+              Become anyone, anywhere, in any style with personalized AI image generation
             </p>
           </div>
 
@@ -92,27 +231,27 @@ export default function ImagineYouPage() {
                 style={{ borderColor: '#7B2CBF' }}
               >
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-6" style={{ color: '#C77DFF' }}>Create Your Digital Twin</h2>
+                  <h2 className="text-3xl font-bold mb-6" style={{ color: '#C77DFF' }}>Transform Your Photos Into Magic</h2>
                   <p className="text-gray-300 text-lg mb-6">
-                    Imagine You allows you to create personalized AI image models by uploading photos of yourself, which are then used to train a custom diffusion model. Once trained, you can generate custom images of yourself in any style, situation, or scenario you can imagine through simple text prompts.
+                    Imagine You turns your selfies into stunning, personalized artwork. Upload a few photos, and our AI creates a digital twin that can appear in any scenario you can dream up - from fantasy worlds to professional settings, historical eras, or artistic styles.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-dark-lighter p-6 rounded-xl shadow-lg"
                       style={{ borderLeft: '4px solid #7B2CBF' }}
                     >
-                      <h3 className="text-xl font-semibold mb-4" style={{ color: '#C77DFF' }}>How It Works</h3>
+                      <h3 className="text-xl font-semibold mb-4" style={{ color: '#C77DFF' }}>Your Creative Journey</h3>
                       <ol className="text-gray-300 space-y-3 list-decimal pl-5">
-                        <li>Sign up and upload 10-20 photos of yourself</li>
-                        <li>Our AI trains a custom model just for you</li>
-                        <li>Type any scenario you can imagine</li>
-                        <li>Get stunning AI-generated images of yourself</li>
-                        <li>Save, share, and explore endless possibilities</li>
+                        <li>Upload 10-20 photos of yourself from different angles</li>
+                        <li>Our AI learns your unique features and expressions</li>
+                        <li>Describe any scene or style you can imagine</li>
+                        <li>Watch as AI instantly generates images of you</li>
+                        <li>Share your creations with friends and on social media</li>
                       </ol>
                     </div>
                     <div className="bg-dark-lighter p-6 rounded-xl shadow-lg"
                       style={{ borderLeft: '4px solid #7B2CBF' }}
                     >
-                      <h3 className="text-xl font-semibold mb-4" style={{ color: '#C77DFF' }}>Key Features</h3>
+                      <h3 className="text-xl font-semibold mb-4" style={{ color: '#C77DFF' }}>Endless Possibilities</h3>
                       <ul className="text-gray-300 space-y-2">
                         <li className="flex items-start">
                           <span className="inline-block mr-2 mt-1">
@@ -120,7 +259,7 @@ export default function ImagineYouPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           </span>
-                          <span>Secure photo upload and model training</span>
+                          <span>See yourself as a character in your favorite movie</span>
                         </li>
                         <li className="flex items-start">
                           <span className="inline-block mr-2 mt-1">
@@ -128,7 +267,7 @@ export default function ImagineYouPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           </span>
-                          <span>Interactive chat-like prompt interface</span>
+                          <span>Create professional headshots in various styles</span>
                         </li>
                         <li className="flex items-start">
                           <span className="inline-block mr-2 mt-1">
@@ -136,7 +275,7 @@ export default function ImagineYouPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           </span>
-                          <span>High-quality image generation in seconds</span>
+                          <span>Visualize yourself in historical periods</span>
                         </li>
                         <li className="flex items-start">
                           <span className="inline-block mr-2 mt-1">
@@ -144,7 +283,7 @@ export default function ImagineYouPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           </span>
-                          <span>Customizable generation settings</span>
+                          <span>Transform into fantasy, sci-fi, or anime versions of yourself</span>
                         </li>
                         <li className="flex items-start">
                           <span className="inline-block mr-2 mt-1">
@@ -152,7 +291,7 @@ export default function ImagineYouPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           </span>
-                          <span>Image gallery with sharing capabilities</span>
+                          <span>Create profile pictures with unique artistic styles</span>
                         </li>
                       </ul>
                     </div>
@@ -161,7 +300,7 @@ export default function ImagineYouPage() {
               </div>
             </motion.section>
 
-            {/* Technical Details */}
+            {/* App Features */}
             <motion.section
               className="mb-16"
               variants={itemVariants}
@@ -170,37 +309,37 @@ export default function ImagineYouPage() {
                 style={{ borderColor: '#7B2CBF' }}
               >
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-6" style={{ color: '#C77DFF' }}>Technical Magic</h2>
+                  <h2 className="text-3xl font-bold mb-6" style={{ color: '#C77DFF' }}>Powerful Features</h2>
                   <p className="text-gray-300 text-lg mb-8">
-                    Powered by state-of-the-art AI technology, Imagine You uses custom-trained FLUX.1 diffusion models through the Replicate API to create stunning, personalized images with exceptional quality and accuracy.
+                    Our app combines cutting-edge AI with an intuitive, user-friendly interface to make image generation simple, fun, and incredibly personalized.
                   </p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div className="bg-dark-lighter p-6 rounded-xl shadow-lg">
-                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#C77DFF' }}>Frontend</h3>
+                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#C77DFF' }}>Easy to Use</h3>
                       <ul className="text-gray-300 space-y-2">
-                        <li>Flutter for cross-platform development</li>
-                        <li>Provider pattern for state management</li>
-                        <li>Custom animations and transitions</li>
-                        <li>Responsive design for all screen sizes</li>
+                        <li>Simple, guided setup process</li>
+                        <li>Intuitive chat-based interface</li>
+                        <li>No technical knowledge required</li>
+                        <li>Automatic image saving to gallery</li>
                       </ul>
                     </div>
                     <div className="bg-dark-lighter p-6 rounded-xl shadow-lg">
-                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#C77DFF' }}>Backend</h3>
+                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#C77DFF' }}>Creative Control</h3>
                       <ul className="text-gray-300 space-y-2">
-                        <li>Firebase Authentication for user management</li>
-                        <li>Cloud Firestore for data storage</li>
-                        <li>Firebase Storage for image storage</li>
-                        <li>Replicate API for AI model training and generation</li>
+                        <li>Detailed prompt customization</li>
+                        <li>Multiple styles and aesthetics</li>
+                        <li>Adjustable image settings</li>
+                        <li>Create multiple personalized models</li>
                       </ul>
                     </div>
                     <div className="bg-dark-lighter p-6 rounded-xl shadow-lg">
-                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#C77DFF' }}>AI Technology</h3>
+                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#C77DFF' }}>Premium Quality</h3>
                       <ul className="text-gray-300 space-y-2">
-                        <li>Custom FLUX.1 diffusion models</li>
-                        <li>Training on 10-20 user photos</li>
-                        <li>Natural language prompt processing</li>
-                        <li>Advanced style transfer capabilities</li>
+                        <li>High-resolution outputs</li>
+                        <li>Stunning visual details</li>
+                        <li>Fast generation (under 30 seconds)</li>
+                        <li>Accurate facial representation</li>
                       </ul>
                     </div>
                   </div>
@@ -208,15 +347,9 @@ export default function ImagineYouPage() {
                   <div className="bg-dark-lighter p-6 rounded-xl shadow-lg"
                     style={{ borderLeft: '4px solid #7B2CBF' }}
                   >
-                    <h3 className="text-xl font-semibold mb-4" style={{ color: '#C77DFF' }}>Model Training Process</h3>
+                    <h3 className="text-xl font-semibold mb-4" style={{ color: '#C77DFF' }}>Your Private, Secure Experience</h3>
                     <div className="text-gray-300">
-                      <p className="mb-4">Imagine You uses the Replicate API and the following FLUX model for training:</p>
-                      <div className="bg-[#1A0033] p-4 rounded-lg overflow-x-auto">
-                        <code className="text-sm text-purple-300">
-                          ostris/flux-dev-lora-trainer:b6af14222e6bd9be257cbc1ea4afda3cd0503e1133083b9d1de0364d8568e6ef
-                        </code>
-                      </div>
-                      <p className="mt-4">The training process typically takes 20-30 minutes on Nvidia H100 GPU hardware, with the model being optimized specifically for your unique features and characteristics.</p>
+                      <p>Your privacy and data security are our top priorities. All your photos are processed with strict confidentiality, and your personal model is only accessible to you. We use state-of-the-art encryption and follow industry best practices to ensure your data remains secure.</p>
                     </div>
                   </div>
                 </div>
@@ -234,9 +367,9 @@ export default function ImagineYouPage() {
                   background: 'radial-gradient(circle at center, rgba(26, 0, 51, 0.8) 0%, rgba(13, 13, 13, 0.9) 70%)'
                 }}
               >
-                <h2 className="text-4xl font-bold mb-6" style={{ color: '#C77DFF' }}>Ready to Reinvent Yourself?</h2>
+                <h2 className="text-4xl font-bold mb-6" style={{ color: '#C77DFF' }}>Start Your Creative Journey</h2>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                  Download the Imagine You app today and start creating incredible images of yourself in any scenario you can dream up. Your imagination is the only limit.
+                  Download Imagine You today and unlock limitless creative possibilities. Transform yourself into anything you can dream of with just a few taps.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <a href="#" className="inline-block py-4 px-8 rounded-full text-white font-bold text-lg transition-all duration-300 transform hover:scale-105"
@@ -259,7 +392,7 @@ export default function ImagineYouPage() {
               </div>
             </motion.section>
 
-            {/* FAQ Section */}
+            {/* User Focused FAQ Section */}
             <motion.section
               variants={itemVariants}
             >
@@ -267,32 +400,32 @@ export default function ImagineYouPage() {
                 style={{ borderColor: '#7B2CBF' }}
               >
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-8" style={{ color: '#C77DFF' }}>Frequently Asked Questions</h2>
+                  <h2 className="text-3xl font-bold mb-8" style={{ color: '#C77DFF' }}>Common Questions</h2>
                   
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>How long does model training take?</h3>
-                      <p className="text-gray-300">Typically 20-30 minutes, depending on the number of photos and current API traffic.</p>
+                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>How many photos do I need to upload?</h3>
+                      <p className="text-gray-300">We recommend 10-20 high-quality photos with varied expressions, angles, and lighting for best results. This helps our AI learn your unique features more accurately.</p>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>How much does it cost to train a model?</h3>
-                      <p className="text-gray-300">Training runs on Nvidia H100 GPU hardware at approximately $0.001525 per second. A typical 20-minute training with 10-20 images costs around $2.00 USD.</p>
+                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>How long does it take to create my model?</h3>
+                      <p className="text-gray-300">Your personalized model will be ready in about 20-30 minutes after uploading your photos. We'll notify you when it's ready to use!</p>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>How many images should I upload for best results?</h3>
-                      <p className="text-gray-300">10-20 high-quality photos with varied poses, expressions, and lighting will give the best results.</p>
+                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>What kind of prompts work best?</h3>
+                      <p className="text-gray-300">Detailed prompts with clear scenarios work best. For example, "me as an astronaut on Mars with a red spacesuit" will give better results than simply "astronaut".</p>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>Can I create multiple models?</h3>
-                      <p className="text-gray-300">Yes, you can create multiple models for different styles or looks.</p>
+                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>Can I create multiple different styles?</h3>
+                      <p className="text-gray-300">Yes! You can create multiple personalized models for different looks or styles. Each model can have its own unique characteristics.</p>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>Can I use the app offline?</h3>
-                      <p className="text-gray-300">No, an internet connection is required for both model training and image generation.</p>
+                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>Do I need to be online to use the app?</h3>
+                      <p className="text-gray-300">Yes, an internet connection is required to generate images, as the AI processing happens on our secure cloud servers for the best quality results.</p>
                     </div>
                   </div>
                 </div>
