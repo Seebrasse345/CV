@@ -38,14 +38,14 @@ export default function ImagineYouPage() {
     // Set canvas dimensions
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.7;
+      canvas.height = window.innerHeight;
     };
     
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     
     // Create particles
-    const NUM_PARTICLES = 300;
+    const NUM_PARTICLES = 500;
     particles.current = [];
     
     class Particle {
@@ -94,8 +94,14 @@ export default function ImagineYouPage() {
         
         if (!canvas) return;
         
-        this.x = canvas.width / 2 + Math.cos(this.angle) * this.distance;
-        this.y = canvas.height / 2 + Math.sin(this.angle) * this.distance;
+        // Add slight orbital motion
+        const orbitFactor = Math.sin(Date.now() * 0.001 + this.angle) * 0.2;
+        
+        this.x = canvas.width / 2 + Math.cos(this.angle + orbitFactor) * this.distance;
+        this.y = canvas.height / 2 + Math.sin(this.angle + orbitFactor) * this.distance;
+        
+        // Make particle sizes pulse slightly
+        this.radius = (Math.random() * 2 + 0.5) * (1 + Math.sin(Date.now() * 0.002) * 0.2);
         
         if (this.life <= 0 || this.distance <= 0) {
           this.reset();
@@ -118,26 +124,27 @@ export default function ImagineYouPage() {
     const drawBlackHole = (ctx: CanvasRenderingContext2D) => {
       if (!canvas) return;
       
+      // Create larger black hole
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, 100
+        canvas.width / 2, canvas.height / 2, 150 // Increased from 100
       );
       
       gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');
-      gradient.addColorStop(0.8, 'rgba(26, 0, 51, 0.8)');
+      gradient.addColorStop(0.6, 'rgba(26, 0, 51, 0.8)');
       gradient.addColorStop(1, 'rgba(26, 0, 51, 0)');
       
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 100, 0, Math.PI * 2);
+      ctx.arc(canvas.width / 2, canvas.height / 2, 150, 0, Math.PI * 2);
       ctx.fillStyle = gradient;
       ctx.fill();
       
-      // Glow effect
-      ctx.shadowBlur = 20;
-      ctx.shadowColor = '#7B2CBF';
+      // Enhanced glow effect
+      ctx.shadowBlur = 30; // Increased from 20
+      ctx.shadowColor = '#9D4EDD'; // Using light purple for stronger glow
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 30, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(123, 44, 191, 0.5)';
+      ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2); // Increased from 30
+      ctx.fillStyle = 'rgba(123, 44, 191, 0.7)'; // Increased opacity from 0.5
       ctx.fill();
       ctx.shadowBlur = 0;
     };
@@ -198,8 +205,8 @@ export default function ImagineYouPage() {
 
   return (
     <main className="min-h-screen bg-dark relative">
-      {/* Black Hole Animation */}
-      <div className="fixed inset-0 -z-10 overflow-hidden" style={{ height: '70vh' }}>
+      {/* Black Hole Animation - Updated positioning to fill entire background */}
+      <div className="fixed inset-0 -z-10">
         <canvas
           ref={canvasRef}
           className="w-full h-full"
