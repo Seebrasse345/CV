@@ -445,11 +445,14 @@ const GravityParticles: React.FC<{
     time: 0,
     mouseX: 0,
     mouseY: 0,
+    mouseSpeed: 0,
     mouseStrength: 0,
     lastMouseX: 0,
     lastMouseY: 0,
     isScattering: false,
-    scatterTime: 0
+    scatterTime: 0,
+    lastScatterTime: 0, // Track when last scatter occurred
+    scatterIntensity: 0  // Track intensity of scatter effect
   });
   
   // Create particles with physics properties
@@ -518,23 +521,34 @@ const GravityParticles: React.FC<{
       const mouseDy = mouseY - animParams.current.lastMouseY;
       const mouseSpeed = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
       
-      // Detect rapid mouse movement for scatter effect
-      if (mouseSpeed > 0.3) {
+      // Store mouse speed for use in particle effects
+      animParams.current.mouseSpeed = mouseSpeed;
+      
+      // Enhanced detection for scatter effect - More sensitive (reduced threshold from 0.2 to 0.15)
+      if (mouseSpeed > 0.15) {
         animParams.current.isScattering = true;
         animParams.current.scatterTime = animParams.current.time;
-      } else if (animParams.current.time - animParams.current.scatterTime > 0.3) {
-        animParams.current.isScattering = false;
+        
+        // Increase scatter intensity based on mouse speed - More responsive (increased multiplier from 3 to 4)
+        animParams.current.scatterIntensity = Math.min(1.0, mouseSpeed * 4);
+        animParams.current.lastScatterTime = animParams.current.time;
+      } else if (animParams.current.time - animParams.current.scatterTime > 0.15) { // Reduced cooldown from 0.2 to 0.15
+        // Gradually reduce scatter intensity - More gradual fade (changed from 0.95 to 0.97)
+        animParams.current.scatterIntensity *= 0.97;
+        if (animParams.current.scatterIntensity < 0.05) { // Reduced threshold from 0.1 to 0.05
+          animParams.current.isScattering = false;
+        }
       }
       
-      // Smooth mouse movement
-      animParams.current.mouseX += (mouseX - animParams.current.mouseX) * 0.1;
-      animParams.current.mouseY += (mouseY - animParams.current.mouseY) * 0.1;
+      // Even smoother mouse movement tracking - More responsive (increased from 0.15 to 0.2)
+      animParams.current.mouseX += (mouseX - animParams.current.mouseX) * 0.2;
+      animParams.current.mouseY += (mouseY - animParams.current.mouseY) * 0.2;
       
-      // Update mouse strength based on movement
+      // Update mouse strength based on movement - Faster response (increased from 0.3 to 0.4)
       animParams.current.mouseStrength = THREE.MathUtils.lerp(
         animParams.current.mouseStrength,
-        Math.min(1.0, mouseSpeed * 8), // Increased multiplier for stronger effect
-        0.2 // Faster response
+        Math.min(1.0, mouseSpeed * 12), // Stronger effect (increased from 10 to 12)
+        0.4
       );
       
       // Store previous position
@@ -544,6 +558,7 @@ const GravityParticles: React.FC<{
     
     // Get current positions and update based on physics
     const positions = mesh.current.geometry.attributes.position.array as Float32Array;
+    const colorArray = mesh.current.geometry.attributes.color.array as Float32Array;
     
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
@@ -563,8 +578,8 @@ const GravityParticles: React.FC<{
         
         if (dist < 0.1) continue; // Avoid division by very small numbers
         
-        // Apply repulsive force
-        const force = 0.05 / Math.max(distSq, 0.01);
+        // Apply stronger repulsive force - Increased from 0.08 to 0.1
+        const force = 0.1 / Math.max(distSq, 0.01);
         velocities[i3] += (dx/dist) * force;
         velocities[i3 + 1] += (dy/dist) * force;
       }
@@ -573,6 +588,8 @@ const GravityParticles: React.FC<{
       let tooFar = true;
       let closestSourceDist = 1000;
       let closestSourceVector = new THREE.Vector3();
+      let closestSourceStrength = 0;
+      let closestSourceType = '';
       
       // Apply gravity from all sources
       for (const source of gravitySources) {
@@ -587,10 +604,12 @@ const GravityParticles: React.FC<{
         if (dist < closestSourceDist) {
           closestSourceDist = dist;
           closestSourceVector.set(dx, dy, dz).normalize();
+          closestSourceStrength = source.strength;
+          closestSourceType = source.type;
         }
         
-        // If within reasonable range of any source, not too far
-        if (dist < 15) {
+        // If within reasonable range of any source, not too far - Increased range from 15 to 18
+        if (dist < 18) {
           tooFar = false;
         }
         
@@ -614,88 +633,141 @@ const GravityParticles: React.FC<{
           continue;
         }
         
-        // Gravitational force
-        const forceMagnitude = source.strength / Math.max(distSq, 0.1);
+        // Gravitational force - Enhanced gravity strength (reduced divisor from 0.1 to 0.08)
+        const forceMagnitude = source.strength / Math.max(distSq, 0.08);
         
         // Apply to velocity (stronger effect for black holes)
-        const multiplier = source.type === 'blackhole' ? 2.0 : 1.0;
+        const multiplier = source.type === 'blackhole' ? 2.2 : 1.2; // Increased both multipliers
         velocities[i3] += (dx/dist) * forceMagnitude * deltaTime * multiplier;
         velocities[i3 + 1] += (dy/dist) * forceMagnitude * deltaTime * multiplier;
         velocities[i3 + 2] += (dz/dist) * forceMagnitude * deltaTime * multiplier;
       }
       
-      // If too far from all sources, apply return force toward closest source
+      // If too far from all sources, apply stronger return force toward closest source
       if (tooFar && closestSourceDist < 1000) {
-        // Apply gentle return force
-        velocities[i3] += closestSourceVector.x * 0.01;
-        velocities[i3 + 1] += closestSourceVector.y * 0.01;
-        velocities[i3 + 2] += closestSourceVector.z * 0.01;
+        // Apply stronger return force - Increased from 0.01 to 0.015
+        const returnStrength = closestSourceType === 'blackhole' ? 0.02 : 0.015;
+        velocities[i3] += closestSourceVector.x * returnStrength;
+        velocities[i3 + 1] += closestSourceVector.y * returnStrength;
+        velocities[i3 + 2] += closestSourceVector.z * returnStrength;
+        
+        // Also slightly update color to indicate "return mode"
+        colorArray[i3] = Math.min(1.0, colorArray[i3] * 1.01); // Increase red
+        colorArray[i3 + 1] *= 0.99; // Decrease green
+        colorArray[i3 + 2] *= 0.99; // Decrease blue
       }
       
-      // Apply mouse gravity/repulsion - Enhanced scatter effect
+      // Enhanced mouse gravity/repulsion with stronger scatter effect
       const mouseX = animParams.current.mouseX;
       const mouseY = animParams.current.mouseY;
       const mouseStrength = animParams.current.mouseStrength;
       
-      if (mouseStrength > 0.1) {
+      // More sensitive mouse interaction (threshold reduced from 0.05 to 0.03)
+      if (mouseStrength > 0.03) {
         const dx = mouseX - positions[i3];
         const dy = mouseY - positions[i3 + 1];
         const distSq = dx*dx + dy*dy;
         const dist = Math.sqrt(distSq);
         
-        // Larger radius of effect for scattering (5 units)
-        if (dist < 5) {
+        // Larger radius of effect for scattering (increased from 6 to 7 units)
+        if (dist < 7) {
           // Calculate scatter force based on distance
-          // Closer particles get pushed away harder
-          const scatterFactor = animParams.current.isScattering ? 2.0 : 1.0;
-          const repulsionStrength = 0.1 * mouseStrength * scatterFactor;
-          const distanceFactor = 1.0 - Math.min(1.0, dist / 5);
+          // Stronger scattering effect and more dynamic response
+          const scatterFactor = animParams.current.isScattering ? 
+            3.0 + animParams.current.scatterIntensity * 2.0 : // Up to 5.0x (previously 4.0x)
+            1.5; // Base repulsion increased from 1.2 to 1.5
+          
+          // Stronger repulsion (increased from 0.15 to 0.2)
+          const repulsionStrength = 0.2 * mouseStrength * scatterFactor;
+          // Wider area of effect (changed from 6 to 7)
+          const distanceFactor = 1.0 - Math.min(1.0, dist / 7);
           
           // Apply repulsion force - push particles away from mouse
-          // The negative signs create the repulsion (pushing away)
-          const force = repulsionStrength * distanceFactor / Math.max(0.2, dist);
+          // Reduced minimum distance for stronger close effect (from 0.1 to 0.08)
+          const force = repulsionStrength * distanceFactor / Math.max(0.08, dist);
           velocities[i3] -= (dx/dist) * force;
           velocities[i3 + 1] -= (dy/dist) * force;
           
-          // Add slight upward impulse for a more dynamic effect
-          velocities[i3 + 1] += 0.002 * mouseStrength;
+          // Add stronger upward impulse for a more dynamic effect (increased from 0.003 to 0.004)
+          velocities[i3 + 1] += 0.004 * mouseStrength;
           
-          // Add slight randomness for natural dispersion
-          velocities[i3] += (Math.random() - 0.5) * 0.01 * mouseStrength;
-          velocities[i3 + 1] += (Math.random() - 0.5) * 0.01 * mouseStrength;
+          // Add more randomness for natural dispersion during scatter
+          // Double randomness when scattering (increased from 0.02 to 0.03)
+          const randomFactor = animParams.current.isScattering ? 0.03 : 0.015;
+          velocities[i3] += (Math.random() - 0.5) * randomFactor * mouseStrength;
+          velocities[i3 + 1] += (Math.random() - 0.5) * randomFactor * mouseStrength;
+          velocities[i3 + 2] += (Math.random() - 0.5) * randomFactor * mouseStrength * 0.5;
+          
+          // Add more pronounced color variation for particles being scattered
+          if (animParams.current.isScattering) {
+            // Brighten particles when scattered - more dramatic effect
+            colorArray[i3] = Math.min(1.0, colorArray[i3] * 1.08); // Increase red
+            colorArray[i3 + 1] = Math.min(0.5, colorArray[i3 + 1] * 1.15); // Increase green slightly
+            colorArray[i3 + 2] = Math.min(0.3, colorArray[i3 + 2] * 1.1); // Increase blue slightly
+          }
         }
       }
       
-      // Apply drag to prevent unlimited acceleration
-      velocities[i3] *= 0.995;
-      velocities[i3 + 1] *= 0.995;
-      velocities[i3 + 2] *= 0.995;
+      // Apply variable drag to prevent unlimited acceleration
+      // Less drag for high-speed particles (more energetic scattering)
+      const speed = Math.sqrt(
+        velocities[i3] * velocities[i3] + 
+        velocities[i3 + 1] * velocities[i3 + 1] + 
+        velocities[i3 + 2] * velocities[i3 + 2]
+      );
       
-      // Enhanced boundary check - more gentle return to scene
+      // Dynamic drag: faster particles experience less drag
+      const dragFactor = speed > 0.05 ? 0.997 : 0.995;
+      velocities[i3] *= dragFactor;
+      velocities[i3 + 1] *= dragFactor;
+      velocities[i3 + 2] *= dragFactor;
+      
+      // Enhanced boundary check - more aggressive return to scene to prevent losing particles
       const maxDist = 25;
       
-      // Instead of hard bouncing, gradually push back particles if they go too far
+      // Instead of hard bouncing, apply stronger force the further the particle goes
       if (Math.abs(positions[i3]) > maxDist) {
         const direction = positions[i3] > 0 ? -1 : 1;
         const excess = Math.abs(positions[i3]) - maxDist;
-        velocities[i3] += direction * excess * 0.01; // Gentle push back
+        // Stronger return force (increased from 0.01 to 0.02)
+        velocities[i3] += direction * excess * 0.02;
       }
       
       if (Math.abs(positions[i3 + 1]) > maxDist) {
         const direction = positions[i3 + 1] > 0 ? -1 : 1;
         const excess = Math.abs(positions[i3 + 1]) - maxDist;
-        velocities[i3 + 1] += direction * excess * 0.01; // Gentle push back
+        // Stronger return force
+        velocities[i3 + 1] += direction * excess * 0.02;
       }
       
       if (Math.abs(positions[i3 + 2]) > maxDist * 0.5) {
         const direction = positions[i3 + 2] > 0 ? -1 : 1;
         const excess = Math.abs(positions[i3 + 2]) - maxDist * 0.5;
-        velocities[i3 + 2] += direction * excess * 0.01; // Gentle push back
+        // Stronger return force
+        velocities[i3 + 2] += direction * excess * 0.02;
+      }
+      
+      // Hard boundary at extreme distances to absolutely prevent particles from being lost
+      const absoluteMaxDist = maxDist * 1.5;
+      if (Math.abs(positions[i3]) > absoluteMaxDist) {
+        positions[i3] = Math.sign(positions[i3]) * absoluteMaxDist;
+        velocities[i3] *= -0.5; // Bounce with energy loss
+      }
+      
+      if (Math.abs(positions[i3 + 1]) > absoluteMaxDist) {
+        positions[i3 + 1] = Math.sign(positions[i3 + 1]) * absoluteMaxDist;
+        velocities[i3 + 1] *= -0.5; // Bounce with energy loss
+      }
+      
+      if (Math.abs(positions[i3 + 2]) > absoluteMaxDist * 0.5) {
+        positions[i3 + 2] = Math.sign(positions[i3 + 2]) * absoluteMaxDist * 0.5;
+        velocities[i3 + 2] *= -0.5; // Bounce with energy loss
       }
     }
     
     // Update geometry
     mesh.current.geometry.attributes.position.needsUpdate = true;
+    mesh.current.geometry.attributes.color.needsUpdate = true;
   });
   
   return (

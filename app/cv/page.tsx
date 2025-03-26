@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import dynamic from 'next/dynamic';
 
@@ -12,6 +12,21 @@ const CosmicBackground = dynamic(
 
 export default function CVPage() {
   const [isLoading, setIsLoading] = useState(true);
+  // Track active section for navigation
+  const [activeSection, setActiveSection] = useState('education');
+  // Smooth scroll handling
+  const mainRef = useRef<HTMLDivElement>(null);
+  // Track elements that should animate on scroll
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  
+  // Store refs to each main section
+  const sectionRefs = {
+    education: useRef<HTMLElement>(null),
+    certifications: useRef<HTMLElement>(null),
+    projects: useRef<HTMLElement>(null),
+    skills: useRef<HTMLElement>(null),
+    experience: useRef<HTMLElement>(null)
+  };
 
   useEffect(() => {
     // Simulate loading time for better UX
@@ -19,6 +34,90 @@ export default function CVPage() {
       setIsLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
+  }, []);
+  
+  // Scroll to section with smooth animation
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    
+    const section = sectionRefs[sectionId as keyof typeof sectionRefs]?.current;
+    if (section && mainRef.current) {
+      const yOffset = -100; // Offset to account for navigation bar
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      mainRef.current.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  // Detect which sections are in view for animations
+  useEffect(() => {
+    // Delay initialization until after loading is complete
+    if (isLoading) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setVisibleElements(prev => new Set(prev).add(entry.target.id));
+            
+            // Update active section based on what's visible
+            if (entry.target.id in sectionRefs) {
+              setActiveSection(entry.target.id);
+            }
+          }
+        });
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '-100px 0px -100px 0px' 
+      }
+    );
+    
+    // Log that we're setting up observers
+    console.log("Setting up observers for sections:", Object.keys(sectionRefs));
+    
+    // Observe all major sections
+    Object.values(sectionRefs).forEach(ref => {
+      if (ref.current) {
+        observer.observe(ref.current);
+        console.log("Observing section:", ref.current.id);
+      } else {
+        console.warn("Section ref is null");
+      }
+    });
+    
+    // Find all elements that should animate on scroll
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Force all sections to be visible initially
+    Object.keys(sectionRefs).forEach(sectionId => {
+      setVisibleElements(prev => new Set(prev).add(sectionId));
+    });
+    
+    return () => observer.disconnect();
+  }, [isLoading, sectionRefs]);
+
+  // Add a custom CSS class to override animation defaults
+  useEffect(() => {
+    // Add a style tag to ensure all animate-on-scroll elements are visible by default
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = `
+      .animate-on-scroll {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+      }
+    `;
+    document.head.appendChild(styleTag);
+    
+    return () => {
+      document.head.removeChild(styleTag);
+    };
   }, []);
 
   return (
@@ -29,46 +128,77 @@ export default function CVPage() {
       
       <Navigation />
       
+      {/* CV Navigation */}
+      <div className="sticky top-16 bg-dark-lighter bg-opacity-95 backdrop-blur-sm z-30 border-b border-redAccent-darker shadow-lg">
+        <div className="container mx-auto px-4">
+          <div className="flex overflow-x-auto no-scrollbar py-2 space-x-2">
+            {Object.keys(sectionRefs).map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className={`px-4 py-2 whitespace-nowrap rounded-full transition-all duration-300 ${
+                  activeSection === section
+                    ? 'bg-redAccent text-white font-medium shadow-neon-red'
+                    : 'bg-dark-card text-gray-400 hover:text-white hover:bg-dark-lighter'
+                }`}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+      
       <div 
-        className="relative pt-24 pb-20 transition-all duration-1000"
+        ref={mainRef}
+        className="relative pt-24 pb-20 transition-all duration-1000 overflow-y-auto h-auto min-h-[calc(100vh-4rem)]"
         style={{ 
           opacity: isLoading ? 0 : 1,
-          transform: isLoading ? 'translateY(20px)' : 'translateY(0)'
+          transform: isLoading ? 'translateY(20px)' : 'translateY(0)',
+          scrollBehavior: 'smooth'
         }}
       >
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto bg-dark-card bg-opacity-90 backdrop-blur-sm shadow-xl rounded-lg overflow-hidden border border-redAccent-darker">
             {/* CV Header */}
-            <div className="relative bg-gradient-to-r from-dark-lighter to-dark p-8 md:p-12 border-b border-redAccent">
+            <div 
+              className="relative bg-gradient-to-r from-dark-lighter to-dark p-8 md:p-12 border-b border-redAccent animate-on-scroll" 
+              id="cv-header"
+              style={{
+                transform: 'translateY(0)',
+                opacity: 1,
+                transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+              }}
+            >
               <div className="relative z-10">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Matthaios Markatis</h1>
-                <p className="text-xl text-redAccent italic mb-6">Physics Graduate & AI Engineer</p>
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 text-glow">Matthaios Markatis</h1>
+                <p className="text-xl text-redAccent italic mb-6 animate-pulse-glow">Physics Graduate & AI Engineer</p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex items-center group hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <a href="mailto:matthaiosmarkatis@gmail.com" className="hover:text-redAccent transition-colors">
                       matthaiosmarkatis@gmail.com
                     </a>
                   </div>
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex items-center group hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <a href="tel:07480699246" className="hover:text-redAccent transition-colors">07480 699246</a>
                   </div>
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex items-center group hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                     </svg>
                     <a href="https://www.linkedin.com/in/matthaios-markatis" className="hover:text-redAccent transition-colors">
                       linkedin.com/in/matthaios-markatis
                     </a>
                   </div>
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex items-center group hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -77,25 +207,56 @@ export default function CVPage() {
                 </div>
               </div>
               
-              {/* Decorative red line */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-red"></div>
+              {/* Animated pulse effect for the red line */}
+              <div 
+                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-red"
+                style={{
+                  animation: 'pulse-glow 3s infinite ease-in-out'
+                }}
+              ></div>
             </div>
             
             {/* CV Summary */}
-            <div className="px-6 md:px-10 py-8 bg-dark-lighter bg-opacity-60">
+            <div 
+              className="px-6 md:px-10 py-8 bg-dark-lighter bg-opacity-60 animate-on-scroll"
+              id="cv-summary"
+              style={{
+                transform: 'translateY(0)',
+                opacity: 1,
+                transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+              }}
+            >
               <p className="text-white leading-relaxed">
                 BSc Physics graduate from the University of Sheffield with robust academic foundation in <span className="text-redAccent font-semibold">theoretical physics</span> and <span className="text-redAccent font-semibold">computational methods</span>. Recently completed the <span className="text-redAccent font-semibold">IBM Data Science</span> and <span className="text-redAccent font-semibold">IBM AI Engineering Professional Certificates</span>, establishing advanced competencies in <span className="text-redAccent font-semibold">machine learning</span>, <span className="text-redAccent font-semibold">statistical analysis</span>, and <span className="text-redAccent font-semibold">AI engineering</span>. Proficient in developing sophisticated engineering solutions integrating <span className="text-redAccent font-semibold">hardware</span> and <span className="text-redAccent font-semibold">software</span>, including a fully <span className="text-redAccent font-semibold">autonomous drone system</span> with custom-configured flight controller and embedded software, and an <span className="text-redAccent font-semibold">IoT-based wildfire detection system</span> utilizing LoRaWAN sensors with machine learning predictive capabilities.
               </p>
             </div>
             
-            {/* CV Content */}
+            {/* CV Content - enhanced with animations */}
             <div className="px-6 md:px-10 py-8">
               {/* Education Section */}
-              <section className="mb-10">
-                <h2 className="section-title">Education</h2>
+              <section 
+                ref={sectionRefs.education}
+                id="education" 
+                className="mb-10 animate-on-scroll"
+                style={{
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                }}
+              >
+                <h2 className="section-title group">
+                  <span className="relative z-10 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                    </svg>
+                    Education
+                  </span>
+                </h2>
                 <div className="section-content">
                   
-                  <div className="job-item mb-6">
+                  <div className="job-item mb-6 animate-on-scroll" id="education-bsc">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">BSc Physics</h3>
                       <div className="text-gray-400 italic flex items-center">
@@ -107,7 +268,7 @@ export default function CVPage() {
                     </div>
                     <div className="text-gray-300 mb-4">2:1 Classification (Upper Second-Class Honours)</div>
                     
-                    <div className="bg-dark-lighter bg-opacity-60 rounded-lg p-4 mb-4">
+                    <div className="bg-dark-lighter bg-opacity-60 rounded-lg p-4 mb-4 hover:shadow-neon-red transition-shadow duration-300">
                       <h4 className="text-redAccent font-semibold mb-3 pb-2 border-b border-redAccent-darker">Programming & Technical Modules</h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
@@ -129,7 +290,7 @@ export default function CVPage() {
                       </div>
                     </div>
                     
-                    <div className="bg-dark-lighter bg-opacity-60 rounded-lg p-4">
+                    <div className="bg-dark-lighter bg-opacity-60 rounded-lg p-4 hover:shadow-neon-red transition-shadow duration-300">
                       <h4 className="text-redAccent font-semibold mb-3 pb-2 border-b border-redAccent-darker">Physics Core Modules</h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between bg-dark-card px-3 py-2 rounded">
@@ -160,7 +321,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="job-item">
+                  <div className="job-item animate-on-scroll" id="education-alevels">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">A-Levels</h3>
                       <div className="text-gray-400 italic flex items-center">
@@ -191,11 +352,27 @@ export default function CVPage() {
               </section>
               
               {/* Certification Section */}
-              <section className="mb-10">
-                <h2 className="section-title">Professional Certifications</h2>
+              <section 
+                ref={sectionRefs.certifications}
+                id="certifications" 
+                className="mb-10 animate-on-scroll"
+                style={{
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                }}
+              >
+                <h2 className="section-title group">
+                  <span className="relative z-10 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    Professional Certifications
+                  </span>
+                </h2>
                 <div className="section-content">
                   
-                  <div className="cert-item mb-6">
+                  <div className="cert-item mb-6 animate-on-scroll" id="certifications-ibm-ai">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">IBM AI Engineering Professional Certificate</h3>
                       <div className="text-gray-400 italic flex items-center">
@@ -224,7 +401,7 @@ export default function CVPage() {
                     </a>
                   </div>
                   
-                  <div className="cert-item">
+                  <div className="cert-item animate-on-scroll" id="certifications-ibm-data">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">IBM Data Science Professional Certificate</h3>
                       <div className="text-gray-400 italic flex items-center">
@@ -257,11 +434,27 @@ export default function CVPage() {
               </section>
               
               {/* Projects Section */}
-              <section className="mb-10">
-                <h2 className="section-title">Key Projects</h2>
+              <section 
+                ref={sectionRefs.projects}
+                id="projects" 
+                className="mb-10 animate-on-scroll"
+                style={{
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                }}
+              >
+                <h2 className="section-title group">
+                  <span className="relative z-10 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Key Projects
+                  </span>
+                </h2>
                 <div className="section-content">
                   
-                  <div className="project-item mb-6">
+                  <div className="project-item mb-6 animate-on-scroll" id="projects-wildfire">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">Wildfire Detection System (IoT + Machine Learning)</h3>
                       <div className="text-gray-400 italic">University of Sheffield Research Project 2024</div>
@@ -282,7 +475,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="project-item mb-6">
+                  <div className="project-item mb-6 animate-on-scroll" id="projects-drone">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">Home-built Autonomous FPV Drone with iNav Autopilot</h3>
                       <div className="text-gray-400 italic">Personal Hardware Project 2024</div>
@@ -301,7 +494,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="project-item">
+                  <div className="project-item animate-on-scroll" id="projects-imagine">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">Imagine You - AI Personal Image Generation App</h3>
                       <div className="text-gray-400 italic">Flutter Mobile Application 2024</div>
@@ -323,11 +516,28 @@ export default function CVPage() {
               </section>
               
               {/* Skills Section */}
-              <section className="mb-10">
-                <h2 className="section-title">Technical Skills</h2>
+              <section 
+                ref={sectionRefs.skills}
+                id="skills" 
+                className="mb-10 animate-on-scroll"
+                style={{
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                }}
+              >
+                <h2 className="section-title group">
+                  <span className="relative z-10 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Technical Skills
+                  </span>
+                </h2>
                 <div className="section-content">
                   
-                  <div className="skill-category mb-6">
+                  <div className="skill-category mb-6 animate-on-scroll" id="skills-programming">
                     <div className="skill-title">Programming & Development</div>
                     <div className="skill-list">
                       <span className="skill-tag">Python</span>
@@ -343,7 +553,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="skill-category mb-6">
+                  <div className="skill-category mb-6 animate-on-scroll" id="skills-machine-learning">
                     <div className="skill-title">Machine Learning & AI</div>
                     <div className="skill-list">
                       <span className="skill-tag">TensorFlow</span>
@@ -359,7 +569,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="skill-category mb-6">
+                  <div className="skill-category mb-6 animate-on-scroll" id="skills-iot">
                     <div className="skill-title">IoT & Embedded Systems</div>
                     <div className="skill-list">
                       <span className="skill-tag">Arduino</span>
@@ -373,7 +583,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="skill-category">
+                  <div className="skill-category animate-on-scroll" id="skills-data-science">
                     <div className="skill-title">Data Science & Engineering</div>
                     <div className="skill-list">
                       <span className="skill-tag">NumPy</span>
@@ -391,11 +601,27 @@ export default function CVPage() {
               </section>
               
               {/* Work Experience Section */}
-              <section>
-                <h2 className="section-title">Work Experience</h2>
+              <section 
+                ref={sectionRefs.experience}
+                id="experience" 
+                className="animate-on-scroll"
+                style={{
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                  transition: 'transform 0.8s ease-out, opacity 0.8s ease-out',
+                }}
+              >
+                <h2 className="section-title group">
+                  <span className="relative z-10 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-redAccent mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Work Experience
+                  </span>
+                </h2>
                 <div className="section-content">
                   
-                  <div className="job-item mb-6">
+                  <div className="job-item mb-6 animate-on-scroll" id="experience-team-leader">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">Team Leader / Supervisor</h3>
                       <div className="text-gray-400 italic">Meltdown-Wetherspoons | February 2022 - November 2023</div>
@@ -410,7 +636,7 @@ export default function CVPage() {
                     </div>
                   </div>
                   
-                  <div className="job-item">
+                  <div className="job-item animate-on-scroll" id="experience-bartender">
                     <div className="flex flex-col md:flex-row justify-between mb-2">
                       <h3 className="text-xl font-bold text-white">Bartender / Front of House</h3>
                       <div className="text-gray-400 italic">Various Establishments | September 2018 - October 2021</div>
@@ -430,14 +656,22 @@ export default function CVPage() {
               
             </div>
             
-            {/* CV Footer */}
-            <div className="bg-dark border-t border-redAccent-darker p-6 text-center text-sm text-gray-400">
+            {/* CV Footer - with floating animation */}
+            <div 
+              className="bg-dark border-t border-redAccent-darker p-6 text-center text-sm text-gray-400 animate-on-scroll"
+              id="cv-footer"
+              style={{
+                transform: 'translateY(0)',
+                opacity: 1,
+                transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+              }}
+            >
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="mailto:matthaiosmarkatis@gmail.com" className="hover:text-redAccent transition-colors">
+                <a href="mailto:matthaiosmarkatis@gmail.com" className="hover:text-redAccent transition-colors hover:scale-105 inline-block">
                   matthaiosmarkatis@gmail.com
                 </a>
-                <a href="tel:07480699246" className="hover:text-redAccent transition-colors">07480 699246</a>
-                <a href="https://www.linkedin.com/in/matthaios-markatis" className="hover:text-redAccent transition-colors">
+                <a href="tel:07480699246" className="hover:text-redAccent transition-colors hover:scale-105 inline-block">07480 699246</a>
+                <a href="https://www.linkedin.com/in/matthaios-markatis" className="hover:text-redAccent transition-colors hover:scale-105 inline-block">
                   linkedin.com/in/matthaios-markatis
                 </a>
               </div>
