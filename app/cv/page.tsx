@@ -20,15 +20,24 @@ export default function CVPage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
   
-  // Refs for different CV sections
+  // Create individual refs outside useMemo
+  const headerRef = useRef<HTMLDivElement>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const educationRef = useRef<HTMLDivElement>(null);
+  const certificationsRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  
+  // Refs for different CV sections - using the individual refs
   const sectionRefs = useMemo(() => ({
-    header: useRef<HTMLDivElement>(null),
-    summary: useRef<HTMLDivElement>(null),
-    skills: useRef<HTMLDivElement>(null),
-    education: useRef<HTMLDivElement>(null),
-    certifications: useRef<HTMLDivElement>(null),
-    projects: useRef<HTMLDivElement>(null),
-    experience: useRef<HTMLDivElement>(null)
+    header: headerRef,
+    summary: summaryRef,
+    skills: skillsRef,
+    education: educationRef,
+    certifications: certificationsRef,
+    projects: projectsRef,
+    experience: experienceRef
   }), []);
 
   useEffect(() => {

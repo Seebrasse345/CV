@@ -426,7 +426,7 @@ export default function ImagineYouPage() {
                     
                     <div>
                       <h3 className="text-xl font-semibold mb-2" style={{ color: '#C77DFF' }}>How long does it take to create my model?</h3>
-                      <p className="text-gray-300">Your personalized model will be ready in about 20-30 minutes after uploading your photos. We'll notify you when it's ready to use!</p>
+                      <p className="text-gray-300">Your personalized model will be ready in about 20-30 minutes after uploading your photos. We&apos;ll notify you when it&apos;s ready to use!</p>
                     </div>
                     
                     <div>
