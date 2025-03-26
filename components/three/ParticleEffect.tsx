@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
-import React, { useRef, useEffect, useMemo, useState } from 'react'
-import * as THREE from 'three'
-import { useFrame, Canvas, useThree } from '@react-three/fiber'
-import { AdaptiveDpr, Preload, useTexture, Trail } from '@react-three/drei'
+import React, { useRef, useEffect, useMemo, useState } from 'react';
+import * as THREE from 'three';
+import { useFrame, Canvas, useThree } from '@react-three/fiber';
+import { AdaptiveDpr, Preload, useTexture, Trail } from '@react-three/drei';
+import { ThreeEvent } from '@react-three/fiber';
 
 // Create a custom shader material for more advanced visual effects
 const ParticleMaterial = () => {
@@ -66,10 +67,10 @@ const ParticleMaterial = () => {
         #include <colorspace_fragment>
       }
     `,
-  }
+  };
 
-  return shader
-}
+  return shader;
+};
 
 interface ParticleProps {
   mouseRef: React.RefObject<THREE.Vector2>;
@@ -169,7 +170,7 @@ const BlackHole: React.FC<{
     }
   });
   
-  const handlePointerDown = (e: any) => {
+  const handlePointerDown = (e: { stopPropagation: () => void }) => {
     if (isInteractive) {
       e.stopPropagation();
       isDragging.current = true;
@@ -338,7 +339,7 @@ const Planet: React.FC<{
     }
   });
   
-  const handlePointerDown = (e: any) => {
+  const handlePointerDown = (e: { stopPropagation: () => void }) => {
     if (isInteractive) {
       e.stopPropagation();
       isDragging.current = true;

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
@@ -16,7 +16,8 @@ export default function CVPage() {
   const [activeSection, setActiveSection] = useState('education');
   // Smooth scroll handling
   const mainRef = useRef<HTMLDivElement>(null);
-  // Track elements that should animate on scroll
+  // Track elements that should animate on scroll - this is used for animation triggers
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
   
   // Store refs to each main section

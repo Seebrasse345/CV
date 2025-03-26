@@ -23,6 +23,17 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn', // Warn about 'any' usage
     'semi': ['error', 'always'], // Require semicolons
     '@typescript-eslint/no-unused-vars': ['warn'], // Warn about unused vars
+    
+    // Allow React Three Fiber props
+    'react/no-unknown-property': ['error', { 
+      ignore: [
+        'position', 'args', 'transparent', 'blending', 'attach', 'array', 
+        'count', 'itemSize', 'sizeAttenuation', 'vertexColors', 'depthWrite',
+        'depthTest', 'vertexColors', 'flatShading', 'roughness', 'metalness',
+        'emissive', 'color', 'intensity', 'rotation', 'castShadow', 'receiveShadow',
+        'fog', 'toneMapped', 'points'
+      ]
+    }]
   },
   settings: {
     react: {

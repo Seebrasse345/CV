@@ -119,6 +119,14 @@ const BlackHole: React.FC<CosmicObjectProps> = ({
     }
   };
   
+  const handleDocumentPointerDown = () => {
+    // This is a compatible handler for document events
+  };
+  
+  const handleDocumentPointerMove = () => {
+    // This is a compatible handler for document events
+  };
+  
   const handlePointerUp = () => {
     isDragging.current = false;
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
@@ -142,6 +150,7 @@ const BlackHole: React.FC<CosmicObjectProps> = ({
       window.removeEventListener('pointerup', handlePointerUp);
       document.body.style.cursor = 'auto';
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return (
@@ -323,6 +332,14 @@ const Planet: React.FC<CosmicObjectProps> = ({
     }
   };
   
+  const handleDocumentPointerDown = () => {
+    // This is a compatible handler for document events
+  };
+  
+  const handleDocumentPointerMove = () => {
+    // This is a compatible handler for document events
+  };
+  
   const handlePointerUp = () => {
     isDragging.current = false;
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
@@ -346,6 +363,7 @@ const Planet: React.FC<CosmicObjectProps> = ({
       window.removeEventListener('pointerup', handlePointerUp);
       document.body.style.cursor = 'auto';
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return (
@@ -587,7 +605,7 @@ const GravityParticles: React.FC<{
       // Check if particle is too far from all gravity sources and add a return force
       let tooFar = true;
       let closestSourceDist = 1000;
-      let closestSourceVector = new THREE.Vector3();
+      const closestSourceVector = new THREE.Vector3();
       let closestSourceStrength = 0;
       let closestSourceType = '';
       

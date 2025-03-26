@@ -1,5 +1,6 @@
 import { Object3DNode } from '@react-three/fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { Vector3 } from 'three';
 
 declare global {
   namespace JSX {
@@ -20,4 +21,18 @@ declare module '@react-three/fiber' {
     };
     orbitControls: Object3DNode<OrbitControls, typeof OrbitControls>;
   }
+}
+
+// Add custom type declaration for Trail component from @react-three/drei
+declare module '@react-three/drei' {
+  export interface TrailProps {
+    width?: number;
+    length?: number;
+    color?: string | number;
+    attenuation?: (width: number) => number;
+    target?: React.MutableRefObject<THREE.Object3D>;
+    points?: Vector3[];
+  }
+  
+  export const Trail: React.FC<TrailProps>;
 } 

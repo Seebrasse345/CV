@@ -1,0 +1,15 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unknown-property": ["error", { 
+      "ignore": [
+        "position", "args", "transparent", "blending", "attach", "array", 
+        "count", "itemSize", "sizeAttenuation", "vertexColors", "depthWrite",
+        "depthTest", "flatShading", "roughness", "metalness",
+        "emissive", "color", "intensity", "rotation", "castShadow", "receiveShadow",
+        "fog", "toneMapped", "points"
+      ]
+    }],
+    "semi": ["error", "always"]
+  }
+} 

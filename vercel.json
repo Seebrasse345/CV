@@ -1,5 +1,18 @@
 {
   "version": 2,
   "buildCommand": "next build",
-  "outputDirectory": "out"
+  "ignoreCommand": "npx eslint --quiet .",
+  "devCommand": "next dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
+  "github": {
+    "silent": false,
+    "autoJobCancelation": true
+  }
 } 

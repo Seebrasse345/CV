@@ -79,3 +79,38 @@ The site uses several custom animations:
 
 - Uses Tailwind CSS with custom configurations
 - Custom animations defined in globals.css and tailwind.config.js 
+
+## Deployment
+
+The website is set up for deployment to Vercel. The following configurations have been added to ensure smooth deployment:
+
+### ESLint Configuration
+
+A custom ESLint configuration has been implemented to handle React Three Fiber properties, which are not recognized by default ESLint rules:
+
+- Custom property handling for Three.js properties such as `position`, `args`, `transparent`, etc.
+- Semicolon requirements enforced to meet coding standards
+
+### TypeScript Declarations
+
+Custom type declarations have been added for Three.js components:
+
+- `Trail` component from @react-three/drei with the `points` property properly typed
+- Buffer attributes and other Three.js specific types
+
+### Vercel Configuration
+
+A `vercel.json` file is included in the root directory with appropriate configuration:
+
+```json
+{
+  "buildCommand": "next build",
+  "ignoreCommand": "npx eslint --quiet .",
+  "devCommand": "next dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
+}
+```
+
+For more detailed information about the deployment setup, please refer to the `DEPLOYMENT.md` file in the root directory. 
