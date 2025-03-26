@@ -136,23 +136,35 @@ export default function TermsPage() {
     // Simplified starry background animation
     const drawBackground = () => {
       // Slightly transparent background to create trails
-      ctx.fillStyle = 'rgba(13, 13, 13, 0.2)';
+      ctx.fillStyle = 'rgba(13, 13, 13, 0.15)'; // Make more transparent
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Draw purple gradient glow in the center
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.3
+        canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.4 // Increase size
       );
       
-      gradient.addColorStop(0, 'rgba(123, 44, 191, 0.2)');
-      gradient.addColorStop(0.5, 'rgba(123, 44, 191, 0.1)');
+      gradient.addColorStop(0, 'rgba(123, 44, 191, 0.3)'); // More visible purple
+      gradient.addColorStop(0.5, 'rgba(123, 44, 191, 0.15)'); // More visible purple
       gradient.addColorStop(1, 'rgba(13, 13, 13, 0)');
       
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.3, 0, Math.PI * 2);
+      ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.4, 0, Math.PI * 2);
       ctx.fillStyle = gradient;
       ctx.fill();
+      
+      // Add some random particles
+      for (let i = 0; i < 3; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const radius = Math.random() * 2 + 0.5;
+        
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(199, 125, 255, ${Math.random() * 0.5 + 0.2})`;
+        ctx.fill();
+      }
       
       animationRef.current = requestAnimationFrame(drawBackground);
     };
@@ -179,20 +191,21 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen bg-dark relative overflow-hidden">
       {/* Background Animation */}
-      <div className="fixed inset-0 -z-10 w-full h-full">
+      <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
         <canvas
           ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full"
           style={{ 
             background: '#0D0D0D',
-            display: 'block'
+            display: 'block',
+            zIndex: -5 // Ensure it's behind content but visible
           }}
         />
       </div>
       
       <Navigation />
       
-      <div className="pt-24 pb-20 min-h-screen transition-all duration-1000"
+      <div className="pt-24 pb-20 min-h-screen transition-all duration-1000 z-10 relative"
         style={{ 
           opacity: isLoading ? 0 : 1,
           transform: isLoading ? 'translateY(20px)' : 'translateY(0)'
@@ -216,7 +229,7 @@ export default function TermsPage() {
 
           {/* Markdown Content */}
           <motion.div 
-            className="max-w-4xl mx-auto bg-dark-card bg-opacity-90 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-purple-700 border-opacity-30 p-8 mb-12"
+            className="max-w-4xl mx-auto bg-dark-card bg-opacity-85 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-purple-700 border-opacity-30 p-8 mb-12"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
