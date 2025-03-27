@@ -48,4 +48,57 @@ textFiles.forEach(file => {
   }
 });
 
+// Verify critical routes exist
+const criticalRoutes = [
+  { 
+    path: 'imagine_you',
+    source: path.join(outDir, 'imagine_you', 'index.html')
+  },
+  { 
+    path: 'imagine_you/terms',
+    source: path.join(outDir, 'imagine_you', 'terms', 'index.html')
+  },
+  { 
+    path: 'imagine_you/privacy_policy',
+    source: path.join(outDir, 'imagine_you', 'privacy_policy', 'index.html')
+  }
+];
+
+console.log('🔍 Verifying critical routes...');
+criticalRoutes.forEach(route => {
+  if (fs.existsSync(route.source)) {
+    console.log(`✅ Route /${route.path}/ exists`);
+  } else {
+    console.error(`❌ Route /${route.path}/ does not exist at expected path: ${route.source}`);
+    
+    // Create the directory if needed
+    const dirPath = path.dirname(route.source);
+    if (!fs.existsSync(dirPath)) {
+      console.log(`📁 Creating directory: ${dirPath}`);
+      fs.mkdirSync(dirPath, { recursive: true });
+    }
+    
+    // If we have the non-trailing-slash version, copy it
+    const possibleSource = path.join(outDir, route.path + '.html');
+    if (fs.existsSync(possibleSource)) {
+      console.log(`🔄 Copying ${possibleSource} to ${route.source}`);
+      fs.copyFileSync(possibleSource, route.source);
+      console.log(`✅ Fixed route /${route.path}/`);
+    }
+  }
+});
+
+// Ensure black_hole_diffusion.html is also copied to the imagine_you directory
+const imagineYouBlackHoleDest = path.join(outDir, 'imagine_you', blackHoleFile);
+if (!fs.existsSync(imagineYouBlackHoleDest) && fs.existsSync(blackHoleDest)) {
+  const imagineYouDir = path.join(outDir, 'imagine_you');
+  if (!fs.existsSync(imagineYouDir)) {
+    fs.mkdirSync(imagineYouDir, { recursive: true });
+  }
+  
+  console.log(`🔄 Copying ${blackHoleFile} to imagine_you directory...`);
+  fs.copyFileSync(blackHoleDest, imagineYouBlackHoleDest);
+  console.log(`✅ Successfully copied ${blackHoleFile} to imagine_you directory`);
+}
+
 console.log('🎉 Post-build process completed!'); 

@@ -23,6 +23,8 @@ const nextConfig = {
   },
   // Use a custom asset prefix if needed (leave empty for default)
   assetPrefix: '',
+  // Set trailing slash to true for better compatibility with static exports
+  trailingSlash: true,
 };
 
 export default nextConfig; 
