@@ -61,13 +61,15 @@ export default function ImagineYouPage() {
       {/* Black Hole Animation */}
       <div className="fixed inset-0 -z-10 w-full h-full">
         <iframe 
-          src="/black_hole_diffusion.html"
+          src="../black_hole_diffusion.html"
           className="absolute inset-0 w-full h-full border-0 pointer-events-none"
           title="Black Hole Background"
           aria-hidden="true"
           style={{ 
             background: '#0D0D0D',
-            display: 'block' // Ensures no extra space
+            display: 'block', // Ensures no extra space
+            width: '100%',
+            height: '100%'
           }}
         />
       </div>
