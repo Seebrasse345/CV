@@ -1,32 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/eslint-check.js && next build && node scripts/copy-static-files.js && node scripts/vercel-deploy-handler.js",
-  "ignoreCommand": "exit 1",
-  "devCommand": "next dev",
+  "buildCommand": "node scripts/eslint-check.js && next build && node scripts/postbuild.js",
+  "outputDirectory": "out",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "outputDirectory": "out",
-  "git": {
-    "deploymentEnabled": {
-      "main": true,
-      "master": true
-    }
-  },
-  "github": {
-    "silent": false,
-    "autoJobCancelation": true,
-    "enabled": true
-  },
+  "rewrites": [
+    { "source": "/black_hole_diffusion.html", "destination": "/black_hole_diffusion.html" }
+  ],
   "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=1, stale-while-revalidate"
-        }
-      ]
-    },
     {
       "source": "/black_hole_diffusion.html",
       "headers": [
@@ -36,7 +17,5 @@
         }
       ]
     }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": true
+  ]
 } 

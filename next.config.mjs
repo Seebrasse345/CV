@@ -6,15 +6,7 @@ const nextConfig = {
   // Disable image optimization since we're doing a static export
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
   },
-  // Ensure all paths are treated as trailing slash
-  trailingSlash: true,
   // Skip type checking during build for better performance
   typescript: {
     // !! WARN !!
@@ -29,13 +21,8 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  // Enhanced error handling during build
-  onDemandEntries: {
-    // Keep pages in memory for longer during development
-    maxInactiveAge: 60 * 60 * 1000,
-    // Number of pages to keep in memory
-    pagesBufferLength: 5,
-  },
+  // Use a custom asset prefix if needed (leave empty for default)
+  assetPrefix: '',
 };
 
 export default nextConfig; 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { motion } from 'framer-motion';
 
@@ -37,7 +37,7 @@ export default function ImagineYouPage() {
     <div className="relative w-full h-screen overflow-hidden">
       {/* Black hole background iframe */}
       <iframe 
-        src="black_hole_diffusion.html"
+        src="./black_hole_diffusion.html"
         className="absolute inset-0 w-full h-full border-0 pointer-events-none z-0"
         title="Black Hole Background"
         aria-hidden="true"
@@ -54,7 +54,7 @@ export default function ImagineYouPage() {
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-white">
             Are you <span className="text-purple-400">ready</span> to make a <span className="text-purple-400">choice</span>?
-            </h1>
+          </h1>
           
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
             Choose wisely, for your path will determine how long you remain here.
@@ -78,7 +78,7 @@ export default function ImagineYouPage() {
             >
               Stay Longer
             </motion.button>
-                    </div>
+          </div>
         </motion.div>
         
         <motion.div
@@ -88,8 +88,8 @@ export default function ImagineYouPage() {
           className="absolute bottom-4 left-0 right-0 text-center text-sm text-gray-400"
         >
           <p>© {new Date().getFullYear()} Matthaios Markatis</p>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
+    </div>
   );
 } 
