@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { motion } from 'framer-motion';
-import CanvasAnimation from '@/components/CanvasAnimation';
 import Head from 'next/head';
 
 // Markdown styles
@@ -85,14 +84,9 @@ const MarkdownComponents: Components = {
   blockquote: ({ children, ...props }) => <blockquote style={markdownStyles.blockquote} {...props}>{children}</blockquote>,
 };
 
-// Animation variables - using module scope constants instead of component state
-const CANVAS_ID = `tc-canvas-${Math.random().toString(36).substring(2, 9)}`;
-const ANIMATION_CONTAINER_ID = `tc-animation-container-${Math.random().toString(36).substring(2, 9)}`;
-
 export default function TermsPage() {
   const [markdownContent, setMarkdownContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
-  const [animationLoaded, setAnimationLoaded] = useState(false);
 
   // Fetch the markdown content
   useEffect(() => {
@@ -116,45 +110,6 @@ export default function TermsPage() {
       });
   }, []);
 
-  // Set up animation after component mounts
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Create and initialize the animation with very bright and visible elements
-    const animation = new CanvasAnimation({
-      canvasId: CANVAS_ID,
-      containerId: ANIMATION_CONTAINER_ID,
-      zIndex: -5,
-      debugInfo: false,
-      baseBackgroundColor: '#0D0D0D',
-      borderColor: 'transparent',
-      particles: {
-        count: 150, // More particles
-        minSize: 3, // Larger minimum size
-        maxSize: 10, // Larger maximum size
-        minSpeed: 0.5,
-        maxSpeed: 2.0, // Faster particles
-        colorBase: [170, 80, 220], // Brighter purple base
-        colorVariation: [85, 100, 35] // More color variation
-      },
-      blackHole: {
-        sizeRatio: 0.25, // Larger black hole
-        glowColor: 'rgba(200, 100, 255, 1)', // Brighter glow
-        centralColor: 'rgba(50, 0, 100, 0.8)', // More visible central color
-        pulseSpeed: 0.03, // Faster pulse
-        pulseSize: 60 // Larger pulse
-      }
-    });
-    
-    animation.init();
-    setAnimationLoaded(true);
-    
-    // Cleanup on unmount
-    return () => {
-      animation.cleanup();
-    };
-  }, []);
-
   // Animation variants for content
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -167,7 +122,11 @@ export default function TermsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dark relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden"
+      style={{ 
+        background: 'radial-gradient(circle at center, rgba(26, 0, 51, 0.8) 0%, rgba(13, 13, 13, 0.9) 70%, #0D0D0D 100%)'
+      }}
+    >
       <Head>
         <title>Terms and Conditions - Imagine You</title>
       </Head>

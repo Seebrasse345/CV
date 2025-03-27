@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { motion } from 'framer-motion';
-import CanvasAnimation from '@/components/CanvasAnimation';
 import Head from 'next/head';
 
 // Markdown styles
@@ -85,14 +84,9 @@ const MarkdownComponents: Components = {
   blockquote: ({ children, ...props }) => <blockquote style={markdownStyles.blockquote} {...props}>{children}</blockquote>,
 };
 
-// Animation variables - using different IDs from the Terms page
-const CANVAS_ID = `pp-canvas-${Math.random().toString(36).substring(2, 9)}`;
-const ANIMATION_CONTAINER_ID = `pp-animation-container-${Math.random().toString(36).substring(2, 9)}`;
-
 export default function PrivacyPolicyPage() {
   const [markdownContent, setMarkdownContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
-  const [animationLoaded, setAnimationLoaded] = useState(false);
 
   // Fetch the markdown content
   useEffect(() => {
@@ -109,45 +103,6 @@ export default function PrivacyPolicyPage() {
       });
   }, []);
 
-  // Set up animation after component mounts
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Create and initialize the animation with very bright and visible elements
-    const animation = new CanvasAnimation({
-      canvasId: CANVAS_ID,
-      containerId: ANIMATION_CONTAINER_ID,
-      zIndex: -5,
-      debugInfo: false,
-      baseBackgroundColor: '#0D0D0D',
-      borderColor: 'transparent',
-      particles: {
-        count: 180, // Even more particles
-        minSize: 2.5, // Good minimum size
-        maxSize: 9, // Large maximum size
-        minSpeed: 0.4,
-        maxSpeed: 1.8, // Fast particles
-        colorBase: [100, 150, 255], // Blue-ish base
-        colorVariation: [100, 50, 55] // Different color variation
-      },
-      blackHole: {
-        sizeRatio: 0.28, // Larger black hole
-        glowColor: 'rgba(120, 190, 255, 1)', // Blue glow
-        centralColor: 'rgba(20, 0, 80, 0.8)', // Deep blue center
-        pulseSpeed: 0.025, // Moderate pulse
-        pulseSize: 65 // Large pulse
-      }
-    });
-    
-    animation.init();
-    setAnimationLoaded(true);
-    
-    // Cleanup on unmount
-    return () => {
-      animation.cleanup();
-    };
-  }, []);
-
   // Animation variants for content
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -160,14 +115,18 @@ export default function PrivacyPolicyPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dark relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden"
+      style={{ 
+        background: 'radial-gradient(circle at center, rgba(26, 0, 51, 0.8) 0%, rgba(13, 13, 13, 0.9) 70%, #0D0D0D 100%)'
+      }}
+    >
       <Head>
         <title>Privacy Policy - Imagine You</title>
       </Head>
       
       <Navigation />
       
-      {/* Content with background container to ensure opacity doesn't affect animation visibility */}
+      {/* Content with background container */}
       <div className="relative z-20">
         <div 
           className="pt-24 pb-20 min-h-screen transition-all duration-1000"
