@@ -1,21 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/eslint-check.js && next build && node scripts/postbuild.js",
-  "outputDirectory": "out",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "rewrites": [
-    { "source": "/black_hole_diffusion.html", "destination": "/black_hole_diffusion.html" }
-  ],
-  "headers": [
-    {
-      "source": "/black_hole_diffusion.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
-      ]
-    }
-  ]
+  "buildCommand": "node scripts/eslint-check.js && next build",
+  "outputDirectory": "out"
 } 
