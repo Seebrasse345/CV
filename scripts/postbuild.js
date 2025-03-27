@@ -47,21 +47,6 @@ const copyFileWithVerification = (source, dest, description = '') => {
   }
 };
 
-// Copy black_hole_diffusion.html to multiple locations
-const blackHoleFile = 'black_hole_diffusion.html';
-const blackHoleSource = path.join(publicDir, blackHoleFile);
-const blackHoleDestinations = [
-  { path: path.join(outDir, blackHoleFile), desc: 'to root output' },
-  { path: path.join(outDir, 'imagine_you', blackHoleFile), desc: 'to imagine_you directory' },
-  { path: path.join(outDir, 'imagine_you', 'terms', '..', blackHoleFile), desc: 'for terms page access' },
-  { path: path.join(outDir, 'imagine_you', 'privacy_policy', '..', blackHoleFile), desc: 'for privacy policy page access' }
-];
-
-console.log('\n📦 Copying black hole animation file...');
-blackHoleDestinations.forEach(dest => {
-  copyFileWithVerification(blackHoleSource, dest.path, dest.desc);
-});
-
 // Copy text files for terms and privacy policy
 const textFiles = ['privacy.txt', 'tncs.txt'];
 console.log('\n📄 Copying text files...');
@@ -111,10 +96,6 @@ criticalRoutes.forEach(route => {
 // Create a verification file to help debug file locations
 const verificationContent = {
   buildTime: new Date().toISOString(),
-  blackHoleLocations: blackHoleDestinations.map(dest => ({
-    path: dest.path,
-    exists: fs.existsSync(dest.path)
-  })),
   routes: criticalRoutes.map(route => ({
     path: route.path,
     exists: fs.existsSync(route.source)

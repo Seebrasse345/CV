@@ -7,26 +7,5 @@
     { "source": "/imagine_you/terms", "destination": "/imagine_you/terms/index.html" },
     { "source": "/imagine_you/privacy_policy", "destination": "/imagine_you/privacy_policy/index.html" }
   ],
-  "cleanUrls": true,
-  "headers": [
-    {
-      "source": "/black_hole_diffusion.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    }
-  ],
-  "routes": [
-    {
-      "src": "/black_hole_diffusion.html",
-      "dest": "/black_hole_diffusion.html"
-    },
-    {
-      "src": "/imagine_you/black_hole_diffusion.html",
-      "dest": "/black_hole_diffusion.html"
-    }
-  ]
+  "cleanUrls": true
 } 

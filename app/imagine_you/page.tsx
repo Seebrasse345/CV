@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { motion } from 'framer-motion';
-import BlackHoleAnimation from '@/components/BlackHoleAnimation';
 
 export default function ImagineYouPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,10 +40,11 @@ export default function ImagineYouPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dark relative overflow-hidden">
-      {/* Black Hole Animation directly rendered using canvas */}
-      <BlackHoleAnimation />
-      
+    <main className="min-h-screen relative overflow-hidden"
+      style={{ 
+        background: 'radial-gradient(circle at center, rgba(26, 0, 51, 0.8) 0%, rgba(13, 13, 13, 0.9) 70%, #0D0D0D 100%)'
+      }}
+    >
       <Navigation />
       
       <div className="pt-24 pb-20 transition-all duration-1000 min-h-screen"
