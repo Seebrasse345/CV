@@ -26,22 +26,17 @@
           "value": "s-maxage=1, stale-while-revalidate"
         }
       ]
+    },
+    {
+      "source": "/black_hole_diffusion.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
     }
   ],
   "cleanUrls": true,
-  "routes": [
-    {
-      "src": "/black_hole_diffusion.html",
-      "headers": {
-        "cache-control": "public, max-age=86400"
-      }
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "trailingSlash": true
 } 

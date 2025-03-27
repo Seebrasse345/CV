@@ -68,7 +68,17 @@ if (!fs.existsSync(routesManifestPath)) {
     basePath: "",
     pages404: true,
     redirects: [],
-    headers: [],
+    headers: [
+      {
+        source: "/black_hole_diffusion.html",
+        headers: [
+          {
+            key: "Cache-Control", 
+            value: "public, max-age=86400"
+          }
+        ]
+      }
+    ],
     dynamicRoutes: [],
     staticRoutes: [
       {
@@ -96,7 +106,9 @@ if (!fs.existsSync(routesManifestPath)) {
         namedRegex: "^/imagine_you/privacy_policy(?:/)?$"
       }
     ],
-    dataRoutes: []
+    dataRoutes: [],
+    trailingSlash: true,
+    cleanUrls: true
   };
   
   try {
@@ -113,9 +125,18 @@ const requiredVercelFiles = [
     name: '.vercel/output/config.json', 
     content: JSON.stringify({
       "version": 3,
-      "routes": [
-        { "handle": "filesystem" },
-        { "src": "/(.*)", "dest": "/" }
+      "cleanUrls": true,
+      "trailingSlash": true,
+      "headers": [
+        {
+          "source": "/black_hole_diffusion.html",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=86400"
+            }
+          ]
+        }
       ]
     }, null, 2)
   }
@@ -146,6 +167,41 @@ requiredVercelFiles.forEach(file => {
     }
   }
 });
+
+// Step 5: Create a build output static directory symlink if needed
+const staticOutputDir = path.join(rootDir, '.vercel', 'output', 'static');
+if (!fs.existsSync(staticOutputDir)) {
+  console.log('\n📂 Setting up build output static directory...');
+  try {
+    // Instead of symlink (which might not work well in all environments), copy the out directory
+    if (!fs.existsSync(path.join(rootDir, '.vercel', 'output', 'static'))) {
+      fs.mkdirSync(staticOutputDir, { recursive: true });
+      
+      // Copy key files to the static directory
+      const outFiles = fs.readdirSync(outDir);
+      outFiles.forEach(file => {
+        const sourcePath = path.join(outDir, file);
+        const destPath = path.join(staticOutputDir, file);
+        
+        if (fs.statSync(sourcePath).isDirectory()) {
+          // For directories, create them but don't recursively copy
+          if (!fs.existsSync(destPath)) {
+            fs.mkdirSync(destPath, { recursive: true });
+          }
+        } else {
+          // For files, just copy the ones we need
+          if (file === 'black_hole_diffusion.html' || file === 'index.html') {
+            fs.copyFileSync(sourcePath, destPath);
+          }
+        }
+      });
+      
+      console.log('✅ Successfully set up static directory');
+    }
+  } catch (error) {
+    console.error(`\n❌ Error setting up static directory: ${error.message}`);
+  }
+}
 
 console.log('\n🎉 Vercel deployment handler completed!');
 console.log('\n👉 Your static export should now be ready for Vercel deployment!'); 
