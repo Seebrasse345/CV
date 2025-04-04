@@ -1,7 +1,6 @@
 {
   "version": 2,
   "buildCommand": "node scripts/eslint-check.js && next build",
-  "outputDirectory": "out",
   "rewrites": [
     { "source": "/imagine_you", "destination": "/imagine_you/index.html" },
     { "source": "/imagine_you/terms", "destination": "/imagine_you/terms/index.html" },
