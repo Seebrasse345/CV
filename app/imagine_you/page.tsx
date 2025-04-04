@@ -282,6 +282,14 @@ export default function ImagineYouPage() {
                       <p className="text-gray-300">Yes, an internet connection is required to generate images, as the AI processing happens on our secure cloud servers for the best quality results.</p>
                     </div>
                   </div>
+
+                  <div className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-400 text-sm">
+                    <div className="flex flex-wrap justify-center gap-4">
+                      <a href="/imagine_you/terms" className="hover:text-white transition-colors">Terms & Conditions</a>
+                      <a href="/imagine_you/privacy_policy" className="hover:text-white transition-colors">Privacy Policy</a>
+                      <a href="/imagine_you/account_deletion" className="hover:text-white transition-colors">Account Deletion</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.section>

@@ -48,6 +48,7 @@ export default function Navigation() {
   const imagineYouSublinks: NavLinkData[] = [
     { title: 'Terms & Conditions', path: '/imagine_you/terms' },
     { title: 'Privacy Policy', path: '/imagine_you/privacy_policy' },
+    { title: 'Account Deletion', path: '/imagine_you/account_deletion' },
   ];
 
   return (
@@ -168,6 +169,7 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
   const imagineYouSublinks: NavLinkData[] = [
     { title: 'Terms & Conditions', path: '/imagine_you/terms' },
     { title: 'Privacy Policy', path: '/imagine_you/privacy_policy' },
+    { title: 'Account Deletion', path: '/imagine_you/account_deletion' },
   ];
   
   return (
