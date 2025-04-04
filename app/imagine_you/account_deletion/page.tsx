@@ -39,6 +39,18 @@ export default function AccountDeletionPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Helper function to get API URL for the current environment
+  const getApiUrl = () => {
+    // If we're in the browser, we can determine the base URL from window.location
+    if (typeof window !== 'undefined') {
+      const protocol = window.location.protocol;
+      const host = window.location.host;
+      return `${protocol}//${host}/api/send-deletion-request`;
+    }
+    // Fallback to relative path if not in browser
+    return '/api/send-deletion-request';
+  };
+
   // Animation variants for content
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,7 +90,11 @@ export default function AccountDeletionPage() {
     setFormStatus({ submitted: true, error: false, message: 'Processing your request...' });
 
     try {
-      const response = await fetch('/api/send-deletion-request', {
+      const apiUrl = getApiUrl();
+      
+      console.log('Submitting to API URL:', apiUrl);
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

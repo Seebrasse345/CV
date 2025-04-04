@@ -1,8 +1,31 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Export runtime configuration for Vercel
+export const runtime = 'nodejs';
+
+// Helper function to check if environment variables are set
+function checkEnvVars() {
+  const requiredVars = ['EMAIL_USER', 'EMAIL_PASSWORD'];
+  const missingVars = requiredVars.filter(varName => !process.env[varName]);
+  
+  if (missingVars.length > 0) {
+    console.error(`Missing required environment variables: ${missingVars.join(', ')}`);
+    return false;
+  }
+  return true;
+}
+
 export async function POST(request: Request) {
   console.log('Account deletion request received');
+  
+  // Validate environment variables first
+  if (!checkEnvVars()) {
+    return NextResponse.json({
+      message: 'Server configuration error. Please contact support.',
+      details: 'Missing email configuration'
+    }, { status: 500 });
+  }
   
   try {
     // Parse the request body
@@ -50,6 +73,18 @@ export async function POST(request: Request) {
     });
     
     const transporter = nodemailer.createTransport(transportConfig);
+
+    // Test SMTP connection
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified');
+    } catch (verifyError: any) {
+      console.error('SMTP verification failed:', verifyError);
+      return NextResponse.json({
+        message: 'Email server connection failed',
+        details: verifyError.message
+      }, { status: 500 });
+    }
 
     // Format current date for the email
     const currentDate = new Date().toLocaleDateString('en-US', {
