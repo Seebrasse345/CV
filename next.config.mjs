@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // We need API routes, so we're NOT using static export
-  // output: 'export',
+  // Use 'standalone' output instead of 'export' to support API routes while optimizing static pages
+  output: 'standalone',
   // Configure image optimization
   images: {
     unoptimized: true,
