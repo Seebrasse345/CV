@@ -2,12 +2,27 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
+  console.log('Account deletion request received');
+  
   try {
     // Parse the request body
-    const { firstName, lastName, email, reason } = await request.json();
+    let requestBody;
+    try {
+      requestBody = await request.json();
+      console.log('Request body parsed successfully:', requestBody);
+    } catch (parseError) {
+      console.error('Error parsing request body:', parseError);
+      return NextResponse.json(
+        { message: 'Invalid request format: Could not parse JSON body' },
+        { status: 400 }
+      );
+    }
+    
+    const { firstName, lastName, email, reason } = requestBody;
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
+      console.error('Missing required fields:', { firstName, lastName, email });
       return NextResponse.json(
         { message: 'First name, last name, and email are required' },
         { status: 400 }
@@ -15,7 +30,8 @@ export async function POST(request: Request) {
     }
 
     // Configure email transporter
-    const transporter = nodemailer.createTransport({
+    console.log('Configuring email transporter');
+    const transportConfig = {
       host: process.env.EMAIL_SERVER || 'smtp.gmail.com',
       port: parseInt(process.env.EMAIL_PORT || '587'),
       secure: process.env.EMAIL_SECURE === 'true',
@@ -23,7 +39,17 @@ export async function POST(request: Request) {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
+    };
+    
+    console.log('Email configuration:', {
+      host: transportConfig.host,
+      port: transportConfig.port,
+      secure: transportConfig.secure,
+      user: transportConfig.auth.user ? '***@gmail.com' : 'undefined', // Log only masked email for security
+      passwordProvided: !!transportConfig.auth.pass
     });
+    
+    const transporter = nodemailer.createTransport(transportConfig);
 
     // Format current date for the email
     const currentDate = new Date().toLocaleDateString('en-US', {
@@ -95,16 +121,27 @@ export async function POST(request: Request) {
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    console.log('Attempting to send email to:', mailOptions.to);
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent successfully:', info.messageId);
+    } catch (emailError: any) {
+      console.error('Error sending email:', emailError);
+      // Provide more detailed error for troubleshooting
+      return NextResponse.json({
+        message: 'Failed to send email notification',
+        details: emailError.message
+      }, { status: 500 });
+    }
 
     return NextResponse.json({ 
       message: 'Deletion request submitted successfully' 
     }, { status: 200 });
-  } catch (error) {
-    console.error('Error sending deletion request:', error);
-    return NextResponse.json(
-      { message: 'Failed to process deletion request' },
-      { status: 500 }
-    );
+  } catch (error: any) {
+    console.error('Unhandled error in deletion request handler:', error);
+    return NextResponse.json({
+      message: 'Failed to process deletion request',
+      details: error?.message || 'Unknown error'
+    }, { status: 500 });
   }
 } 

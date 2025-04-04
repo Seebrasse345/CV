@@ -100,10 +100,19 @@ export default function AccountDeletionPage() {
           reason: ''
         });
       } else {
-        const error = await response.json();
-        throw new Error(error.message || 'Something went wrong');
+        // Try to parse error as JSON, but handle non-JSON responses too
+        let errorMessage = 'Failed to submit request';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (parseError) {
+          // If response is not JSON (e.g. HTML error page)
+          errorMessage = `Server error: ${response.status} ${response.statusText}`;
+        }
+        throw new Error(errorMessage);
       }
     } catch (error: unknown) {
+      console.error('Form submission error:', error);
       setFormStatus({
         submitted: true,
         error: true,
