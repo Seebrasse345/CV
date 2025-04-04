@@ -1,8 +1,32 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 
-// Export runtime configuration for Vercel
+// Export runtime configuration for Vercel (keep for now)
 export const runtime = 'nodejs';
+
+export async function POST(request: Request) {
+  console.log('[Vercel Debug] /api/send-deletion-request HIT!'); // Add specific log
+
+  try {
+    // Try parsing body just to see if request arrives
+    const body = await request.text(); // Use text() instead of json() for simplicity
+    console.log('[Vercel Debug] Request Body Received (as text):', body.substring(0, 100)); // Log first 100 chars
+
+    // Return a simple success response
+    return NextResponse.json({ message: 'API route reached successfully (Debug Mode)' }, { status: 200 });
+
+  } catch (error: any) {
+    console.error('[Vercel Debug] Error in simplified route:', error);
+    return NextResponse.json({ 
+        message: 'Error in simplified API route', 
+        details: error?.message 
+    }, { status: 500 });
+  }
+}
+
+/* 
+// Original code commented out for debugging:
+
+import nodemailer from 'nodemailer';
 
 // Helper function to check if environment variables are set
 function checkEnvVars() {
@@ -180,3 +204,4 @@ export async function POST(request: Request) {
     }, { status: 500 });
   }
 } 
+*/ 
