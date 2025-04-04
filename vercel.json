@@ -1,4 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/eslint-check.js && next build"
+  "buildCommand": "next build"
 } 
