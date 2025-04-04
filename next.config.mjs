@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Remove or comment out the 'export' output to enable API routes
+  // We need API routes, so we're NOT using static export
   // output: 'export',
-  // Disable image optimization since we're doing a static export
+  // Configure image optimization
   images: {
     unoptimized: true,
   },
@@ -24,7 +24,7 @@ const nextConfig = {
   },
   // Use a custom asset prefix if needed (leave empty for default)
   assetPrefix: '',
-  // Set trailing slash to true for better compatibility with static exports
+  // Set trailing slash to true for better compatibility
   trailingSlash: true,
 };
 
