@@ -1,10 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/eslint-check.js && next build",
-  "rewrites": [
-    { "source": "/imagine_you", "destination": "/imagine_you/index.html" },
-    { "source": "/imagine_you/terms", "destination": "/imagine_you/terms/index.html" },
-    { "source": "/imagine_you/privacy_policy", "destination": "/imagine_you/privacy_policy/index.html" }
-  ],
-  "cleanUrls": true
+  "buildCommand": "node scripts/eslint-check.js && next build"
 } 

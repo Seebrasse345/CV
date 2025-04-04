@@ -2,12 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Use 'standalone' output instead of 'export' to support API routes while optimizing static pages
-  output: 'standalone',
-  // Configure image optimization
-  images: {
-    unoptimized: true,
-  },
+  // Removed: output: 'export' - This enables API routes on Vercel
+  // Removed image optimization disabling, Vercel will handle it
+  // images: {
+  //   unoptimized: true,
+  // },
   // Skip type checking during build for better performance
   typescript: {
     // !! WARN !!
@@ -22,10 +21,8 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  // Use a custom asset prefix if needed (leave empty for default)
-  assetPrefix: '',
-  // Set trailing slash to true for better compatibility
-  trailingSlash: true,
+  // Removed trailing slash as it's often used with static export
+  // trailingSlash: true,
 };
 
 export default nextConfig; 

@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import Navigation from '@/components/Navigation';
 import { motion } from 'framer-motion';
@@ -45,8 +47,6 @@ export default function AccountDeletionPage() {
     if (typeof window !== 'undefined') {
       const protocol = window.location.protocol;
       const host = window.location.host;
-      // Try both API routes - App Router and Pages Router
-      // Return the Pages Router format which is more compatible with static exports
       return `${protocol}//${host}/api/send-deletion-request`;
     }
     // Fallback to relative path if not in browser

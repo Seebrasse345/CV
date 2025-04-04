@@ -1,80 +1,89 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-type ResponseData = {
-  message: string;
-  details?: string;
-};
+// Export runtime configuration for Vercel
+export const runtime = 'nodejs';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
-  // Only allow POST method
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+// Helper function to check if environment variables are set
+function checkEnvVars() {
+  const requiredVars = ['EMAIL_USER', 'EMAIL_PASSWORD'];
+  const missingVars = requiredVars.filter(varName => !process.env[varName]);
+  
+  if (missingVars.length > 0) {
+    console.error(`Missing required environment variables: ${missingVars.join(', ')}`);
+    return false;
   }
+  return true;
+}
 
-  console.log('[API Route] Deletion request received');
+export async function POST(request: Request) {
+  console.log('Account deletion request received');
+  
+  // Validate environment variables first
+  if (!checkEnvVars()) {
+    return NextResponse.json({
+      message: 'Server configuration error. Please contact support.',
+      details: 'Missing email configuration'
+    }, { status: 500 });
+  }
   
   try {
-    // Check if all environment variables are set
-    const envVars = {
-      EMAIL_SERVER: process.env.EMAIL_SERVER || 'smtp.gmail.com',
-      EMAIL_PORT: process.env.EMAIL_PORT || '587',
-      EMAIL_USER: process.env.EMAIL_USER,
-      EMAIL_PASSWORD: process.env.EMAIL_PASSWORD ? '******' : undefined,
-      EMAIL_FROM: process.env.EMAIL_FROM || 'noreply@imagineyou-app.com'
-    };
-    
-    console.log('[API Route] Environment variables check:', {
-      EMAIL_SERVER: envVars.EMAIL_SERVER,
-      EMAIL_PORT: envVars.EMAIL_PORT,
-      EMAIL_USER: envVars.EMAIL_USER ? '***@gmail.com' : undefined,
-      EMAIL_PASSWORD: envVars.EMAIL_PASSWORD ? 'Set' : 'Not set',
-      EMAIL_FROM: envVars.EMAIL_FROM
-    });
-    
-    if (!envVars.EMAIL_USER || !envVars.EMAIL_PASSWORD) {
-      console.error('[API Route] Missing required email configuration');
-      return res.status(500).json({ 
-        message: 'Server configuration error',
-        details: 'Email credentials are not properly configured'
-      });
+    // Parse the request body
+    let requestBody;
+    try {
+      requestBody = await request.json();
+      console.log('Request body parsed successfully:', requestBody);
+    } catch (parseError) {
+      console.error('Error parsing request body:', parseError);
+      return NextResponse.json(
+        { message: 'Invalid request format: Could not parse JSON body' },
+        { status: 400 }
+      );
     }
-
-    const { firstName, lastName, email, reason } = req.body;
-    console.log('[API Route] Form data received:', { firstName, lastName, email, reasonProvided: !!reason });
+    
+    const { firstName, lastName, email, reason } = requestBody;
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
-      console.log('[API Route] Missing required fields');
-      return res.status(400).json({ message: 'First name, last name, and email are required' });
+      console.error('Missing required fields:', { firstName, lastName, email });
+      return NextResponse.json(
+        { message: 'First name, last name, and email are required' },
+        { status: 400 }
+      );
     }
 
     // Configure email transporter
-    console.log('[API Route] Configuring email transporter');
-    const transporter = nodemailer.createTransport({
-      host: envVars.EMAIL_SERVER,
-      port: parseInt(envVars.EMAIL_PORT),
+    console.log('Configuring email transporter');
+    const transportConfig = {
+      host: process.env.EMAIL_SERVER || 'smtp.gmail.com',
+      port: parseInt(process.env.EMAIL_PORT || '587'),
       secure: process.env.EMAIL_SECURE === 'true',
       auth: {
-        user: envVars.EMAIL_USER,
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
+    };
+    
+    console.log('Email configuration:', {
+      host: transportConfig.host,
+      port: transportConfig.port,
+      secure: transportConfig.secure,
+      user: transportConfig.auth.user ? '***@gmail.com' : 'undefined', // Log only masked email for security
+      passwordProvided: !!transportConfig.auth.pass
     });
+    
+    const transporter = nodemailer.createTransport(transportConfig);
 
-    // Verify transporter configuration
+    // Test SMTP connection
     try {
-      console.log('[API Route] Verifying email configuration');
       await transporter.verify();
-      console.log('[API Route] Email configuration verified successfully');
+      console.log('SMTP connection verified');
     } catch (verifyError: any) {
-      console.error('[API Route] Email verification failed:', verifyError);
-      return res.status(500).json({
-        message: 'Failed to connect to email server',
+      console.error('SMTP verification failed:', verifyError);
+      return NextResponse.json({
+        message: 'Email server connection failed',
         details: verifyError.message
-      });
+      }, { status: 500 });
     }
 
     // Format current date for the email
@@ -97,7 +106,7 @@ export default async function handler(
 
     // Email content
     const mailOptions = {
-      from: envVars.EMAIL_FROM,
+      from: process.env.EMAIL_FROM || 'noreply@imagineyou-app.com',
       to: 'matthaiosmarkatis@gmail.com',
       subject: 'Account Deletion Request - Imagine You App',
       html: `
@@ -147,26 +156,27 @@ export default async function handler(
     };
 
     // Send email
-    console.log('[API Route] Attempting to send email to:', mailOptions.to);
+    console.log('Attempting to send email to:', mailOptions.to);
     try {
       const info = await transporter.sendMail(mailOptions);
-      console.log('[API Route] Email sent successfully. Message ID:', info.messageId);
+      console.log('Email sent successfully:', info.messageId);
     } catch (emailError: any) {
-      console.error('[API Route] Error sending email:', emailError);
-      return res.status(500).json({
+      console.error('Error sending email:', emailError);
+      // Provide more detailed error for troubleshooting
+      return NextResponse.json({
         message: 'Failed to send email notification',
         details: emailError.message
-      });
+      }, { status: 500 });
     }
 
-    // Return success response
-    console.log('[API Route] Deletion request processed successfully');
-    return res.status(200).json({ message: 'Deletion request submitted successfully' });
+    return NextResponse.json({ 
+      message: 'Deletion request submitted successfully' 
+    }, { status: 200 });
   } catch (error: any) {
-    console.error('[API Route] Unhandled error:', error);
-    return res.status(500).json({ 
+    console.error('Unhandled error in deletion request handler:', error);
+    return NextResponse.json({
       message: 'Failed to process deletion request',
       details: error?.message || 'Unknown error'
-    });
+    }, { status: 500 });
   }
 } 
