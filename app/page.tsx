@@ -47,7 +47,7 @@ const LoadingSpinner: React.FC<{
       <div className="relative w-16 h-16">
         <div className="absolute inset-0 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
-      <p className="mt-6 text-white text-xl font-mono animate-pulse">Loading Cosmic Experience...</p>
+      <p className="mt-6 text-white text-xl font-mono animate-pulse">Loading Website...</p>
     </div>
   );
 };

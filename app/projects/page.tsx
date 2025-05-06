@@ -15,12 +15,16 @@ interface Project {
   liveDemo?: string;
   imageUrl?: string;
   colorAccent: string;
+  installation?: string[];
+  usage?: string[];
+  setup?: string[];
 }
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [visibleProjects, setVisibleProjects] = useState<Project[]>([]);
+  const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
   
   // Define project data
   const projects: Project[] = [
@@ -33,12 +37,27 @@ export default function ProjectsPage() {
         'File Operations for file management',
         'System Information monitoring',
         'Web Requests and scraping capabilities',
-        'Knowledge Base with RAG integration',
-        'HTTP Traffic Logging for analysis'
+        'Screenshot Capabilities',
+        'Browser Integration',
+        'Task Management',
+        'HTTP Traffic Logging',
+        'Knowledge Base storage and retrieval',
+        'Web Scraping capabilities',
+        'RAG Integration for enhanced responses'
       ],
-      technologies: ['Python', 'OpenAI API', 'RAG', 'SQLite', 'CLI Interface'],
+      technologies: ['Python', 'OpenAI API', 'RAG', 'SQLite', 'CLI Interface', 'mitmproxy'],
       repository: 'https://github.com/yourusername/advanced-pc-assistant',
-      colorAccent: 'from-blue-500 to-purple-600'
+      colorAccent: 'from-blue-500 to-purple-600',
+      installation: [
+        'Clone the repository',
+        'Install dependencies with pip install -r requirements.txt',
+        'Set up OpenAI API key as environment variable'
+      ],
+      usage: [
+        'Start the main assistant with python agent.py',
+        'Type exit to quit the application',
+        'Start HTTP traffic logger with python scraper.py'
+      ]
     },
     {
       id: 'discord-bot',
@@ -50,11 +69,32 @@ export default function ProjectsPage() {
         'Voice Commands for voice channels',
         'Music Player with YouTube integration',
         'Server Management utilities',
-        'Local LLM Integration for AI responses'
+        'Local LLM Integration for AI responses',
+        'Voice message reading with Coqui TTS',
+        'Dynamic command handling',
+        'Role and permission management',
+        'Private messaging system'
       ],
-      technologies: ['Python', 'Discord.py', 'FFmpeg', 'Local LLMs', 'OpenAI API'],
+      technologies: ['Python', 'Discord.py', 'FFmpeg', 'Local LLMs', 'OpenAI API', 'Coqui TTS'],
       repository: 'https://github.com/your-username/discord-bot',
-      colorAccent: 'from-indigo-600 to-blue-400'
+      colorAccent: 'from-indigo-600 to-blue-400',
+      installation: [
+        'Clone the repository',
+        'Install dependencies with pip install -r requirements.txt',
+        'Set up Discord token in .env file',
+        'Install and run a local LLM server'
+      ],
+      usage: [
+        'Run python main.py to start the bot',
+        'Use !talkto <user_id> to start a DM conversation',
+        'Use !play <song> to play music in voice channels',
+        'Use !voicemode to toggle TTS functionality'
+      ],
+      setup: [
+        'Install and configure a local LLM server on http://127.0.0.1:1234',
+        'Ensure FFmpeg is installed for audio processing',
+        'Set up proper Discord bot permissions in developer portal'
+      ]
     },
     {
       id: 'cv-website',
@@ -65,12 +105,26 @@ export default function ProjectsPage() {
         'Dark mode support',
         'Fully responsive for all devices',
         'Fast performance and SEO optimized',
-        'Ready for Vercel deployment'
+        'Ready for Vercel deployment',
+        'Interactive 3D background elements',
+        'Animated page transitions',
+        'Project portfolio showcase',
+        'Contact form integration'
       ],
-      technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'React Icons', 'next-themes'],
+      technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'React Icons', 'next-themes', 'Three.js'],
       repository: 'https://github.com/username/matthaios-markatis-cv',
       liveDemo: 'https://matthaiosmarkatis.com',
-      colorAccent: 'from-red-600 to-red-800'
+      colorAccent: 'from-red-600 to-red-800',
+      installation: [
+        'Clone the repository',
+        'Install dependencies with npm install',
+        'Set up environment variables if needed'
+      ],
+      usage: [
+        'Run npm run dev for development server',
+        'Run npm run build for production build',
+        'Deploy to Vercel or other hosting platform'
+      ]
     },
     {
       id: 'imagineyou-flutter',
@@ -82,10 +136,32 @@ export default function ProjectsPage() {
         'Custom Model Training with Replicate API',
         'Image Generation through text prompts',
         'Chat Interface for interaction',
-        'Image Gallery and sharing capabilities'
+        'Image Gallery and sharing capabilities',
+        'Multiple model management',
+        'Advanced generation settings',
+        'Responsive design for mobile and tablet',
+        'Multi-touch gestures for image viewing',
+        'Real-time training status tracking'
       ],
-      technologies: ['Flutter', 'Firebase', 'Replicate API', 'Provider Pattern', 'Photo_view'],
-      colorAccent: 'from-pink-500 to-purple-500'
+      technologies: ['Flutter', 'Firebase', 'Replicate API', 'Provider Pattern', 'Photo_view', 'Flutter_animate', 'Share_plus'],
+      colorAccent: 'from-pink-500 to-purple-500',
+      installation: [
+        'Clone the repository',
+        'Install Flutter dependencies with flutter pub get',
+        'Set up Firebase project and add configuration files',
+        'Add Replicate API key to .env file'
+      ],
+      usage: [
+        'Run flutter run to launch the app in development',
+        'Sign up or log in to create your AI model',
+        'Upload 10-20 photos for model training',
+        'Generate images using text prompts after training'
+      ],
+      setup: [
+        'Create a Replicate account and obtain API token',
+        'Set up Firebase Authentication and Storage',
+        'Configure permissions for camera and storage access'
+      ]
     },
     {
       id: 'incubator-project',
@@ -97,10 +173,31 @@ export default function ProjectsPage() {
         'System logs display',
         'MQTT integration',
         'SQLite database for data storage',
-        'SSH capability for remote systems'
+        'SSH capability for remote systems',
+        'Customizable time range for data viewing',
+        'Remote CSV file loading',
+        'Auto-reconnect functionality',
+        'Environmental data comparison'
       ],
-      technologies: ['Python', 'PyQt5', 'MQTT', 'SQLite', 'Paramiko (SSH)'],
-      colorAccent: 'from-green-500 to-teal-500'
+      technologies: ['Python', 'PyQt5', 'MQTT', 'SQLite', 'Paramiko (SSH)', 'Matplotlib', 'Pandas'],
+      colorAccent: 'from-green-500 to-teal-500',
+      installation: [
+        'Clone the repository',
+        'Set up a virtual environment (recommended)',
+        'Install dependencies with pip install -r requirements.txt',
+        'Configure environment variables in .env file'
+      ],
+      usage: [
+        'Run python widget.py to start the application',
+        'Or use runner.bat on Windows',
+        'Connect to MQTT broker to receive data',
+        'View historical data in the visualization tab'
+      ],
+      setup: [
+        'Configure MQTT broker address and port',
+        'Set up SSH credentials for remote connection if needed',
+        'Configure log file and database paths'
+      ]
     },
     {
       id: 'linkedin-job-agent',
@@ -111,10 +208,32 @@ export default function ProjectsPage() {
         'Job search with customizable filters',
         'Automatic form filling for applications',
         'Cover letter generation using GPT',
-        'Progress tracking and error handling'
+        'Progress tracking and error handling',
+        'UK diversity form support',
+        'Smart handling of various application fields',
+        'Resume attachment automation',
+        'Session persistence to avoid frequent logins',
+        'Customizable job search criteria'
       ],
-      technologies: ['Python', 'Playwright', 'OpenAI API', 'Web Automation'],
-      colorAccent: 'from-blue-600 to-teal-400'
+      technologies: ['Python', 'Playwright', 'OpenAI API', 'Web Automation', 'Browser Automation'],
+      colorAccent: 'from-blue-600 to-teal-400',
+      installation: [
+        'Clone the repository',
+        'Install required packages with pip install -r requirements.txt',
+        'Install Playwright browsers with playwright install',
+        'Create .env file with LinkedIn and OpenAI credentials'
+      ],
+      usage: [
+        'Place your CV in the project directory as cv.pdf',
+        'Configure user_data.json with your profile information',
+        'Run python sel.py to start the automation',
+        'The script will handle the rest automatically'
+      ],
+      setup: [
+        'Set up environment variables for credentials',
+        'Customize job search criteria in the script',
+        'Ensure Chrome/Chromium browser is installed'
+      ]
     },
     {
       id: 'mp-statement-writer',
@@ -126,10 +245,31 @@ export default function ProjectsPage() {
         'Tone Selection options',
         'Local Context Integration',
         'History Management for tracking',
-        'Template System for reuse'
+        'Template System for reuse',
+        'Import/Export functionality',
+        'Previous statement templates',
+        'Multiple tone presets',
+        'Constituency-specific concerns integration'
       ],
-      technologies: ['Python', 'Tkinter', 'OpenAI API', 'SQLite'],
-      colorAccent: 'from-blue-700 to-indigo-500'
+      technologies: ['Python', 'Tkinter', 'OpenAI API', 'SQLite', 'Config Parser'],
+      colorAccent: 'from-blue-700 to-indigo-500',
+      installation: [
+        'Clone the repository',
+        'Install dependencies with pip install -r requirements.txt',
+        'Create .env file with your OpenAI API key'
+      ],
+      usage: [
+        'Run python mp_statement_writer.py to start the application',
+        'Enter government statement in the designated field',
+        'Add relevant local context specific to constituency',
+        'Select appropriate tone and audience',
+        'Generate and review the personalized statement'
+      ],
+      setup: [
+        'Configure API settings in config.ini',
+        'Set up UI preferences if needed',
+        'Configure default statement templates'
+      ]
     },
     {
       id: 'shroomcult-website',
@@ -139,10 +279,25 @@ export default function ProjectsPage() {
         'Server-side rendering capabilities',
         'Static site generation',
         'Automatic font optimization',
-        'Easy deployment on Vercel'
+        'Easy deployment on Vercel',
+        'Fast page loading and navigation',
+        'Responsive design for all devices',
+        'SEO optimization',
+        'Modern UI components'
       ],
-      technologies: ['Next.js', 'React', 'Geist Font', 'Vercel'],
-      colorAccent: 'from-purple-600 to-purple-800'
+      technologies: ['Next.js', 'React', 'Geist Font', 'Vercel', 'Tailwind CSS'],
+      colorAccent: 'from-purple-600 to-purple-800',
+      installation: [
+        'Clone the repository',
+        'Install dependencies with npm install or yarn install',
+        'Configure environment variables if needed'
+      ],
+      usage: [
+        'Run npm run dev or yarn dev for development server',
+        'Open http://localhost:3000 to see the result',
+        'Edit pages to see real-time updates',
+        'Deploy on Vercel for production'
+      ]
     },
     {
       id: 'spacex-dashboard',
@@ -152,10 +307,25 @@ export default function ProjectsPage() {
         'Filter launch data by launch site',
         'View success rate through pie charts',
         'Analyze correlation between payload mass and success',
-        'Filter data by payload mass range'
+        'Filter data by payload mass range',
+        'Interactive data filtering',
+        'Real-time visualization updates',
+        'Comprehensive success rate analysis',
+        'Responsive layout for different screens'
       ],
-      technologies: ['Python', 'Dash', 'Plotly', 'Pandas'],
-      colorAccent: 'from-gray-700 to-gray-900'
+      technologies: ['Python', 'Dash', 'Plotly', 'Pandas', 'Jupyter Notebooks', 'SQL'],
+      colorAccent: 'from-gray-700 to-gray-900',
+      installation: [
+        'Clone the repository',
+        'Install required dependencies with pip install pandas dash plotly',
+        'Ensure all dataset files are in the correct location'
+      ],
+      usage: [
+        'Run python data_wrag.py to start the dashboard',
+        'Open a web browser and navigate to http://127.0.0.1:8050/',
+        'Use the dropdown to select specific launch sites',
+        'Adjust the payload mass slider to filter data'
+      ]
     },
     {
       id: 'spotify-playlist-generator',
@@ -165,10 +335,33 @@ export default function ProjectsPage() {
         'Spotify account authentication',
         'Artist search functionality',
         'Playlist generation with customizable length',
-        'Direct integration with Spotify'
+        'Direct integration with Spotify',
+        'Visual playlist preview',
+        'Up to 5 seed artists selection',
+        'OAuth 2.0 authentication flow',
+        'Interactive 3D visualization',
+        'Playlist sharing capability'
       ],
-      technologies: ['Python', 'Flask', 'Spotify Web API', 'OAuth 2.0', 'Three.js'],
-      colorAccent: 'from-green-600 to-teal-600'
+      technologies: ['Python', 'Flask', 'Spotify Web API', 'OAuth 2.0', 'Three.js', 'HTML/CSS/JavaScript'],
+      colorAccent: 'from-green-600 to-teal-600',
+      installation: [
+        'Clone the repository',
+        'Install dependencies with pip install -r requirements.txt',
+        'Set up environment variables for Spotify API credentials',
+        'Configure redirect URI in Spotify Developer Dashboard'
+      ],
+      usage: [
+        'Run python app.py to start the Flask application',
+        'Navigate to http://localhost:5000 in your browser',
+        'Log in with your Spotify account',
+        'Search and select up to 5 artists',
+        'Generate a personalized playlist'
+      ],
+      setup: [
+        'Create a Spotify Developer account',
+        'Register a new application to get API credentials',
+        'Add http://localhost:5000/callback as a Redirect URI'
+      ]
     },
     {
       id: 'video-transcripter',
@@ -179,10 +372,26 @@ export default function ProjectsPage() {
         'Extracts audio from video files',
         'Splits large audio files into smaller chunks',
         'Transcribes using Whisper API',
-        'Cleans up temporary files'
+        'Cleans up temporary files',
+        'Supports all major video formats',
+        'Automatic chunking for API limits',
+        'Error handling and retry mechanisms',
+        'Clean text output generation'
       ],
-      technologies: ['Python', 'OpenAI Whisper API', 'FFmpeg'],
-      colorAccent: 'from-gray-600 to-slate-700'
+      technologies: ['Python', 'OpenAI Whisper API', 'FFmpeg', 'dotenv', 'Subprocess'],
+      colorAccent: 'from-gray-600 to-slate-700',
+      installation: [
+        'Clone the repository',
+        'Install required dependencies with pip install -r requirements.txt',
+        'Create a .env file with your OpenAI API key',
+        'Ensure FFmpeg is installed on your system'
+      ],
+      usage: [
+        'Place video files in the same directory as the script',
+        'Run python runner.py to start transcription',
+        'Text files will be created with the transcriptions',
+        'Check logs for any processing errors'
+      ]
     },
     {
       id: 'wildfire-detection',
@@ -194,10 +403,34 @@ export default function ProjectsPage() {
         'Interactive map interface',
         'Heat map visualization',
         'Weather API integration',
-        'Machine learning fire prediction'
+        'Machine learning fire prediction',
+        'Battery voltage monitoring',
+        'Automatic data persistence',
+        'Temperature anomaly detection',
+        'Responsive web interface',
+        'Historical data analysis tools'
       ],
-      technologies: ['Python', 'Flask', 'MQTT', 'SQLite', 'Leaflet.js', 'Random Forest'],
-      colorAccent: 'from-orange-600 to-red-700'
+      technologies: ['Python', 'Flask', 'MQTT', 'SQLite', 'Leaflet.js', 'Random Forest', 'Pi Zero W', 'WeatherAPI.com'],
+      colorAccent: 'from-orange-600 to-red-700',
+      installation: [
+        'Clone the repository',
+        'Install required Python packages with pip install -r requirements.txt',
+        'Update TTN credentials in mqtt_sensor_finder.py',
+        'Update Weather API key in weatherapi.py'
+      ],
+      usage: [
+        'Run python app.py to start the Flask application',
+        'Access the web interface at http://localhost:3000',
+        'View real-time sensor data on the interactive map',
+        'Monitor temperature anomalies through the heatmap',
+        'Check battery status of deployed sensors'
+      ],
+      setup: [
+        'Set up The Things Network (TTN) account and application',
+        'Configure IoT sensors with appropriate payload format',
+        'Obtain a WeatherAPI.com API key',
+        'Deploy Pi Zero W based sensors in target locations'
+      ]
     }
   ];
 
@@ -265,12 +498,6 @@ export default function ProjectsPage() {
         >
           <h1 className="text-5xl font-bold text-white mb-6 relative inline-block">
             My Projects
-            <motion.div 
-              className="absolute bottom-0 left-0 h-1 bg-redAccent"
-              initial={{ width: 0 }}
-              animate={{ width: '100%' }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            />
           </h1>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
             A collection of my work in AI, automation, web development, data science, and embedded systems.
@@ -345,7 +572,7 @@ export default function ProjectsPage() {
                 <div className="mb-4">
                   <h4 className="text-sm font-semibold text-gray-400 mb-2">Key Features</h4>
                   <ul className="space-y-1">
-                    {project.features.slice(0, 3).map((feature, index) => (
+                    {(expandedProjectId === project.id ? project.features : project.features.slice(0, 3)).map((feature, index) => (
                       <li key={index} className="text-gray-300 text-sm flex items-start">
                         <span className="text-redAccent mr-2">•</span>
                         <span>{feature}</span>
@@ -368,24 +595,91 @@ export default function ProjectsPage() {
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center pt-2 border-t border-gray-800">
-                  <Link
-                    href={`/projects/${project.id}`}
-                    className="text-redAccent hover:text-redAccent-lighter transition-colors text-sm font-medium"
+                {/* Additional details when expanded */}
+                {expandedProjectId === project.id && (
+                  <div className="mt-3 pt-3 border-t border-gray-800">
+                    {project.installation && (
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-gray-400 mb-2">Installation</h4>
+                        <ol className="space-y-1 list-decimal list-inside">
+                          {project.installation.map((step, index) => (
+                            <li key={index} className="text-gray-300 text-sm">{step}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+                    
+                    {project.usage && (
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-gray-400 mb-2">Usage</h4>
+                        <ul className="space-y-1">
+                          {project.usage.map((item, index) => (
+                            <li key={index} className="text-gray-300 text-sm flex items-start">
+                              <span className="text-redAccent mr-2">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    {project.setup && (
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-gray-400 mb-2">Setup</h4>
+                        <ol className="space-y-1 list-decimal list-inside">
+                          {project.setup.map((step, index) => (
+                            <li key={index} className="text-gray-300 text-sm">{step}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+                    
+                    {project.liveDemo && (
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-gray-400 mb-2">Live Demo</h4>
+                        <a 
+                          href={project.liveDemo}
+                          target="_blank"
+                          rel="noopener noreferrer" 
+                          className="text-redAccent hover:text-redAccent-lighter transition-colors text-sm"
+                        >
+                          Visit Live Demo
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
+                <div className="flex justify-between items-center pt-2 border-t border-gray-800 mt-2">
+                  <button
+                    onClick={() => setExpandedProjectId(expandedProjectId === project.id ? null : project.id)}
+                    className="text-redAccent hover:text-redAccent-lighter transition-colors text-sm font-medium flex items-center"
                   >
-                    View Details
-                  </Link>
+                    {expandedProjectId === project.id ? 'Collapse' : 'View Details'}
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className={`h-4 w-4 ml-1 transition-transform ${expandedProjectId === project.id ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                   
                   {project.repository && (
                     <a 
                       href={project.repository}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className={`${expandedProjectId === project.id 
+                        ? 'text-gray-300 hover:text-white bg-dark-lighter hover:bg-gray-700 py-1 px-3 rounded-md text-sm flex items-center' 
+                        : 'text-gray-400 hover:text-white flex items-center'} transition-colors`}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <svg xmlns="http://www.w3.org/2000/svg" className={`${expandedProjectId === project.id ? 'h-4 w-4 mr-1' : 'h-5 w-5'}`} fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
+                      {expandedProjectId === project.id && 'GitHub'}
                     </a>
                   )}
                 </div>
