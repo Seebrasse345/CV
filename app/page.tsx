@@ -23,7 +23,7 @@ const LoadingSpinner: React.FC<{
     if (!isVisible) {
       const timer = setTimeout(() => {
         setOpacity(0);
-      }, 300);
+      }, 300); // Start fade out after a delay
       return () => clearTimeout(timer);
     } else {
       setOpacity(1);
@@ -40,14 +40,18 @@ const LoadingSpinner: React.FC<{
 
   return (
     <div
-      className="fixed inset-0 flex flex-col items-center justify-center bg-black z-50 transition-opacity duration-700"
+      className="fixed inset-0 flex flex-col items-center justify-center bg-black z-50 transition-opacity duration-700 ease-out"
       style={{ opacity }}
       onTransitionEnd={handleTransitionEnd}
     >
-      <div className="relative w-16 h-16">
-        <div className="absolute inset-0 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="flex space-x-2">
+        <div className="w-4 h-4 bg-indigo-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+        <div className="w-4 h-4 bg-indigo-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+        <div className="w-4 h-4 bg-indigo-500 rounded-full animate-bounce"></div>
       </div>
-      <p className="mt-6 text-white text-xl font-mono animate-pulse">Loading Website...</p>
+      <p className="mt-6 text-white text-xl font-mono animate-pulse">
+        Loading Artistry...
+      </p>
     </div>
   );
 };
@@ -80,15 +84,29 @@ export default function Home() {
         <CosmicBackground />
       </div>
 
-      <div className="z-10 relative">
-        <div 
-          className="transition-all duration-1000"
-          style={{ 
+      <div className="z-10 relative"> {/* Container for animated content */}
+        {/* Navigation Animation */}
+        <div
+          className="transition-all duration-700 ease-out relative"
+          style={{
             opacity: isLoading ? 0 : 1,
-            transform: isLoading ? 'translateY(20px)' : 'translateY(0)'
+            transform: isLoading ? 'translateY(-30px)' : 'translateY(0)',
+            zIndex: 20 // Ensure navigation wrapper is above hero wrapper
           }}
         >
           <Navigation />
+        </div>
+
+        {/* Hero Animation */}
+        <div
+          className="transition-all duration-1000 ease-out relative"
+          style={{
+            opacity: isLoading ? 0 : 1,
+            transform: isLoading ? 'translateY(30px) scale(0.95)' : 'translateY(0) scale(1)',
+            transitionDelay: isLoading ? '0ms' : '200ms', // Apply delay only for the entry animation
+            zIndex: 10 // Below navigation wrapper
+          }}
+        >
           <Hero 
             title="MARKATIS DEVELOPMENT" 
             subtitle="Crafting innovative software solutions with cutting-edge technology" 
@@ -97,4 +115,4 @@ export default function Home() {
       </div>
     </main>
   );
-} 
+}
