@@ -46,7 +46,7 @@ export default function ProjectsPage() {
         'RAG Integration for enhanced responses'
       ],
       technologies: ['Python', 'OpenAI API', 'RAG', 'SQLite', 'CLI Interface', 'mitmproxy'],
-      repository: 'https://github.com/yourusername/advanced-pc-assistant',
+      repository: 'https://github.com/Seebrasse345/advanced-pc-assistant',
       colorAccent: 'from-blue-500 to-purple-600',
       installation: [
         'Clone the repository',
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
         'Private messaging system'
       ],
       technologies: ['Python', 'Discord.py', 'FFmpeg', 'Local LLMs', 'OpenAI API', 'Coqui TTS'],
-      repository: 'https://github.com/your-username/discord-bot',
+      repository: 'https://github.com/Seebrasse345/Custom-LLM-Discord-Bot',
       colorAccent: 'from-indigo-600 to-blue-400',
       installation: [
         'Clone the repository',
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
         'Contact form integration'
       ],
       technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'React Icons', 'next-themes', 'Three.js'],
-      repository: 'https://github.com/username/matthaios-markatis-cv',
+      repository: 'https://github.com/Seebrasse345/CV',
       liveDemo: 'https://matthaiosmarkatis.com',
       colorAccent: 'from-red-600 to-red-800',
       installation: [
@@ -144,6 +144,7 @@ export default function ProjectsPage() {
         'Real-time training status tracking'
       ],
       technologies: ['Flutter', 'Firebase', 'Replicate API', 'Provider Pattern', 'Photo_view', 'Flutter_animate', 'Share_plus'],
+      repository: 'https://github.com/Seebrasse345/imagineyou_flutter',
       colorAccent: 'from-pink-500 to-purple-500',
       installation: [
         'Clone the repository',
@@ -180,6 +181,7 @@ export default function ProjectsPage() {
         'Environmental data comparison'
       ],
       technologies: ['Python', 'PyQt5', 'MQTT', 'SQLite', 'Paramiko (SSH)', 'Matplotlib', 'Pandas'],
+      repository: 'https://github.com/Seebrasse345/Incubator-Project',
       colorAccent: 'from-green-500 to-teal-500',
       installation: [
         'Clone the repository',
@@ -216,6 +218,7 @@ export default function ProjectsPage() {
         'Customizable job search criteria'
       ],
       technologies: ['Python', 'Playwright', 'OpenAI API', 'Web Automation', 'Browser Automation'],
+      repository: 'https://github.com/Seebrasse345/LinkedIn-job-Agent',
       colorAccent: 'from-blue-600 to-teal-400',
       installation: [
         'Clone the repository',
@@ -252,6 +255,7 @@ export default function ProjectsPage() {
         'Constituency-specific concerns integration'
       ],
       technologies: ['Python', 'Tkinter', 'OpenAI API', 'SQLite', 'Config Parser'],
+      repository: 'https://github.com/Seebrasse345/mp-statement-writer',
       colorAccent: 'from-blue-700 to-indigo-500',
       installation: [
         'Clone the repository',
@@ -286,6 +290,7 @@ export default function ProjectsPage() {
         'Modern UI components'
       ],
       technologies: ['Next.js', 'React', 'Geist Font', 'Vercel', 'Tailwind CSS'],
+      repository: 'https://github.com/Seebrasse345/Shroomcult_website',
       colorAccent: 'from-purple-600 to-purple-800',
       installation: [
         'Clone the repository',
@@ -314,6 +319,7 @@ export default function ProjectsPage() {
         'Responsive layout for different screens'
       ],
       technologies: ['Python', 'Dash', 'Plotly', 'Pandas', 'Jupyter Notebooks', 'SQL'],
+      repository: 'https://github.com/Seebrasse345/spacex-dashboard',
       colorAccent: 'from-gray-700 to-gray-900',
       installation: [
         'Clone the repository',
@@ -343,6 +349,7 @@ export default function ProjectsPage() {
         'Playlist sharing capability'
       ],
       technologies: ['Python', 'Flask', 'Spotify Web API', 'OAuth 2.0', 'Three.js', 'HTML/CSS/JavaScript'],
+      repository: 'https://github.com/Seebrasse345/spotify-playlist-generator',
       colorAccent: 'from-green-600 to-teal-600',
       installation: [
         'Clone the repository',
@@ -379,6 +386,7 @@ export default function ProjectsPage() {
         'Clean text output generation'
       ],
       technologies: ['Python', 'OpenAI Whisper API', 'FFmpeg', 'dotenv', 'Subprocess'],
+      repository: 'https://github.com/Seebrasse345/video-transcripter',
       colorAccent: 'from-gray-600 to-slate-700',
       installation: [
         'Clone the repository',
@@ -411,6 +419,7 @@ export default function ProjectsPage() {
         'Historical data analysis tools'
       ],
       technologies: ['Python', 'Flask', 'MQTT', 'SQLite', 'Leaflet.js', 'Random Forest', 'Pi Zero W', 'WeatherAPI.com'],
+      repository: 'https://github.com/Seebrasse345/Wild-Fire-Detection-Project',
       colorAccent: 'from-orange-600 to-red-700',
       installation: [
         'Clone the repository',
