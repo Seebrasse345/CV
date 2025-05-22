@@ -35,16 +35,28 @@ export default function RootLayout({
         <meta name="force-rendering" content="webkit" />
         <style dangerouslySetInnerHTML={{
           __html: `
+            * {
+              zoom: normal !important;
+              transform: none !important;
+            }
             html {
-              -webkit-text-size-adjust: 100%;
-              -ms-text-size-adjust: 100%;
-              text-size-adjust: 100%;
+              -webkit-text-size-adjust: none !important;
+              -ms-text-size-adjust: none !important;
+              text-size-adjust: none !important;
               font-size: 16px !important;
+              zoom: 1 !important;
+              transform: scale(1) !important;
             }
             body {
               overflow-x: hidden;
               max-width: 100vw;
-              font-size: 1rem !important;
+              font-size: 16px !important;
+              zoom: 1 !important;
+              transform: scale(1) !important;
+            }
+            @media screen and (max-width: 768px) {
+              html { font-size: 14px !important; }
+              body { font-size: 14px !important; }
             }
           `
         }} />
