@@ -24,9 +24,9 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
   }, []);
 
   return (
-    <div className="hero-container relative">
+    <div className="hero-container relative max-w-screen overflow-hidden">
       {/* Enhanced title with perfect centering */}
-      <div className="relative mb-10 sm:mb-16 z-10 w-full">
+      <div className="relative mb-10 sm:mb-16 z-10 w-full max-w-full">
         <div className="w-full flex justify-center">
           <h1 className={`hero-title transition-all duration-1000 ease-out ${
             titleAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'

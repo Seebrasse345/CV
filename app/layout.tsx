@@ -12,8 +12,9 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
 };
 
 export const metadata: Metadata = {
@@ -32,6 +33,19 @@ export default function RootLayout({
       <head>
         <meta name="renderer" content="webkit" />
         <meta name="force-rendering" content="webkit" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            html {
+              -webkit-text-size-adjust: 100%;
+              -ms-text-size-adjust: 100%;
+              text-size-adjust: 100%;
+            }
+            body {
+              overflow-x: hidden;
+              max-width: 100vw;
+            }
+          `
+        }} />
       </head>
       <body className={`${inter.variable} font-sans bg-dark text-white flex flex-col min-h-screen`}>
         {children}

@@ -13,6 +13,20 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
+  // Force consistent image optimization
+  images: {
+    unoptimized: false,
+    formats: ['image/webp', 'image/avif'],
+  },
+  
+  // Force consistent output between dev and production
+  output: 'standalone',
+  
+  // Ensure consistent environment variables
+  env: {
+    NEXT_PUBLIC_VERCEL_ENV: process.env.VERCEL_ENV || 'development',
+  },
+  
   // Bundle analyzer and optimizations
   webpack: (config, { dev, isServer }) => {
     // Optimize Three.js bundle - use modern ES6 module exports
