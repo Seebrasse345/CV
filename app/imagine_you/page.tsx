@@ -40,16 +40,7 @@ export default function ImagineYouPage() {
     }
   };
 
-  const floatingVariants = {
-    animate: {
-      y: [0, -20, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
+  
 
   return (
     <main className="min-h-screen relative overflow-hidden bg-black">
@@ -91,26 +82,7 @@ export default function ImagineYouPage() {
           transform: isLoading ? 'translateY(20px)' : 'translateY(0)'
         }}
       >
-        <div className="container mx-auto px-4">
-          {/* Header with app name and tagline */}
-          <motion.div 
-            className="text-center py-16 md:py-24"
-            variants={floatingVariants}
-            animate="animate"
-          >
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-400 bg-clip-text text-transparent"
-              style={{ 
-                filter: 'drop-shadow(0 0 30px rgba(139, 69, 255, 0.5))',
-                fontFamily: 'system-ui, -apple-system, sans-serif'
-              }}
-            >
-              Imagine You
-            </h1>
-            <p className="text-2xl md:text-3xl text-purple-200/90 max-w-4xl mx-auto leading-relaxed">
-              Become anyone, anywhere, in any style with personalized AI image generation
-            </p>
-            <div className="mt-8 w-32 h-1 bg-gradient-to-r from-purple-500 via-violet-400 to-indigo-500 mx-auto rounded-full shadow-lg shadow-purple-500/50"></div>
-          </motion.div>
+        <div className="container mx-auto px-4">          {/* Header with app name and tagline */}          <div className="text-center py-16 md:py-24">            <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-400 bg-clip-text text-transparent leading-normal"              style={{                 filter: 'drop-shadow(0 0 30px rgba(139, 69, 255, 0.5))',                fontFamily: 'system-ui, -apple-system, sans-serif',                paddingBottom: '1.5rem',                lineHeight: '1.2'              }}            >              Imagine You            </h1>            <p className="text-2xl md:text-3xl text-purple-200/90 max-w-4xl mx-auto leading-relaxed">              Become anyone, anywhere, in any style with personalized AI image generation            </p>            <div className="mt-8 w-32 h-1 bg-gradient-to-r from-purple-500 via-violet-400 to-indigo-500 mx-auto rounded-full shadow-lg shadow-purple-500/50"></div>          </div>
 
           {/* Main content */}
           <motion.div 
