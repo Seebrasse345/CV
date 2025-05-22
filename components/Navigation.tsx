@@ -69,17 +69,7 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6">
-            {navLinks.map(link => (
-              <NavLink 
-                key={link.path} 
-                href={link.path} 
-                label={link.title} 
-                isActive={pathname === link.path || (link.path === '/imagine_you' && isImagineYouPath)}
-              />
-            ))}
-          </div>
+                          {/* Desktop Navigation */}          <div className="hidden md:flex space-x-4 lg:space-x-6">            {navLinks.map(link => (              <NavLink                 key={link.path}                 href={link.path}                 label={link.title}                 isActive={(pathname === link.path) || (link.path === '/imagine_you' && !!isImagineYouPath)}              />            ))}          </div>
 
           {/* Mobile Navigation Button */}
           <div className="md:hidden">
@@ -126,13 +116,7 @@ export default function Navigation() {
       >
         <div className="container mx-auto px-4 flex flex-col space-y-4">
           {navLinks.map(link => (
-            <MobileNavLink 
-              key={link.path} 
-              href={link.path} 
-              label={link.title} 
-              isActive={pathname === link.path || (link.path === '/imagine_you' && isImagineYouPath)}
-              onClick={() => setIsMenuOpen(false)}
-            />
+                        <MobileNavLink               key={link.path}               href={link.path}               label={link.title}               isActive={(pathname === link.path) || (link.path === '/imagine_you' && !!isImagineYouPath)}              onClick={() => setIsMenuOpen(false)}            />
           ))}
           
           {/* Display Imagine You sublinks if the pathname starts with /imagine_you */}
