@@ -2,10 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+/* AGGRESSIVE GLOBAL RESET & SCALING PREVENTION */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, main {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 100% !important;
+  font: inherit !important;
+  vertical-align: baseline !important;
+  box-sizing: border-box !important;
+  -webkit-text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  transform: none !important;
+  zoom: 1 !important;
+  max-width: 100% !important;
+}
+
+/* HTML global controls */
+html {
+  scroll-behavior: smooth !important;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  zoom: 1 !important;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Body global controls */
+body {
+  font-family: var(--font-inter), 'Segoe UI', sans-serif !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  zoom: 1 !important;
+  transform: scale(1) !important;
+  -webkit-transform: scale(1) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern" 1 !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  color: rgb(var(--foreground-rgb)) !important;
+  background: rgb(var(--background-start-rgb)) !important;
+}
+
+/* Re-apply Tailwind base AFTER our aggressive reset to selectively restore Tailwind's defaults */
+/* This was moved to the top, as Tailwind base should ideally come first. */
+/* The !important on our rules above should override Tailwind's base where needed. */
+
+/* Default text color and background from :root (if needed, but body now sets it) */
+/* body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+  font-size: 16px !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -329,168 +408,22 @@ body {
   }
   
     /* Set print-specific page margin */  @page {    margin: 0.5cm;    size: auto;  }}/* Enhanced CV specific styles */.bg-gradient-to-r {  background: linear-gradient(to right, var(--tw-gradient-stops));}.bg-gradient-to-br {  background: linear-gradient(to bottom right, var(--tw-gradient-stops));}.bg-clip-text {  background-clip: text;  -webkit-background-clip: text;}.text-transparent {  color: transparent;}/* Force consistent base sizing across all environments */
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-  font-size: 16px !important;
-  line-height: 1.5;
-  zoom: 1 !important;
-}
 
-/* Override any font scaling issues */
-body {
-  font-size: 16px !important;
-  zoom: 1 !important;
-  transform: scale(1) !important;
-  -webkit-transform: scale(1) !important;
-}
-
-/* Fix for mobile zoom issues */
-@-ms-viewport {
-  width: device-width;
-}
-
-/* Prevent zoom issues on mobile */
+/* Prevent zoom issues on mobile form elements (keep as is) */
 input, select, textarea {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
-/* Fix viewport units on mobile browsers */
+/* Fix viewport units on mobile browsers (keep as is) */
 .min-h-screen {
-  min-height: 100vh;
-  min-height: 100svh; /* Use small viewport height on supported browsers */
-}
-
-/* Consistent font rendering across browsers */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: "kern" 1;
-}
-
-/* Force consistent rem sizing and prevent any scaling */
-* {
-  box-sizing: border-box;
-  -webkit-text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-}
-
-/* Override any large text scaling on specific elements */
-h1, h2, h3, h4, h5, h6 {
-  -webkit-text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-}
-
-/* Force specific font sizes for common text classes - AGGRESSIVE OVERRIDES */
-.text-xs { font-size: 0.75rem !important; }
-.text-sm { font-size: 0.875rem !important; }
-.text-base { font-size: 1rem !important; }
-.text-lg { font-size: 1.125rem !important; }
-.text-xl { font-size: 1.25rem !important; }
-.text-2xl { font-size: 1.5rem !important; }
-.text-3xl { font-size: 1.875rem !important; }
-.text-4xl { font-size: 2.25rem !important; }
-.text-5xl { font-size: 3rem !important; }
-.text-6xl { font-size: 3.75rem !important; }
-.text-7xl { font-size: 4.5rem !important; }
-
-/* Additional responsive overrides for medium and larger screens */
-@media (min-width: 768px) {
-  .md\:text-xs { font-size: 0.75rem !important; }
-  .md\:text-sm { font-size: 0.875rem !important; }
-  .md\:text-base { font-size: 1rem !important; }
-  .md\:text-lg { font-size: 1.125rem !important; }
-  .md\:text-xl { font-size: 1.25rem !important; }
-  .md\:text-2xl { font-size: 1.5rem !important; }
-  .md\:text-3xl { font-size: 1.875rem !important; }
-  .md\:text-4xl { font-size: 2.25rem !important; }
-  .md\:text-5xl { font-size: 3rem !important; }
-  .md\:text-6xl { font-size: 3.75rem !important; }
-  .md\:text-7xl { font-size: 4.5rem !important; }
-}
-
-@media (min-width: 1024px) {
-  .lg\:text-xs { font-size: 0.75rem !important; }
-  .lg\:text-sm { font-size: 0.875rem !important; }
-  .lg\:text-base { font-size: 1rem !important; }
-  .lg\:text-lg { font-size: 1.125rem !important; }
-  .lg\:text-xl { font-size: 1.25rem !important; }
-  .lg\:text-2xl { font-size: 1.5rem !important; }
-  .lg\:text-3xl { font-size: 1.875rem !important; }
-  .lg\:text-4xl { font-size: 2.25rem !important; }
-  .lg\:text-5xl { font-size: 3rem !important; }
-  .lg\:text-6xl { font-size: 3.75rem !important; }
-  .lg\:text-7xl { font-size: 4.5rem !important; }
-}
-
-/* Force all text elements to use specific sizes regardless of class */
-h1 { font-size: 2.25rem !important; } /* equivalent to text-4xl */
-h2 { font-size: 1.875rem !important; } /* equivalent to text-3xl */
-h3 { font-size: 1.5rem !important; } /* equivalent to text-2xl */
-h4 { font-size: 1.25rem !important; } /* equivalent to text-xl */
-h5 { font-size: 1.125rem !important; } /* equivalent to text-lg */
-h6 { font-size: 1rem !important; } /* equivalent to text-base */
-p { font-size: 1rem !important; } /* equivalent to text-base */
-
-/* Override any gradient text elements that might be larger */
-.bg-clip-text {
-  font-size: inherit !important;
-}
-
-/* Force container and layout elements to have proper scaling */
-.container, .max-w-6xl, .max-w-4xl, .max-w-2xl, .max-w-xl, .max-w-lg {
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-}
-
-/* Ensure all sections have proper zoom and transform reset */
-section, main, div {
-  zoom: 1 !important;
-  transform: scale(1) !important;
-  -webkit-transform: scale(1) !important;
-}
-
-/* Additional aggressive font controls for specific page elements */
-[class*="text-"] {
-  -webkit-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-}
-
-/* Force responsive breakpoint font sizes to be consistent */
-@media (max-width: 640px) {
-  h1 { font-size: 1.875rem !important; } /* text-3xl equivalent */
-  h2 { font-size: 1.5rem !important; } /* text-2xl equivalent */
-  h3 { font-size: 1.25rem !important; } /* text-xl equivalent */
-  
-  .text-5xl, .text-6xl, .text-7xl {
-    font-size: 1.875rem !important; /* Force large text to be smaller on mobile */
-  }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-  h1 { font-size: 2rem !important; }
-  h2 { font-size: 1.75rem !important; }
-  
-  .text-5xl, .text-6xl, .text-7xl {
-    font-size: 2.25rem !important; /* Controlled large text for tablets */
-  }
+  min-height: 100vh !important;
+  min-height: 100svh !important;
 }
 
 /* Prevent layout shift from font loading */
 .font-sans {
   font-display: swap;
 }/* Enhanced hover effects for CV sections */.hover\:scale-\[1\.02\]:hover {  transform: scale(1.02) translateZ(0);  will-change: transform;}.hover\:scale-105:hover {  transform: scale(1.05) translateZ(0);  will-change: transform;}.hover\:scale-110:hover {  transform: scale(1.1) translateZ(0);  will-change: transform;}/* Enhanced navigation styles */.backdrop-blur-md {  backdrop-filter: blur(12px);  -webkit-backdrop-filter: blur(12px);}.backdrop-blur-sm {  backdrop-filter: blur(4px);  -webkit-backdrop-filter: blur(4px);}/* Enhanced shadow effects */.shadow-2xl {  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);}/* Custom gradient backgrounds */.from-dark-card\/90 {  --tw-gradient-from: rgba(55, 65, 81, 0.9);  --tw-gradient-to: rgba(55, 65, 81, 0);  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);}.to-dark-lighter\/90 {  --tw-gradient-to: rgba(75, 85, 99, 0.9);}/* Improved focus states for accessibility */button:focus-visible,a:focus-visible {  outline: 2px solid rgba(239, 68, 68, 0.5);  outline-offset: 2px;}/* Enhanced animation performance */.transition-all {  transition-property: all;  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  transition-duration: 300ms;  will-change: transform, opacity, background-color, border-color, box-shadow;}
-
-/* Force consistent root font size across environments */
-:root {
-  font-size: 16px !important;
-}
 
 /* Comprehensive Responsive Design Improvements */
 /* Mobile phones (320px - 640px) */

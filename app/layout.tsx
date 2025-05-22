@@ -60,7 +60,14 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={`${inter.variable} font-sans bg-dark text-white flex flex-col min-h-screen`}>
+      <body 
+        className={`${inter.variable} font-sans bg-dark text-white flex flex-col min-h-screen`}
+        style={{ 
+          transform: 'scale(1)', 
+          WebkitTransform: 'scale(1)',
+          zoom: 1
+        }}
+      >
         {children}
         <Footer />
       </body>
