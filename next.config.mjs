@@ -16,12 +16,11 @@ const nextConfig = {
   
   // Bundle analyzer and optimizations
   webpack: (config, { dev, isServer }) => {
-    // Optimize Three.js bundle
+    // Optimize Three.js bundle - use modern ES6 module exports
     if (!dev) {
       config.resolve.alias = {
         ...config.resolve.alias,
         'three/examples/jsm': 'three/examples/jsm',
-        'three': 'three/build/three.module.js',
       };
     }
     
