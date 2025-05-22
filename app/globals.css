@@ -56,10 +56,12 @@ body {
 
 .hero-title {
   @apply text-5xl md:text-7xl font-bold tracking-tighter mb-2;
+  font-size: clamp(2.5rem, 5vw, 4rem) !important;
 }
 
 .hero-subtitle {
   @apply text-xl md:text-2xl text-gray-400 mb-8;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
 }
 
 .cta-button {  @apply bg-transparent border-2 border-cosmicAccent text-cosmicAccent font-semibold py-2 px-6 rounded-full  transition-all duration-300 hover:bg-cosmicAccent hover:text-white shadow-neon-cosmic hover:shadow-neon-cosmic-hover;}
@@ -326,14 +328,23 @@ body {
     margin-bottom: 0.5rem !important;
   }
   
-    /* Set print-specific page margin */  @page {    margin: 0.5cm;    size: auto;  }}/* Enhanced CV specific styles */.bg-gradient-to-r {  background: linear-gradient(to right, var(--tw-gradient-stops));}.bg-gradient-to-br {  background: linear-gradient(to bottom right, var(--tw-gradient-stops));}.bg-clip-text {  background-clip: text;  -webkit-background-clip: text;}.text-transparent {  color: transparent;}/* Smooth scroll behavior and consistent viewport handling */
+    /* Set print-specific page margin */  @page {    margin: 0.5cm;    size: auto;  }}/* Enhanced CV specific styles */.bg-gradient-to-r {  background: linear-gradient(to right, var(--tw-gradient-stops));}.bg-gradient-to-br {  background: linear-gradient(to bottom right, var(--tw-gradient-stops));}.bg-clip-text {  background-clip: text;  -webkit-background-clip: text;}.text-transparent {  color: transparent;}/* Force consistent base sizing across all environments */
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  font-size: 16px;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  font-size: 16px !important;
   line-height: 1.5;
+  zoom: 1 !important;
+}
+
+/* Override any font scaling issues */
+body {
+  font-size: 16px !important;
+  zoom: 1 !important;
+  transform: scale(1) !important;
+  -webkit-transform: scale(1) !important;
 }
 
 /* Fix for mobile zoom issues */
@@ -368,4 +379,20 @@ body {
 /* Prevent layout shift from font loading */
 .font-sans {
   font-display: swap;
-}/* Enhanced hover effects for CV sections */.hover\:scale-\[1\.02\]:hover {  transform: scale(1.02) translateZ(0);  will-change: transform;}.hover\:scale-105:hover {  transform: scale(1.05) translateZ(0);  will-change: transform;}.hover\:scale-110:hover {  transform: scale(1.1) translateZ(0);  will-change: transform;}/* Enhanced navigation styles */.backdrop-blur-md {  backdrop-filter: blur(12px);  -webkit-backdrop-filter: blur(12px);}.backdrop-blur-sm {  backdrop-filter: blur(4px);  -webkit-backdrop-filter: blur(4px);}/* Enhanced shadow effects */.shadow-2xl {  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);}/* Custom gradient backgrounds */.from-dark-card\/90 {  --tw-gradient-from: rgba(55, 65, 81, 0.9);  --tw-gradient-to: rgba(55, 65, 81, 0);  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);}.to-dark-lighter\/90 {  --tw-gradient-to: rgba(75, 85, 99, 0.9);}/* Improved focus states for accessibility */button:focus-visible,a:focus-visible {  outline: 2px solid rgba(239, 68, 68, 0.5);  outline-offset: 2px;}/* Enhanced animation performance */.transition-all {  transition-property: all;  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  transition-duration: 300ms;  will-change: transform, opacity, background-color, border-color, box-shadow;}/* Comprehensive Responsive Design Improvements *//* Mobile phones (320px - 640px) */@media (max-width: 640px) {  .hero-title {    @apply text-3xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-lg text-gray-400 mb-6;  }    .hero-container {    @apply px-2 py-4;  }    .text-5xl {    font-size: 2rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 2.5rem !important;    line-height: 1.1;  }    .text-4xl {    font-size: 1.75rem !important;    line-height: 1.2;  }    .text-3xl {    font-size: 1.5rem !important;    line-height: 1.3;  }    .text-2xl {    font-size: 1.25rem !important;    line-height: 1.4;  }    /* Improved button spacing and size */  .cta-button {    @apply py-3 px-4 text-sm;    min-width: 120px;  }    /* Better spacing for mobile */  .container {    @apply px-3;  }    /* Improved card padding for mobile */  .bg-gradient-to-br.rounded-3xl {    @apply p-4 rounded-2xl;  }    /* Better grid spacing */  .grid {    @apply gap-3;  }    /* Navigation improvements */  .nav-link {    @apply text-sm px-3 py-1;  }    /* Form improvements */  input, textarea {    @apply text-sm py-2;  }    /* Ensure proper overflow handling */  .overflow-hidden {    overflow: hidden;  }    /* Flex button improvements */  .flex.flex-wrap.justify-center.gap-4 {    @apply gap-2 mt-8;  }}/* Tablets (641px - 768px) */@media (min-width: 641px) and (max-width: 768px) {  .hero-title {    @apply text-4xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-xl text-gray-400 mb-7;  }    .text-5xl {    font-size: 2.5rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 3rem !important;    line-height: 1.1;  }    .cta-button {    @apply py-2.5 px-5;  }    /* Better grid layouts for tablets */  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {    @apply grid-cols-2;  }    .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 {    @apply grid-cols-2;  }}/* Small laptops (769px - 1024px) */@media (min-width: 769px) and (max-width: 1024px) {  .hero-title {    @apply text-5xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-xl text-gray-400 mb-8;  }    .text-5xl {    font-size: 3rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 3.75rem !important;    line-height: 1.1;  }}/* Desktop and larger (1025px+) */@media (min-width: 1025px) {  .hero-title {    @apply text-6xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-2xl text-gray-400 mb-8;  }}/* Ultra-wide screens (1536px+) */@media (min-width: 1536px) {  .hero-title {    @apply text-7xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-3xl text-gray-400 mb-8;  }    .container {    max-width: 1400px;  }}/* Ensure consistent spacing across all devices */@media (max-width: 1024px) {  .pt-32 {    @apply pt-24;  }    .pb-20 {    @apply pb-16;  }    .mb-16 {    @apply mb-8;  }    .p-8 {    @apply p-6;  }    .space-y-6 > * + * {    margin-top: 1rem !important;  }    /* Better text handling on smaller screens */  .break-words {    word-break: break-word;    overflow-wrap: anywhere;  }    .hyphens-auto {    hyphens: auto;  }}/* Ensure images are responsive */img {  max-width: 100%;  height: auto;}/* Prevent horizontal scrolling */body, html {  overflow-x: hidden;  max-width: 100vw;}/* Improve touch targets for mobile */@media (hover: none) and (pointer: coarse) {  button, a, input, textarea {    min-height: 44px;  }} 
+}/* Enhanced hover effects for CV sections */.hover\:scale-\[1\.02\]:hover {  transform: scale(1.02) translateZ(0);  will-change: transform;}.hover\:scale-105:hover {  transform: scale(1.05) translateZ(0);  will-change: transform;}.hover\:scale-110:hover {  transform: scale(1.1) translateZ(0);  will-change: transform;}/* Enhanced navigation styles */.backdrop-blur-md {  backdrop-filter: blur(12px);  -webkit-backdrop-filter: blur(12px);}.backdrop-blur-sm {  backdrop-filter: blur(4px);  -webkit-backdrop-filter: blur(4px);}/* Enhanced shadow effects */.shadow-2xl {  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);}/* Custom gradient backgrounds */.from-dark-card\/90 {  --tw-gradient-from: rgba(55, 65, 81, 0.9);  --tw-gradient-to: rgba(55, 65, 81, 0);  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);}.to-dark-lighter\/90 {  --tw-gradient-to: rgba(75, 85, 99, 0.9);}/* Improved focus states for accessibility */button:focus-visible,a:focus-visible {  outline: 2px solid rgba(239, 68, 68, 0.5);  outline-offset: 2px;}/* Enhanced animation performance */.transition-all {  transition-property: all;  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  transition-duration: 300ms;  will-change: transform, opacity, background-color, border-color, box-shadow;}
+
+/* Force consistent root font size across environments */
+:root {
+  font-size: 16px !important;
+}
+
+/* Comprehensive Responsive Design Improvements */
+/* Mobile phones (320px - 640px) */
+@media (max-width: 640px) {
+  :root {
+    font-size: 14px !important;
+  }
+  
+  .hero-title {    @apply text-3xl font-bold tracking-tighter mb-2;
+    font-size: 2rem !important;
+  }    .hero-subtitle {    @apply text-lg text-gray-400 mb-6;  }    .hero-container {    @apply px-2 py-4;  }    .text-5xl {    font-size: 2rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 2.5rem !important;    line-height: 1.1;  }    .text-4xl {    font-size: 1.75rem !important;    line-height: 1.2;  }    .text-3xl {    font-size: 1.5rem !important;    line-height: 1.3;  }    .text-2xl {    font-size: 1.25rem !important;    line-height: 1.4;  }    /* Improved button spacing and size */  .cta-button {    @apply py-3 px-4 text-sm;    min-width: 120px;  }    /* Better spacing for mobile */  .container {    @apply px-3;  }    /* Improved card padding for mobile */  .bg-gradient-to-br.rounded-3xl {    @apply p-4 rounded-2xl;  }    /* Better grid spacing */  .grid {    @apply gap-3;  }    /* Navigation improvements */  .nav-link {    @apply text-sm px-3 py-1;  }    /* Form improvements */  input, textarea {    @apply text-sm py-2;  }    /* Ensure proper overflow handling */  .overflow-hidden {    overflow: hidden;  }    /* Flex button improvements */  .flex.flex-wrap.justify-center.gap-4 {    @apply gap-2 mt-8;  }}/* Tablets (641px - 768px) */@media (min-width: 641px) and (max-width: 768px) {  .hero-title {    @apply text-4xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-xl text-gray-400 mb-7;  }    .text-5xl {    font-size: 2.5rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 3rem !important;    line-height: 1.1;  }    .cta-button {    @apply py-2.5 px-5;  }    /* Better grid layouts for tablets */  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {    @apply grid-cols-2;  }    .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 {    @apply grid-cols-2;  }}/* Small laptops (769px - 1024px) */@media (min-width: 769px) and (max-width: 1024px) {  .hero-title {    @apply text-5xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-xl text-gray-400 mb-8;  }    .text-5xl {    font-size: 3rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 3.75rem !important;    line-height: 1.1;  }}/* Desktop and larger (1025px+) */@media (min-width: 1025px) {  .hero-title {    @apply text-6xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-2xl text-gray-400 mb-8;  }}/* Ultra-wide screens (1536px+) */@media (min-width: 1536px) {  .hero-title {    @apply text-7xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-3xl text-gray-400 mb-8;  }    .container {    max-width: 1400px;  }}/* Ensure consistent spacing across all devices */@media (max-width: 1024px) {  .pt-32 {    @apply pt-24;  }    .pb-20 {    @apply pb-16;  }    .mb-16 {    @apply mb-8;  }    .p-8 {    @apply p-6;  }    .space-y-6 > * + * {    margin-top: 1rem !important;  }    /* Better text handling on smaller screens */  .break-words {    word-break: break-word;    overflow-wrap: anywhere;  }    .hyphens-auto {    hyphens: auto;  }}/* Ensure images are responsive */img {  max-width: 100%;  height: auto;}/* Prevent horizontal scrolling */body, html {  overflow-x: hidden;  max-width: 100vw;}/* Improve touch targets for mobile */@media (hover: none) and (pointer: coarse) {  button, a, input, textarea {    min-height: 44px;  }} 
