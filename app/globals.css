@@ -464,8 +464,8 @@ body {
     zoom: 1 !important;
   }
   
-  /* Reset any transforms that might be scaling */
-  * {
+  /* Reset any transforms that might be scaling - exclude navigation */
+  *:not(nav *):not(.group *) {
     zoom: normal !important;
   }
   
@@ -473,5 +473,23 @@ body {
   .group:hover > div {
     opacity: 1 !important;
     visibility: visible !important;
+  }
+  
+  /* Specifically ensure navigation transform effects work */
+  nav .scale-x-0 {
+    transform: scaleX(0) !important;
+  }
+  
+  nav .group:hover .group-hover\:scale-x-100 {
+    transform: scaleX(1) !important;
+  }
+  
+  /* Force navigation underlines to respect their intended state */
+  nav .relative div[class*="scale-x-0"] {
+    transform: scaleX(0) !important;
+  }
+  
+  nav .relative:hover div[class*="group-hover:scale-x-100"] {
+    transform: scaleX(1) !important;
   }
 }

@@ -113,6 +113,25 @@ Fixed the dropdown that was permanently visible:
 - **Added**: Smooth translate transform for better animation
 - **Benefit**: Dropdown now properly shows/hides on hover
 
+### 9. Navigation Underline Fix (app/globals.css)
+Fixed navigation links showing constant white underlines:
+- **Problem**: Global transform resets were interfering with navigation hover effects
+- **Solution**: Excluded navigation elements from global zoom resets:
+  ```css
+  *:not(nav *):not(.group *) {
+    zoom: normal !important;
+  }
+  
+  nav .scale-x-0 {
+    transform: scaleX(0) !important;
+  }
+  
+  nav .group:hover .group-hover\:scale-x-100 {
+    transform: scaleX(1) !important;
+  }
+  ```
+- **Benefit**: Navigation underlines now only show on hover and active states
+
 ## Expected Results
 1. **Consistent scaling** between localhost and Vercel ✅
 2. **Proper mobile viewport** handling ✅
