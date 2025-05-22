@@ -2,27 +2,41 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Removed: output: 'export' - This enables API routes on Vercel
-  // Removed image optimization disabling, Vercel will handle it
-  // images: {
-  //   unoptimized: true,
-  // },
+  
+  // Performance optimizations
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+  
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Bundle analyzer and optimizations
+  webpack: (config, { dev, isServer }) => {
+    // Optimize Three.js bundle
+    if (!dev) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'three/examples/jsm': 'three/examples/jsm',
+        'three': 'three/build/three.module.js',
+      };
+    }
+    
+    return config;
+  },
+  
   // Skip type checking during build for better performance
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
     ignoreBuildErrors: true,
   },
+  
   // Skip ESLint during build for better performance
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  // Removed trailing slash as it's often used with static export
-  // trailingSlash: true,
 };
 
 export default nextConfig; 
