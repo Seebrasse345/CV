@@ -12,8 +12,8 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
+  maximumScale: 1,
+  userScalable: false,
   viewportFit: 'cover',
 };
 
@@ -39,10 +39,12 @@ export default function RootLayout({
               -webkit-text-size-adjust: 100%;
               -ms-text-size-adjust: 100%;
               text-size-adjust: 100%;
+              font-size: 16px !important;
             }
             body {
               overflow-x: hidden;
               max-width: 100vw;
+              font-size: 1rem !important;
             }
           `
         }} />
