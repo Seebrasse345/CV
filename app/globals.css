@@ -414,6 +414,16 @@ body {
     zoom: 1 !important;
   }
   
+  /* Exception for Imagine You title - make it larger */
+  [class*="text-6xl md:text-8xl"] {
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+  }
+  
+  /* Specific override for large titles like "Imagine You" */
+  .text-6xl.md\:text-8xl {
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+  }
+  
   /* Override Tailwind with much smaller sizes */
   .text-5xl {
     font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
@@ -457,5 +467,11 @@ body {
   /* Reset any transforms that might be scaling */
   * {
     zoom: normal !important;
+  }
+  
+  /* Ensure dropdown hover functionality isn't affected */
+  .group:hover > div {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }

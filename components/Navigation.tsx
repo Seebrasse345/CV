@@ -163,9 +163,7 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
                 <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-transform duration-300 origin-left ${          isActiveLink            ? 'bg-cosmicAccent scale-x-100'            : 'bg-white scale-x-0 group-hover:scale-x-100'        }`}></div>
       </Link>
       
-      {/* Dropdown for Imagine You section */}
-      {isImagineYouLink && (
-        <div className="absolute left-0 mt-2 w-48 bg-dark-card bg-opacity-90 backdrop-blur-md rounded-md shadow-lg overflow-hidden transform scale-0 group-hover:scale-100 transition-transform origin-top duration-200 z-50">
+            {/* Dropdown for Imagine You section */}      {isImagineYouLink && (        <div className="absolute left-0 mt-2 w-48 bg-dark-card bg-opacity-90 backdrop-blur-md rounded-md shadow-lg overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all origin-top duration-200 z-50">
           {imagineYouSublinks.map(sublink => (
             <Link
               key={sublink.path}

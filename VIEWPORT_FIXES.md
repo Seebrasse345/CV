@@ -87,20 +87,31 @@ Added global overrides to prevent excessive scaling:
 @media screen {
   .hero-title {
     max-width: 100vw !important;
-    font-size: clamp(2rem, 6vw, 5rem) !important;
+    font-size: clamp(1.5rem, 4vw, 3rem) !important;
   }
   
   .hero-subtitle {
     max-width: 100vw !important;
-    font-size: clamp(1rem, 4vw, 2rem) !important;
+    font-size: clamp(0.9rem, 2vw, 1.5rem) !important;
+  }
+  
+  /* Exception for large titles like "Imagine You" */
+  [class*="text-6xl md:text-8xl"] {
+    font-size: clamp(3rem, 8vw, 6rem) !important;
   }
   
   /* Override Tailwind text sizing */
-  .text-5xl { font-size: clamp(2.5rem, 5vw, 3rem) !important; }
-  .text-6xl { font-size: clamp(3rem, 6vw, 3.75rem) !important; }
-  .text-7xl { font-size: clamp(3.5rem, 7vw, 4.5rem) !important; }
+  .text-5xl { font-size: clamp(1.8rem, 3vw, 2.5rem) !important; }
+  .text-6xl { font-size: clamp(2rem, 4vw, 3rem) !important; }
+  .text-7xl { font-size: clamp(2.2rem, 5vw, 3.5rem) !important; }
 }
 ```
+
+### 8. Navigation Dropdown Fix (components/Navigation.tsx)
+Fixed the dropdown that was permanently visible:
+- **Changed**: From `scale-0 group-hover:scale-100` to `opacity-0 invisible group-hover:opacity-100 group-hover:visible`
+- **Added**: Smooth translate transform for better animation
+- **Benefit**: Dropdown now properly shows/hides on hover
 
 ## Expected Results
 1. **Consistent scaling** between localhost and Vercel ✅
