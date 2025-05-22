@@ -61,12 +61,9 @@ export default function Navigation() {
           <Link 
             href="/"
             prefetch={true}
-            className="text-white font-bold text-xl flex items-center hover:text-redAccent transition-colors"
+            className="text-white font-bold text-xl flex items-center hover:text-cosmicAccent transition-colors"
           >
-            <span className="relative z-10 flex items-center">
-              M<span className="text-redAccent">.</span>MARKATIS
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-redAccent-lighter transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></div>
-            </span>
+                        <span className="relative z-10 flex items-center">              M<span className="text-cosmicAccent">.</span>MARKATIS              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-cosmicAccent transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></div>            </span>
           </Link>
 
                           {/* Desktop Navigation */}          <div className="hidden md:flex space-x-4 lg:space-x-6">            {navLinks.map(link => (              <NavLink                 key={link.path}                 href={link.path}                 label={link.title}                 isActive={(pathname === link.path) || (link.path === '/imagine_you' && !!isImagineYouPath)}              />            ))}          </div>
@@ -110,7 +107,7 @@ export default function Navigation() {
       <div
         className={`md:hidden bg-dark-card bg-opacity-95 backdrop-blur-md transition-all duration-300 ${
           isMenuOpen
-            ? 'max-h-96 opacity-100 py-4 border-b border-redAccent shadow-lg'
+            ? 'max-h-96 opacity-100 py-4 border-b border-cosmicAccent shadow-lg'
             : 'max-h-0 opacity-0 overflow-hidden border-none'
         }`}
       >
@@ -121,7 +118,7 @@ export default function Navigation() {
           
           {/* Display Imagine You sublinks if the pathname starts with /imagine_you */}
           {isImagineYouPath && (
-            <div className="pl-4 border-l-2 border-redAccent-lighter mt-2 space-y-3">
+            <div className="pl-4 border-l-2 border-cosmicAccent-muted mt-2 space-y-3">
               {imagineYouSublinks.map(sublink => (
                 <MobileNavLink
                   key={sublink.path}
@@ -160,18 +157,10 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
     <div className="relative group">
       <Link
         href={href}
-        className={`group relative py-2 text-sm font-medium tracking-wider ${
-          isActiveLink
-            ? 'text-redAccent'
-            : 'text-gray-300 hover:text-white'
-        }`}
+                className={`group relative py-2 text-sm font-medium tracking-wider ${          isActiveLink            ? 'text-cosmicAccent'            : 'text-gray-300 hover:text-white'        }`}
       >
         {label}
-        <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-transform duration-300 origin-left ${
-          isActiveLink
-            ? 'bg-redAccent scale-x-100'
-            : 'bg-white scale-x-0 group-hover:scale-x-100'
-        }`}></div>
+                <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-transform duration-300 origin-left ${          isActiveLink            ? 'bg-cosmicAccent scale-x-100'            : 'bg-white scale-x-0 group-hover:scale-x-100'        }`}></div>
       </Link>
       
       {/* Dropdown for Imagine You section */}
@@ -181,11 +170,7 @@ function NavLink({ href, label, isActive }: { href: string; label: string; isAct
             <Link
               key={sublink.path}
               href={sublink.path}
-              className={`block px-4 py-2 text-sm ${
-                pathname === sublink.path 
-                  ? 'text-redAccent bg-dark-lighter' 
-                  : 'text-gray-300 hover:text-white hover:bg-dark-lighter'
-              }`}
+                            className={`block px-4 py-2 text-sm ${                pathname === sublink.path                   ? 'text-cosmicAccent bg-dark-lighter'                   : 'text-gray-300 hover:text-white hover:bg-dark-lighter'              }`}
             >
               {sublink.title}
             </Link>
@@ -206,11 +191,7 @@ function MobileNavLink({ href, label, isActive, onClick }: { href: string; label
     <Link
       href={href}
       onClick={onClick}
-      className={`block py-2 px-4 text-base rounded-md transition-all duration-200 ${
-        isActiveLink
-          ? 'bg-redAccent text-white'
-          : 'text-gray-300 hover:bg-dark-lighter hover:text-white'
-      }`}
+            className={`block py-2 px-4 text-base rounded-md transition-all duration-200 ${        isActiveLink          ? 'bg-cosmicAccent text-white'          : 'text-gray-300 hover:bg-dark-lighter hover:text-white'      }`}
     >
       {label}
     </Link>

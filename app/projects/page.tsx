@@ -496,7 +496,28 @@ export default function ProjectsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dark pt-24 pb-16">
+    <main className="min-h-screen bg-dark pt-24 pb-16 relative">
+      {/* Enhanced cosmic background with subtle gradients */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950/80 to-purple-950/60">
+          {/* Subtle cosmic gradient overlays */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(59,130,246,0.08)_0%,_transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_rgba(147,51,234,0.06)_0%,_transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(99,102,241,0.04)_0%,_transparent_70%)]" />
+          
+          {/* Subtle animated gradient overlay */}
+          <div className="absolute inset-0 opacity-15">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/4 via-purple-600/4 to-indigo-600/4 animate-pulse"></div>
+          </div>
+          
+          {/* Additional gentle cosmic patterns */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_25%_25%,_transparent_0deg,_rgba(59,130,246,0.3)_45deg,_transparent_90deg)] animate-pulse"></div>
+            <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_75%_75%,_transparent_0deg,_rgba(147,51,234,0.2)_45deg,_transparent_90deg)] animate-pulse" style={{animationDelay: '1s'}}></div>
+          </div>
+        </div>
+      </div>
+      
       <Navigation />
       <div className="container mx-auto px-4 py-10">
         <motion.div 

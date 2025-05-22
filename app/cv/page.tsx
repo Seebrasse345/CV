@@ -65,17 +65,7 @@ export default function CVPage() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <main className="min-h-screen bg-dark relative">
-      <ScrollProgress />
-      
-      <div className="fixed inset-0 -z-10">
-        <CosmicBackground />
-      </div>
+        window.addEventListener('scroll', handleScroll);    return () => window.removeEventListener('scroll', handleScroll);  }, []);  return (    <main className="min-h-screen bg-dark relative">      <ScrollProgress />            {/* Enhanced cosmic background with subtle gradients */}      <div className="fixed inset-0 -z-10">        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950/80 to-purple-950/60">          {/* Subtle cosmic gradient overlays */}          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(59,130,246,0.08)_0%,_transparent_50%)]" />          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,_rgba(147,51,234,0.06)_0%,_transparent_50%)]" />          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(99,102,241,0.04)_0%,_transparent_70%)]" />                    {/* Subtle animated gradient overlay */}          <div className="absolute inset-0 opacity-20">            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-indigo-600/5 animate-pulse"></div>          </div>        </div>        <CosmicBackground />      </div>
       
       <Navigation />
       

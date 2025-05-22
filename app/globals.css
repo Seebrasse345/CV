@@ -26,13 +26,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.shadow-red-glow {
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-}
-
-.shadow-white-glow {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
+.shadow-cosmic-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}.shadow-red-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}.shadow-white-glow {  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);}
 
 @layer base {
   body {
@@ -42,10 +36,7 @@ body {
 
 /* Optimized Canvas styling for Three.js */.canvas-container {  @apply fixed inset-0 z-0 w-full h-full;  pointer-events: none;  background: radial-gradient(ellipse at center, #000012 0%, #000005 100%);  overflow: hidden;  will-change: transform;}.canvas-container canvas {  pointer-events: none;  will-change: transform;  transform: translateZ(0); /* Hardware acceleration */}/* Optimized visual effects */.canvas-container::before {  content: '';  position: absolute;  top: 0;  left: 0;  right: 0;  bottom: 0;  background:     radial-gradient(circle at 20% 80%, rgba(120, 0, 255, 0.08) 0%, transparent 40%),    radial-gradient(circle at 80% 20%, rgba(255, 0, 100, 0.08) 0%, transparent 40%);  pointer-events: none;  z-index: 1;  will-change: opacity;}
 
-/* Red glow text effect */
-.text-glow {
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.5);
-}
+/* Cosmic glow text effect */.shadow-cosmic-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}/* Cosmic glow text effect */.text-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7), 0 0 20px rgba(109, 120, 255, 0.5);}
 
 /* Navigation styling */
 .nav-link {
@@ -60,7 +51,7 @@ body {
 
 /* Home page specific styling */
 .hero-container {
-  @apply relative z-10 min-h-screen flex flex-col items-center justify-center px-4;
+  @apply relative z-10 min-h-screen flex flex-col items-center justify-center px-4 w-full;
 }
 
 .hero-title {
@@ -71,9 +62,47 @@ body {
   @apply text-xl md:text-2xl text-gray-400 mb-8;
 }
 
-.cta-button {
-  @apply bg-transparent border-2 border-redAccent text-redAccent font-semibold py-2 px-6 rounded-full
-  transition-all duration-300 hover:bg-redAccent hover:text-white shadow-neon-red hover:shadow-neon-red-hover;
+.cta-button {  @apply bg-transparent border-2 border-cosmicAccent text-cosmicAccent font-semibold py-2 px-6 rounded-full  transition-all duration-300 hover:bg-cosmicAccent hover:text-white shadow-neon-cosmic hover:shadow-neon-cosmic-hover;}
+
+/* Enhanced animations for hero section */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-4px) scale(1.05);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-12px) scale(1.15);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(109, 120, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(109, 120, 255, 0.8);
+  }
 }
 
 /* Text and particle animations */
@@ -95,12 +124,9 @@ body {
   }
 }
 
-/* Optimized hover transitions with hardware acceleration */.cta-button {  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);  will-change: transform, box-shadow;  transform: translateZ(0); /* Hardware acceleration */}.cta-button:hover {  transform: translateY(-2px) translateZ(0);  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.4);}/* Optimized animations */.hero-title, .hero-subtitle {  will-change: transform, opacity;  transform: translateZ(0); /* Hardware acceleration */}/* Fast entrance animations */@keyframes optimized-fade-in {  from {    opacity: 0;    transform: translateY(20px) translateZ(0);  }  to {    opacity: 1;    transform: translateY(0) translateZ(0);  }}.animate-optimized-fade-in {  animation: optimized-fade-in 0.6s ease-out forwards;}
+/* Optimized hover transitions with hardware acceleration */.cta-button {  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);  will-change: transform, box-shadow;  transform: translateZ(0); /* Hardware acceleration */}.cta-button:hover {  transform: translateY(-2px) translateZ(0);  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.4);}/* Optimized animations */.hero-title, .hero-subtitle {  will-change: transform, opacity;  transform: translateZ(0); /* Hardware acceleration */}/* Enhanced canvas container for better performance */.canvas-container {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  overflow: hidden;  will-change: opacity;  transform: translateZ(0);  image-rendering: -webkit-optimize-contrast;  image-rendering: crisp-edges;}/* Fast entrance animations */@keyframes optimized-fade-in {  from {    opacity: 0;    transform: translateY(20px) translateZ(0);  }  to {    opacity: 1;    transform: translateY(0) translateZ(0);  }}.animate-optimized-fade-in {  animation: optimized-fade-in 0.6s ease-out forwards;}/* Smooth loading animation for particles */@keyframes particle-fade-in {  from {    opacity: 0;    transform: scale(0.8) translateZ(0);  }  to {    opacity: 1;    transform: scale(1) translateZ(0);  }}.particle-container {  animation: particle-fade-in 1.2s ease-out forwards;}
 
-@layer components {
-  .section-title {
-    @apply text-xl font-bold text-white bg-dark px-4 py-3 rounded-t-lg relative overflow-hidden border-b border-redAccent;
-  }
+/* Enhanced canvas container for better performance */.canvas-container {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  overflow: hidden;  will-change: opacity;  transform: translateZ(0);  image-rendering: -webkit-optimize-contrast;  image-rendering: crisp-edges;}/* Smooth loading animation for particles */@keyframes particle-fade-in {  from {    opacity: 0;    transform: scale(0.8) translateZ(0);  }  to {    opacity: 1;    transform: scale(1) translateZ(0);  }}.particle-container {  animation: particle-fade-in 1.2s ease-out forwards;}@layer components {  .section-title {    @apply text-xl font-bold text-white bg-dark px-4 py-3 rounded-t-lg relative overflow-hidden border-b border-redAccent;  }
   
   .section-title::after {
     content: '';
