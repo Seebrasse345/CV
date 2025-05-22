@@ -371,9 +371,115 @@ body {
   font-feature-settings: "kern" 1;
 }
 
-/* Force consistent rem sizing */
+/* Force consistent rem sizing and prevent any scaling */
 * {
   box-sizing: border-box;
+  -webkit-text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+}
+
+/* Override any large text scaling on specific elements */
+h1, h2, h3, h4, h5, h6 {
+  -webkit-text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+}
+
+/* Force specific font sizes for common text classes - AGGRESSIVE OVERRIDES */
+.text-xs { font-size: 0.75rem !important; }
+.text-sm { font-size: 0.875rem !important; }
+.text-base { font-size: 1rem !important; }
+.text-lg { font-size: 1.125rem !important; }
+.text-xl { font-size: 1.25rem !important; }
+.text-2xl { font-size: 1.5rem !important; }
+.text-3xl { font-size: 1.875rem !important; }
+.text-4xl { font-size: 2.25rem !important; }
+.text-5xl { font-size: 3rem !important; }
+.text-6xl { font-size: 3.75rem !important; }
+.text-7xl { font-size: 4.5rem !important; }
+
+/* Additional responsive overrides for medium and larger screens */
+@media (min-width: 768px) {
+  .md\:text-xs { font-size: 0.75rem !important; }
+  .md\:text-sm { font-size: 0.875rem !important; }
+  .md\:text-base { font-size: 1rem !important; }
+  .md\:text-lg { font-size: 1.125rem !important; }
+  .md\:text-xl { font-size: 1.25rem !important; }
+  .md\:text-2xl { font-size: 1.5rem !important; }
+  .md\:text-3xl { font-size: 1.875rem !important; }
+  .md\:text-4xl { font-size: 2.25rem !important; }
+  .md\:text-5xl { font-size: 3rem !important; }
+  .md\:text-6xl { font-size: 3.75rem !important; }
+  .md\:text-7xl { font-size: 4.5rem !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-xs { font-size: 0.75rem !important; }
+  .lg\:text-sm { font-size: 0.875rem !important; }
+  .lg\:text-base { font-size: 1rem !important; }
+  .lg\:text-lg { font-size: 1.125rem !important; }
+  .lg\:text-xl { font-size: 1.25rem !important; }
+  .lg\:text-2xl { font-size: 1.5rem !important; }
+  .lg\:text-3xl { font-size: 1.875rem !important; }
+  .lg\:text-4xl { font-size: 2.25rem !important; }
+  .lg\:text-5xl { font-size: 3rem !important; }
+  .lg\:text-6xl { font-size: 3.75rem !important; }
+  .lg\:text-7xl { font-size: 4.5rem !important; }
+}
+
+/* Force all text elements to use specific sizes regardless of class */
+h1 { font-size: 2.25rem !important; } /* equivalent to text-4xl */
+h2 { font-size: 1.875rem !important; } /* equivalent to text-3xl */
+h3 { font-size: 1.5rem !important; } /* equivalent to text-2xl */
+h4 { font-size: 1.25rem !important; } /* equivalent to text-xl */
+h5 { font-size: 1.125rem !important; } /* equivalent to text-lg */
+h6 { font-size: 1rem !important; } /* equivalent to text-base */
+p { font-size: 1rem !important; } /* equivalent to text-base */
+
+/* Override any gradient text elements that might be larger */
+.bg-clip-text {
+  font-size: inherit !important;
+}
+
+/* Force container and layout elements to have proper scaling */
+.container, .max-w-6xl, .max-w-4xl, .max-w-2xl, .max-w-xl, .max-w-lg {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Ensure all sections have proper zoom and transform reset */
+section, main, div {
+  zoom: 1 !important;
+  transform: scale(1) !important;
+  -webkit-transform: scale(1) !important;
+}
+
+/* Additional aggressive font controls for specific page elements */
+[class*="text-"] {
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+}
+
+/* Force responsive breakpoint font sizes to be consistent */
+@media (max-width: 640px) {
+  h1 { font-size: 1.875rem !important; } /* text-3xl equivalent */
+  h2 { font-size: 1.5rem !important; } /* text-2xl equivalent */
+  h3 { font-size: 1.25rem !important; } /* text-xl equivalent */
+  
+  .text-5xl, .text-6xl, .text-7xl {
+    font-size: 1.875rem !important; /* Force large text to be smaller on mobile */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.75rem !important; }
+  
+  .text-5xl, .text-6xl, .text-7xl {
+    font-size: 2.25rem !important; /* Controlled large text for tablets */
+  }
 }
 
 /* Prevent layout shift from font loading */
