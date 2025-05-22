@@ -2,81 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* AGGRESSIVE GLOBAL RESET & SCALING PREVENTION */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video, main {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  font-size: 100% !important; /* Start from a known baseline, will be overridden by more specific rules */
-  font: inherit !important; /* Inherit from controlled html/body */
-  vertical-align: baseline !important;
-  box-sizing: border-box !important;
-  -webkit-text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-  transform: none !important; /* Reset any transforms */
-  zoom: 1 !important; /* Reset any zoom */
-  max-width: 100% !important; /* Prevent overflow within parent */
-  max-height: 999999px !important; /* Prevents some browser scaling bugs */
-}
-
-/* HTML global controls */
-html {
-  scroll-behavior: smooth !important;
-  -webkit-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-  font-size: 16px !important; /* CRITICAL: Base font size for REM calculation */
-  line-height: 1.5 !important;
-  zoom: 1 !important;
-  overflow-x: hidden !important;
-  width: 100% !important;
-  max-width: 100vw !important; /* Ensure html does not exceed viewport */
-}
-
-/* Body global controls */
-body {
-  font-family: var(--font-inter), 'Segoe UI', Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  font-size: 1rem !important; /* CRITICAL: Ensure body font matches html base (16px) */
-  line-height: 1.5 !important;
-  zoom: 1 !important;
-  transform: scale(1) !important;
-  -webkit-transform: scale(1) !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
-  font-feature-settings: "kern" 1 !important;
-  position: relative !important;
-  overflow-x: hidden !important;
-  width: 100% !important;
-  max-width: 100vw !important; /* Ensure body does not exceed viewport */
-  color: rgb(var(--foreground-rgb)) !important;
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)) !important;
-}
-
-/* :root variables and color scheme preferences */
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
-  font-size: 16px !important; /* Reinforce root font size for browsers that might differ */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,53 +16,27 @@ body {
   }
 }
 
-/* Restore specific text size adjust for headings, as they might be targeted by browser defaults */
-h1, h2, h3, h4, h5, h6 {
-  -webkit-text-size-adjust: none !important;
-  -ms-text-size-adjust: none !important;
-  text-size-adjust: none !important;
-  /* Tailwind's heading sizes will apply on top of this reset */
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
-/* Tailwind text utility class overrides WITH !important */
-/* These ensure that Tailwind's responsive text sizes are strictly adhered to */
-.text-xs { font-size: 0.75rem !important; line-height: 1rem !important; }
-.text-sm { font-size: 0.875rem !important; line-height: 1.25rem !important; }
-.text-base { font-size: 1rem !important; line-height: 1.5rem !important; } /* Should match body font-size */
-.text-lg { font-size: 1.125rem !important; line-height: 1.75rem !important; }
-.text-xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
-.text-2xl { font-size: 1.5rem !important; line-height: 2rem !important; }
-.text-3xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
-.text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
-.text-5xl { font-size: 3rem !important; line-height: 1 !important; }
-.text-6xl { font-size: 3.75rem !important; line-height: 1 !important; }
-.text-7xl { font-size: 4.5rem !important; line-height: 1 !important; }
-.text-8xl { font-size: 6rem !important; line-height: 1 !important; }
-.text-9xl { font-size: 8rem !important; line-height: 1 !important; }
+.shadow-cosmic-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}.shadow-red-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}.shadow-white-glow {  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);}
 
-/* --- Original Project Styles Start Here --- */
-/* (Styles below this line are from the original globals.css, preserved and placed after aggressive resets) */
-
-.shadow-cosmic-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}
-.shadow-red-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}
-.shadow-white-glow {  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);}
-
-/* This specific @layer base body rule from original might conflict or be redundant with the body rule above. */
-/* If issues arise, consider removing this @layer base body. */
 @layer base {
   body {
     @apply bg-dark text-white transition-colors duration-200;
   }
 }
 
-/* Optimized Canvas styling for Three.js */
-.canvas-container {  @apply fixed inset-0 z-0 w-full h-full;  pointer-events: none;  background: radial-gradient(ellipse at center, #000012 0%, #000005 100%);  overflow: hidden;  will-change: transform;}
-.canvas-container canvas {  pointer-events: none;  will-change: transform;  transform: translateZ(0); /* Hardware acceleration */}
-/* Optimized visual effects */
-.canvas-container::before {  content: '';  position: absolute;  top: 0;  left: 0;  right: 0;  bottom: 0;  background:     radial-gradient(circle at 20% 80%, rgba(120, 0, 255, 0.08) 0%, transparent 40%),    radial-gradient(circle at 80% 20%, rgba(255, 0, 100, 0.08) 0%, transparent 40%);  pointer-events: none;  z-index: 1;  will-change: opacity;}
+/* Optimized Canvas styling for Three.js */.canvas-container {  @apply fixed inset-0 z-0 w-full h-full;  pointer-events: none;  background: radial-gradient(ellipse at center, #000012 0%, #000005 100%);  overflow: hidden;  will-change: transform;}.canvas-container canvas {  pointer-events: none;  will-change: transform;  transform: translateZ(0); /* Hardware acceleration */}/* Optimized visual effects */.canvas-container::before {  content: '';  position: absolute;  top: 0;  left: 0;  right: 0;  bottom: 0;  background:     radial-gradient(circle at 20% 80%, rgba(120, 0, 255, 0.08) 0%, transparent 40%),    radial-gradient(circle at 80% 20%, rgba(255, 0, 100, 0.08) 0%, transparent 40%);  pointer-events: none;  z-index: 1;  will-change: opacity;}
 
-/* Cosmic glow text effect */
-.text-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7), 0 0 20px rgba(109, 120, 255, 0.5);}
+/* Cosmic glow text effect */.shadow-cosmic-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}/* Cosmic glow text effect */.text-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7), 0 0 20px rgba(109, 120, 255, 0.5);}
 
 /* Navigation styling */
 .nav-link {
@@ -141,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
   after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-redAccent after:bottom-0 after:left-0 
   hover:after:w-full after:transition-all after:duration-300;
 }
+
 .nav-link.active {
   @apply opacity-100 after:w-full;
 }
@@ -149,214 +53,319 @@ h1, h2, h3, h4, h5, h6 {
 .hero-container {
   @apply relative z-10 min-h-screen flex flex-col items-center justify-center px-4 w-full;
 }
+
 .hero-title {
-  /* Tailwind classes like text-5xl are already handled with !important above */
-  @apply font-bold tracking-tighter mb-2; /* Keep non-font-size Tailwind utilities */
-  font-size: clamp(2.5rem, 5vw, 4rem) !important; /* Keep specific clamp if needed, or rely on .text-Nxl */
+  @apply text-5xl md:text-7xl font-bold tracking-tighter mb-2;
 }
+
 .hero-subtitle {
-  /* Tailwind classes like text-xl are already handled with !important above */
-  @apply text-gray-400 mb-8; /* Keep non-font-size Tailwind utilities */
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important; /* Keep specific clamp if needed, or rely on .text-Nxl */
+  @apply text-xl md:text-2xl text-gray-400 mb-8;
 }
+
 .cta-button {  @apply bg-transparent border-2 border-cosmicAccent text-cosmicAccent font-semibold py-2 px-6 rounded-full  transition-all duration-300 hover:bg-cosmicAccent hover:text-white shadow-neon-cosmic hover:shadow-neon-cosmic-hover;}
 
 /* Enhanced animations for hero section */
-@keyframes shimmer { 0% { transform: translateX(-100%); } 50% { transform: translateX(0%); } 100% { transform: translateX(100%); } }
-@keyframes float-gentle { 0%, 100% { transform: translateY(0px) scale(1); opacity: 0.4; } 25% { transform: translateY(-8px) scale(1.1); opacity: 0.6; } 50% { transform: translateY(-4px) scale(1.05); opacity: 0.8; } 75% { transform: translateY(-12px) scale(1.15); opacity: 0.5; } }
-@keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(109, 120, 255, 0.4); } 50% { box-shadow: 0 0 40px rgba(109, 120, 255, 0.8); } }
-@keyframes glow-pulse { 0%, 100% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.3), 0 0 10px rgba(255, 0, 0, 0.2); } 50% { text-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 25px rgba(255, 0, 0, 0.5); } }
-@keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-
-/* Optimized hover transitions with hardware acceleration */
-.cta-button {  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);  will-change: transform, box-shadow;  transform: translateZ(0); }
-.cta-button:hover {  transform: translateY(-2px) translateZ(0);  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.4);}
-/* Optimized animations */
-.hero-title, .hero-subtitle {  will-change: transform, opacity;  transform: translateZ(0); }
-/* Enhanced canvas container for better performance (NOTE: .canvas-container already defined above, this might be a duplicate or specific override) */
-/* .canvas-container {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  overflow: hidden;  will-change: opacity;  transform: translateZ(0);  image-rendering: -webkit-optimize-contrast;  image-rendering: crisp-edges;} */
-/* Fast entrance animations */
-@keyframes optimized-fade-in {  from {    opacity: 0;    transform: translateY(20px) translateZ(0);  }  to {    opacity: 1;    transform: translateY(0) translateZ(0);  }}
-.animate-optimized-fade-in {  animation: optimized-fade-in 0.6s ease-out forwards;}
-/* Smooth loading animation for particles */
-@keyframes particle-fade-in {  from {    opacity: 0;    transform: scale(0.8) translateZ(0);  }  to {    opacity: 1;    transform: scale(1) translateZ(0);  }}
-.particle-container {  animation: particle-fade-in 1.2s ease-out forwards;}
-
-/* Components Layer from original file */
-@layer components {
-  .section-title {    @apply text-xl font-bold text-white bg-dark px-4 py-3 rounded-t-lg relative overflow-hidden border-b border-redAccent;  }
-  .section-title::after {    content: '';    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-redAccent to-transparent;  }
-  .section-content {    @apply p-6 bg-dark-card rounded-b-lg shadow-card text-white;  }
-  .skill-tag {    @apply bg-gradient-red text-white px-3 py-1 rounded-full text-sm font-medium shadow-neon-red hover:shadow-neon-red-hover transition-all hover:-translate-y-0.5;  }
-  .skill-pill {    @apply bg-gradient-red text-white text-xs px-2 py-0.5 rounded-full font-medium inline-block hover:shadow-neon-red-hover transition-all hover:-translate-y-0.5;  }
-  .project-tag {    @apply bg-dark-lighter text-white px-2 py-1 rounded-full text-xs font-medium shadow-button hover:shadow-button-hover transition-all hover:-translate-y-0.5;  }
-  .project-item, .job-item, .education-item, .cert-item {    @apply bg-dark-card p-5 rounded-lg shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border-l-4 border-redAccent;  }
-  .highlight {    @apply text-redAccent font-semibold;  }
-  .contact-item {    @apply flex items-center text-base;  }
-  .contact-item svg {    @apply mr-2 text-redAccent;  }
-  .contact-item a {    @apply text-white hover:text-redAccent hover:underline transition-colors;  }
-  .cert-link {    @apply inline-flex items-center text-white no-underline text-sm mt-3 bg-gradient-red px-4 py-2 rounded-full transition-all hover:bg-redAccent hover:-translate-y-0.5 hover:shadow-neon-red-hover shadow-neon-red;  }
-  .skill-category {    @apply mb-4 bg-dark-card p-4 rounded-lg shadow-card border-l-4 border-redAccent;  }
-  .skill-title {    @apply font-semibold mb-2 text-redAccent text-base border-b border-redAccent-darker pb-1;  }
-  .skill-list {    @apply flex flex-wrap gap-2;  }
-  /* Animation classes */
-  .animate-on-scroll {    @apply opacity-0;  }
-  .animate-on-scroll.animated {    @apply animate-fade-in opacity-100;  }
-  .slide-up {    @apply animate-slide-up;  }
-  .slide-in-right {    @apply animate-slide-in-right;  }
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {    @apply w-2;  }
-  ::-webkit-scrollbar-track {    @apply bg-dark-lighter;  }
-  ::-webkit-scrollbar-thumb {    @apply bg-redAccent rounded-full;  }
-  ::-webkit-scrollbar-thumb:hover {    @apply bg-redAccent-bright;  }
-}
-
-/* PDF Export optimization */
-@media print {
-  * { box-shadow: none !important; text-shadow: none !important; }
-  [class*="bg-gradient"] { background: white !important; color: #333 !important; }
-  body { background: white !important; color: black !important; }
-  p { font-size: 0.95em !important; }
-  .section-title { background: #f3f4f6 !important; color: #1e3a8a !important; border-bottom: 2px solid #3b82f6 !important; padding: 0.5rem 1rem !important; margin-bottom: 0 !important; }
-  .section-title::after { display: none !important; }
-  .skill-pill { background: #f3f4f6 !important; color: #1e3a8a !important; border: 1px solid #d1d5db !important; font-size: 0.7em !important; padding: 0.1rem 0.5rem !important; margin: 0.1rem !important; }
-  .project-item, .job-item, .education-item, .cert-item, .skill-category { border: 1px solid #e5e7eb !important; border-left: 3px solid #1e3a8a !important; transform: none !important; }
-  .section-content, .project-item, .job-item, .education-item, .cert-item { padding: 0.75rem !important; margin-bottom: 0.5rem !important; }
-  a { text-decoration: none !important; color: #1e3a8a !important; }
-  button[type="button"] { display: none !important; }
-  img { max-resolution: 150dpi; max-width: 100% !important; height: auto !important; } /* Ensure images are also constrained */
-  .print-compact { padding: 0.5rem !important; }
-  .print-compact .skill-category { margin-bottom: 0.25rem !important; padding: 0.25rem !important; }
-  .print-compact .skill-title { font-size: 0.8em !important; margin-bottom: 0.25rem !important; padding-bottom: 0.25rem !important; }
-  .print-compact .skill-list { gap: 0.1rem !important; }
-  .mb-10 { margin-bottom: 0.5rem !important; }
-  @page { margin: 0.5cm; size: auto; }
-}
-
-/* Enhanced CV specific styles (some might be redundant with Tailwind utilities already defined with !important) */
-.bg-gradient-to-r {  background: linear-gradient(to right, var(--tw-gradient-stops));}
-.bg-gradient-to-br {  background: linear-gradient(to bottom right, var(--tw-gradient-stops));}
-.bg-clip-text {  background-clip: text;  -webkit-background-clip: text;}
-.text-transparent {  color: transparent;}
-
-/* Utilities that should be preserved and effective */
-input, select, textarea {
-  font-size: 16px !important; /* Critical to prevent iOS zoom */
-}
-.min-h-screen {
-  min-height: 100vh !important;
-  min-height: 100svh !important; /* Use small viewport height on supported browsers */
-}
-.font-sans {
-  font-display: swap !important; /* Ensure font-display is respected */
-}
-
-/* Enhanced hover effects for CV sections */
-.hover\:scale-\[1\.02\]:hover {  transform: scale(1.02) translateZ(0) !important;  will-change: transform;}
-.hover\:scale-105:hover {  transform: scale(1.05) translateZ(0) !important;  will-change: transform;}
-.hover\:scale-110:hover {  transform: scale(1.1) translateZ(0) !important;  will-change: transform;}
-/* Enhanced navigation styles */
-.backdrop-blur-md {  backdrop-filter: blur(12px);  -webkit-backdrop-filter: blur(12px);}
-.backdrop-blur-sm {  backdrop-filter: blur(4px);  -webkit-backdrop-filter: blur(4px);}
-/* Enhanced shadow effects */
-.shadow-2xl {  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);}
-/* Custom gradient backgrounds */
-.from-dark-card\/90 {  --tw-gradient-from: rgba(55, 65, 81, 0.9);  --tw-gradient-to: rgba(55, 65, 81, 0);  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);}
-.to-dark-lighter\/90 {  --tw-gradient-to: rgba(75, 85, 99, 0.9);}
-/* Improved focus states for accessibility */
-button:focus-visible,a:focus-visible {  outline: 2px solid rgba(239, 68, 68, 0.5) !important;  outline-offset: 2px !important;}
-/* Enhanced animation performance */
-.transition-all {  transition-property: all;  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  transition-duration: 300ms;  will-change: transform, opacity, background-color, border-color, box-shadow;}
-
-/* --- Responsive Design Improvements (Original Media Queries) --- */
-/* These should apply AFTER all base and utility overrides */
-
-/* Mobile phones (320px - 640px) */
-@media (max-width: 640px) {
-  :root { /* This rule for font-size under media query should still work */
-    font-size: 14px !important; 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
   }
-  /* Tailwind class re-definitions for mobile if needed, but .text-Nxl above should handle most cases */
-  .hero-title { @apply text-3xl font-bold tracking-tighter mb-2; font-size: 2rem !important; }
-  .hero-subtitle { @apply text-lg text-gray-400 mb-6; font-size: 1.2rem !important; /* Example adjustment */ }
-  .hero-container { @apply px-2 py-4; }
-  /* Specific overrides for Tailwind text sizes on mobile if the general .text-Nxl are too large */
-  .text-5xl { font-size: 2rem !important; line-height: 1.2 !important; }
-  .text-6xl { font-size: 2.5rem !important; line-height: 1.1 !important; }
-  .text-4xl { font-size: 1.75rem !important; line-height: 1.2 !important; }
-  .text-3xl { font-size: 1.5rem !important; line-height: 1.3 !important; }
-  .text-2xl { font-size: 1.25rem !important; line-height: 1.4 !important; }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-4px) scale(1.05);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-12px) scale(1.15);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(109, 120, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(109, 120, 255, 0.8);
+  }
+}
+
+/* Text and particle animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3), 0 0 10px rgba(255, 0, 0, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 25px rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Optimized hover transitions with hardware acceleration */.cta-button {  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);  will-change: transform, box-shadow;  transform: translateZ(0); /* Hardware acceleration */}.cta-button:hover {  transform: translateY(-2px) translateZ(0);  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.4);}/* Optimized animations */.hero-title, .hero-subtitle {  will-change: transform, opacity;  transform: translateZ(0); /* Hardware acceleration */}/* Enhanced canvas container for better performance */.canvas-container {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  overflow: hidden;  will-change: opacity;  transform: translateZ(0);  image-rendering: -webkit-optimize-contrast;  image-rendering: crisp-edges;}/* Fast entrance animations */@keyframes optimized-fade-in {  from {    opacity: 0;    transform: translateY(20px) translateZ(0);  }  to {    opacity: 1;    transform: translateY(0) translateZ(0);  }}.animate-optimized-fade-in {  animation: optimized-fade-in 0.6s ease-out forwards;}/* Smooth loading animation for particles */@keyframes particle-fade-in {  from {    opacity: 0;    transform: scale(0.8) translateZ(0);  }  to {    opacity: 1;    transform: scale(1) translateZ(0);  }}.particle-container {  animation: particle-fade-in 1.2s ease-out forwards;}
+
+/* Enhanced canvas container for better performance */.canvas-container {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  overflow: hidden;  will-change: opacity;  transform: translateZ(0);  image-rendering: -webkit-optimize-contrast;  image-rendering: crisp-edges;}/* Smooth loading animation for particles */@keyframes particle-fade-in {  from {    opacity: 0;    transform: scale(0.8) translateZ(0);  }  to {    opacity: 1;    transform: scale(1) translateZ(0);  }}.particle-container {  animation: particle-fade-in 1.2s ease-out forwards;}@layer components {  .section-title {    @apply text-xl font-bold text-white bg-dark px-4 py-3 rounded-t-lg relative overflow-hidden border-b border-redAccent;  }
   
-  .cta-button { @apply py-3 px-4 text-sm; min-width: 120px; }
-  .container { @apply px-3; }
-  .bg-gradient-to-br.rounded-3xl { @apply p-4 rounded-2xl; }
-  .grid { @apply gap-3; }
-  .nav-link { @apply text-sm px-3 py-1; }
-  input, textarea { @apply text-sm py-2; font-size: 14px !important; /* Ensure mobile form elements also scale with root */ }
-  .overflow-hidden { overflow: hidden; }
-  .flex.flex-wrap.justify-center.gap-4 { @apply gap-2 mt-8; }
-}
-
-/* Tablets (641px - 768px) */
-@media (min-width: 641px) and (max-width: 768px) {
-  /* Base font size for tablets can remain 16px or be adjusted if necessary */
-  .hero-title { @apply text-4xl font-bold tracking-tighter mb-2; } /* Relies on .text-4xl !important from above */
-  .hero-subtitle { @apply text-xl text-gray-400 mb-7; } /* Relies on .text-xl !important */
-  /* Example of tablet-specific overrides if general .text-Nxl are not ideal */
-  .text-5xl { font-size: 2.5rem !important; line-height: 1.2 !important; } 
-  .text-6xl { font-size: 3rem !important; line-height: 1.1 !important; }
-  .cta-button { @apply py-2.5 px-5; }
-  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 { @apply grid-cols-2; }
-  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 { @apply grid-cols-2; }
-}
-
-/* Small laptops (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-title { @apply text-5xl font-bold tracking-tighter mb-2; }
-  .hero-subtitle { @apply text-xl text-gray-400 mb-8; }
-  .text-5xl { font-size: 3rem !important; line-height: 1.2 !important; } 
-  .text-6xl { font-size: 3.75rem !important; line-height: 1.1 !important; }
-}
-
-/* Desktop and larger (1025px+) */
-@media (min-width: 1025px) {
-  .hero-title { @apply text-6xl font-bold tracking-tighter mb-2; }
-  .hero-subtitle { @apply text-2xl text-gray-400 mb-8; }
-}
-
-/* Ultra-wide screens (1536px+) */
-@media (min-width: 1536px) {
-  .hero-title { @apply text-7xl font-bold tracking-tighter mb-2; }
-  .hero-subtitle { @apply text-3xl text-gray-400 mb-8; }
-  .container { max-width: 1400px; }
-}
-
-/* Ensure consistent spacing across all devices */
-@media (max-width: 1024px) {
-  .pt-32 { @apply pt-24; }
-  .pb-20 { @apply pb-16; }
-  .mb-16 { @apply mb-8; }
-  .p-8 { @apply p-6; }
-  .space-y-6 > * + * { margin-top: 1rem !important; }
-  .break-words { word-break: break-word; overflow-wrap: anywhere; }
-  .hyphens-auto { hyphens: auto; }
-}
-
-/* Ensure images are responsive */
-img { max-width: 100%; height: auto; display: block; /* Fix potential inline spacing issues */ }
-
-/* Final prevent horizontal scrolling on body/html, already defined but good for emphasis */
-/* body, html { overflow-x: hidden !important; max-width: 100vw !important; } */
-
-/* Improve touch targets for mobile */
-@media (hover: none) and (pointer: coarse) {
-  button, a, input[type="button"], input[type="submit"], input[type="reset"] {
-    min-height: 44px !important;
-    min-width: 44px !important; /* Ensure touch target size */
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-redAccent to-transparent;
   }
-  /* For text inputs, select, textarea, min-height might be too much, ensure padding is adequate */
-   input:not([type="button"]):not([type="submit"]):not([type="reset"]), textarea, select {
-    padding-top: 0.5em !important;
-    padding-bottom: 0.5em !important;
+  
+  .section-content {
+    @apply p-6 bg-dark-card rounded-b-lg shadow-card text-white;
   }
-} 
+  
+  .skill-tag {
+    @apply bg-gradient-red text-white px-3 py-1 rounded-full text-sm font-medium shadow-neon-red hover:shadow-neon-red-hover transition-all hover:-translate-y-0.5;
+  }
+  
+  .skill-pill {
+    @apply bg-gradient-red text-white text-xs px-2 py-0.5 rounded-full font-medium inline-block hover:shadow-neon-red-hover transition-all hover:-translate-y-0.5;
+  }
+  
+  .project-tag {
+    @apply bg-dark-lighter text-white px-2 py-1 rounded-full text-xs font-medium shadow-button hover:shadow-button-hover transition-all hover:-translate-y-0.5;
+  }
+  
+  .project-item, .job-item, .education-item, .cert-item {
+    @apply bg-dark-card p-5 rounded-lg shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border-l-4 border-redAccent;
+  }
+  
+  .highlight {
+    @apply text-redAccent font-semibold;
+  }
+  
+  .contact-item {
+    @apply flex items-center text-base;
+  }
+  
+  .contact-item svg {
+    @apply mr-2 text-redAccent;
+  }
+  
+  .contact-item a {
+    @apply text-white hover:text-redAccent hover:underline transition-colors;
+  }
+  
+  .cert-link {
+    @apply inline-flex items-center text-white no-underline text-sm mt-3 bg-gradient-red px-4 py-2 rounded-full transition-all hover:bg-redAccent hover:-translate-y-0.5 hover:shadow-neon-red-hover shadow-neon-red;
+  }
+  
+  .skill-category {
+    @apply mb-4 bg-dark-card p-4 rounded-lg shadow-card border-l-4 border-redAccent;
+  }
+  
+  .skill-title {
+    @apply font-semibold mb-2 text-redAccent text-base border-b border-redAccent-darker pb-1;
+  }
+  
+  .skill-list {
+    @apply flex flex-wrap gap-2;
+  }
+  
+  /* Animation classes */
+  .animate-on-scroll {
+    @apply opacity-0;
+  }
+  
+  .animate-on-scroll.animated {
+    @apply animate-fade-in opacity-100;
+  }
+  
+  .slide-up {
+    @apply animate-slide-up;
+  }
+  
+  .slide-in-right {
+    @apply animate-slide-in-right;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-lighter;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-redAccent rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-redAccent-bright;
+  }
+}
+
+/* PDF Export optimization - keeping for reference */
+@media print {
+  /* Override all shadows */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Simplify all gradient backgrounds to solid colors */
+  [class*="bg-gradient"] {
+    background: white !important;
+    color: #333 !important;
+  }
+  
+  /* Force white background and black text */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Reduce font sizes slightly to save space */
+  p {
+    font-size: 0.95em !important;
+  }
+  
+  /* Make section titles simpler */
+  .section-title {
+    background: #f3f4f6 !important;
+    color: #1e3a8a !important;
+    border-bottom: 2px solid #3b82f6 !important;
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .section-title::after {
+    display: none !important;
+  }
+  
+  /* Simplify skill pills */
+  .skill-pill {
+    background: #f3f4f6 !important;
+    color: #1e3a8a !important;
+    border: 1px solid #d1d5db !important;
+    font-size: 0.7em !important;
+    padding: 0.1rem 0.5rem !important;
+    margin: 0.1rem !important;
+  }
+  
+  /* Simplify borders */
+  .project-item, .job-item, .education-item, .cert-item, .skill-category {
+    border: 1px solid #e5e7eb !important;
+    border-left: 3px solid #1e3a8a !important;
+    transform: none !important;
+  }
+  
+  /* Reduce margin and padding to save space */
+  .section-content, 
+  .project-item, 
+  .job-item, 
+  .education-item, 
+  .cert-item {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Ensure links are visible but not overwhelming */
+  a {
+    text-decoration: none !important;
+    color: #1e3a8a !important;
+  }
+  
+  /* Hide unnecessary elements for PDF */
+  button[type="button"] {
+    display: none !important;
+  }
+  
+  /* Images optimization */
+  img {
+    max-resolution: 150dpi;
+  }
+  
+  /* Compact skills section for PDF */
+  .print-compact {
+    padding: 0.5rem !important;
+  }
+  
+  .print-compact .skill-category {
+    margin-bottom: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+  
+  .print-compact .skill-title {
+    font-size: 0.8em !important;
+    margin-bottom: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  
+  .print-compact .skill-list {
+    gap: 0.1rem !important;
+  }
+  
+  /* Reduce spacing between sections */
+  .mb-10 {
+    margin-bottom: 0.5rem !important;
+  }
+  
+    /* Set print-specific page margin */  @page {    margin: 0.5cm;    size: auto;  }}/* Enhanced CV specific styles */.bg-gradient-to-r {  background: linear-gradient(to right, var(--tw-gradient-stops));}.bg-gradient-to-br {  background: linear-gradient(to bottom right, var(--tw-gradient-stops));}.bg-clip-text {  background-clip: text;  -webkit-background-clip: text;}.text-transparent {  color: transparent;}/* Smooth scroll behavior and consistent viewport handling */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Fix for mobile zoom issues */
+@-ms-viewport {
+  width: device-width;
+}
+
+/* Prevent zoom issues on mobile */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Fix viewport units on mobile browsers */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100svh; /* Use small viewport height on supported browsers */
+}
+
+/* Consistent font rendering across browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+/* Force consistent rem sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent layout shift from font loading */
+.font-sans {
+  font-display: swap;
+}/* Enhanced hover effects for CV sections */.hover\:scale-\[1\.02\]:hover {  transform: scale(1.02) translateZ(0);  will-change: transform;}.hover\:scale-105:hover {  transform: scale(1.05) translateZ(0);  will-change: transform;}.hover\:scale-110:hover {  transform: scale(1.1) translateZ(0);  will-change: transform;}/* Enhanced navigation styles */.backdrop-blur-md {  backdrop-filter: blur(12px);  -webkit-backdrop-filter: blur(12px);}.backdrop-blur-sm {  backdrop-filter: blur(4px);  -webkit-backdrop-filter: blur(4px);}/* Enhanced shadow effects */.shadow-2xl {  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);}/* Custom gradient backgrounds */.from-dark-card\/90 {  --tw-gradient-from: rgba(55, 65, 81, 0.9);  --tw-gradient-to: rgba(55, 65, 81, 0);  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);}.to-dark-lighter\/90 {  --tw-gradient-to: rgba(75, 85, 99, 0.9);}/* Improved focus states for accessibility */button:focus-visible,a:focus-visible {  outline: 2px solid rgba(239, 68, 68, 0.5);  outline-offset: 2px;}/* Enhanced animation performance */.transition-all {  transition-property: all;  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  transition-duration: 300ms;  will-change: transform, opacity, background-color, border-color, box-shadow;}/* Comprehensive Responsive Design Improvements *//* Mobile phones (320px - 640px) */@media (max-width: 640px) {  .hero-title {    @apply text-3xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-lg text-gray-400 mb-6;  }    .hero-container {    @apply px-2 py-4;  }    .text-5xl {    font-size: 2rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 2.5rem !important;    line-height: 1.1;  }    .text-4xl {    font-size: 1.75rem !important;    line-height: 1.2;  }    .text-3xl {    font-size: 1.5rem !important;    line-height: 1.3;  }    .text-2xl {    font-size: 1.25rem !important;    line-height: 1.4;  }    /* Improved button spacing and size */  .cta-button {    @apply py-3 px-4 text-sm;    min-width: 120px;  }    /* Better spacing for mobile */  .container {    @apply px-3;  }    /* Improved card padding for mobile */  .bg-gradient-to-br.rounded-3xl {    @apply p-4 rounded-2xl;  }    /* Better grid spacing */  .grid {    @apply gap-3;  }    /* Navigation improvements */  .nav-link {    @apply text-sm px-3 py-1;  }    /* Form improvements */  input, textarea {    @apply text-sm py-2;  }    /* Ensure proper overflow handling */  .overflow-hidden {    overflow: hidden;  }    /* Flex button improvements */  .flex.flex-wrap.justify-center.gap-4 {    @apply gap-2 mt-8;  }}/* Tablets (641px - 768px) */@media (min-width: 641px) and (max-width: 768px) {  .hero-title {    @apply text-4xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-xl text-gray-400 mb-7;  }    .text-5xl {    font-size: 2.5rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 3rem !important;    line-height: 1.1;  }    .cta-button {    @apply py-2.5 px-5;  }    /* Better grid layouts for tablets */  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {    @apply grid-cols-2;  }    .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 {    @apply grid-cols-2;  }}/* Small laptops (769px - 1024px) */@media (min-width: 769px) and (max-width: 1024px) {  .hero-title {    @apply text-5xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-xl text-gray-400 mb-8;  }    .text-5xl {    font-size: 3rem !important;    line-height: 1.2;  }    .text-6xl {    font-size: 3.75rem !important;    line-height: 1.1;  }}/* Desktop and larger (1025px+) */@media (min-width: 1025px) {  .hero-title {    @apply text-6xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-2xl text-gray-400 mb-8;  }}/* Ultra-wide screens (1536px+) */@media (min-width: 1536px) {  .hero-title {    @apply text-7xl font-bold tracking-tighter mb-2;  }    .hero-subtitle {    @apply text-3xl text-gray-400 mb-8;  }    .container {    max-width: 1400px;  }}/* Ensure consistent spacing across all devices */@media (max-width: 1024px) {  .pt-32 {    @apply pt-24;  }    .pb-20 {    @apply pb-16;  }    .mb-16 {    @apply mb-8;  }    .p-8 {    @apply p-6;  }    .space-y-6 > * + * {    margin-top: 1rem !important;  }    /* Better text handling on smaller screens */  .break-words {    word-break: break-word;    overflow-wrap: anywhere;  }    .hyphens-auto {    hyphens: auto;  }}/* Ensure images are responsive */img {  max-width: 100%;  height: auto;}/* Prevent horizontal scrolling */body, html {  overflow-x: hidden;  max-width: 100vw;}/* Improve touch targets for mobile */@media (hover: none) and (pointer: coarse) {  button, a, input, textarea {    min-height: 44px;  }} 
