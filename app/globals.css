@@ -39,6 +39,244 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/* Enhanced Mobile Scroll Optimizations */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(109, 120, 255, 0.6) rgba(255, 255, 255, 0.1);
+  /* Prevent zoom on double-tap while maintaining zoom functionality */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+  overflow-x: hidden;
+  max-width: 100vw;
+  overscroll-behavior-y: contain; /* Prevent bounce scrolling */
+  scroll-behavior: smooth;
+  /* Improve text rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimized scrollable containers */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Enhanced touch targets for mobile */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(109, 120, 255, 0.3);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Improved touch scrolling for horizontal containers */
+.touch-pan-x {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.touch-pan-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* Performance optimizations for fixed elements */
+.fixed {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.will-change-transform {
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Mobile-specific performance optimizations */
+@media (max-width: 768px) {
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: auto;
+  }
+  
+  /* Optimize animations on mobile */
+  .animate-pulse,
+  .transition-all,
+  .hover\:scale-105:hover,
+  .hover\:scale-110:hover {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Improve touch scrolling performance */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Better section transitions */
+  section {
+    scroll-margin-top: 120px;
+    scroll-snap-align: start;
+  }
+  
+  /* Improved button touch areas */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Links with proper touch targets */
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+  
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Better viewport handling */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Prevent horizontal scrolling issues */
+  .container {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+/* iOS Safari specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Fix viewport height on iOS Safari */
+    min-height: -webkit-fill-available;
+  }
+  
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(109, 120, 255, 0.6);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(109, 120, 255, 0.8);
+}
+
+/* Hide scrollbars on mobile while maintaining functionality */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+  }
+  
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+/* Mobile navigation optimizations */
+@media (max-width: 640px) {
+  .fixed {
+    position: -webkit-sticky;
+    position: sticky;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Better mobile typography */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  p {
+    line-height: 1.5;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Improved spacing for mobile */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Better grid layouts */
+  .grid {
+    gap: 0.75rem;
+  }
+  
+  /* Optimized card layouts */
+  .rounded-3xl {
+    border-radius: 1rem;
+  }
+  
+  .p-8 {
+    padding: 1.5rem;
+  }
+  
+  .mb-16 {
+    margin-bottom: 2rem;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+}
+
 .shadow-cosmic-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}.shadow-red-glow {  text-shadow: 0 0 10px rgba(109, 120, 255, 0.7);}.shadow-white-glow {  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);}
 
 @layer base {
